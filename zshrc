@@ -85,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 ##############################################################################
 alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
-alias ak='open https://github.com/adamki/'
+alias ak='open https://github.com/adamki?tab=repositories'
 alias today='open https://today.turing.io/'
 alias personal='open https://adamki.github.io/'
 
