@@ -1,16 +1,16 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/Users/adamjensen/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="adams"
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -47,17 +47,14 @@ ZSH_THEME="adams"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git nyan thefuck osx npm brew git z)
+plugins=(z git brew osx thefuck nyan rails ruby gem node)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-
-# include Z, yo
-. ~/.z
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -79,7 +76,38 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
- alias zshrc="vim ~/.zshrc"
- alias vimrc="vim ~/.vimrc"
+
+
+
+
+##############################################################################
+###########################          BASIC          ##########################
+##############################################################################
+alias zshrc='vim ~/.zshrc'
+alias vimrc='vim ~/.vimrc'
+alias ak='open https://github.com/adamki/'
+alias today='open https://today.turing.io/'
+alias personal='open https://adamki.github.io/'
+
+##############################################################################
+###########################          GIT             ##########################
+##############################################################################
+alias gap='git add -p'
+alias ga='git add'
+alias gnap='git add -N . && git add -p'
+alias gb='git branch'
+alias gc='git commit -v'
+alias gca='git commit -a -v'
+alias gd='git diff --color-words'
+alias gdc='git diff --cached'
+alias gdh='git diff HEAD'
+alias gl='git pull'
+alias glod='git log --graph --pretty="%Cgreen%h%Creset%Cblue%d%Creset %Cred%an%Creset: %s"'
+alias gp='git push'
+alias gpr='git pull --rebase'
+alias gst='git status'
+alias gr='git rebase'
+alias grc='git rebase --continue'
+alias gri='git rebase --interactive'
+alias gra='git rebase --abort'
+alias reset-authors='git commit --amend --reset-author -C HEAD'
