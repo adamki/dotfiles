@@ -2,7 +2,16 @@
 ############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
-############################
+# this scrpt comes from http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
+
+################################################################################
+# three steps to syncing dotfiles on a new machine.
+# 1.  cd ~/dotfiles
+# 2.  chmod +x makesymlinks.sh
+# 3.  ./makesymlinks.sh
+################################################################################
+
+
 
 ########## Variables
 
