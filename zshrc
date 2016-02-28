@@ -83,12 +83,16 @@ source $ZSH/oh-my-zsh.sh
 ##############################################################################
 ###########################          BASIC          ##########################
 ##############################################################################
-alias zshrc='vim ~/.zshrc'
-alias vimrc='vim ~/.vimrc'
-alias ak='open https://github.com/adamki?tab=repositories'
-alias today='open https://today.turing.io/'
-alias personal='open https://adamki.github.io/'
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
+alias ak="open https://github.com/adamki"
+alias today="open https://today.turing.io/"
+alias personal="open https://adamki.github.io/"
 
+###########################          GOODIES          ##########################
+function weather() {
+  curl -4 http://wttr.in/$1
+}
 ##############################################################################
 ###########################          GIT             ##########################
 ##############################################################################
