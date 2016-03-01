@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/adamjensen/.oh-my-zsh
 
-ZSH_THEME="minimal"
+ZSH_THEME="adams"
 
 
 #####################      HOOK RBENV INTO ZSH    ###########################
@@ -53,7 +53,7 @@ HYPHEN_INSENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git brew osx thefuck nyan rails ruby gem node)
+plugins=(z git brew osx thefuck nyan rails ruby gem node vi-mode)
 
 # User configuration
 
