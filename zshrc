@@ -1,12 +1,18 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/adamjensen/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="adams"
+ZSH_THEME="minimal"
 
-# Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="true"
+
+#####################      HOOK RBENV INTO ZSH    ###########################
+#####################       DO NOT REMOVE         ###########################
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+###############################################################################
+###############################################################################
+
+# pwd; ls --colorUncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -51,20 +57,18 @@ plugins=(z git brew osx thefuck nyan rails ruby gem node)
 
 # User configuration
 
-export PATH="/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+export PATH="/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# make vim defaut editor
+export EDITOR='vim'
+
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -88,6 +92,7 @@ alias vimrc="vim ~/.vimrc"
 alias ak="open https://github.com/adamki"
 alias today="open https://today.turing.io/"
 alias personal="open https://adamki.github.io/"
+alias pl="pwd && ls"
 
 ###########################          GOODIES          ##########################
 function weather() {
@@ -96,6 +101,7 @@ function weather() {
 ##############################################################################
 ###########################          GIT             ##########################
 ##############################################################################
+alias gch="git checkout"
 alias gap='git add -p'
 alias ga='git add'
 alias gnap='git add -N . && git add -p'
