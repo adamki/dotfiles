@@ -3,7 +3,6 @@ export ZSH=/Users/adamjensen/.oh-my-zsh
 
 ZSH_THEME="adams"
 
-
 #####################      HOOK RBENV INTO ZSH    ###########################
 #####################       DO NOT REMOVE         ###########################
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -81,18 +80,18 @@ export EDITOR='vim'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-
-
-
 ##############################################################################
 ###########################          BASIC          ##########################
 ##############################################################################
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
-alias ak="open https://github.com/adamki"
+alias repo="open https://github.com/adamki/repositories"
 alias today="open https://today.turing.io/"
 alias personal="open https://adamki.github.io/"
 alias pl="pwd && ls"
+function repos(){
+  open https://github.com/adamki?tab=activity
+}
 
 ###########################          GOODIES          ##########################
 function weather() {

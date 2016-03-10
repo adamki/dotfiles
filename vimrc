@@ -69,7 +69,7 @@ nnoremap <Leader><space> :nohlsearch<Bar>:echo<CR>
 """""""""""""""""""""""""""""""""""" AIRLINE CONFIG """""""""""""""""""""""""""
 set laststatus=2                                   " always show status bar
 set guifont=Source\ Code\ Pro\ for\ Powerline      " tells airline to use the proper font for special chars
-let g:airline_theme = "luna"
+let g:airline_theme = "powerlineish"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ycm#enabled = 1
 set ttimeoutlen=50                                 " get outta insert mode fast
@@ -93,6 +93,9 @@ if exists('+colorcolumn')                              " hint to keep lines shor
   highlight ColorColumn ctermbg=DarkCyan               " make it dope
   highlight LineNr ctermfg=DarkCyan ctermbg=None
 endif                                                  " hint to keep lines short
+
+" Tell Vim to highlight EJS files just like Html
+au BufNewFile,BufRead *.ejs set filetype=html
 
 """""""""""""""""""""""""""""""" MAKE VIM RENDER FASTER(er) """"""""""""""""""""
 set synmaxcol=128                     " Only render 128 chars per line
