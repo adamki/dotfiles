@@ -166,6 +166,7 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 35, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 35, 4)<CR>
 
 """""""""""""""""""""   MISC   """""""""""""""""""""""""""""""""""""""""""""""""
+
 " Press Space to turn off search results and clear any message already displayed.
 
 " set nerdtree toggle to Ctrl-n
