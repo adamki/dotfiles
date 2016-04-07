@@ -89,9 +89,7 @@ alias repo="open https://github.com/adamki/repositories"
 alias today="open https://today.turing.io/"
 alias personal="open https://adamki.github.io/"
 alias pl="pwd && ls"
-function repos(){
-  open https://github.com/adamki?tab=activity
-}
+alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 
 ###########################          GOODIES          ##########################
 function weather() {
