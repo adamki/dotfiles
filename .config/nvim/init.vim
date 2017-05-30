@@ -9,6 +9,7 @@
 "    /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 "  ========================================
 
+
 " Setup dein  --------------------------------------------------------------{{{
 
   if (!isdirectory(expand("$HOME/.config/nvim/repos/github.com/Shougo/dein.vim")))
@@ -23,10 +24,14 @@
   call dein#add('mhartington/oceanic-next')
   call dein#add('rakr/vim-one')
   call dein#add('morhetz/gruvbox')
+  " Javascript
   " syntax
   call dein#add('othree/yajs')
   call dein#add('pangloss/vim-javascript')
+  call dein#add('jelera/vim-javascript-syntax')
   call dein#add('maxmellon/vim-jsx-pretty')
+  call dein#add('elzr/vim-json')
+  call dein#add('othree/javascript-libraries-syntax.vim')
   " Folding (see Fold Section)
   call dein#add('nelstrom/vim-markdown-folding', {'on_ft': 'markdown'})
   " vim extensions
@@ -35,7 +40,10 @@
   call dein#add('tpope/vim-fugitive')
   call dein#add('ryanoasis/vim-devicons')
   call dein#add('tomtom/tcomment_vim')
-
+  call dein#add('neovim/node-host', {'build': 'npm install'})
+  call dein#add('vimlab/mdown.vim', {'build': 'npm install'})
+  call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
+  call dein#add('christoomey/vim-tmux-navigator')
   if dein#check_install()
     call dein#install()
     let pluginsExist=1
@@ -135,6 +143,7 @@
 
 " Javascript ---------------------------------------------------------------{{{
 
+  let g:used_javascript_libs = 'underscore,backbone,lodash,react,require,jasmine, chai,handlebars,vue,d3,jQuery'
 
 " }}}
 
@@ -190,14 +199,13 @@
 
 " Airline Config------------------------------------------------------------{{{
 
+  set noshowmode                                                       " hide vim's mode status
+  set hidden                                                           " hide buffers instead of unload them
   cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif                                                                " set up symbol dictionary
   let g:airline#extensions#tabline#enabled = 1                         " enables tabline
-  " let g:airline#extensions#mike#enabled = 0
-  set noshowmode                                                       " hide vim's mode status
-  set hidden                                                           " hide buffers instead of unload them
   let g:airline_theme='oceanicnext'                                    " set airline theme
   let g:airline#extensions#tabline#fnamemod = ':t'                     " display tail of file name in tabs
   let g:airline#extensions#tabline#buffer_idx_mode = 1                 " enable buffer indices
@@ -237,3 +245,26 @@
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
 
 " }}}
+
+" Navigate between vim buffers and tmux panels -----------------------------{{{
+
+  let g:tmux_navigator_no_mappings = 1
+  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+  nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+  nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
+  nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+
+"}}}
+
+" Markdown preview ---------------------------------------------------------{{{
+  nmap <Leader>md :Mpreview<CR>
+" }}}
+
+" FZF-VIM ------------------------------------------------------------------{{{
+  "
+  " nmap <C-p> :Files<CR>
+  " let g:fzf_layout = {'up': '~25%'}
+
+" }}}
+
