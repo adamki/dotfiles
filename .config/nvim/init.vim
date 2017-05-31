@@ -24,6 +24,7 @@
   call dein#add('mhartington/oceanic-next')
   call dein#add('rakr/vim-one')
   call dein#add('morhetz/gruvbox')
+  call dein#add('kenwheeler/glow-in-the-dark-gucci-shark-bites-vim')
   " Javascript
   " syntax
   call dein#add('othree/yajs')
@@ -44,6 +45,10 @@
   call dein#add('vimlab/mdown.vim', {'build': 'npm install'})
   call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
   call dein#add('christoomey/vim-tmux-navigator')
+
+  call dein#add('justinmk/vim-dirvish')
+  call dein#add('tpope/vim-eunuch')
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   if dein#check_install()
     call dein#install()
     let pluginsExist=1
@@ -125,8 +130,9 @@
 " Aesthetix ----------------------------------------------------------------{{{
 
   syntax on
-  colorscheme OceanicNext
-  let g:OceanicNext_italic = 1
+  set background=dark
+  colorscheme one
+  let g:one_allow_italics = 1
 
 " }}}
 
@@ -262,9 +268,9 @@
 " }}}
 
 " FZF-VIM ------------------------------------------------------------------{{{
-  "
-  " nmap <C-p> :Files<CR>
-  " let g:fzf_layout = {'up': '~25%'}
+
+  nmap <C-p> :FZF<CR>
+  let g:fzf_layout = {'up': '~25%'}
 
 " }}}
 
