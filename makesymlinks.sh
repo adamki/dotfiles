@@ -15,9 +15,9 @@
 
 ########## Variables
 
-dir=~/dotfiles                    # dotfiles directory
+dir=~/adams-dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="vimrc zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
+files="/.config/nvim/init.vim"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -71,4 +71,4 @@ else
 fi
 }
 
-install_zsh
+# install_zsh
