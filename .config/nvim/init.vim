@@ -27,6 +27,7 @@
   call dein#add('kenwheeler/glow-in-the-dark-gucci-shark-bites-vim')
   " Javascript
   " syntax
+  call dein#add('mxw/vim-jsx')
   call dein#add('othree/yajs')
   call dein#add('pangloss/vim-javascript')
   call dein#add('jelera/vim-javascript-syntax')
@@ -36,6 +37,9 @@
   " Folding (see Fold Section)
   call dein#add('nelstrom/vim-markdown-folding', {'on_ft': 'markdown'})
   " vim extensions
+  call dein#add('tpope/vim-surround')
+  call dein#add('tpope/vim-repeat')
+  call dein#add('Raimondi/delimitMate')
   call dein#add('vim-airline/vim-airline')
   call dein#add('mhinz/vim-sayonara')
   call dein#add('tpope/vim-fugitive')
@@ -45,10 +49,15 @@
   call dein#add('vimlab/mdown.vim', {'build': 'npm install'})
   call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
   call dein#add('christoomey/vim-tmux-navigator')
-
   call dein#add('justinmk/vim-dirvish')
   call dein#add('tpope/vim-eunuch')
-  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+  call dein#add('airblade/vim-gitgutter')
+  " IDE level enhancements
+  " call dein#add('ternjs/tern_for_vim', {'build': 'npm install'})
+  " Shougo
+  call dein#add('Shougo/denite.nvim')
+  call dein#add('Shougo/deoplete.nvim')
+
   if dein#check_install()
     call dein#install()
     let pluginsExist=1
@@ -62,7 +71,8 @@
 " System Settings ----------------------------------------------------------{{{
 
   " neovim settings
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1   " sets ENV var for true colors
   let mapleader = ','                   " set dat leader
   set colorcolumn=80                    " keep lines short
   set termguicolors                     " enable true colors
@@ -113,8 +123,10 @@
   nnoremap <Leader>r :so ~/.config/nvim/init.vim<CR>
   " copy current file path
   nmap cp :let @+= expand("%") <cr>
+  " better line end navigation
   noremap H ^
   noremap L g_
+  " shortcut to save your wrist from RSI
   nnoremap ; :
   " vim omnicomplete
   inoremap <C-f> <C-x><C-f>
@@ -122,17 +134,30 @@
   vmap < <gv
   vmap > >gv
   " turn off high-lighted search results
-  nnoremap <silent> <esc> :noh<cr>
   nnoremap <Leader> <Space> :noh<cr>
 
 " }}}
 
 " Aesthetix ----------------------------------------------------------------{{{
 
-  syntax on
-  set background=dark
-  colorscheme one
-  let g:one_allow_italics = 1
+  set cursorline                                  " HL the current Line #
+  syntax on                                       " enable syntax
+  set background=dark                             " must go before :colorscheme
+  let g:one_allow_italics = 1                     " italix in vim-one
+  " let g:OceanicNext_italic = 1                  " italix in OceanicNext
+  colorscheme one                                 " must go after set bg
+
+  " One customizations -----------------------------------------------------{{{
+
+    call one#highlight('FoldColumn', 'd19a66', 'clear', 'none')
+
+    function! OneLight()  " {{{
+      set background=light            " bg light
+      let g:one#syntax_bg = 'f9f5d7'  " solarizedLight bg hex
+    endfunction
+    " }}}
+
+  "  }}}
 
 " }}}
 
@@ -147,9 +172,148 @@
 
 " }}}
 
+" Airline Config------------------------------------------------------------{{{
+
+  set noshowmode                                                       " hide vim's mode status
+  set hidden                                                           " hide buffers instead of unload them
+  cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif                                                                " set up symbol dictionary
+  let g:airline#extensions#tabline#enabled = 1                         " enables tabline
+  let g:airline_theme='one'                                            " set airline theme
+  let g:airline#extensions#tabline#fnamemod = ':t'                     " display tail of file name in tabs
+  let g:airline#extensions#tabline#buffer_idx_mode = 1                 " enable buffer indices
+  let g:airline#extensions#neomake#error_symbol='• '
+  let g:airline#extensions#neomake#warning_symbol='•  '
+  let g:airline_powerline_fonts = 1
+  let g:airline_symbols.branch = ''                                   " git branch symbol!
+  nmap <leader>, :bnext<CR>                                            " tab next
+  nmap <leader>. :bprev<CR>                                            " tab prev
+  nmap <leader>1 <Plug>AirlineSelectTab1
+  nmap <leader>2 <Plug>AirlineSelectTab2
+  nmap <leader>3 <Plug>AirlineSelectTab3
+  nmap <leader>4 <Plug>AirlineSelectTab4
+  nmap <leader>5 <Plug>AirlineSelectTab5
+  nmap <leader>6 <Plug>AirlineSelectTab6
+  nmap <leader>7 <Plug>AirlineSelectTab7
+  nmap <leader>8 <Plug>AirlineSelectTab8
+  nmap <leader>9 <Plug>AirlineSelectTab9
+  let g:airline#extensions#tabline#buffer_idx_format = {
+        \ '0': '0 ',
+        \ '1': '1 ',
+        \ '2': '2 ',
+        \ '3': '3 ',
+        \ '4': '4 ',
+        \ '5': '5 ',
+        \ '6': '6 ',
+        \ '7': '7 ',
+        \ '8': '8 ',
+        \ '9': '9 ',
+        \}                                                             " make tab indices look normal
+" }}}
+
+" Navigate between vim buffers and tmux panels -----------------------------{{{
+
+  let g:tmux_navigator_no_mappings = 1
+  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+  nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+  nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
+  nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+
+"}}}
+
+" Vim-Devicons -------------------------------------------------------------{{{
+
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
+
+" }}}
+
+" Markdown preview ---------------------------------------------------------{{{
+
+  nmap <Leader>md :Mpreview<CR>
+
+" }}}
+
+" Denite -------------------------------------------------------------------{{{
+
+  let g:webdevicons_enable_denite = 0
+  let s:menus = {}
+
+  call denite#custom#option('_', {
+        \ 'prompt': '❯❯❯',
+        \ 'winheight': 10,
+        \ 'reversed': 1,
+        \ 'highlight_matched_char': 'Underlined',
+        \ 'highlight_mode_normal': 'CursorLine',
+        \ 'updatetime': 1,
+        \ 'auto_resize': 1,
+        \})
+  call denite#custom#var('file_rec', 'command',['rg', '--threads', '2', '--files', '--glob', '!.git'])
+  " call denite#custom#source('file_rec', 'vars', {
+  "       \ 'command': [
+  "       \ 'ag', '--follow','--nogroup','--hidden', '--column', '-g', '', '--ignore', '.git', '--ignore', '*.png'
+  "       \] })
+
+  " call denite#custom#source('file_rec', 'sorters', ['sorter_sublime'])
+  " call denite#custom#source('grep', 'matchers', ['matcher_regexp'])
+  " call denite#custom#var('grep', 'command', ['rg'])
+  " call denite#custom#var('grep', 'default_opts',['--vimgrep'])
+  " call denite#custom#var('grep', 'recursive_opts', [])
+  " call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+  " call denite#custom#var('grep', 'separator', ['--'])
+  " call denite#custom#var('grep', 'final_opts', [])
+
+  nnoremap <silent> <c-p> :Denite file_rec<CR>
+  nnoremap <silent> <leader>h :Denite  help<CR>
+  nnoremap <silent> <leader>c :Denite colorscheme<CR>
+  nnoremap <silent> <leader>b :Denite buffer<CR>
+  nnoremap <silent> <leader>a :Denite grep:::!<CR>
+  nnoremap <silent> <Leader>i :Denite menu:ionic <CR>
+  call denite#custom#map('insert','<C-n>','<denite:move_to_next_line>','noremap')
+  call denite#custom#map('insert','<C-p>','<denite:move_to_previous_line>','noremap')
+  call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+        \ [ '.git/', '.ropeproject/', '__pycache__/',
+        \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
+  call denite#custom#var('menu', 'menus', s:menus)
+
+"}}}
+
+" Dirvish ------------------------------------------------------------------{{{
+
+  let g:dirvish_mode = ':sort r /[^\/]$/'      " folders at the top
+  let g:dirvish_relative_paths = 1             " file paths from parent dir
+  " open in new Tab
+  autocmd FileType dirvish nnoremap <buffer> t :call dirvish#open('tabedit', 0)<cr>
+  " open in new split
+  autocmd FileType dirvish nnoremap <buffer> i :call dirvish#open('split', 0)<cr>
+  " open in new Vsplit
+  autocmd FileType dirvish nnoremap <buffer> s :call dirvish#open('vsplit', 0)<cr>
+  " make new file
+  autocmd FileType dirvish nnoremap <buffer> n :e %
+  " make new dir
+  autocmd FileType dirvish nnoremap <buffer> b :!mkdir %
+  " open file in new tab
+  autocmd FileType dirvish
+        \  nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
+        \ |xnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
+  autocmd FileType dirvish call fugitive#detect(@%)       " enable Fugitive
+  " hide dotfiles. 'R' to toggle them back
+  autocmd FileType dirvish nnoremap <silent><buffer>
+        \ gh :silent keeppatterns g@\v/\.[^\/]+/?$@d<cr>
+  augroup END
+
+"}}}
+
+" Deoplete  ----------------------------------------------------------------{{{
+" }}}
+
 " Javascript ---------------------------------------------------------------{{{
 
-  let g:used_javascript_libs = 'underscore,backbone,lodash,react,require,jasmine, chai,handlebars,vue,d3,jQuery'
+  " let g:jsx_ext_required = 0
 
 " }}}
 
@@ -202,75 +366,3 @@
   autocmd FileType javascript,typescript,json setl foldmethod=syntax
 
 " }}}
-
-" Airline Config------------------------------------------------------------{{{
-
-  set noshowmode                                                       " hide vim's mode status
-  set hidden                                                           " hide buffers instead of unload them
-  cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
-  if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif                                                                " set up symbol dictionary
-  let g:airline#extensions#tabline#enabled = 1                         " enables tabline
-  let g:airline_theme='oceanicnext'                                    " set airline theme
-  let g:airline#extensions#tabline#fnamemod = ':t'                     " display tail of file name in tabs
-  let g:airline#extensions#tabline#buffer_idx_mode = 1                 " enable buffer indices
-  let g:airline#extensions#neomake#error_symbol='• '
-  let g:airline#extensions#neomake#warning_symbol='•  '
-  let g:airline_powerline_fonts = 1
-  let g:airline_symbols.branch = ''                                   " git branch symbol!
-  nmap <leader>, :bnext<CR>                                            " tab next
-  nmap <leader>. :bprev<CR>                                            " tab prev
-  nmap <leader>1 <Plug>AirlineSelectTab1
-  nmap <leader>2 <Plug>AirlineSelectTab2
-  nmap <leader>3 <Plug>AirlineSelectTab3
-  nmap <leader>4 <Plug>AirlineSelectTab4
-  nmap <leader>5 <Plug>AirlineSelectTab5
-  nmap <leader>6 <Plug>AirlineSelectTab6
-  nmap <leader>7 <Plug>AirlineSelectTab7
-  nmap <leader>8 <Plug>AirlineSelectTab8
-  nmap <leader>9 <Plug>AirlineSelectTab9
-  let g:airline#extensions#tabline#buffer_idx_format = {
-        \ '0': '0 ',
-        \ '1': '1 ',
-        \ '2': '2 ',
-        \ '3': '3 ',
-        \ '4': '4 ',
-        \ '5': '5 ',
-        \ '6': '6 ',
-        \ '7': '7 ',
-        \ '8': '8 ',
-        \ '9': '9 ',
-        \}                                                             " make tab indices look normal
-" }}}
-
-" Vim-Devicons -------------------------------------------------------------{{{
-
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
-
-" }}}
-
-" Navigate between vim buffers and tmux panels -----------------------------{{{
-
-  let g:tmux_navigator_no_mappings = 1
-  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-  nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-  nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
-  nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
-
-"}}}
-
-" Markdown preview ---------------------------------------------------------{{{
-  nmap <Leader>md :Mpreview<CR>
-" }}}
-
-" FZF-VIM ------------------------------------------------------------------{{{
-
-  nmap <C-p> :FZF<CR>
-  let g:fzf_layout = {'up': '~25%'}
-
-" }}}
-
