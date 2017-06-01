@@ -12,7 +12,6 @@
 
 " Setup Plug  --------------------------------------------------------------{{{
   call plug#begin('~/.local/share/nvim/plugged')
-
   " colors
   Plug 'mhartington/oceanic-next'
   Plug 'rakr/vim-one'
@@ -43,14 +42,13 @@
   Plug 'justinmk/vim-dirvish'
   Plug 'tpope/vim-eunuch'
   Plug 'airblade/vim-gitgutter'
+  Plug 'gerw/vim-hilinktrace'
   " IDE level enhancements
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'carlitux/deoplete-ternjs'
   " Shougo
   Plug 'shougo/denite.nvim'
   Plug 'shougo/deoplete.nvim'
-  " MISc
-  Plug 'gerw/vim-hilinktrace'
   call plug#end()
 " }}}
 
@@ -95,7 +93,6 @@
     \   exe "normal! g'\"" |
     \ endif " remember cursor position
 
-
 " }}}
 
 " Key Mappings -------------------------------------------------------------{{{
@@ -135,7 +132,7 @@
 
   " One customizations -----------------------------------------------------{{{
 
-    call one#highlight('FoldColumn', 'd19a66', 'clear', 'none')
+  call one#highlight('FoldColumn', 'd19a66', 'clear', 'none')
 
     function! OneLight()  " {{{
       set background=light            " bg light
