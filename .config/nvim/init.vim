@@ -10,62 +10,48 @@
 "  ========================================
 
 
-" Setup dein  --------------------------------------------------------------{{{
+" Setup Plug  --------------------------------------------------------------{{{
+  call plug#begin('~/.local/share/nvim/plugged')
 
-  if (!isdirectory(expand("$HOME/.config/nvim/repos/github.com/Shougo/dein.vim")))
-    call system(expand("mkdir -p $HOME/.config/nvim/repos/github.com"))
-    call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/repos/github.com/Shougo/dein.vim"))
-  endif
-
-  set runtimepath+=~/.config/nvim/repos/github.com/Shougo/dein.vim/
-  call dein#begin(expand('~/.config/nvim'))
-  call dein#add('Shougo/dein.vim')
   " colors
-  call dein#add('mhartington/oceanic-next')
-  call dein#add('rakr/vim-one')
-  call dein#add('morhetz/gruvbox')
-  call dein#add('kenwheeler/glow-in-the-dark-gucci-shark-bites-vim')
-  " Javascript
+  Plug 'mhartington/oceanic-next'
+  Plug 'rakr/vim-one'
+  Plug 'morhetz/gruvbox'
+  Plug 'kenwheeler/glow-in-the-dark-gucci-shark-bites-vim'
   " syntax
-  call dein#add('mxw/vim-jsx')
-  call dein#add('othree/yajs')
-  call dein#add('pangloss/vim-javascript')
-  call dein#add('jelera/vim-javascript-syntax')
-  call dein#add('maxmellon/vim-jsx-pretty')
-  call dein#add('elzr/vim-json')
-  call dein#add('othree/javascript-libraries-syntax.vim')
-  " Folding (see Fold Section)
-  call dein#add('nelstrom/vim-markdown-folding', {'on_ft': 'markdown'})
+  Plug 'othree/yajs'
+  Plug 'pangloss/vim-javascript'
+  Plug 'jelera/vim-javascript-syntax'
+  Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'elzr/vim-json'
+  Plug 'othree/javascript-libraries-syntax.vim'
+  " Folding (see fold section)
+  Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
   " vim extensions
-  call dein#add('tpope/vim-surround')
-  call dein#add('tpope/vim-repeat')
-  call dein#add('Raimondi/delimitMate')
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('mhinz/vim-sayonara')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('ryanoasis/vim-devicons')
-  call dein#add('tomtom/tcomment_vim')
-  call dein#add('neovim/node-host', {'build': 'npm install'})
-  call dein#add('vimlab/mdown.vim', {'build': 'npm install'})
-  call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
-  call dein#add('christoomey/vim-tmux-navigator')
-  call dein#add('justinmk/vim-dirvish')
-  call dein#add('tpope/vim-eunuch')
-  call dein#add('airblade/vim-gitgutter')
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
+  Plug 'raimondi/delimitmate'
+  Plug 'vim-airline/vim-airline'
+  Plug 'mhinz/vim-sayonara'
+  Plug 'tpope/vim-fugitive'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'tomtom/tcomment_vim'
+  Plug 'neovim/node-host', {'do': 'npm install'}
+  Plug 'vimlab/mdown.vim', {'do': 'npm install'}
+  Plug 'tpope/vim-markdown', {'for': 'markdown'}
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'justinmk/vim-dirvish'
+  Plug 'tpope/vim-eunuch'
+  Plug 'airblade/vim-gitgutter'
   " IDE level enhancements
-  " call dein#add('ternjs/tern_for_vim', {'build': 'npm install'})
+  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+  Plug 'carlitux/deoplete-ternjs'
   " Shougo
-  call dein#add('Shougo/denite.nvim')
-  call dein#add('Shougo/deoplete.nvim')
-
-  if dein#check_install()
-    call dein#install()
-    let pluginsExist=1
-  endif
-
-  call dein#end()
-  filetype plugin indent on
-
+  Plug 'shougo/denite.nvim'
+  Plug 'shougo/deoplete.nvim'
+  " MISc
+  Plug 'gerw/vim-hilinktrace'
+  call plug#end()
 " }}}
 
 " System Settings ----------------------------------------------------------{{{
@@ -143,13 +129,13 @@
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  " let g:one_allow_italics = 1                   " italix in vim-one
-  let g:OceanicNext_italic = 1                    " italix in OceanicNext
   colorscheme one                                 " must go after set bg
+  let g:one_allow_italics = 1                     " italix in vim-one
+  " let g:OceanicNext_italic = 1                  " italix in OceanicNext
 
   " One customizations -----------------------------------------------------{{{
 
-    " call one#highlight('FoldColumn', 'd19a66', 'clear', 'none')
+    call one#highlight('FoldColumn', 'd19a66', 'clear', 'none')
 
     function! OneLight()  " {{{
       set background=light            " bg light
