@@ -143,13 +143,13 @@
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  let g:one_allow_italics = 1                     " italix in vim-one
-  " let g:OceanicNext_italic = 1                  " italix in OceanicNext
+  " let g:one_allow_italics = 1                   " italix in vim-one
+  let g:OceanicNext_italic = 1                    " italix in OceanicNext
   colorscheme one                                 " must go after set bg
 
   " One customizations -----------------------------------------------------{{{
 
-    call one#highlight('FoldColumn', 'd19a66', 'clear', 'none')
+    " call one#highlight('FoldColumn', 'd19a66', 'clear', 'none')
 
     function! OneLight()  " {{{
       set background=light            " bg light
@@ -188,6 +188,7 @@
   let g:airline#extensions#neomake#warning_symbol='•  '
   let g:airline_powerline_fonts = 1
   let g:airline_symbols.branch = ''                                   " git branch symbol!
+  nmap <leader>T :tabnew<CR>
   nmap <leader>, :bnext<CR>                                            " tab next
   nmap <leader>. :bprev<CR>                                            " tab prev
   nmap <leader>1 <Plug>AirlineSelectTab1
@@ -239,6 +240,13 @@
 " }}}
 
 " Denite -------------------------------------------------------------------{{{
+  " C-P starts denite
+  nnoremap <silent> <c-p> :Denite file_rec<CR>
+  nnoremap <silent> <leader>h :Denite help<CR>
+  nnoremap <silent> <leader>c :Denite colorscheme<CR>
+  nnoremap <silent> <leader>b :Denite buffer<CR>
+  nnoremap <silent> <leader>a :Denite grep:::!<CR>
+  nnoremap <silent> <Leader>i :Denite menu:ionic <CR>
 
   let g:webdevicons_enable_denite = 0
   let s:menus = {}
@@ -267,12 +275,6 @@
   " call denite#custom#var('grep', 'separator', ['--'])
   " call denite#custom#var('grep', 'final_opts', [])
 
-  nnoremap <silent> <c-p> :Denite file_rec<CR>
-  nnoremap <silent> <leader>h :Denite  help<CR>
-  nnoremap <silent> <leader>c :Denite colorscheme<CR>
-  nnoremap <silent> <leader>b :Denite buffer<CR>
-  nnoremap <silent> <leader>a :Denite grep:::!<CR>
-  nnoremap <silent> <Leader>i :Denite menu:ionic <CR>
   call denite#custom#map('insert','<C-n>','<denite:move_to_next_line>','noremap')
   call denite#custom#map('insert','<C-p>','<denite:move_to_previous_line>','noremap')
   call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
@@ -287,15 +289,15 @@
   let g:dirvish_mode = ':sort r /[^\/]$/'      " folders at the top
   let g:dirvish_relative_paths = 1             " file paths from parent dir
   " open in new Tab
-  autocmd FileType dirvish nnoremap <buffer> t :call dirvish#open('tabedit', 0)<cr>
+  autocmd FileType dirvish nnoremap <buffer>t :call dirvish#open('tabedit', 0)<cr>
   " open in new split
-  autocmd FileType dirvish nnoremap <buffer> i :call dirvish#open('split', 0)<cr>
+  autocmd FileType dirvish nnoremap <buffer>i :call dirvish#open('split', 0)<cr>
   " open in new Vsplit
-  autocmd FileType dirvish nnoremap <buffer> s :call dirvish#open('vsplit', 0)<cr>
+  autocmd FileType dirvish nnoremap <buffer>s :call dirvish#open('vsplit', 0)<cr>
   " make new file
-  autocmd FileType dirvish nnoremap <buffer> n :e %
+  autocmd FileType dirvish nnoremap <buffer>n :e %
   " make new dir
-  autocmd FileType dirvish nnoremap <buffer> b :!mkdir %
+  autocmd FileType dirvish nnoremap <buffer>b :!mkdir %
   " open file in new tab
   autocmd FileType dirvish
         \  nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
@@ -313,6 +315,8 @@
 
 " Javascript ---------------------------------------------------------------{{{
 
+  " dont care about elzr/vim-json quote conceal
+  let g:vim_json_syntax_conceal = 0
   " let g:jsx_ext_required = 0
 
 " }}}
