@@ -33,6 +33,7 @@
   " vim extensions
   Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-fugitive'
   Plug 'raimondi/delimitmate'
   Plug 'vim-airline/vim-airline'
   Plug 'mhinz/vim-sayonara'
@@ -377,4 +378,8 @@
 
 " }}}
 
-let g:gitgutter_enabled = 0
+" GitGutter ----------------------------------------------------------------{{{
+
+  let g:gitgutter_enabled = 0
+
+" }}}
