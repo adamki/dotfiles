@@ -16,14 +16,19 @@
   Plug 'mhartington/oceanic-next'
   Plug 'rakr/vim-one'
   Plug 'morhetz/gruvbox'
+  Plug 'dracula/vim'
+  Plug 'joshdick/onedark.vim'
+  Plug 'tyrannicaltoucan/vim-deep-space'
+  Plug 'tyrannicaltoucan/vim-quantum'
+  Plug 'KeitaNakamura/neodark.vim'
   Plug 'kenwheeler/glow-in-the-dark-gucci-shark-bites-vim'
   " syntax
-  Plug 'othree/yajs'
-  Plug 'pangloss/vim-javascript'
+  " Plug 'othree/yajs'
   Plug 'jelera/vim-javascript-syntax'
   Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+  Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'elzr/vim-json'
-  Plug 'othree/javascript-libraries-syntax.vim'
   " Folding (see fold section)
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
   " vim extensions
@@ -126,13 +131,13 @@
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  colorscheme one                                 " must go after set bg
+  colorscheme neodark                                 " must go after set bg
   let g:one_allow_italics = 1                     " italix in vim-one
   " let g:OceanicNext_italic = 1                  " italix in OceanicNext
 
   " One customizations -----------------------------------------------------{{{
 
-  call one#highlight('FoldColumn', 'd19a66', 'clear', 'none')
+  " call one#highlight('FoldColumn', 'd19a66', 'clear', 'none')
 
     function! OneLight()  " {{{
       set background=light            " bg light
