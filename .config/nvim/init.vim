@@ -23,21 +23,20 @@
   Plug 'KeitaNakamura/neodark.vim'
   Plug 'kenwheeler/glow-in-the-dark-gucci-shark-bites-vim'
   " syntax
-  " Plug 'othree/yajs'
+  Plug 'othree/yajs'
   Plug 'jelera/vim-javascript-syntax'
   Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-  Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+  Plug 'pangloss/vim-javascript'
   Plug 'elzr/vim-json'
   " Folding (see fold section)
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
   " vim extensions
-  Plug 'tpope/vim-surround'
+  Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-repeat'
   Plug 'raimondi/delimitmate'
   Plug 'vim-airline/vim-airline'
   Plug 'mhinz/vim-sayonara'
-  Plug 'tpope/vim-fugitive'
+  Plug 'jreybert/vimagit'
   Plug 'ryanoasis/vim-devicons'
   Plug 'tomtom/tcomment_vim'
   Plug 'neovim/node-host', {'do': 'npm install'}
@@ -49,8 +48,8 @@
   Plug 'airblade/vim-gitgutter'
   Plug 'gerw/vim-hilinktrace'
   " IDE level enhancements
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
-  Plug 'carlitux/deoplete-ternjs'
   " Shougo
   Plug 'shougo/denite.nvim'
   Plug 'shougo/deoplete.nvim'
@@ -128,24 +127,13 @@
 
 " Aesthetix ----------------------------------------------------------------{{{
 
+  " let g:neodark#background = '#253944'
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  colorscheme neodark                                 " must go after set bg
-  let g:one_allow_italics = 1                     " italix in vim-one
+  colorscheme deep-space                          " must go after set bg
+  " let g:one_allow_italics = 1                   " italix in vim-one
   " let g:OceanicNext_italic = 1                  " italix in OceanicNext
-
-  " One customizations -----------------------------------------------------{{{
-
-  " call one#highlight('FoldColumn', 'd19a66', 'clear', 'none')
-
-    function! OneLight()  " {{{
-      set background=light            " bg light
-      let g:one#syntax_bg = 'f9f5d7'  " solarizedLight bg hex
-    endfunction
-    " }}}
-
-  "  }}}
 
 " }}}
 
@@ -162,6 +150,7 @@
 
 " Airline Config------------------------------------------------------------{{{
 
+  let g:airline_theme='deep_space'                                     " set airline theme
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
   cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
@@ -169,7 +158,6 @@
     let g:airline_symbols = {}
   endif                                                                " set up symbol dictionary
   let g:airline#extensions#tabline#enabled = 1                         " enables tabline
-  let g:airline_theme='one'                                            " set airline theme
   let g:airline#extensions#tabline#fnamemod = ':t'                     " display tail of file name in tabs
   let g:airline#extensions#tabline#buffer_idx_mode = 1                 " enable buffer indices
   let g:airline#extensions#neomake#error_symbol='• '
@@ -299,13 +287,43 @@
 "}}}
 
 " Deoplete  ----------------------------------------------------------------{{{
+  let g:deoplete#enable_at_startup = 1
+  autocmd CompleteDone * pclose
+
+  let g:deoplete#file#enable_buffer_path=1
+
+  call deoplete#custom#set('buffer', 'mark', 'ℬ')
+  call deoplete#custom#set('ternjs', 'mark', '')
+  call deoplete#custom#set('omni', 'mark', '⌾')
+  call deoplete#custom#set('file', 'mark', 'file')
+
+  " let carlitux Use deoplete.
+  let g:tern_request_timeout = 1
+  let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+
+  "Add extra filetypes
+  let g:tern#filetypes = [
+                  \ 'jsx',
+                  \ 'javascript.jsx',
+                  \ 'vue'
+                  \ ]
+  " Use tern_for_vim.
+  let g:tern#command = ["tern"]
+  let g:tern#arguments = ["--persistent"]
+
+   " deoplete tab-complete
+  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+  " tern
+  autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR> let g:tern#is_show_argument_hints_enabled = 1
+  autocmd FileType javascript nnoremap <silent> <buffer> gb! :TernDefSplit<CR>
 " }}}
 
 " Javascript ---------------------------------------------------------------{{{
 
   " dont care about elzr/vim-json quote conceal
   let g:vim_json_syntax_conceal = 0
-  " let g:jsx_ext_required = 0
+  " let pangloss/js handle flow
+  let g:javascript_plugin_flow = 1
 
 " }}}
 
@@ -358,3 +376,5 @@
   autocmd FileType javascript,typescript,json setl foldmethod=syntax
 
 " }}}
+
+let g:gitgutter_enabled = 0
