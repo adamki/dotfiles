@@ -26,6 +26,7 @@
   Plug 'KeitaNakamura/neodark.vim'
   Plug 'kenwheeler/glow-in-the-dark-gucci-shark-bites-vim'
   " syntax
+  Plug 'sheerun/vim-polyglot'
   Plug 'othree/yajs'
   Plug 'jelera/vim-javascript-syntax'
   Plug 'maxmellon/vim-jsx-pretty'
@@ -36,6 +37,7 @@
   " vim extensions
   Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-surround'
   Plug 'tpope/vim-fugitive'
   Plug 'raimondi/delimitmate'
   Plug 'vim-airline/vim-airline'
@@ -57,6 +59,8 @@
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'neomake/neomake'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
   call plug#end()
 " }}}
 
@@ -114,6 +118,8 @@
   nnoremap <Leader>r :so ~/.config/nvim/init.vim<CR>
   " copy current file path
   nmap cp :let @+= expand("%") <cr>
+  " bind Search/Replace to Leader
+  nnoremap <Leader>s :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
   " better line end navigation
   noremap H ^
   noremap L g_
@@ -226,7 +232,6 @@
   nnoremap <silent> <leader>c :Denite colorscheme<CR>
   nnoremap <silent> <leader>b :Denite buffer<CR>
   nnoremap <silent> <leader>a :Denite grep:::!<CR>
-  nnoremap <silent> <Leader>i :Denite menu:ionic <CR>
 
   let g:webdevicons_enable_denite = 0
   let s:menus = {}
@@ -378,6 +383,7 @@
   autocmd FileType html setl foldexpr=HTMLFolds()
 
   autocmd FileType javascript,typescript,json setl foldmethod=syntax
+  autocmd FileType go,rust setl foldmethod=syntax
 
 " }}}
 
@@ -398,3 +404,9 @@
   let g:neomake_error_sign = {'text': '•'}
 
 "  }}}
+
+" Ployglot -----------------------------------------------------------------{{{
+
+  let g:polyglot_disabled = ['javascript', 'json', 'jsx']
+
+" }}}
