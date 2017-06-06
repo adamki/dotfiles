@@ -1,15 +1,15 @@
-"  █████╗ ██████╗  █████╗ ███╗   ███╗███████╗
-" ██╔══██╗██╔══██╗██╔══██╗████╗ ████║██╔════╝
-" ███████║██║  ██║███████║██╔████╔██║███████╗
-" ██╔══██║██║  ██║██╔══██║██║╚██╔╝██║╚════██║
-" ██║  ██║██████╔╝██║  ██║██║ ╚═╝ ██║███████║
-" ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
-"    ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-"    ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-"    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-"    ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-"    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-"    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+"     █████╗ ██████╗  █████╗ ███╗   ███╗ █╗ ███████╗
+"    ██╔══██╗██╔══██╗██╔══██╗████╗ ████ ╚═╝ ██╔════╝
+"    ███████║██║  ██║███████║██╔████╔██║    ███████╗
+"    ██╔══██║██║  ██║██╔══██║██║╚██╔╝██║    ╚════██║
+"    ██║  ██║██████╔╝██║  ██║██║ ╚═╝ ██║    ███████║
+"    ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝    ╚══════╝
+"                        ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+"                        ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+"                        ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+"                        ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+"                        ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+"                        ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 
 " Setup Plug  --------------------------------------------------------------{{{
   call plug#begin('~/.local/share/nvim/plugged')
@@ -68,9 +68,7 @@
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  colorscheme deep-space                             " must go after set bg
-  " let g:one_allow_italics = 1                   " italix in vim-one
-  " let g:OceanicNext_italic = 1                  " italix in OceanicNext
+  colorscheme neodark                             " must go after set bg
 
 " }}}
 
@@ -219,7 +217,7 @@
 
   call denite#custom#option('default', {
         \ 'prompt': '❯',
-        \ 'highlight_matched_char': 'Underlined',
+        \ 'highlight_matched_char': 'highlight',
         \ 'highlight_mode_normal': 'CursorLine',
         \})
   call denite#custom#var('file_rec', 'command',
@@ -332,6 +330,7 @@
 
   " dont care about elzr/vim-json quote conceal
   let g:vim_json_syntax_conceal = 0
+
   " let pangloss/js handle flow
   let g:javascript_plugin_flow = 1
 
@@ -395,10 +394,12 @@
 
 " NeoMake ------------------------------------------------------------------{{{
 
+  " lint on Buffer Save
   autocmd! BufWritePost * Neomake
 
   let g:neomake_open_list = 0
 
+  " Neomake 'Makers'
   let g:neomake_javascript_enabled_makers = ['eslint']
   let g:neomake_go_enabled_makers = ['go']
   let g:neomake_warning_sign = {'text': '+'}
@@ -422,4 +423,3 @@
   nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
 
 "}}}
-
