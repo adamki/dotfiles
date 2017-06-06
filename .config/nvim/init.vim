@@ -1,17 +1,15 @@
-"            :::     :::::::::      :::       :::   :::  ::: ::::::::
-"         :+: :+:   :+:    :+:   :+: :+:    :+:+: :+:+: :+ :+:    :+:
-"       +:+   +:+  +:+    +:+  +:+   +:+  +:+ +:+:+ +:+   +:+
-"     +#++:++#++: +#+    +:+ +#++:++#++: +#+  +:+  +#+   +#++:++#++
-"    +#+     +#+ +#+    +#+ +#+     +#+ +#+       +#+          +#+
-"   #+#     #+# #+#    #+# #+#     #+# #+#       #+#   #+#    #+#
-"  ###     ### #########  ###     ### ###       ###    ########
-"        ::::    ::: :::::::::: ::::::::  :::     ::: :::::::::::   :::   :::
-"       :+:+:   :+: :+:       :+:    :+: :+:     :+:     :+:      :+:+: :+:+:
-"      :+:+:+  +:+ +:+       +:+    +:+ +:+     +:+     +:+     +:+ +:+:+ +:+
-"     +#+ +:+ +#+ +#++:++#  +#+    +:+ +#+     +:+     +#+     +#+  +:+  +#+
-"    +#+  +#+#+# +#+       +#+    +#+  +#+   +#+      +#+     +#+       +#+
-"   #+#   #+#+# #+#       #+#    #+#   #+#+#+#       #+#     #+#       #+#
-"  ###    #### ########## ########      ###     ########### ###       ###
+"  █████╗ ██████╗  █████╗ ███╗   ███╗███████╗
+" ██╔══██╗██╔══██╗██╔══██╗████╗ ████║██╔════╝
+" ███████║██║  ██║███████║██╔████╔██║███████╗
+" ██╔══██║██║  ██║██╔══██║██║╚██╔╝██║╚════██║
+" ██║  ██║██████╔╝██║  ██║██║ ╚═╝ ██║███████║
+" ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+"    ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+"    ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+"    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+"    ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+"    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+"    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 
 " Setup Plug  --------------------------------------------------------------{{{
   call plug#begin('~/.local/share/nvim/plugged')
@@ -32,6 +30,7 @@
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'
   Plug 'elzr/vim-json'
+  Plug 'othree/javascript-libraries-syntax'
   " Folding (see fold section)
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
   " vim extensions
@@ -62,6 +61,17 @@
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   call plug#end()
+" }}}
+
+" Aesthetix ----------------------------------------------------------------{{{
+
+  set cursorline                                  " HL the current Line #
+  syntax on                                       " enable syntax
+  set background=dark                             " must go before :colorscheme
+  colorscheme deep-space                             " must go after set bg
+  " let g:one_allow_italics = 1                   " italix in vim-one
+  " let g:OceanicNext_italic = 1                  " italix in OceanicNext
+
 " }}}
 
 " System Settings ----------------------------------------------------------{{{
@@ -119,7 +129,7 @@
   " copy current file path
   nmap cp :let @+= expand("%") <cr>
   " bind Search/Replace to Leader
-  nnoremap <Leader>s :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+  nnoremap <Leader>S :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
   " better line end navigation
   noremap H ^
   noremap L g_
@@ -132,18 +142,6 @@
   vmap > >gv
   " turn off high-lighted search results
   nnoremap <Leader> <Space> :noh<cr>
-
-" }}}
-
-" Aesthetix ----------------------------------------------------------------{{{
-
-  " let g:neodark#background = '#253944'
-  set cursorline                                  " HL the current Line #
-  syntax on                                       " enable syntax
-  set background=dark                             " must go before :colorscheme
-  colorscheme deep-space                          " must go after set bg
-  " let g:one_allow_italics = 1                   " italix in vim-one
-  " let g:OceanicNext_italic = 1                  " italix in OceanicNext
 
 " }}}
 
@@ -174,9 +172,10 @@
   let g:airline#extensions#neomake#warning_symbol='•  '
   let g:airline_powerline_fonts = 1
   let g:airline_symbols.branch = ''                                   " git branch symbol!
+  " tab shortcuts
   nmap <leader>T :tabnew<CR>
-  nmap <leader>, :bnext<CR>                                            " tab next
-  nmap <leader>. :bprev<CR>                                            " tab prev
+  nmap <leader>, :bnext<CR>
+  nmap <leader>. :bprev<CR>
   nmap <leader>1 <Plug>AirlineSelectTab1
   nmap <leader>2 <Plug>AirlineSelectTab2
   nmap <leader>3 <Plug>AirlineSelectTab3
@@ -200,17 +199,6 @@
         \}                                                             " make tab indices look normal
 " }}}
 
-" Navigate between vim buffers and tmux panels -----------------------------{{{
-
-  let g:tmux_navigator_no_mappings = 1
-  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-  nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-  nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
-  nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
-
-"}}}
-
 " Vim-Devicons -------------------------------------------------------------{{{
 
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
@@ -226,46 +214,54 @@
 " }}}
 
 " Denite -------------------------------------------------------------------{{{
-  " C-P starts denite
-  nnoremap <silent> <c-p> :Denite file_rec<CR>
-  nnoremap <silent> <leader>h :Denite help<CR>
-  nnoremap <silent> <leader>c :Denite colorscheme<CR>
-  nnoremap <silent> <leader>b :Denite buffer<CR>
-  nnoremap <silent> <leader>a :Denite grep:::!<CR>
-
-  let g:webdevicons_enable_denite = 0
+  let g:webdevicons_enable_denite = 0          " disable devicons cuz they slow
   let s:menus = {}
 
-  call denite#custom#option('_', {
-        \ 'prompt': '❯❯❯',
-        \ 'winheight': 10,
-        \ 'reversed': 1,
+  call denite#custom#option('default', {
+        \ 'prompt': '❯',
         \ 'highlight_matched_char': 'Underlined',
         \ 'highlight_mode_normal': 'CursorLine',
-        \ 'updatetime': 1,
-        \ 'auto_resize': 1,
         \})
-  call denite#custom#var('file_rec', 'command',['rg', '--threads', '2', '--files', '--glob', '!.git'])
-  " call denite#custom#source('file_rec', 'vars', {
-  "       \ 'command': [
-  "       \ 'ag', '--follow','--nogroup','--hidden', '--column', '-g', '', '--ignore', '.git', '--ignore', '*.png'
-  "       \] })
+  call denite#custom#var('file_rec', 'command',
+        \ ['rg', '--files', '--glob', '!.git', ''])
+  call denite#custom#var('grep', 'command', ['rg'])
+  call denite#custom#var('grep', 'default_opts',
+        \ ['--hidden', '--vimgrep', '--no-heading', '-S'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'final_opts', [])
+  call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>',
+        \'noremap')
+  call denite#custom#map('normal', '<C-s>', '<denite:do_action:vsplit>',
+        \'noremap')
+  call denite#custom#map('normal', '<C-i>', '<denite:do_action:split>',
+        \'noremap')
+  call denite#custom#map('normal', 'dw', '<denite:delete_word_after_caret>',
+        \'noremap')
 
-  " call denite#custom#source('file_rec', 'sorters', ['sorter_sublime'])
-  " call denite#custom#source('grep', 'matchers', ['matcher_regexp'])
-  " call denite#custom#var('grep', 'command', ['rg'])
-  " call denite#custom#var('grep', 'default_opts',['--vimgrep'])
-  " call denite#custom#var('grep', 'recursive_opts', [])
-  " call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-  " call denite#custom#var('grep', 'separator', ['--'])
-  " call denite#custom#var('grep', 'final_opts', [])
+  " nnoremap <silent> <c-p> :Denite file_rec<CR>
+  nnoremap <C-p> :<C-u>Denite file_rec<CR>
+  " search open buffers
+  nnoremap <leader>b :<C-u>Denite buffer<CR>
+  nnoremap <leader><Space>b :<C-u>DeniteBufferDir buffer<CR>
+  " find word under cursor
+  nnoremap <leader><bs> :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+  " ripgrep an input
+  nnoremap <leader>a :<C-u>Denite grep:. -mode=normal<CR>
+  " ripgrep an input in Directory
+  nnoremap <leader><Space>a :<C-u>DeniteBufferDir grep:. -mode=normal<CR>
+  " find file in dir
+  nnoremap <leader>d :<C-u>DeniteBufferDir file_rec<CR>
 
-  call denite#custom#map('insert','<C-n>','<denite:move_to_next_line>','noremap')
-  call denite#custom#map('insert','<C-p>','<denite:move_to_previous_line>','noremap')
-  call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-        \ [ '.git/', '.ropeproject/', '__pycache__/',
-        \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
-  call denite#custom#var('menu', 'menus', s:menus)
+  hi link deniteMatchedChar Special
+
+  " denite-extras
+  nnoremap <silent> <leader>h :Denite help<CR>
+  nnoremap <silent> <leader>c :Denite colorscheme<CR>
+  nnoremap <leader>o :<C-u>Denite location_list -mode=normal -no-empty<CR>
+  nnoremap <leader>hs :<C-u>Denite history:search -mode=normal<CR>
+  nnoremap <leader>hc :<C-u>Denite history:cmd -mode=normal<CR>
 
 "}}}
 
@@ -275,6 +271,7 @@
   let g:dirvish_relative_paths = 1             " file paths from parent dir
   " open in new Tab
   autocmd FileType dirvish nnoremap <buffer>t :call dirvish#open('tabedit', 0)<cr>
+  autocmd FileType dirvish nnoremap <buffer>T :call dirvish#open('tabedit', 1)<cr>
   " open in new split
   autocmd FileType dirvish nnoremap <buffer>i :call dirvish#open('split', 0)<cr>
   " open in new Vsplit
@@ -296,11 +293,13 @@
 "}}}
 
 " Deoplete  ----------------------------------------------------------------{{{
+
   let g:deoplete#enable_at_startup = 1
   autocmd CompleteDone * pclose
 
   let g:deoplete#file#enable_buffer_path=1
 
+  " custom omni source markers
   call deoplete#custom#set('buffer', 'mark', 'ℬ')
   call deoplete#custom#set('ternjs', 'mark', '')
   call deoplete#custom#set('omni', 'mark', '⌾')
@@ -322,9 +321,11 @@
 
    " deoplete tab-complete
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
   " tern
   autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR> let g:tern#is_show_argument_hints_enabled = 1
   autocmd FileType javascript nnoremap <silent> <buffer> gb! :TernDefSplit<CR>
+
 " }}}
 
 " Javascript ---------------------------------------------------------------{{{
@@ -382,8 +383,7 @@
   autocmd FileType html setl foldmethod=expr
   autocmd FileType html setl foldexpr=HTMLFolds()
 
-  autocmd FileType javascript,typescript,json setl foldmethod=syntax
-  autocmd FileType go,rust setl foldmethod=syntax
+  autocmd FileType javascript,typescript,json,go,rust,ruby setl foldmethod=syntax
 
 " }}}
 
@@ -397,16 +397,29 @@
 
   autocmd! BufWritePost * Neomake
 
-  let g:neomake_open_list = 2
+  let g:neomake_open_list = 0
 
   let g:neomake_javascript_enabled_makers = ['eslint']
+  let g:neomake_go_enabled_makers = ['go']
   let g:neomake_warning_sign = {'text': '+'}
   let g:neomake_error_sign = {'text': '•'}
 
 "  }}}
 
-" Ployglot -----------------------------------------------------------------{{{
+" Polyglot -----------------------------------------------------------------{{{
 
   let g:polyglot_disabled = ['javascript', 'json', 'jsx']
 
 " }}}
+
+" Navigate between vim buffers and tmux panels -----------------------------{{{
+
+  let g:tmux_navigator_no_mappings = 1
+  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+  nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+  nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
+  nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+
+"}}}
+
