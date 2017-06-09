@@ -68,7 +68,7 @@
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  colorscheme neodark                             " must go after set bg
+  colorscheme deep-space                          " must go after set bg
 
 " }}}
 
@@ -397,6 +397,7 @@
   " lint on Buffer Save
   autocmd! BufWritePost * Neomake
 
+  " dont open error window
   let g:neomake_open_list = 0
 
   " Neomake 'Makers'
