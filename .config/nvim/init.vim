@@ -14,14 +14,15 @@
 " Setup Plug  --------------------------------------------------------------{{{
   call plug#begin('~/.local/share/nvim/plugged')
   " colors
-  Plug 'mhartington/oceanic-next'
-  Plug 'rakr/vim-one'
-  Plug 'morhetz/gruvbox'
-  Plug 'dracula/vim'
-  Plug 'joshdick/onedark.vim'
   Plug 'tyrannicaltoucan/vim-deep-space'
   Plug 'tyrannicaltoucan/vim-quantum'
   Plug 'KeitaNakamura/neodark.vim'
+  Plug 'mhartington/oceanic-next'
+  Plug 'rakr/vim-one'
+  Plug 'morhetz/gruvbox'
+
+  Plug 'dracula/vim'
+  Plug 'joshdick/onedark.vim'
   Plug 'kenwheeler/glow-in-the-dark-gucci-shark-bites-vim'
   " syntax
   Plug 'sheerun/vim-polyglot'
@@ -68,7 +69,7 @@
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  colorscheme deep-space                          " must go after set bg
+  colorscheme oceanicNext                             " must go after set bg
 
 " }}}
 
