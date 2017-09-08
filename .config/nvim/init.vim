@@ -31,7 +31,7 @@
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'
   Plug 'elzr/vim-json'
-  Plug 'othree/javascript-libraries-syntax'
+  Plug 'othree/javascript-libraries-syntax.vim'
   " Folding (see fold section)
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
   " vim extensions
@@ -61,6 +61,9 @@
   Plug 'neomake/neomake'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+
+
+  Plug 'junegunn/rainbow_parentheses.vim'
   call plug#end()
 " }}}
 
