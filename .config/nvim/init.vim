@@ -52,6 +52,7 @@
   Plug 'tpope/vim-eunuch'
   Plug 'airblade/vim-gitgutter'
   Plug 'gerw/vim-hilinktrace'
+  Plug 'shime/vim-livedown'
   " IDE level enhancements
   Plug 'shougo/denite.nvim'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -64,6 +65,16 @@
   Plug 'junegunn/rainbow_parentheses.vim'
   call plug#end()
 " }}}
+
+" MarkDown Live Previews ---------------------------------------------------{{{
+
+  " should markdown preview get shown automatically upon opening markdown buffer
+  let g:livedown_autorun = 1
+
+  " should the browser window pop-up upon previewing
+  let g:livedown_open = 1
+
+}}}
 
 " Aesthetix ----------------------------------------------------------------{{{
 
@@ -421,4 +432,5 @@
   nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
 
 "}}}
+
 
