@@ -1,12 +1,12 @@
 #!/bin/bash
 ############################
 # .make.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+# This script creates symlinks from the home directory to any desired dotfiles in ~/adams-dotfiles
 # this scrpt comes from http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
 
 ################################################################################
 # three steps to syncing dotfiles on a new machine.
-# 1.  cd ~/dotfiles
+# 1.  cd ~/adams-dotfiles
 # 2.  chmod +x makesymlinks.sh
 # 3.  ./makesymlinks.sh
 ################################################################################
@@ -14,12 +14,9 @@
 
 
 ########## Variables
-
 dir=~/adams-dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files="/.config/nvim/init.vim"    # list of files/folders to symlink in homedir
-
-##########
+olddir=~/dotfiles_old                   # old dotfiles backup directory
+files="/.config/nvim/init.vim"          # list of files/folders to symlink in homedir
 
 # create dotfiles_old in homedir
 echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
@@ -71,4 +68,4 @@ else
 fi
 }
 
-# install_zsh
+# install_zsh         <------- uncomment to run the ZSH part of script

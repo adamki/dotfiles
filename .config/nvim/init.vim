@@ -32,6 +32,7 @@
   Plug 'pangloss/vim-javascript'
   Plug 'elzr/vim-json'
   Plug 'othree/javascript-libraries-syntax.vim'
+
   " Folding (see fold section)
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
   " vim extensions
@@ -45,8 +46,6 @@
   Plug 'jreybert/vimagit'
   Plug 'ryanoasis/vim-devicons'
   Plug 'tomtom/tcomment_vim'
-  Plug 'neovim/node-host', {'do': 'npm install'}
-  Plug 'vimlab/mdown.vim', {'do': 'npm install'}
   Plug 'tpope/vim-markdown', {'for': 'markdown'}
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'justinmk/vim-dirvish'
@@ -55,13 +54,12 @@
   Plug 'gerw/vim-hilinktrace'
   " IDE level enhancements
   Plug 'shougo/denite.nvim'
-  Plug 'shougo/deoplete.nvim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'neomake/neomake'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
-
 
   Plug 'junegunn/rainbow_parentheses.vim'
   call plug#end()
@@ -79,8 +77,9 @@
 " System Settings ----------------------------------------------------------{{{
 
   " neovim settings
+
+  set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1   " sets ENV var for true colors
   let mapleader = ','                   " set dat leader
   set colorcolumn=80                    " keep lines short
   set termguicolors                     " enable true colors
@@ -206,12 +205,6 @@
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
-
-" }}}
-
-" Markdown preview ---------------------------------------------------------{{{
-
-  nmap <Leader>md :Mpreview<CR>
 
 " }}}
 
@@ -428,3 +421,4 @@
   nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
 
 "}}}
+
