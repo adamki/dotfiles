@@ -15,6 +15,7 @@
   call plug#begin('~/.local/share/nvim/plugged')
   " colors
   Plug 'tyrannicaltoucan/vim-deep-space'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'tyrannicaltoucan/vim-quantum'
   Plug 'KeitaNakamura/neodark.vim'
   Plug 'mhartington/oceanic-next'
@@ -74,15 +75,14 @@
   " should the browser window pop-up upon previewing
   let g:livedown_open = 1
 
-}}}
+" }}}
 
 " Aesthetix ----------------------------------------------------------------{{{
 
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  colorscheme oceanicNext                             " must go after set bg
-
+  colorscheme dracula                             " must go after set bg
 " }}}
 
 " System Settings ----------------------------------------------------------{{{
@@ -170,7 +170,7 @@
 
 " Airline Config------------------------------------------------------------{{{
 
-  let g:airline_theme='deep_space'                                     " set airline theme
+  let g:airline_theme='dracula'                                     " set airline theme
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
   cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
@@ -243,8 +243,31 @@
         \'noremap')
   call denite#custom#map('normal', '<C-i>', '<denite:do_action:split>',
         \'noremap')
-  call denite#custom#map('normal', 'dw', '<denite:delete_word_after_caret>',
-        \'noremap')
+
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-j>',
+        \ '<denite:move_to_next_line>',
+        \ 'noremap'
+        \)
+  call denite#custom#map(
+	      \ 'insert',
+	      \ '<C-k>',
+	      \ '<denite:move_to_previous_line>',
+	      \ 'noremap'
+        \)
+  call denite#custom#map(
+        \ 'insert',
+        \ '<C-n>',
+        \ '<denite:move_to_next_line>',
+        \ 'noremap'
+        \)
+  call denite#custom#map(
+	      \ 'insert',
+	      \ '<C-p>',
+	      \ '<denite:move_to_previous_line>',
+	      \ 'noremap'
+        \)
 
   " nnoremap <silent> <c-p> :Denite file_rec<CR>
   nnoremap <C-p> :<C-u>Denite file_rec<CR>
@@ -329,7 +352,9 @@
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
   " tern
+  " jump to definition
   autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR> let g:tern#is_show_argument_hints_enabled = 1
+  " jump to definition in new buffer
   autocmd FileType javascript nnoremap <silent> <buffer> gb! :TernDefSplit<CR>
 
 " }}}
@@ -432,5 +457,3 @@
   nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
 
 "}}}
-
-
