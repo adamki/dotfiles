@@ -78,7 +78,6 @@
 " }}}
 
 " Aesthetix ----------------------------------------------------------------{{{
-
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
@@ -239,9 +238,9 @@
   call denite#custom#var('grep', 'final_opts', [])
   call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>',
         \'noremap')
-  call denite#custom#map('normal', '<C-s>', '<denite:do_action:vsplit>',
+  call denite#custom#map('insert', '<C-s>', '<denite:do_action:vsplit>',
         \'noremap')
-  call denite#custom#map('normal', '<C-i>', '<denite:do_action:split>',
+  call denite#custom#map('insert', '<C-i>', '<denite:do_action:split>',
         \'noremap')
 
   call denite#custom#map(
