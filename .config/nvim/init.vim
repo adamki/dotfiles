@@ -78,10 +78,13 @@
 " }}}
 
 " Aesthetix ----------------------------------------------------------------{{{
+
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
   colorscheme dracula                             " must go after set bg
+  hi lineNr guifg=magenta
+
 " }}}
 
 " System Settings ----------------------------------------------------------{{{
@@ -167,7 +170,7 @@
 
 " }}}
 
-" Airline Config------------------------------------------------------------{{{
+" Airline/TABS Config------------------------------------------------------------{{{
 
   let g:airline_theme='dracula'                                     " set airline theme
   set noshowmode                                                       " hide vim's mode status
@@ -271,7 +274,6 @@
   " nnoremap <silent> <c-p> :Denite file_rec<CR>
   nnoremap <C-p> :<C-u>Denite file_rec<CR>
   " search open buffers
-  nnoremap <leader>b :<C-u>Denite buffer<CR>
   nnoremap <leader><Space>b :<C-u>DeniteBufferDir buffer<CR>
   " find word under cursor
   nnoremap <leader><bs> :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
