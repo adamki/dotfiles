@@ -13,6 +13,7 @@
 
 " Setup Plug  --------------------------------------------------------------{{{
   call plug#begin('~/.local/share/nvim/plugged')
+
   " colors
   Plug 'tyrannicaltoucan/vim-deep-space'
   Plug 'vim-airline/vim-airline-themes'
@@ -21,7 +22,6 @@
   Plug 'mhartington/oceanic-next'
   Plug 'rakr/vim-one'
   Plug 'morhetz/gruvbox'
-
   Plug 'dracula/vim'
   Plug 'joshdick/onedark.vim'
   Plug 'kenwheeler/glow-in-the-dark-gucci-shark-bites-vim'
@@ -33,9 +33,11 @@
   Plug 'pangloss/vim-javascript'
   Plug 'elzr/vim-json'
   Plug 'othree/javascript-libraries-syntax.vim'
+  Plug 'Yggdroot/indentLine'
 
   " Folding (see fold section)
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
+
   " vim extensions
   Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-repeat'
@@ -52,18 +54,18 @@
   Plug 'justinmk/vim-dirvish'
   Plug 'tpope/vim-eunuch'
   Plug 'airblade/vim-gitgutter'
-  Plug 'gerw/vim-hilinktrace'
   Plug 'shime/vim-livedown'
+
   " IDE level enhancements
   Plug 'shougo/denite.nvim'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'neomake/neomake'
+  Plug 'benjie/neomake-local-eslint.vim'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
 
-  Plug 'junegunn/rainbow_parentheses.vim'
   call plug#end()
 " }}}
 
@@ -83,7 +85,8 @@
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
   colorscheme dracula                             " must go after set bg
-  hi lineNr guifg=magenta
+  hi lineNr guifg=slateBlue
+  let g:indentLine_char = '▏'
 
 " }}}
 
@@ -170,7 +173,7 @@
 
 " }}}
 
-" Airline/TABS Config------------------------------------------------------------{{{
+" Airline/TABS Config-------------------------------------------------------{{{
 
   let g:airline_theme='dracula'                                     " set airline theme
   set noshowmode                                                       " hide vim's mode status
