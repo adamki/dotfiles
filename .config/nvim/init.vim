@@ -85,8 +85,9 @@
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
   colorscheme dracula                             " must go after set bg
-  hi lineNr guifg=slateBlue
-  let g:indentLine_char = '▏'
+  let g:indentLine_char = '▏'                     " line indent icon
+  " set line Column colors
+  hi lineNr guifg=Magenta
 
 " }}}
 
@@ -135,6 +136,7 @@
 " }}}
 
 " Key Mappings -------------------------------------------------------------{{{
+
   " no ex mode
   nnoremap Q <nop>
   nnoremap <Leader>w :w<CR>
@@ -225,6 +227,7 @@
 " }}}
 
 " Denite -------------------------------------------------------------------{{{
+
   let g:webdevicons_enable_denite = 0          " disable devicons cuz they slow
   let s:menus = {}
 
@@ -431,11 +434,11 @@
 
 " NeoMake ------------------------------------------------------------------{{{
 
-  " lint on Buffer Save
-  autocmd! BufWritePost * Neomake
-
   " dont open error window
   let g:neomake_open_list = 0
+
+  " run Neomake When writing a buffer.
+  call neomake#configure#automake('w')
 
   " Neomake 'Makers'
   let g:neomake_javascript_enabled_makers = ['eslint']
