@@ -177,7 +177,7 @@
 
 " Airline/TABS Config-------------------------------------------------------{{{
 
-  let g:airline_theme='dracula'                                     " set airline theme
+  let g:airline_theme='dracula'                                        " set airline theme
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
   cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
