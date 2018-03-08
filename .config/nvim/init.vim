@@ -15,16 +15,29 @@
   call plug#begin('~/.local/share/nvim/plugged')
 
   " colors
+  Plug 'Badacadabra/vim-archery'
+  Plug 'challenger-deep-theme/vim'
+  Plug 'gregsexton/Atom'
+  Plug 'scheakur/vim-scheakur'
+  Plug 'kristijanhusak/vim-hybrid-material'
+  Plug 'cseelus/vim-colors-lucid'
+  Plug 'arcticicestudio/nord-vim'
+  Plug 'liuchengxu/space-vim-dark'
+  Plug 'jacoborus/tender.vim'
+  Plug 'rakr/vim-two-firewatch'
+
   Plug 'tyrannicaltoucan/vim-deep-space'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'tyrannicaltoucan/vim-quantum'
   Plug 'KeitaNakamura/neodark.vim'
   Plug 'mhartington/oceanic-next'
   Plug 'rakr/vim-one'
-  Plug 'morhetz/gruvbox'
   Plug 'dracula/vim'
   Plug 'joshdick/onedark.vim'
+  Plug 'rakr/vim-colors-rakr'
+  Plug 'NLKNguyen/papercolor-theme'
   Plug 'kenwheeler/glow-in-the-dark-gucci-shark-bites-vim'
+
   " syntax
   Plug 'sheerun/vim-polyglot'
   Plug 'othree/yajs'
@@ -45,7 +58,6 @@
   Plug 'tpope/vim-fugitive'
   Plug 'raimondi/delimitmate'
   Plug 'vim-airline/vim-airline'
-  Plug 'mhinz/vim-sayonara'
   Plug 'jreybert/vimagit'
   Plug 'ryanoasis/vim-devicons'
   Plug 'tomtom/tcomment_vim'
@@ -65,6 +77,7 @@
   Plug 'benjie/neomake-local-eslint.vim'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+  Plug 'alvan/vim-closetag'
 
   call plug#end()
 " }}}
@@ -84,8 +97,8 @@
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  colorscheme dracula                             " must go after set bg
-  let g:indentLine_char = '▏'                     " line indent icon
+  colorscheme one                                 " must go after set bg
+  let g:indentLine_char = '┆'                     " line indent icon
   " set line Column colors
   hi lineNr guifg=Magenta
 
@@ -94,7 +107,9 @@
 " System Settings ----------------------------------------------------------{{{
 
   " neovim settings
+  tnoremap <Esc> <C-\><C-n>             " enable ESC behavior when in terminal emulator
 
+  set mouse=a                           " enable mouse mode
   set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   let mapleader = ','                   " set dat leader
@@ -107,13 +122,13 @@
   autocmd BufWritePre * %s/\s\+$//e     " remove unwanted space(s) on Buffer Pre-write
   set noswapfile                        " do NOT create swapfiles for new buffers
   filetype on                           " let vim detect fileType
-  set number                            " line numbers!
+  set number relativenumber             " line numbers
   set numberwidth=1                     " make number gutter small
   set tabstop=2 shiftwidth=2 expandtab  " better tabs and line shifts
   set virtualedit=                      " unset virtualedit
   set wildmenu                          " better vim command completion
   set laststatus=2                      " always show statusline in window
-  set wrap linebreak nolist             " wrap lines at word
+  set nowrap                            " dont wrap lines
   set wildmode=list:longest,full        " better vim command completion
   set autoread                          " detect if file has changed
   set undofile                          " enable persistant undo
@@ -162,9 +177,25 @@
   " turn off high-lighted search results
   nnoremap <Leader> <Space> :noh<cr>
 
+  " move lines in normal
+  nnoremap ∆ :m .+1<CR>==
+  nnoremap ˚ :m .-2<CR>==
+
+  " move lines in insert
+  inoremap ∆ <Esc>:m .+1<CR>==gi
+  inoremap ˚ <Esc>:m .-2<CR>==gi
+
+  " full screen dat split
+  nnoremap <C-F>  200<C-w>\| \| 200<C-w>
+  nnoremap <left> :vertical resize -5<cr>
+  nnoremap <down> :resize +5<cr>
+  nnoremap <up> :resize -5<cr>
+  nnoremap <right> :vertical resize +5<cr>
+
 " }}}
 
 " Operator-Mono Italix -----------------------------------------------------{{{
+
 
   hi htmlArg gui=italic
   hi Comment gui=italic
@@ -177,7 +208,7 @@
 
 " Airline/TABS Config-------------------------------------------------------{{{
 
-  let g:airline_theme='dracula'                                        " set airline theme
+  let g:airline_theme='one'                                            " set airline theme
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
   cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
@@ -193,8 +224,8 @@
   let g:airline_symbols.branch = ''                                   " git branch symbol!
   " tab shortcuts
   nmap <leader>T :tabnew<CR>
-  nmap <leader>, :bnext<CR>
-  nmap <leader>. :bprev<CR>
+  nmap ]b :bnext<CR>
+  nmap [b :bprev<CR>
   nmap <leader>1 <Plug>AirlineSelectTab1
   nmap <leader>2 <Plug>AirlineSelectTab2
   nmap <leader>3 <Plug>AirlineSelectTab3
@@ -245,37 +276,21 @@
   call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
   call denite#custom#var('grep', 'separator', ['--'])
   call denite#custom#var('grep', 'final_opts', [])
+
   call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>',
         \'noremap')
   call denite#custom#map('insert', '<C-s>', '<denite:do_action:vsplit>',
         \'noremap')
   call denite#custom#map('insert', '<C-i>', '<denite:do_action:split>',
         \'noremap')
-
-  call denite#custom#map(
-        \ 'insert',
-        \ '<C-j>',
-        \ '<denite:move_to_next_line>',
-        \ 'noremap'
-        \)
-  call denite#custom#map(
-	      \ 'insert',
-	      \ '<C-k>',
-	      \ '<denite:move_to_previous_line>',
-	      \ 'noremap'
-        \)
-  call denite#custom#map(
-        \ 'insert',
-        \ '<C-n>',
-        \ '<denite:move_to_next_line>',
-        \ 'noremap'
-        \)
-  call denite#custom#map(
-	      \ 'insert',
-	      \ '<C-p>',
-	      \ '<denite:move_to_previous_line>',
-	      \ 'noremap'
-        \)
+  call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>',
+        \ 'noremap')
+  call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>',
+	      \ 'noremap')
+  call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>',
+        \ 'noremap')
+  call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>',
+	      \ 'noremap')
 
   " nnoremap <silent> <c-p> :Denite file_rec<CR>
   nnoremap <C-p> :<C-u>Denite file_rec<CR>
@@ -330,7 +345,12 @@
 
 " Deoplete  ----------------------------------------------------------------{{{
 
+  " start deoplete Alwaus
   let g:deoplete#enable_at_startup = 1
+
+  " use deoplete for .jsx
+  let g:jsx_ext_required = 0
+
   autocmd CompleteDone * pclose
 
   let g:deoplete#file#enable_buffer_path=1
@@ -344,6 +364,9 @@
   " let carlitux Use deoplete.
   let g:tern_request_timeout = 1
   let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+
+  " turn off case sensitive matches
+  let g:deoplete#sources#ternjs#case_insensitive = 1
 
   "Add extra filetypes
   let g:tern#filetypes = [
@@ -428,7 +451,7 @@
 
 " GitGutter ----------------------------------------------------------------{{{
 
-  let g:gitgutter_enabled = 0
+  let g:gitgutter_enabled = 1
 
 " }}}
 
@@ -456,10 +479,16 @@
 
 " Navigate between vim buffers and tmux panels -----------------------------{{{
 
-  let g:tmux_navigator_no_mappings = 1
-  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-  nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-  nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
+  " let g:tmux_navigator_no_mappings = 1
+  " nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+  " nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+  " nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+  " nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
 
 "}}}
+
+" vim-CloseTag ---------------------------------------------------{{{
+
+  let g:closetag_filenames = '*.html,*.jsx, *.js'
+
+" }}}
