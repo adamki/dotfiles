@@ -12,10 +12,10 @@
 "                        ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 
 " Setup Plug  --------------------------------------------------------------{{{
+
   call plug#begin('~/.local/share/nvim/plugged')
 
   " colors
-  Plug 'Badacadabra/vim-archery'
   Plug 'challenger-deep-theme/vim'
   Plug 'gregsexton/Atom'
   Plug 'scheakur/vim-scheakur'
@@ -25,6 +25,8 @@
   Plug 'liuchengxu/space-vim-dark'
   Plug 'jacoborus/tender.vim'
   Plug 'rakr/vim-two-firewatch'
+  Plug 'rakr/vim-colors-rakr'
+  Plug 'NLKNguyen/papercolor-theme'
 
   Plug 'tyrannicaltoucan/vim-deep-space'
   Plug 'vim-airline/vim-airline-themes'
@@ -32,12 +34,10 @@
   Plug 'KeitaNakamura/neodark.vim'
   Plug 'mhartington/oceanic-next'
   Plug 'rakr/vim-one'
+  Plug 'morhetz/gruvbox'
   Plug 'dracula/vim'
   Plug 'joshdick/onedark.vim'
-  Plug 'rakr/vim-colors-rakr'
-  Plug 'NLKNguyen/papercolor-theme'
   Plug 'kenwheeler/glow-in-the-dark-gucci-shark-bites-vim'
-
   " syntax
   Plug 'sheerun/vim-polyglot'
   Plug 'othree/yajs'
@@ -58,6 +58,7 @@
   Plug 'tpope/vim-fugitive'
   Plug 'raimondi/delimitmate'
   Plug 'vim-airline/vim-airline'
+  Plug 'mhinz/vim-sayonara'
   Plug 'jreybert/vimagit'
   Plug 'ryanoasis/vim-devicons'
   Plug 'tomtom/tcomment_vim'
@@ -80,6 +81,7 @@
   Plug 'alvan/vim-closetag'
 
   call plug#end()
+
 " }}}
 
 " MarkDown Live Previews ---------------------------------------------------{{{
@@ -96,57 +98,55 @@
 
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
-  set background=dark                             " must go before :colorscheme
-  colorscheme one                                 " must go after set bg
-  let g:indentLine_char = '┆'                     " line indent icon
-  " set line Column colors
-  hi lineNr guifg=Magenta
+  set background=light                            " must go before :colorscheme
+  colorscheme hybrid_material                     " must go after set bg
+  let g:enable_italic_font = 1                    " Make sure to italicize
+  let g:indentLine_char = '┆ '                    " line indent icon
 
 " }}}
 
 " System Settings ----------------------------------------------------------{{{
 
   " neovim settings
-  tnoremap <Esc> <C-\><C-n>             " enable ESC behavior when in terminal emulator
-
-  set mouse=a                           " enable mouse mode
-  set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  let mapleader = ','                   " set dat leader
-  set colorcolumn=80                    " keep lines short
-  set termguicolors                     " enable true colors
-  set clipboard+=unnamedplus            " visual copy works to native OS
-  set nopaste                           " but default to nopaste
-  set pastetoggle=<f6>                  " toggle paste/nopaste
-  set list                              " show white space
-  autocmd BufWritePre * %s/\s\+$//e     " remove unwanted space(s) on Buffer Pre-write
-  set noswapfile                        " do NOT create swapfiles for new buffers
-  filetype on                           " let vim detect fileType
-  set number relativenumber             " line numbers
-  set numberwidth=1                     " make number gutter small
-  set tabstop=2 shiftwidth=2 expandtab  " better tabs and line shifts
-  set virtualedit=                      " unset virtualedit
-  set wildmenu                          " better vim command completion
-  set laststatus=2                      " always show statusline in window
-  set nowrap                            " dont wrap lines
-  set wildmode=list:longest,full        " better vim command completion
-  set autoread                          " detect if file has changed
-  set undofile                          " enable persistant undo
-  set undodir=~/.config/nvim/undo       " undo hist save location
-  set splitbelow                        " Horizontal split below current.
-  set splitright                        " Vertical split to right of current.
-  if !&scrolloff
-    set scrolloff=8                     " Show next 8 lines while scrolling.
-  endif
-  if !&sidescrolloff
-    set sidescrolloff=8                 " Show next 8 columns while side-scrolling.
-  endif
-  "always place cursor at zz
-  autocmd BufRead * normal zz
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-    \   exe "normal! g'\"" |
-    \ endif " remember cursor position
+    set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+    tnoremap <Esc> <C-\><C-n>             " enable ESC behavior when in terminal emulator
+    set mouse=a                           " enable mouse mode
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1     " sets colors to be true
+    let mapleader = ','                   " set dat leader
+    set colorcolumn=80                    " keep lines short
+    set termguicolors                     " enable true colors
+    set clipboard+=unnamedplus            " visual copy works to native OS
+    set nopaste                           " but default to nopaste
+    set pastetoggle=<f6>                  " toggle paste/nopaste
+    set list                              " show white space
+    autocmd BufWritePre * %s/\s\+$//e     " remove unwanted space(s) on Buffer Pre-write
+    set noswapfile                        " do NOT create swapfiles for new buffers
+    filetype on                           " let vim detect fileType
+    set number relativenumber             " line numbers!
+    set numberwidth=1                     " make number gutter small
+    set tabstop=2 shiftwidth=2 expandtab  " better tabs and line shifts
+    set virtualedit=                      " unset virtualedit
+    set wildmenu                          " better vim command completion
+    set laststatus=2                      " always show statusline in window
+    set nowrap                            " wrap lines at word
+    set wildmode=list:longest,full        " better vim command completion
+    set autoread                          " detect if file has changed
+    set undofile                          " enable persistant undo
+    set undodir=~/.config/nvim/undo       " undo hist save location
+    set splitbelow                        " Horizontal split below current.
+    set splitright                        " Vertical split to right of current.
+    if !&scrolloff
+      set scrolloff=8                     " Show next 8 lines while scrolling.
+    endif
+    if !&sidescrolloff
+      set sidescrolloff=8                 " Show next 8 columns while side-scrolling.
+    endif
+    "always place cursor at zz
+    autocmd BufRead * normal zz
+    autocmd BufReadPost *
+      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+      \   exe "normal! g'\"" |
+      \ endif " remember cursor position
 
 " }}}
 
@@ -158,7 +158,7 @@
   nnoremap <Leader>q :q<CR>
   nnoremap <Leader>Q :q!<CR>
   nnoremap <Leader>x :x<CR>
-  " reload nvimrc
+  " reload nvimrc from soource
   nnoremap <Leader>r :so ~/.config/nvim/init.vim<CR>
   " copy current file path
   nmap cp :let @+= expand("%") <cr>
@@ -175,7 +175,7 @@
   vmap < <gv
   vmap > >gv
   " turn off high-lighted search results
-  nnoremap <Leader> <Space> :noh<cr>
+  nnoremap <Space><Space> :noh<cr>
 
   " move lines in normal
   nnoremap ∆ :m .+1<CR>==
@@ -186,7 +186,7 @@
   inoremap ˚ <Esc>:m .-2<CR>==gi
 
   " full screen dat split
-  nnoremap <C-F>  200<C-w>\| \| 200<C-w>
+  nnoremap <C-w>f  200<C-w>\| \| 200<C-w>
   nnoremap <left> :vertical resize -5<cr>
   nnoremap <down> :resize +5<cr>
   nnoremap <up> :resize -5<cr>
@@ -195,7 +195,6 @@
 " }}}
 
 " Operator-Mono Italix -----------------------------------------------------{{{
-
 
   hi htmlArg gui=italic
   hi Comment gui=italic
@@ -208,7 +207,7 @@
 
 " Airline/TABS Config-------------------------------------------------------{{{
 
-  let g:airline_theme='one'                                            " set airline theme
+  let g:airline_theme='simple'                                         " set airline theme
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
   cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
@@ -216,37 +215,43 @@
     let g:airline_symbols = {}
   endif                                                                " set up symbol dictionary
   let g:airline#extensions#tabline#enabled = 1                         " enables tabline
-  let g:airline#extensions#tabline#fnamemod = ':t'                     " display tail of file name in tabs
   let g:airline#extensions#tabline#buffer_idx_mode = 1                 " enable buffer indices
-  let g:airline#extensions#neomake#error_symbol='• '
-  let g:airline#extensions#neomake#warning_symbol='•  '
-  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#neomake#error_symbol='• '                   " neomake lint(error)
+  let g:airline#extensions#neomake#warning_symbol='•  '                " neomake lint(error)
+  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'  " show abbreviated filepath
+
+  let g:airline_powerline_fonts = 1                                    " powerline font integration for icons
   let g:airline_symbols.branch = ''                                   " git branch symbol!
-  " tab shortcuts
-  nmap <leader>T :tabnew<CR>
-  nmap ]b :bnext<CR>
-  nmap [b :bprev<CR>
-  nmap <leader>1 <Plug>AirlineSelectTab1
-  nmap <leader>2 <Plug>AirlineSelectTab2
-  nmap <leader>3 <Plug>AirlineSelectTab3
-  nmap <leader>4 <Plug>AirlineSelectTab4
-  nmap <leader>5 <Plug>AirlineSelectTab5
-  nmap <leader>6 <Plug>AirlineSelectTab6
-  nmap <leader>7 <Plug>AirlineSelectTab7
-  nmap <leader>8 <Plug>AirlineSelectTab8
-  nmap <leader>9 <Plug>AirlineSelectTab9
-  let g:airline#extensions#tabline#buffer_idx_format = {
-        \ '0': '0 ',
-        \ '1': '1 ',
-        \ '2': '2 ',
-        \ '3': '3 ',
-        \ '4': '4 ',
-        \ '5': '5 ',
-        \ '6': '6 ',
-        \ '7': '7 ',
-        \ '8': '8 ',
-        \ '9': '9 ',
-        \}                                                             " make tab indices look normal
+
+  " tab shortcuts ----------------------------------------------------------{{{
+
+    nmap <leader>T :tabnew<CR>
+    nmap ]b :bnext<CR>
+    nmap [b :bprev<CR>
+    nmap <leader>1 <Plug>AirlineSelectTab1
+    nmap <leader>2 <Plug>AirlineSelectTab2
+    nmap <leader>3 <Plug>AirlineSelectTab3
+    nmap <leader>4 <Plug>AirlineSelectTab4
+    nmap <leader>5 <Plug>AirlineSelectTab5
+    nmap <leader>6 <Plug>AirlineSelectTab6
+    nmap <leader>7 <Plug>AirlineSelectTab7
+    nmap <leader>8 <Plug>AirlineSelectTab8
+    nmap <leader>9 <Plug>AirlineSelectTab9
+    let g:airline#extensions#tabline#buffer_idx_format = {
+          \ '0': '0 ',
+          \ '1': '1 ',
+          \ '2': '2 ',
+          \ '3': '3 ',
+          \ '4': '4 ',
+          \ '5': '5 ',
+          \ '6': '6 ',
+          \ '7': '7 ',
+          \ '8': '8 ',
+          \ '9': '9 ',
+          \}                                                             " make tab indices look normal
+
+  "  }}}
+
 " }}}
 
 " Vim-Devicons -------------------------------------------------------------{{{
@@ -264,36 +269,27 @@
 
   call denite#custom#option('default', {
         \ 'prompt': '❯',
-        \ 'highlight_matched_char': 'highlight',
-        \ 'highlight_mode_normal': 'CursorLine',
+        \ 'highlight_matched_char': 'Function',
+        \ 'highlight_mode_normal': 'Function',
         \})
-  call denite#custom#var('file_rec', 'command',
-        \ ['rg', '--files', '--glob', '!.git', ''])
+  call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git', '', '--hidden'])
   call denite#custom#var('grep', 'command', ['rg'])
-  call denite#custom#var('grep', 'default_opts',
-        \ ['--hidden', '--vimgrep', '--no-heading', '-S'])
+  call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--no-heading', '-S'])
   call denite#custom#var('grep', 'recursive_opts', [])
   call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
   call denite#custom#var('grep', 'separator', ['--'])
   call denite#custom#var('grep', 'final_opts', [])
 
-  call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>',
-        \'noremap')
-  call denite#custom#map('insert', '<C-s>', '<denite:do_action:vsplit>',
-        \'noremap')
-  call denite#custom#map('insert', '<C-i>', '<denite:do_action:split>',
-        \'noremap')
-  call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>',
-        \ 'noremap')
-  call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>',
-	      \ 'noremap')
-  call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>',
-        \ 'noremap')
-  call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>',
-	      \ 'noremap')
+  call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
+  call denite#custom#map('insert', '<C-s>', '<denite:do_action:vsplit>', 'noremap')
+  call denite#custom#map('insert', '<C-i>', '<denite:do_action:split>', 'noremap')
+  call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+  call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+  call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+  call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
 
   " nnoremap <silent> <c-p> :Denite file_rec<CR>
-  nnoremap <C-p> :<C-u>Denite file_rec<CR>
+  nnoremap <C-p> :<C-u>Denite file_rec buffer<CR>
   " search open buffers
   nnoremap <leader><Space>b :<C-u>DeniteBufferDir buffer<CR>
   " find word under cursor
@@ -345,7 +341,7 @@
 
 " Deoplete  ----------------------------------------------------------------{{{
 
-  " start deoplete Alwaus
+  "start Deoplete always
   let g:deoplete#enable_at_startup = 1
 
   " use deoplete for .jsx
@@ -460,14 +456,14 @@
   " dont open error window
   let g:neomake_open_list = 0
 
-  " run Neomake When writing a buffer.
-  call neomake#configure#automake('w')
+  " When reading a buffer (after 1s), and when writing.
+  call neomake#configure#automake('rw', 1000)
 
   " Neomake 'Makers'
   let g:neomake_javascript_enabled_makers = ['eslint']
   let g:neomake_go_enabled_makers = ['go']
-  let g:neomake_warning_sign = {'text': '+'}
-  let g:neomake_error_sign = {'text': '•'}
+  let g:neomake_warning_sign = {'text': '? '}
+  let g:neomake_error_sign = {'text': '! '}
 
 "  }}}
 
@@ -487,8 +483,8 @@
 
 "}}}
 
-" vim-CloseTag ---------------------------------------------------{{{
+" Close-Tag ----------------------------------------------------------------{{{
 
   let g:closetag_filenames = '*.html,*.jsx, *.js'
 
-" }}}
+"}}}
