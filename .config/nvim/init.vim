@@ -14,22 +14,17 @@
 " Setup Plug  --------------------------------------------------------------{{{
 
   call plug#begin('~/.local/share/nvim/plugged')
+  " appearance - search - syntax - italix
 
   " colors
-  Plug 'challenger-deep-theme/vim'
+  Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
   Plug 'gregsexton/Atom'
   Plug 'scheakur/vim-scheakur'
-  Plug 'kristijanhusak/vim-hybrid-material'
-  Plug 'cseelus/vim-colors-lucid'
   Plug 'arcticicestudio/nord-vim'
   Plug 'liuchengxu/space-vim-dark'
   Plug 'jacoborus/tender.vim'
   Plug 'rakr/vim-two-firewatch'
-  Plug 'rakr/vim-colors-rakr'
-  Plug 'NLKNguyen/papercolor-theme'
 
-  Plug 'tyrannicaltoucan/vim-deep-space'
-  Plug 'vim-airline/vim-airline-themes'
   Plug 'tyrannicaltoucan/vim-quantum'
   Plug 'KeitaNakamura/neodark.vim'
   Plug 'mhartington/oceanic-next'
@@ -58,6 +53,7 @@
   Plug 'tpope/vim-fugitive'
   Plug 'raimondi/delimitmate'
   Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'mhinz/vim-sayonara'
   Plug 'jreybert/vimagit'
   Plug 'ryanoasis/vim-devicons'
@@ -98,8 +94,8 @@
 
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
-  set background=light                            " must go before :colorscheme
-  colorscheme hybrid_material                     " must go after set bg
+  set background=dark                             " must go before :colorscheme
+  colorscheme one                                 " must go after set bg
   let g:enable_italic_font = 1                    " Make sure to italicize
   let g:indentLine_char = '┆ '                    " line indent icon
 
