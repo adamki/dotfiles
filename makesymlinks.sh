@@ -12,11 +12,16 @@
 ################################################################################
 
 
-
 ########## Variables
 dir=~/adams-dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old                   # old dotfiles backup directory
-files="/.config/nvim/init.vim"          # list of files/folders to symlink in homedir
+files="config/nvim/init.vim"          # list of files/folders to symlink in homedir
+neovim-path=~/.config/nvim/
+
+# Set up NVIM path
+echo -n "Creating needed dir path for Neovim install"
+mkdir -p $neovim-path
+echo "done"
 
 # create dotfiles_old in homedir
 echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
