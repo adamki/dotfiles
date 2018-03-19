@@ -1,14 +1,7 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/adamjensen/.oh-my-zsh
+export ZSH=/Users/A075140/.oh-my-zsh
 
-ZSH_THEME="adams"
-
-#####################      HOOK RBENV INTO ZSH    ###########################
-#####################       DO NOT REMOVE         ###########################
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-###############################################################################
-###############################################################################
+ZSH_THEME="refined"
 
 # pwd; ls --colorUncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -52,22 +45,30 @@ HYPHEN_INSENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git brew osx thefuck nyan rails ruby gem node vi-mode)
+plugins=(z osx node)
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
-export PATH="/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/Users/adamjensen/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
+export PATH="/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
+export DOTFILES="/Users/$USER/adams-dotfiles"
 
 source $ZSH/oh-my-zsh.sh
+source $DOTFILES/aliases
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# make vim defaut editor
-export EDITOR='vim'
 
+# make vim defaut editor
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
+# Store 10,000 history entries
+export HISTSIZE=10000
+# Don't store duplicates
+export HISTCONTROL=erasedups
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -80,42 +81,8 @@ export EDITOR='vim'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-##############################################################################
-###########################          BASIC          ##########################
-##############################################################################
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias repo="open https://github.com/adamki/repositories"
-alias today="open https://today.turing.io/"
-alias personal="open https://adamki.github.io/"
-alias pl="pwd && ls"
-alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
-
-###########################          GOODIES          ##########################
 function weather() {
   curl -4 http://wttr.in/$1
 }
-##############################################################################
-###########################          GIT             ##########################
-##############################################################################
-alias gch="git checkout"
-alias gap='git add -p'
-alias ga='git add'
-alias gnap='git add -N . && git add -p'
-alias gb='git branch'
-alias gc-='git commit -m'
-alias gc='git commit -v'
-alias gca='git commit -a -v'
-alias gd='git diff --color-words'
-alias gdc='git diff --cached'
-alias gdh='git diff HEAD'
-alias gl='git pull'
-alias glod='git log --graph --pretty="%Cgreen%h%Creset%Cblue%d%Creset %Cred%an%Creset: %s"'
-alias gp='git push'
-alias gpr='git pull --rebase'
-alias gst='git status'
-alias gr='git rebase'
-alias grc='git rebase --continue'
-alias gri='git rebase --interactive'
-alias gra='git rebase --abort'
-alias reset-authors='git commit --amend --reset-author -C HEAD'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

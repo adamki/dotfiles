@@ -17,23 +17,7 @@
   " appearance - search - syntax - italix
 
   " colors
-  Plug 'gregsexton/Atom'
-  Plug 'scheakur/vim-scheakur'
-  Plug 'arcticicestudio/nord-vim'
-  Plug 'liuchengxu/space-vim-dark'
-  Plug 'jacoborus/tender.vim'
-  Plug 'rakr/vim-two-firewatch'
-  Plug 'nightsense/carbonized'
-  Plug 'cocopon/iceberg.vim'
-
-  Plug 'tyrannicaltoucan/vim-quantum'
-  Plug 'KeitaNakamura/neodark.vim'
-  Plug 'mhartington/oceanic-next'
-  Plug 'rakr/vim-one'
-  Plug 'dracula/vim'
-  Plug 'joshdick/onedark.vim'
-  Plug 'kenwheeler/glow-in-the-dark-gucci-shark-bites-vim'
-  Plug 'ayu-theme/ayu-vim'
+  Plug 'chriskempson/base16-vim'
 
   " syntax
   Plug 'sheerun/vim-polyglot'
@@ -94,11 +78,9 @@
 
 " Aesthetix ----------------------------------------------------------------{{{
 
-  set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  let ayucolor = "light"                         " options used for ayucolor. light - mirage - dark
-  colorscheme nord                                 " must go after set bg
+  colorscheme base16-nord                         " must go after set bg
   let g:enable_italic_font = 1                    " Make sure to italicize
   let g:indentLine_char = '┆ '                    " line indent icon
 
@@ -121,7 +103,7 @@
     autocmd BufWritePre * %s/\s\+$//e     " remove unwanted space(s) on Buffer Pre-write
     set noswapfile                        " do NOT create swapfiles for new buffers
     filetype on                           " let vim detect fileType
-    set number relativenumber             " line numbers!
+    set number                            " line numbers!
     set numberwidth=1                     " make number gutter small
     set tabstop=2 shiftwidth=2 expandtab  " better tabs and line shifts
     set virtualedit=                      " unset virtualedit
@@ -134,6 +116,7 @@
     set undodir=~/.config/nvim/undo       " undo hist save location
     set splitbelow                        " Horizontal split below current.
     set splitright                        " Vertical split to right of current.
+    set lazyredraw
     if !&scrolloff
       set scrolloff=8                     " Show next 8 lines while scrolling.
     endif
@@ -205,8 +188,9 @@
 " }}}
 
 " Airline/TABS Config-------------------------------------------------------{{{
+" airline
 
-  let g:airline_theme='ayu'                                         " set airline theme
+  let g:airline_theme='base16_flat'                                         " set airline theme
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
   cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
@@ -267,7 +251,7 @@
   let s:menus = {}
 
   call denite#custom#option('default', {
-        \ 'prompt': '❯',
+        \ 'prompt': '❯❯❯',
         \ 'highlight_matched_char': 'Function',
         \ 'highlight_mode_normal': 'Function',
         \})
@@ -282,6 +266,7 @@
   call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
   call denite#custom#map('insert', '<C-s>', '<denite:do_action:vsplit>', 'noremap')
   call denite#custom#map('insert', '<C-i>', '<denite:do_action:split>', 'noremap')
+  call denite#custom#map('insert', '<C-d>', '<denite:do_action:delete>', 'noremap')
   call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
   call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
   call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
@@ -448,7 +433,7 @@
 
 " GitGutter ----------------------------------------------------------------{{{
 
-  let g:gitgutter_enabled = 1
+  let g:gitgutter_enabled = 0
 
 " }}}
 
