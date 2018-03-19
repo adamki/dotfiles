@@ -17,22 +17,24 @@
   " appearance - search - syntax - italix
 
   " colors
-  Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
   Plug 'gregsexton/Atom'
   Plug 'scheakur/vim-scheakur'
   Plug 'arcticicestudio/nord-vim'
   Plug 'liuchengxu/space-vim-dark'
   Plug 'jacoborus/tender.vim'
   Plug 'rakr/vim-two-firewatch'
+  Plug 'nightsense/carbonized'
+  Plug 'cocopon/iceberg.vim'
 
   Plug 'tyrannicaltoucan/vim-quantum'
   Plug 'KeitaNakamura/neodark.vim'
   Plug 'mhartington/oceanic-next'
   Plug 'rakr/vim-one'
-  Plug 'morhetz/gruvbox'
   Plug 'dracula/vim'
   Plug 'joshdick/onedark.vim'
   Plug 'kenwheeler/glow-in-the-dark-gucci-shark-bites-vim'
+  Plug 'ayu-theme/ayu-vim'
+
   " syntax
   Plug 'sheerun/vim-polyglot'
   Plug 'othree/yajs'
@@ -95,7 +97,8 @@
   set cursorline                                  " HL the current Line #
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  colorscheme one                                 " must go after set bg
+  let ayucolor = "light"                         " options used for ayucolor. light - mirage - dark
+  colorscheme nord                                 " must go after set bg
   let g:enable_italic_font = 1                    " Make sure to italicize
   let g:indentLine_char = '┆ '                    " line indent icon
 
@@ -203,7 +206,7 @@
 
 " Airline/TABS Config-------------------------------------------------------{{{
 
-  let g:airline_theme='simple'                                         " set airline theme
+  let g:airline_theme='ayu'                                         " set airline theme
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
   cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
@@ -312,6 +315,8 @@
 
   let g:dirvish_mode = ':sort r /[^\/]$/'      " folders at the top
   let g:dirvish_relative_paths = 1             " file paths from parent dir
+  " Allow CTRL-p while in a dirvish buffer
+  autocmd FileType dirvish nnoremap <buffer><C-p> :<C-u>Denite file_rec buffer<CR>
   " open in new Tab
   autocmd FileType dirvish nnoremap <buffer>t :call dirvish#open('tabedit', 0)<cr>
   autocmd FileType dirvish nnoremap <buffer>T :call dirvish#open('tabedit', 1)<cr>
