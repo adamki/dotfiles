@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/A075140/.oh-my-zsh
 
-ZSH_THEME="refined"
+ZSH_THEME="kolo"
 
 # pwd; ls --colorUncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
