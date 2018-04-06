@@ -11,7 +11,15 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias psg='ps aux | grep'
 alias h='history'
-alias ni="nvim"
+
+# Other
+alias aliases="cat ~/adams-dotfiles/aliases"
+alias alacritty="nvim ~/.config/alacritty/alacritty.yml"
+alias dots="cd ~/adams-dotfiles"
+alias n="nvim"
+alias nc="dots && nvim ~/.config/nvim/init.vim"
+alias zshrc="dots && nvim ~/adams-dotfiles/zshrc"
+alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 
 # Tmux
 alias tml='tmux ls'
@@ -39,38 +47,3 @@ alias gri='git rebase --interactive'
 alias gra='git rebase --abort'
 alias gcp='git cherry-pick'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
-
-# Infrastructure
-# alias ap='ansible-playbook'
-# alias agx='ansible-galaxy'
-# alias av='ansible-vault'
-# alias dc='docker-compose'
-# alias dcu='dc up'
-# alias dcp='dc ps'
-# alias dcg='dcp | grep'
-
-# Ruby/Rails
-# alias be='bundle exec'
-# alias sc='script_rails console'
-# alias ss='script_rails server'
-# alias sdbc='script_rails dbconsole -p'
-# alias groutes='rake routes | grep $@'
-# alias rc='bin/fig run worker bundle exec rails c'
-
-# Other
-alias aliases="cat ~/adams-dotfiles/aliases"
-alias alacritty="nvim ~/.config/alacritty/alacritty.yml"
-alias dots="cd ~/adams-dotfiles"
-alias nic="dots && nvim ~/.config/nvim/init.vim"
-alias zshrc="dots && nvim ~/adams-dotfiles/zshrc"
-alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
-
-# WM SSH
-function wmssh() {
-  instance_name=$1
-  echo $instance_name
-  bastion="wellmatch-ssh@54.67.33.128"
-  ip=`aws ec2 describe-instances --filters "Name=tag:Name,Values=$instance_name" "Name=instance-state-name,Values=running" --query "Reservations[0].Instances[0].NetworkInterfaces[0].PrivateIpAddresses[0].PrivateIpAddress" --output text --region us-west-1`
-  echo "ssh -A -t $bastion ssh -A -t ubuntu@$ip"
-  ssh -A -t $bastion ssh -A -t ubuntu@$ip
-}

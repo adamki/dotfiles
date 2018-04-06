@@ -190,7 +190,7 @@
 " Airline/TABS Config-------------------------------------------------------{{{
 " airline
 
-  let g:airline_theme='base16_flat'                                         " set airline theme
+  let g:airline_theme='base16_flat'                                    " set airline theme
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
   cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
@@ -203,14 +203,14 @@
   let g:airline#extensions#neomake#warning_symbol='•  '                " neomake lint(error)
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'  " show abbreviated filepath
 
-  let g:airline_powerline_fonts = 1                                    " powerline font integration for icons
+  " let g:airline_powerline_fonts = 1                                    " powerline font integration for icons
   let g:airline_symbols.branch = ''                                   " git branch symbol!
 
   " tab shortcuts ----------------------------------------------------------{{{
 
     nmap <leader>T :tabnew<CR>
-    nmap ]b :bnext<CR>
-    nmap [b :bprev<CR>
+    nmap th :bnext<CR>
+    nmap tl :bprev<CR>
     nmap <leader>1 <Plug>AirlineSelectTab1
     nmap <leader>2 <Plug>AirlineSelectTab2
     nmap <leader>3 <Plug>AirlineSelectTab3
