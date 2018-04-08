@@ -5,6 +5,25 @@ This setup involves the following technologies:
 * neovim - https://neovim.io/
 * tmux - https://github.com/tmux/tmux/wiki
 * Karabiner Elementts - https://github.com/tekezo/Karabiner-Elements
+* ZSH - https://github.com/robbyrussell/oh-my-zsh
+
+
+Lets get started with building my dev environment. This assums you are using Mac OS.
+
+##### Brew
+Brew manages packages for Mac OS users. Installation instructions here: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+
+##### Alacritty
+Alacritty claims to be the fastest terminal emulator. It prioritizes simplicity over being a feature rich terminal such as iTerm 2.
+
+Installation is outlined here: https://github.com/jwilm/alacritty#manual-installation 
+
+
+
+
+
 
 
 * I use `Plug` to manage vim dependencies. Be sure to install it first
