@@ -4,7 +4,7 @@ export ZSH=/Users/A075140/.oh-my-zsh
 ZSH_THEME="spaceship"
 HYPHEN_INSENSITIVE="true"
 
-plugins=(z osx node)
+plugins=(osx node)
 
 # User configuration
 
