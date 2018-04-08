@@ -22,30 +22,32 @@ files="config/nvim/init.vim config/alacritty/alacritty.yml zshrc tmux.conf tmuxl
 
 
 # Set up NVIM path
-echo -n "Creating needed dir path for Neovim install \n"
+printf "Creating needed dir path for Neovim install...................done"
 mkdir -p $neovimpath
-echo "done"
+printf "\n\n\n"
 
 # Set up NVIM path
-echo -n "Creating needed dir path for Neovim install \n"
+printf "Creating needed dir path for Alacritty install................done"
 mkdir -p $alacrittypath
-echo "done"
+printf "\n\n\n"
 
 # create dotfiles_old in homedir
-echo -n "Creating $olddir for backup of any existing dotfiles in ~ ... \n"
+printf  "Creating $olddir for backup of any existing dotfiles in ~ ...done"
 mkdir -p $olddir
-echo "done"
+printf "\n\n\n"
 
 # change to the dotfiles directory
-echo -n "Changing to the $dir directory ... \n"
+printf "Changing to the $dir directory................................done"
 cd $dir
-echo "done"
+printf "\n\n\n"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir \n"
-    mv ~/.$file ~/dotfiles_old/
-    echo "Creating symlink to $file in home directory. \n"
+    printf "Moving any existing dotfiles from ~ to $olddir................done"
+    printf "\n\n\n"
+    mv ~/.$file $olddir
+    printf "Creating symlink to $file in home directory...................done"
+    printf "\n\n\n"
     ln -s $dir/$file ~/.$file
 done
 
@@ -75,10 +77,11 @@ else
         fi
     # If the platform is OS X, tell the user to install zsh :)
     elif [[ $platform == 'Darwin' ]]; then
-        echo "Please install zsh, then re-run this script! \n"
+        printf "Please install zsh, then re-run this script! \n"
         exit
     fi
 fi
 }
+
 
 install_zsh      # <------- uncomment to run the ZSH part of script

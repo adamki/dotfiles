@@ -13,27 +13,46 @@ Lets get started with building my dev environment. This assums you are using Mac
 ##### Brew
 Brew manages packages for Mac OS users. Installation instructions here: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-
-
 ##### Alacritty
 Alacritty claims to be the fastest terminal emulator. It prioritizes simplicity over being a feature rich terminal such as iTerm 2.
 
-Installation is outlined here: https://github.com/jwilm/alacritty#manual-installation 
+Installation is outlined here: https://github.com/jwilm/alacritty#manual-installation
+
+##### cloning down the dot files
+! Before proceedng, you should have the following dependencies resolved:
+* Operator Mono (Light, Book, & Light Italic) should be stored in your Mac OS FontBook
+* You should have True colors enabled in your terminal
+* tmux should be installed (brew install tmux)
+
+Ok, now lets gets started
+
+* `git clone git@github.com:adamki/adams-dotfiles.git`
+*  `cd adams-dotfiles`
+*  `chmod +x makesymlinks.sh`
+*  `./makesymlinks.sh`
+
+This script executes the following:
+* dumps old dotfiles into a newly created dir called `dotfiles_old`
+* installs ZSH
+* sets ZSH as default shell
+* symlinks the following:
+    * `~/.config/nvim/init.vim` -> `~/adams-dotfiles/config/nvim/init.vim`
+    * `~/.config/alacritty/alacritty.yml` -> `~/adams-dotfiles/alacritty/alacritty.yml`
+    * `~/.tmux.conf` -> `/Users/A075140/adams-dotfiles/tmux.conf`
+    * `~/.tmuxlinesnapshot.conf` -> `/Users/A075140/adams-dotfiles/tmuxlinesnapshot.conf`
+    * `~/aliases` -> `/Users/A075140/adams-dotfiles/aliases`
+
+It is now recommended that you restart your terminal completely
 
 
 
-
-
-
-
-* I use `Plug` to manage vim dependencies. Be sure to install it first
+##### Plug manager
+I use `Plug` to manage vim dependencies. Be sure to install it first
 
 ```
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-
-
 
 ### Enable True Colors
 checking for True Colors:
