@@ -7,8 +7,8 @@ This setup involves the following technologies:
 * Karabiner Elementts - https://github.com/tekezo/Karabiner-Elements
 * ZSH - https://github.com/robbyrussell/oh-my-zsh
 
-
 Lets get started with building my dev environment. This assums you are using Mac OS.
+___
 
 ##### Brew
 Brew manages packages for Mac OS users. Installation instructions here: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -18,8 +18,10 @@ Alacritty claims to be the fastest terminal emulator. It prioritizes simplicity 
 
 Installation is outlined here: https://github.com/jwilm/alacritty#manual-installation
 
+___
+
 ##### cloning down the dot files
-! Before proceedng, you should have the following dependencies resolved:
+*__ATTN__* Before proceedng, you should have the following dependencies resolved:
 * Operator Mono (Light, Book, & Light Italic) should be stored in your Mac OS FontBook
 * You should have True colors enabled in your terminal
 * tmux should be installed (brew install tmux)
@@ -44,6 +46,7 @@ This script executes the following:
 
 It is now recommended that you restart your terminal completely
 
+___
 
 
 ##### Plug manager
@@ -53,6 +56,7 @@ I use `Plug` to manage vim dependencies. Be sure to install it first
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
+___
 
 ### Enable True Colors
 checking for True Colors:
