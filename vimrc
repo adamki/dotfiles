@@ -23,6 +23,7 @@ Plugin 'terryma/vim-smooth-scroll'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'arcticicestudio/nord-vim'
 " quick fix for YVM server failing/rashingwhen opening EMPTY js files. Please
 " see https://github.com/Valloric/YouCompleteMe/issues/1018
 Plugin 'ervandew/supertab'

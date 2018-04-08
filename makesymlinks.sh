@@ -16,32 +16,36 @@
 dir=~/adams-dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old                   # old dotfiles backup directory
 neovimpath=~/.config/nvim
-files="config/nvim/init.vim zshrc"          # list of files/folders to symlink in homedir
+alacrittypath=~/.config/alacritty
+files="config/nvim/init.vim config/alacritty/alacritty.yml zshrc tmux.conf tmuxlinesnapshot.conf"          # list of files/folders to symlink in homedir
 # files="bashrc vimrc vim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
 
 
-
-
 # Set up NVIM path
-echo -n "Creating needed dir path for Neovim install"
+echo -n "Creating needed dir path for Neovim install \n"
 mkdir -p $neovimpath
 echo "done"
 
+# Set up NVIM path
+echo -n "Creating needed dir path for Neovim install \n"
+mkdir -p $alacrittypath
+echo "done"
+
 # create dotfiles_old in homedir
-echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
+echo -n "Creating $olddir for backup of any existing dotfiles in ~ ... \n"
 mkdir -p $olddir
 echo "done"
 
 # change to the dotfiles directory
-echo -n "Changing to the $dir directory ..."
+echo -n "Changing to the $dir directory ... \n"
 cd $dir
 echo "done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
+    echo "Moving any existing dotfiles from ~ to $olddir \n"
     mv ~/.$file ~/dotfiles_old/
-    echo "Creating symlink to $file in home directory."
+    echo "Creating symlink to $file in home directory. \n"
     ln -s $dir/$file ~/.$file
 done
 
@@ -71,10 +75,10 @@ else
         fi
     # If the platform is OS X, tell the user to install zsh :)
     elif [[ $platform == 'Darwin' ]]; then
-        echo "Please install zsh, then re-run this script!"
+        echo "Please install zsh, then re-run this script! \n"
         exit
     fi
 fi
 }
 
-# install_zsh         <------- uncomment to run the ZSH part of script
+install_zsh      # <------- uncomment to run the ZSH part of script

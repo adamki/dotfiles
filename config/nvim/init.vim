@@ -18,6 +18,7 @@
 
   " colors
   Plug 'chriskempson/base16-vim'
+  Plug 'arcticicestudio/nord-vim'
 
   " syntax
   Plug 'sheerun/vim-polyglot'
@@ -39,7 +40,7 @@
   Plug 'tpope/vim-fugitive'
   Plug 'raimondi/delimitmate'
   Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  Plug 'edkolev/tmuxline.vim'
   Plug 'mhinz/vim-sayonara'
   Plug 'jreybert/vimagit'
   Plug 'ryanoasis/vim-devicons'
@@ -80,9 +81,14 @@
 
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  colorscheme base16-nord                         " must go after set bg
+  colorscheme nord                         " must go after set bg
   let g:enable_italic_font = 1                    " Make sure to italicize
   let g:indentLine_char = '┆ '                    " line indent icon
+  highlight LineNr ctermfg=grey ctermbg=white
+
+  " let g:nord_italic = 1
+  " let g:nord_italic_comments = 1
+  " let g:nord_uniform_status_lines = 1
 
 " }}}
 
@@ -96,6 +102,7 @@
     let mapleader = ','                   " set dat leader
     set colorcolumn=80                    " keep lines short
     set termguicolors                     " enable true colors
+
     set clipboard+=unnamedplus            " visual copy works to native OS
     set nopaste                           " but default to nopaste
     set pastetoggle=<f6>                  " toggle paste/nopaste
@@ -190,7 +197,6 @@
 " Airline/TABS Config-------------------------------------------------------{{{
 " airline
 
-  let g:airline_theme='base16_flat'                                    " set airline theme
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
   cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
