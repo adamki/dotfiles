@@ -361,10 +361,10 @@
   let g:deoplete#file#enable_buffer_path=1
 
   " custom omni source markers
-  call deoplete#custom#set('buffer', 'mark', 'ℬ')
-  call deoplete#custom#set('ternjs', 'mark', '')
-  call deoplete#custom#set('omni', 'mark', '⌾')
-  call deoplete#custom#set('file', 'mark', 'file')
+  call deoplete#custom#source('buffer', 'mark', 'ℬ')
+  call deoplete#custom#source('ternjs', 'mark', '')
+  call deoplete#custom#source('omni', 'mark', '⌾')
+  call deoplete#custom#source('file', 'mark', 'file')
 
   " let carlitux Use deoplete.
   let g:tern_request_timeout = 1
