@@ -42,7 +42,7 @@
   Plug 'vim-airline/vim-airline'
   Plug 'edkolev/tmuxline.vim'
   Plug 'mhinz/vim-sayonara'
-  Plug 'jreybert/vimagit'
+  Plug 'jreybert/vimagit', {'on': ['Magit', 'MagitOnly']}
   Plug 'ryanoasis/vim-devicons'
   Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-markdown', {'for': 'markdown'}
@@ -81,15 +81,21 @@
 
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
-  let g:nord_comment_brightness = 20
-  colorscheme nord                         " must go after set bg
+  let g:nord_comment_brightness = 20              " bright comments. (1 - 20)
+  colorscheme nord                                " must go after set bg
   let g:enable_italic_font = 1                    " Make sure to italicize
   let g:indentLine_char = '┆ '                    " line indent icon
   highlight LineNr ctermfg=grey ctermbg=white
 
-  " let g:nord_italic = 1
-  " let g:nord_italic_comments = 1
-  " let g:nord_uniform_status_lines = 1
+
+  let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'c'    : '#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)',
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W', '#F'],
+      \'x'    : '#(date)',
+      \'y'    : ['%R', '%a', '%Y'],
+      \'z'    : '#H'}
 
 " }}}
 
@@ -114,6 +120,8 @@
     set number relativenumber             " line numbers!
     set numberwidth=1                     " make number gutter small
     set tabstop=2 shiftwidth=2 expandtab  " better tabs and line shifts
+
+    au FileType python setl sw=2 sts=2 et
     set virtualedit=                      " unset virtualedit
     set wildmenu                          " better vim command completion
     set laststatus=2                      " always show statusline in window
@@ -121,7 +129,7 @@
     set wildmode=list:longest,full        " better vim command completion
     set autoread                          " detect if file has changed
     set undofile                          " enable persistant undo
-    set undodir=~/.config/nvim/undo       " undo hist save location
+    set undodir=~/.config/nvim/UNDO_HISTORY      " undo hist save location
     set splitbelow                        " Horizontal split below current.
     set splitright                        " Vertical split to right of current.
     set lazyredraw
@@ -200,24 +208,32 @@
 
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
-  cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
+  " cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif                                                                " set up symbol dictionary
   let g:airline#extensions#tabline#enabled = 1                         " enables tabline
   let g:airline#extensions#tabline#buffer_idx_mode = 1                 " enable buffer indices
-  let g:airline#extensions#neomake#error_symbol='• '                   " neomake lint(error)
-  let g:airline#extensions#neomake#warning_symbol='•  '                " neomake lint(error)
+  let g:airline#extensions#neomake#error_symbol='E: '                   " neomake lint(error)
+
+  let g:airline#extensions#neomake#warning_symbol='W:  '                " neomake lint(error)
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'  " show abbreviated filepath
 
-  " let g:airline_powerline_fonts = 1                                    " powerline font integration for icons
-  let g:airline_symbols.branch = ''                                   " git branch symbol!
+  let g:airline#extensions#branch#enabled = 1
+  let g:airline#extensions#branch#empty_message = 'No Repo Found'
+
+  let g:airline#extensions#tmuxline#enabled = 1
+  let g:airline#extensions#tmuxline#snapshot_file = "~/.tmuxlinesnapshot.conf"
+  " let g:airline_powerline_fonts = 1                                  " disabled cuz i dont have a patched font =(
+  " let g:airline_symbols.branch = ''                                 " git branch symbol!
+
+  let g:airline#extensions#neomake#enabled = 1
 
   " tab shortcuts ----------------------------------------------------------{{{
 
     nmap <leader>T :tabnew<CR>
-    nmap th :bnext<CR>
-    nmap tl :bprev<CR>
+    nmap bh :bnext<CR>
+    nmap bl :bprev<CR>
     nmap <leader>1 <Plug>AirlineSelectTab1
     nmap <leader>2 <Plug>AirlineSelectTab2
     nmap <leader>3 <Plug>AirlineSelectTab3
