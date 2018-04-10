@@ -38,7 +38,6 @@
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-fugitive'
-  Plug 'raimondi/delimitmate'
   Plug 'vim-airline/vim-airline'
   Plug 'edkolev/tmuxline.vim'
   Plug 'mhinz/vim-sayonara'
