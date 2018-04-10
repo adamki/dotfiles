@@ -61,6 +61,7 @@
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'alvan/vim-closetag'
+  Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
   call plug#end()
 
@@ -481,18 +482,24 @@
 
 " }}}
 
-" Navigate between vim buffers and tmux panels -----------------------------{{{
-
-  " let g:tmux_navigator_no_mappings = 1
-  " nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-  " nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-  " nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-  " nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
-
-"}}}
-
 " Close-Tag ----------------------------------------------------------------{{{
 
   let g:closetag_filenames = '*.html,*.jsx, *.js'
 
 "}}}
+
+" Language Client Neovim ---------------------------------------------------{{{
+
+  let g:LanguageClient_serverCommands = {
+      \ 'css': ['vscode-css-languageservice'],
+      \ 'javascript': ['javascript-typescript-stdio'],
+      \ 'javascript.jsx': ['javascript-typescript-stdio'],
+      \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+      \ 'python': ['pyls'],
+      \ }
+
+  nnoremap <silent> lch :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> lcd :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent> lcr :call LanguageClient#textDocument_rename()<CR>
+
+"  }}}

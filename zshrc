@@ -10,6 +10,9 @@ plugins=(osx node)
 
 export MANPATH="/usr/local/man:$MANPATH"
 export PATH="/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
+" put rustup and cargo in runtime path
+
+export PATH="$HOME/.cargo/bin:$PATH"
 export DOTFILES="/Users/$USER/adams-dotfiles"
 
 source $ZSH/oh-my-zsh.sh
