@@ -15,11 +15,13 @@ alias h='history'
 # Other
 alias aliases="cat ~/adams-dotfiles/aliases"
 alias alacritty="nvim ~/.config/alacritty/alacritty.yml"
+alias nc="dots && ni ~/.config/nvim_adam/init.vim"
 alias dots="cd ~/adams-dotfiles"
-alias n="nvim"
-alias nc="dots && nvim ~/.config/nvim/init.vim"
 alias zshrc="dots && nvim ~/adams-dotfiles/zshrc"
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
+
+alias ri="nvim -u ~/.config/nvim/init.vim"
+alias ni='nvim -u ~/.config/nvim_adam/init.vim'
 
 # Tmux
 alias tml='tmux ls'

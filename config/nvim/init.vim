@@ -19,19 +19,23 @@
   " colors
   Plug 'chriskempson/base16-vim'
   Plug 'arcticicestudio/nord-vim'
+  Plug 'rafi/awesome-vim-colorschemes'
 
   " syntax
   Plug 'sheerun/vim-polyglot'
   Plug 'othree/yajs'
   Plug 'jelera/vim-javascript-syntax'
   Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'pangloss/vim-javascript'
+  " Plug 'pangloss/vim-javascript'
   Plug 'elzr/vim-json'
   Plug 'othree/javascript-libraries-syntax.vim'
   Plug 'Yggdroot/indentLine'
 
   " Folding (see fold section)
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
+
+  " improve Vim interface
+  Plug 'rhysd/accelerated-jk'
 
   " vim extensions
   Plug 'jiangmiao/auto-pairs'
@@ -46,10 +50,13 @@
   Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-markdown', {'for': 'markdown'}
   Plug 'christoomey/vim-tmux-navigator'
-  Plug 'justinmk/vim-dirvish'
+  Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'tpope/vim-eunuch'
   Plug 'airblade/vim-gitgutter'
   Plug 'shime/vim-livedown'
+
+  Plug 'easymotion/vim-easymotion'
 
   " IDE level enhancements
   Plug 'shougo/denite.nvim'
@@ -61,7 +68,11 @@
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'alvan/vim-closetag'
-  Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+
+  Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
+  Plug 'junegunn/limelight.vim', {'on': 'Goyo'}
+  Plug 'terryma/vim-expand-region'
+  Plug 'nathanaelkane/vim-indent-guides'
 
   call plug#end()
 
@@ -82,11 +93,10 @@
   syntax on                                       " enable syntax
   set background=dark                             " must go before :colorscheme
   let g:nord_comment_brightness = 20              " bright comments. (1 - 20)
-  colorscheme nord                                " must go after set bg
+  colorscheme challenger_deep                     " must go after set bg
   let g:enable_italic_font = 1                    " Make sure to italicize
-  let g:indentLine_char = '┆ '                    " line indent icon
-  highlight LineNr ctermfg=grey ctermbg=white
-
+  " let g:indentLine_char = '| '                  " line indent icon
+  " highlight LineNr ctermfg=grey ctermbg=white
 
   let g:tmuxline_preset = {
       \'a'    : '#S',
@@ -106,7 +116,8 @@
     tnoremap <Esc> <C-\><C-n>             " enable ESC behavior when in terminal emulator
     set mouse=a                           " enable mouse mode
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1     " sets colors to be true
-    let mapleader = ','                   " set dat leader
+    let mapleader = "\<space>"            " set dat leader
+    let maplocalleader=";"
     set colorcolumn=80                    " keep lines short
     set termguicolors                     " enable true colors
 
@@ -118,7 +129,7 @@
     set noswapfile                        " do NOT create swapfiles for new buffers
     filetype on                           " let vim detect fileType
     set number relativenumber             " line numbers!
-    set numberwidth=1                     " make number gutter small
+    set numberwidth=3                     " make number gutter small
     set tabstop=2 shiftwidth=2 expandtab  " better tabs and line shifts
 
     au FileType python setl sw=2 sts=2 et
@@ -165,15 +176,21 @@
   " better line end navigation
   noremap H ^
   noremap L g_
-  " shortcut to save your wrist from RSI
-  nnoremap ; :
   " vim omnicomplete
   inoremap <C-f> <C-x><C-f>
   " better lateral block movement
   vmap < <gv
   vmap > >gv
+
+  " Use tab for indenting in visual mode
+  vnoremap <Tab> >gv|
+  vnoremap <S-Tab> <gv
+  nnoremap > >>_
+  nnoremap < <<_
+
+
   " turn off high-lighted search results
-  nnoremap <Space><Space> :noh<cr>
+  nnoremap <Space>, :noh<cr>
 
   " move lines in normal
   nnoremap ∆ :m .+1<CR>==
@@ -183,13 +200,14 @@
   inoremap ∆ <Esc>:m .+1<CR>==gi
   inoremap ˚ <Esc>:m .-2<CR>==gi
 
-  " full screen dat split
-  nnoremap <C-w>f  200<C-w>\| \| 200<C-w>
-  nnoremap <left> :vertical resize -5<cr>
-  nnoremap <down> :resize +5<cr>
-  nnoremap <up> :resize -5<cr>
-  nnoremap <right> :vertical resize +5<cr>
-
+  " Window Management
+  let g:elite_mode = 1
+  if get(g:, 'elite_mode')
+    nnoremap <Up>    :resize +2<CR>
+    nnoremap <Down>  :resize -2<CR>
+    nnoremap <Left>  :vertical resize +2<CR>
+    nnoremap <Right> :vertical resize -2<CR>
+  endif
 " }}}
 
 " Operator-Mono Italix -----------------------------------------------------{{{
@@ -205,6 +223,12 @@
 
 " Airline/TABS Config-------------------------------------------------------{{{
 " airline
+
+  " allow TAB to toggle tabs
+  nmap <Tab> <C-w>w
+  nmap <S-Tab> <C-w>W
+  nnoremap tj  :tabnext<CR>
+  nnoremap tk  :tabprev<CR>
 
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
@@ -270,54 +294,144 @@
 
 " Denite -------------------------------------------------------------------{{{
 
-  let g:webdevicons_enable_denite = 0          " disable devicons cuz they slow
-  let s:menus = {}
 
-  call denite#custom#option('default', {
-        \ 'prompt': '❯❯❯',
-        \ 'highlight_matched_char': 'Function',
-        \ 'highlight_mode_normal': 'Function',
-        \})
-  call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git', '', '--hidden'])
-  call denite#custom#var('grep', 'command', ['rg'])
-  call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--no-heading', '-S'])
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-  call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#option('_', {
+	\ 'prompt': 'λ:',
+	\ 'empty': 0,
+	\ 'winheight': 16,
+	\ 'source_names': 'short',
+	\ 'vertical_preview': 1,
+	\ 'auto-accel': 1,
+	\ 'auto-resume': 1,
+	\ })
 
-  call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
-  call denite#custom#map('insert', '<C-s>', '<denite:do_action:vsplit>', 'noremap')
-  call denite#custom#map('insert', '<C-i>', '<denite:do_action:split>', 'noremap')
-  call denite#custom#map('insert', '<C-d>', '<denite:do_action:delete>', 'noremap')
-  call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-  call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-  call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
-  call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#option('list', {})
 
-  " nnoremap <silent> <c-p> :Denite file_rec<CR>
-  nnoremap <C-p> :<C-u>Denite file_rec buffer<CR>
-  " search open buffers
-  nnoremap <leader><Space>b :<C-u>DeniteBufferDir buffer<CR>
-  " find word under cursor
-  nnoremap <leader><bs> :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
-  " ripgrep an input
-  nnoremap <leader>a :<C-u>Denite grep:. -mode=normal<CR>
-  " ripgrep an input in Directory
-  nnoremap <leader><Space>a :<C-u>DeniteBufferDir grep:. -mode=normal<CR>
-  " find file in dir
-  nnoremap <leader>d :<C-u>DeniteBufferDir file_rec<CR>
+" MATCHERS
+" Default is 'matcher_fuzzy'
+call denite#custom#source('tag', 'matchers', ['matcher_substring'])
+if has('nvim') && &runtimepath =~# '\/cpsm'
+	call denite#custom#source(
+		\ 'buffer,file_mru,file_old,file_rec,grep,mpc,line',
+		\ 'matchers', ['matcher_cpsm', 'matcher_fuzzy'])
+endif
 
-  hi link deniteMatchedChar Special
+" SORTERS
+" Default is 'sorter_rank'
+call denite#custom#source('z', 'sorters', ['sorter_z'])
 
-  " denite-extras
-  nnoremap <silent> <leader>h :Denite help<CR>
-  nnoremap <silent> <leader>c :Denite colorscheme<CR>
-  nnoremap <leader>o :<C-u>Denite location_list -mode=normal -no-empty<CR>
-  nnoremap <leader>hs :<C-u>Denite history:search -mode=normal<CR>
-  nnoremap <leader>hc :<C-u>Denite history:cmd -mode=normal<CR>
+" CONVERTERS
+" Default is none
+call denite#custom#source(
+	\ 'buffer,file_mru,file_old',
+	\ 'converters', ['converter_relative_word'])
 
-"}}}
+" FIND and GREP COMMANDS
+if executable('ag')
+	" The Silver Searcher
+	call denite#custom#var('file_rec', 'command',
+		\ ['ag', '-U', '--hidden', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+	" Setup ignore patterns in your .agignore file!
+	" https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
+
+	call denite#custom#var('grep', 'command', ['ag'])
+	call denite#custom#var('grep', 'recursive_opts', [])
+	call denite#custom#var('grep', 'pattern_opt', [])
+	call denite#custom#var('grep', 'separator', ['--'])
+	call denite#custom#var('grep', 'final_opts', [])
+	call denite#custom#var('grep', 'default_opts',
+		\ [ '--skip-vcs-ignores', '--vimgrep', '--smart-case', '--hidden' ])
+
+elseif executable('ack')
+	" Ack command
+	call denite#custom#var('grep', 'command', ['ack'])
+	call denite#custom#var('grep', 'recursive_opts', [])
+	call denite#custom#var('grep', 'pattern_opt', ['--match'])
+	call denite#custom#var('grep', 'separator', ['--'])
+	call denite#custom#var('grep', 'final_opts', [])
+	call denite#custom#var('grep', 'default_opts',
+			\ ['--ackrc', $HOME.'/.config/ackrc', '-H',
+			\ '--nopager', '--nocolor', '--nogroup', '--column'])
+endif
+
+" KEY MAPPINGS
+let insert_mode_mappings = [
+	\  ['jj', '<denite:enter_mode:normal>', 'noremap'],
+	\  ['<Esc>', '<denite:enter_mode:normal>', 'noremap'],
+	\  ['<C-N>', '<denite:assign_next_matched_text>', 'noremap'],
+	\  ['<C-P>', '<denite:assign_previous_matched_text>', 'noremap'],
+	\  ['<Up>', '<denite:assign_previous_text>', 'noremap'],
+	\  ['<Down>', '<denite:assign_next_text>', 'noremap'],
+	\  ['<C-Y>', '<denite:redraw>', 'noremap'],
+	\ ]
+
+let normal_mode_mappings = [
+	\   ["'", '<denite:toggle_select_down>', 'noremap'],
+	\   ['<C-n>', '<denite:jump_to_next_source>', 'noremap'],
+	\   ['<C-p>', '<denite:jump_to_previous_source>', 'noremap'],
+	\   ['gg', '<denite:move_to_first_line>', 'noremap'],
+	\   ['st', '<denite:do_action:tabopen>', 'noremap'],
+	\   ['sg', '<denite:do_action:vsplit>', 'noremap'],
+	\   ['sv', '<denite:do_action:split>', 'noremap'],
+	\   ['sc', '<denite:quit>', 'noremap'],
+	\   ['r', '<denite:redraw>', 'noremap'],
+	\ ]
+
+for m in insert_mode_mappings
+	call denite#custom#map('insert', m[0], m[1], m[2])
+endfor
+for m in normal_mode_mappings
+	call denite#custom#map('normal', m[0], m[1], m[2])
+endfor
+
+	nnoremap <silent><LocalLeader>r :<C-u>Denite -resume -refresh<CR>
+	nnoremap <silent><LocalLeader>f :<C-u>Denite file_rec<CR>
+	nnoremap <silent><LocalLeader>b :<C-u>Denite buffer file_old -default-action=switch<CR>
+	nnoremap <silent><LocalLeader>d :<C-u>Denite directory_rec -default-action=cd<CR>
+	nnoremap <silent><LocalLeader>v :<C-u>Denite register -buffer-name=register<CR>
+	xnoremap <silent><LocalLeader>v :<C-u>Denite register -buffer-name=register -default-action=replace<CR>
+	nnoremap <silent><LocalLeader>l :<C-u>Denite location_list -buffer-name=list<CR>
+	nnoremap <silent><LocalLeader>q :<C-u>Denite quickfix -buffer-name=list<CR>
+	nnoremap <silent><LocalLeader>g :<C-u>Denite grep<CR>
+	nnoremap <silent><LocalLeader>j :<C-u>Denite jump change file_point<CR>
+	nnoremap <silent><LocalLeader>o :<C-u>Denite outline<CR>
+	nnoremap <silent><LocalLeader>c :<C-u>Denite colorscheme<CR>
+	nnoremap <silent><LocalLeader>s :<C-u>Denite session -buffer-name=list<CR>
+	nnoremap <silent><expr> <LocalLeader>t &filetype == 'help' ? "g\<C-]>" :
+		\ ":\<C-u>DeniteCursorWord -buffer-name=tag
+		\  tag:include\<CR>"
+	nnoremap <silent><expr> <LocalLeader>p  &filetype == 'help' ?
+		\ ":\<C-u>pop\<CR>" : ":\<C-u>Denite -mode=normal jump\<CR>"
+	nnoremap <silent><LocalLeader>h :<C-u>Denite help<CR>
+	nnoremap <silent><LocalLeader>m :<C-u>Denite mpc -buffer-name=mpc<CR>
+	nnoremap <silent><LocalLeader>/ :<C-u>Denite line<CR>
+	nnoremap <silent><LocalLeader>* :<C-u>DeniteCursorWord line<CR>
+	nnoremap <silent><LocalLeader>z :<C-u>Denite z<CR>
+	nnoremap <silent><LocalLeader>; :<C-u>Denite command command_history<CR>
+  nnoremap <silent><LocalLeader><bs> :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+
+	" chemzqm/denite-git
+	nnoremap <silent> <Leader>gl :<C-u>Denite gitlog:all<CR>
+	nnoremap <silent> <Leader>gs :<C-u>Denite gitstatus<CR>
+	nnoremap <silent> <Leader>gc :<C-u>Denite gitbranch<CR>
+
+	" Open Denite with word under cursor or selection
+	nnoremap <silent> <Leader>gf :DeniteCursorWord file_rec<CR>
+	nnoremap <silent> <Leader>gg :DeniteCursorWord grep<CR>
+	vnoremap <silent> <Leader>gg
+		\ :<C-u>call <SID>get_selection('/')<CR>
+		\ :execute 'Denite grep:::'.@/<CR><CR>
+
+	function! s:get_selection(cmdtype)
+		let temp = @s
+		normal! gv"sy
+		let @/ = substitute(escape(@s, '\'.a:cmdtype), '\n', '\\n', 'g')
+		let @s = temp
+  endfunction
+
+
+  "}}}
 
 " Dirvish ------------------------------------------------------------------{{{
 
@@ -407,27 +521,30 @@
 " Fold, gets it's own section  ---------------------------------------------{{{
 
   function! MyFoldText() " {{{
+    " Get first non-blank line
+    let fs = v:foldstart
+    while getline(fs) =~? '^\s*$' | let fs = nextnonblank(fs + 1)
+    endwhile
+    if fs > v:foldend
       let line = getline(v:foldstart)
-      let nucolwidth = &fdc + &number * &numberwidth
-      let windowwidth = winwidth(0) - nucolwidth - 3
-      let foldedlinecount = v:foldend - v:foldstart
+    else
+      let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+    endif
 
-      " expand tabs into spaces
-      let onetab = strpart('          ', 0, &tabstop)
-      let line = substitute(line, '\t', onetab, 'g')
-
-      let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-      " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines')
-      " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines   ')
-      let fillcharcount = windowwidth - len(line)
-      " return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . ' Lines'
-      return line . '…' . repeat(" ",fillcharcount)
+    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+    let foldSize = 1 + v:foldend - v:foldstart
+    let foldSizeStr = ' ' . foldSize . ' lines '
+    let foldLevelStr = repeat('+--', v:foldlevel)
+    let lineCount = line('$')
+    let foldPercentage = printf('[%.1f', (foldSize*1.0)/lineCount*100) . '%] '
+    let expansionString = repeat('.', w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+    return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
   endfunction " }}}
 
   set foldtext=MyFoldText()
 
-  " autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
-  " autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+  autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+  autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
   autocmd FileType vim setlocal fdc=1
   set foldlevel=99
@@ -456,9 +573,18 @@
 
 " GitGutter ----------------------------------------------------------------{{{
 
-  let g:gitgutter_enabled = 0
+  let g:gitgutter_enabled = 1
 
-" }}}
+  let g:gitgutter_sign_added = '▎'
+  let g:gitgutter_sign_modified = '▎'
+  let g:gitgutter_sign_removed = '▏'
+  let g:gitgutter_sign_removed_first_line = '▔'
+  let g:gitgutter_sign_modified_removed = '▋'
+
+  highlight! GitGutterAdd ctermfg=22 guifg=#006000 ctermbg=NONE guibg=NONE
+  highlight! GitGutterChange ctermfg=58 guifg=#5F6000 ctermbg=NONE guibg=NONE
+  highlight! GitGutterDelete ctermfg=52 guifg=#600000 ctermbg=NONE guibg=NONE
+  highlight! GitGutterChangeDelete ctermfg=52 guifg=#600000 ctermbg=NONE guibg=NONE
 
 " NeoMake ------------------------------------------------------------------{{{
 
@@ -488,18 +614,111 @@
 
 "}}}
 
-" Language Client Neovim ---------------------------------------------------{{{
+" J/K accelerated ----------------------------------------------------------{{{
+  nmap j <Plug>(accelerated_jk_gj)
+  nmap k <Plug>(accelerated_jk_gk)
+"  }}}
 
-  let g:LanguageClient_serverCommands = {
-      \ 'css': ['vscode-css-languageservice'],
-      \ 'javascript': ['javascript-typescript-stdio'],
-      \ 'javascript.jsx': ['javascript-typescript-stdio'],
-      \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-      \ 'python': ['pyls'],
-      \ }
+" Expand Region ------------------------------------------------------------{{{
+  xmap v <Plug>(expand_region_expand)
+  xmap V <Plug>(expand_region_shrink)
+" }}}
 
-  nnoremap <silent> lch :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> lcd :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <silent> lcr :call LanguageClient#textDocument_rename()<CR>
+" Goyo and Limelight ---------------------------------------------------{{{
+
+  let g:goyo_width = 120
+  nnoremap <Leader>G :Goyo<CR>
+  autocmd! User GoyoEnter Limelight
+  autocmd! User GoyoLeave Limelight!
 
 "  }}}
+
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeWinSize = 25
+let g:NERDTreeCascadeOpenSingleChildDir = 1
+let g:NERDTreeCascadeSingleChildDir = 0
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeRespectWildIgnore = 0
+let g:NERDTreeAutoDeleteBuffer = 0
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeHijackNetrw = 1
+let g:NERDTreeBookmarksFile = $VARPATH.'/treemarks'
+let NERDTreeIgnore = [
+ \ '\.git$', '\.hg$', '\.svn$', '\.stversions$', '\.pyc$', '\.svn$',
+ \ '\.DS_Store$', '\.sass-cache$', '__pycache__$', '\.egg-info$', '\.cache$'
+ \ ]
+let g:NERDTreeMapOpenSplit = 'sv'
+let g:NERDTreeMapOpenVSplit = 'sg'
+let g:NERDTreeMapOpenInTab = 'st'
+let g:NERDTreeMapOpenInTabSilent = 'sT'
+let g:NERDTreeMapUpdirKeepOpen = '<BS>'
+let g:NERDTreeMapOpenRecursively = 't'
+let g:NERDTreeMapCloseChildren = 'T'
+let g:NERDTreeMapToggleHidden = '.'
+
+nnoremap <silent> <LocalLeader>e :<C-u>NERDTreeToggle<CR>
+nnoremap <silent> <LocalLeader>a :<C-u>NERDTreeFind<CR>
+
+
+let g:NERDTreeIndicatorMapCustom = {
+	\ 'Modified':  '·',
+	\ 'Staged':    '‧',
+	\ 'Untracked': '?',
+	\ 'Renamed':   '≫',
+	\ 'Unmerged':  '≠',
+	\ 'Deleted':   '✃',
+	\ 'Dirty':     '⁖',
+	\ 'Clean':     '✓',
+	\ 'Unknown':   '⁇'
+	\ }
+
+let g:NERDTreeDirArrowExpandable = '▷'
+let g:NERDTreeDirArrowCollapsible = '▼'
+
+highlight! NERDTreeOpenable ctermfg=132 guifg=#B05E87
+highlight! def link NERDTreeClosable NERDTreeOpenable
+
+highlight! NERDTreeFile ctermfg=246 guifg=#999999
+highlight! NERDTreeExecFile ctermfg=246 guifg=#999999
+
+highlight! clear NERDTreeFlags
+highlight! NERDTreeFlags ctermfg=234 guifg=#1d1f21
+highlight! NERDTreeCWD ctermfg=240 guifg=#777777
+
+highlight! NERDTreeGitStatusModified ctermfg=1 guifg=#D370A3
+highlight! NERDTreeGitStatusStaged ctermfg=10 guifg=#A3D572
+highlight! NERDTreeGitStatusUntracked ctermfg=12 guifg=#98CBFE
+
+highlight! def link NERDTreeGitStatusRenamed Title
+highlight! def link NERDTreeGitStatusUnmerged Label
+highlight! def link NERDTreeGitStatusDirDirty Constant
+highlight! def link NERDTreeGitStatusDirClean DiffAdd
+highlight! def link NERDTreeGitStatusUnknown Comment
+
+function! s:NERDTreeHighlight()
+  for l:name in keys(g:NERDTreeIndicatorMapCustom)
+  let l:icon = g:NERDTreeIndicatorMapCustom[l:name]
+  if empty(l:icon)
+    continue
+  endif
+  let l:prefix = index(['Dirty', 'Clean'], l:name) > -1 ? 'Dir' : ''
+  let l:hiname = escape('NERDTreeGitStatus'.l:prefix.l:name, '~')
+  execute 'syntax match '.l:hiname.' #'.l:icon.'# containedin=NERDTreeFlags'
+endfor
+
+syntax match hideBracketsInNerdTree "\]" contained conceal containedin=NERDTreeFlags
+syntax match hideBracketsInNerdTree "\[" contained conceal containedin=NERDTreeFlags
+endfunction
+
+augroup nerdtree-highlights
+  autocmd!
+  autocmd FileType nerdtree call s:NERDTreeHighlight()
+augroup END
+
+let g:EasyMotion_use_smartsign_us = 1
+
+
+
+
+
+
