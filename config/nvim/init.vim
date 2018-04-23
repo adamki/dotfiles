@@ -26,7 +26,7 @@
   Plug 'othree/yajs'
   Plug 'jelera/vim-javascript-syntax'
   Plug 'maxmellon/vim-jsx-pretty'
-  " Plug 'pangloss/vim-javascript'
+  Plug 'pangloss/vim-javascript'
   Plug 'elzr/vim-json'
   Plug 'othree/javascript-libraries-syntax.vim'
   Plug 'Yggdroot/indentLine'
@@ -35,7 +35,7 @@
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
 
   " improve Vim interface
-  " Plug 'rhysd/accelerated-jk'
+  Plug 'rhysd/accelerated-jk'
 
   " vim extensions
   Plug 'jiangmiao/auto-pairs'
