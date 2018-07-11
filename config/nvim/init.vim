@@ -20,16 +20,18 @@
   Plug 'chriskempson/base16-vim'
   Plug 'arcticicestudio/nord-vim'
   Plug 'rafi/awesome-vim-colorschemes'
+  Plug 'trevordmiller/nova-vim'
+  Plug 'zeis/vim-kolor'
 
   " syntax
   Plug 'sheerun/vim-polyglot'
-  Plug 'othree/yajs'
-  Plug 'jelera/vim-javascript-syntax'
+  " Plug 'othree/yajs'
+  " Plug 'othree/es.next.syntax.vim'
+  " Plug 'jelera/vim-javascript-syntax'
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'
   Plug 'elzr/vim-json'
   Plug 'othree/javascript-libraries-syntax.vim'
-  Plug 'Yggdroot/indentLine'
 
   " Folding (see fold section)
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
@@ -43,7 +45,6 @@
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-fugitive'
   Plug 'vim-airline/vim-airline'
-  Plug 'edkolev/tmuxline.vim'
   Plug 'mhinz/vim-sayonara'
   Plug 'jreybert/vimagit', {'on': ['Magit', 'MagitOnly']}
   Plug 'ryanoasis/vim-devicons'
@@ -55,7 +56,6 @@
   Plug 'tpope/vim-eunuch'
   Plug 'airblade/vim-gitgutter'
   Plug 'shime/vim-livedown'
-
   Plug 'easymotion/vim-easymotion'
 
   " IDE level enhancements
@@ -65,18 +65,23 @@
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'neomake/neomake'
   Plug 'benjie/neomake-local-eslint.vim'
+  Plug 'jaawerth/neomake-local-eslint-first'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'alvan/vim-closetag'
   "
-  " Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
-  " Plug 'junegunn/limelight.vim', {'on': 'Goyo'}
-  " Plug 'terryma/vim-expand-region'
-  " Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
+  Plug 'junegunn/limelight.vim', {'on': 'Goyo'}
+  Plug 'terryma/vim-expand-region'
+  Plug 'nathanaelkane/vim-indent-guides'
 
   call plug#end()
 
 " }}}
+
+source ~/.config/nvim/ftplugin/aesthetic.vim
+source ~/.config/nvim/ftplugin/system.vim
+source ~/.config/nvim/ftplugin/keymappings.vim
 
 " MarkDown Live Previews ---------------------------------------------------{{{
 
@@ -88,150 +93,19 @@
 
 " }}}
 
-" Aesthetix ----------------------------------------------------------------{{{
-
-  syntax on                                       " enable syntax
-  set background=dark                             " must go before :colorscheme
-  let g:nord_comment_brightness = 20              " bright comments. (1 - 20)
-  colorscheme challenger_deep                     " must go after set bg
-  let g:enable_italic_font = 1                    " Make sure to italicize
-  " let g:indentLine_char = '| '                  " line indent icon
-  " highlight LineNr ctermfg=grey ctermbg=white
-
-  let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'c'    : '#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)',
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W', '#F'],
-      \'x'    : '#(date)',
-      \'y'    : ['%R', '%a', '%Y'],
-      \'z'    : '#H'}
-
-" }}}
-
-" System Settings ----------------------------------------------------------{{{
-
-  " neovim settings
-    set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-    tnoremap <Esc> <C-\><C-n>             " enable ESC behavior when in terminal emulator
-    set mouse=a                           " enable mouse mode
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1     " sets colors to be true
-    let mapleader = "\<space>"            " set dat leader
-    let maplocalleader=";"
-    set colorcolumn=80                    " keep lines short
-    set termguicolors                     " enable true colors
-
-    set clipboard+=unnamedplus            " visual copy works to native OS
-    set nopaste                           " but default to nopaste
-    set pastetoggle=<f6>                  " toggle paste/nopaste
-    set list                              " show white space
-    autocmd BufWritePre * %s/\s\+$//e     " remove unwanted space(s) on Buffer Pre-write
-    set noswapfile                        " do NOT create swapfiles for new buffers
-    filetype on                           " let vim detect fileType
-    set number relativenumber             " line numbers!
-    set numberwidth=3                     " make number gutter small
-    set tabstop=2 shiftwidth=2 expandtab  " better tabs and line shifts
-
-    au FileType python setl sw=2 sts=2 et
-    set virtualedit=                      " unset virtualedit
-    set wildmenu                          " better vim command completion
-    set laststatus=2                      " always show statusline in window
-    set nowrap                            " wrap lines at word
-    set wildmode=list:longest,full        " better vim command completion
-    set autoread                          " detect if file has changed
-    set undofile                          " enable persistant undo
-    set undodir=~/.config/nvim/UNDO_HISTORY      " undo hist save location
-    set splitbelow                        " Horizontal split below current.
-    set splitright                        " Vertical split to right of current.
-    set lazyredraw
-    if !&scrolloff
-      set scrolloff=8                     " Show next 8 lines while scrolling.
-    endif
-    if !&sidescrolloff
-      set sidescrolloff=8                 " Show next 8 columns while side-scrolling.
-    endif
-    "always place cursor at zz
-    autocmd BufRead * normal zz
-    autocmd BufReadPost *
-      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-      \   exe "normal! g'\"" |
-      \ endif " remember cursor position
-
-" }}}
-
-" Key Mappings -------------------------------------------------------------{{{
-
-  " no ex mode
-  nnoremap Q <nop>
-  nnoremap <Leader>w :w<CR>
-  nnoremap <Leader>q :q<CR>
-  nnoremap <Leader>Q :q!<CR>
-  nnoremap <Leader>x :x<CR>
-  " reload nvimrc from soource
-  nnoremap <Leader>r :so ~/.config/nvim_adam/init.vim<CR>
-  " copy current file path
-  nmap cp :let @+= expand("%") <cr>
-  " bind Search/Replace to Leader
-  nnoremap <Leader>S :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
-  " better line end navigation
-  noremap H ^
-  noremap L g_
-  " vim omnicomplete
-  inoremap <C-f> <C-x><C-f>
-  " better lateral block movement
-  vmap < <gv
-  vmap > >gv
-
-  " Use tab for indenting in visual mode
-  vnoremap <Tab> >gv|
-  vnoremap <S-Tab> <gv
-  nnoremap > >>_
-  nnoremap < <<_
-
-  " turn off high-lighted search results
-  nnoremap <Space>, :noh<cr>
-
-  " move lines in normal
-  nnoremap ∆ :m .+1<CR>==
-  nnoremap ˚ :m .-2<CR>==
-
-  " move lines in insert
-  inoremap ∆ <Esc>:m .+1<CR>==gi
-  inoremap ˚ <Esc>:m .-2<CR>==gi
-
-  " Window Management
-  let g:elite_mode = 1
-  if get(g:, 'elite_mode')
-    nnoremap <Up>    :resize +2<CR>
-    nnoremap <Down>  :resize -2<CR>
-    nnoremap <Left>  :vertical resize +2<CR>
-    nnoremap <Right> :vertical resize -2<CR>
-  endif
-" }}}
-
-" Operator-Mono Italix -----------------------------------------------------{{{
-
-  hi htmlArg gui=italic
-  hi Comment gui=italic
-  hi Type    gui=italic
-  hi htmlArg cterm=italic
-  hi Comment cterm=italic
-  hi Type    cterm=italic
-
-" }}}
-
 " Airline/TABS Config-------------------------------------------------------{{{
 " airline
 
+  let g:airline_theme='nova'
   " allow TAB to toggle tabs
   nmap <Tab> <C-w>w
   nmap <S-Tab> <C-w>W
+  cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
   nnoremap tj  :tabnext<CR>
   nnoremap tk  :tabprev<CR>
 
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
-  " cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif                                                                " set up symbol dictionary
@@ -245,8 +119,6 @@
   let g:airline#extensions#branch#enabled = 1
   let g:airline#extensions#branch#empty_message = 'No Repo Found'
 
-  let g:airline#extensions#tmuxline#enabled = 1
-  let g:airline#extensions#tmuxline#snapshot_file = "~/.tmuxlinesnapshot.conf"
   " let g:airline_powerline_fonts = 1                                  " disabled cuz i dont have a patched font =(
   " let g:airline_symbols.branch = ''                                 " git branch symbol!
 
@@ -254,9 +126,19 @@
 
   " tab shortcuts ----------------------------------------------------------{{{
 
+  let g:airline_left_sep ='▛ '
+  let g:airline_right_sep = '▞'
+
+  let g:airline#extensions#tabline#left_sep = '▛ '
+  let g:airline#extensions#tabline#right_sep = '▞'
+
+  let g:airline_section_a = airline#section#create([''])
+  let g:airline_section_x = airline#section#create([''])
+  let g:airline_section_y = airline#section#create([''])
+
     nmap <leader>T :tabnew<CR>
-    nmap bh :bnext<CR>
-    nmap bl :bprev<CR>
+    nmap ]b :bnext<CR>
+    nmap [b :bprev<CR>
     nmap <leader>1 <Plug>AirlineSelectTab1
     nmap <leader>2 <Plug>AirlineSelectTab2
     nmap <leader>3 <Plug>AirlineSelectTab3
@@ -280,10 +162,13 @@
           \}                                                             " make tab indices look normal
 
   "  }}}
-
 " }}}
 
 " Vim-Devicons -------------------------------------------------------------{{{
+  " after a re-source, fix syntax matching issues (concealing brackets):
+  if exists('g:loaded_webdevicons')
+      call webdevicons#refresh()
+  endif
 
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
@@ -293,16 +178,15 @@
 
 " Denite -------------------------------------------------------------------{{{
 
-
 call denite#custom#option('_', {
-	\ 'prompt': 'λ:',
-	\ 'empty': 0,
-	\ 'winheight': 16,
-	\ 'source_names': 'short',
-	\ 'vertical_preview': 1,
-	\ 'auto-accel': 1,
-	\ 'auto-resume': 1,
-	\ })
+  \ 'prompt': 'λ:',
+  \ 'empty': 0,
+  \ 'winheight': 16,
+  \ 'source_names': 'short',
+  \ 'vertical_preview': 1,
+  \ 'auto-accel': 1,
+  \ 'auto-resume': 1,
+  \ })
 
 call denite#custom#option('list', {})
 
@@ -395,7 +279,6 @@ endfor
 	nnoremap <silent><LocalLeader>g :<C-u>Denite grep<CR>
 	nnoremap <silent><LocalLeader>j :<C-u>Denite jump change file_point<CR>
 	nnoremap <silent><LocalLeader>o :<C-u>Denite outline<CR>
-	nnoremap <silent><LocalLeader>c :<C-u>Denite colorscheme<CR>
 	nnoremap <silent><LocalLeader>s :<C-u>Denite session -buffer-name=list<CR>
 	nnoremap <silent><expr> <LocalLeader>t &filetype == 'help' ? "g\<C-]>" :
 		\ ":\<C-u>DeniteCursorWord -buffer-name=tag
@@ -549,8 +432,6 @@ endfor
   set foldlevel=99
 
   " Space to toggle folds.
-  nnoremap <Space> za
-  vnoremap <Space> za
   autocmd FileType vim setlocal foldmethod=marker
   autocmd FileType vim setlocal foldlevel=0
 
@@ -580,10 +461,17 @@ endfor
   let g:gitgutter_sign_removed_first_line = '▔'
   let g:gitgutter_sign_modified_removed = '▋'
 
-  highlight! GitGutterAdd ctermfg=22 guifg=#006000 ctermbg=NONE guibg=NONE
-  highlight! GitGutterChange ctermfg=58 guifg=#5F6000 ctermbg=NONE guibg=NONE
-  highlight! GitGutterDelete ctermfg=52 guifg=#600000 ctermbg=NONE guibg=NONE
-  highlight! GitGutterChangeDelete ctermfg=52 guifg=#600000 ctermbg=NONE guibg=NONE
+  highlight clear SignColumn
+  highlight! GitGutterAdd ctermfg=darkgreen guifg=darkgreen
+  highlight! GitGutterChange ctermfg=yellow guifg=yellow
+  highlight! GitGutterDelete ctermfg=darkred guifg=darkred
+  highlight! GitGutterChangeDelete ctermfg=darkred guifg=darkred
+
+  highlight clear SignColumn
+  highlight GitGutterAdd ctermfg=green
+  highlight GitGutterChange ctermfg=yellow
+  highlight GitGutterDelete ctermfg=red
+  highlight GitGutterChangeDelete ctermfg=yellow
 
   " }}}
 
@@ -600,6 +488,9 @@ endfor
   let g:neomake_go_enabled_makers = ['go']
   let g:neomake_warning_sign = {'text': '? '}
   let g:neomake_error_sign = {'text': '! '}
+
+  hi NeomakeErrorSign ctermfg=red
+  hi NeomakeWarningSign ctermfg=yellow
 
 "  }}}
 
@@ -629,7 +520,7 @@ endfor
 
 " }}}
 
-" Goyo and Limelight ---------------------------------------------------{{{
+" Goyo and Limelight -------------------------------------------------------{{{
 
   let g:goyo_width = 120
   nnoremap <Leader>G :Goyo<CR>
@@ -638,95 +529,63 @@ endfor
 
 "  }}}
 
-" NERDTree ---------------------------------------------------{{{
+" NERDTree -----------------------------------------------------------------{{{
 
-  let g:NERDTreeMinimalUI = 1
-  let g:NERDTreeWinSize = 25
-  let g:NERDTreeCascadeOpenSingleChildDir = 1
-  let g:NERDTreeCascadeSingleChildDir = 0
-  let g:NERDTreeShowHidden = 1
-  let g:NERDTreeRespectWildIgnore = 0
-  let g:NERDTreeAutoDeleteBuffer = 0
-  let g:NERDTreeQuitOnOpen = 1
-  let g:NERDTreeHijackNetrw = 1
-  let g:NERDTreeBookmarksFile = $VARPATH.'/treemarks'
-  let NERDTreeIgnore = [
-   \ '\.git$', '\.hg$', '\.svn$', '\.stversions$', '\.pyc$', '\.svn$',
-   \ '\.DS_Store$', '\.sass-cache$', '__pycache__$', '\.egg-info$', '\.cache$'
-   \ ]
-  let g:NERDTreeMapOpenSplit = 'sv'
-  let g:NERDTreeMapOpenVSplit = 'sg'
-  let g:NERDTreeMapOpenInTab = 'st'
-  let g:NERDTreeMapOpenInTabSilent = 'sT'
-  let g:NERDTreeMapUpdirKeepOpen = '<BS>'
-  let g:NERDTreeMapOpenRecursively = 't'
-  let g:NERDTreeMapCloseChildren = 'T'
-  let g:NERDTreeMapToggleHidden = '.'
-
-  nnoremap <silent> <LocalLeader>e :<C-u>NERDTreeToggle<CR>
-  nnoremap <silent> <LocalLeader>a :<C-u>NERDTreeFind<CR>
-
-
-  let g:NERDTreeIndicatorMapCustom = {
-    \ 'Modified':  '·',
-    \ 'Staged':    '‧',
-    \ 'Untracked': '?',
-    \ 'Renamed':   '≫',
-    \ 'Unmerged':  '≠',
-    \ 'Deleted':   '✃',
-    \ 'Dirty':     '⁖',
-    \ 'Clean':     '✓',
-    \ 'Unknown':   '⁇'
-    \ }
-
-  let g:NERDTreeDirArrowExpandable = '▷'
-  let g:NERDTreeDirArrowCollapsible = '▼'
-
-  highlight! NERDTreeOpenable ctermfg=132 guifg=#B05E87
-  highlight! def link NERDTreeClosable NERDTreeOpenable
-
-  highlight! NERDTreeFile ctermfg=246 guifg=#999999
-  highlight! NERDTreeExecFile ctermfg=246 guifg=#999999
-
-  highlight! clear NERDTreeFlags
-  highlight! NERDTreeFlags ctermfg=234 guifg=#1d1f21
-  highlight! NERDTreeCWD ctermfg=240 guifg=#777777
-
-  highlight! NERDTreeGitStatusModified ctermfg=1 guifg=#D370A3
-  highlight! NERDTreeGitStatusStaged ctermfg=10 guifg=#A3D572
-  highlight! NERDTreeGitStatusUntracked ctermfg=12 guifg=#98CBFE
-
-  highlight! def link NERDTreeGitStatusRenamed Title
-  highlight! def link NERDTreeGitStatusUnmerged Label
-  highlight! def link NERDTreeGitStatusDirDirty Constant
-  highlight! def link NERDTreeGitStatusDirClean DiffAdd
-  highlight! def link NERDTreeGitStatusUnknown Comment
-
-  function! s:NERDTreeHighlight()
-    for l:name in keys(g:NERDTreeIndicatorMapCustom)
-    let l:icon = g:NERDTreeIndicatorMapCustom[l:name]
-    if empty(l:icon)
-      continue
-    endif
-    let l:prefix = index(['Dirty', 'Clean'], l:name) > -1 ? 'Dir' : ''
-    let l:hiname = escape('NERDTreeGitStatus'.l:prefix.l:name, '~')
-    execute 'syntax match '.l:hiname.' #'.l:icon.'# containedin=NERDTreeFlags'
-  endfor
-
-  syntax match hideBracketsInNerdTree "\]" contained conceal containedin=NERDTreeFlags
-  syntax match hideBracketsInNerdTree "\[" contained conceal containedin=NERDTreeFlags
-  endfunction
-
-  augroup nerdtree-highlights
-    autocmd!
-    autocmd FileType nerdtree call s:NERDTreeHighlight()
-  augroup END
-
+source ~/.config/nvim/ftplugin/nerdtree.vim
 
 "  }}}
 
-let g:EasyMotion_use_smartsign_us = 1
+" Easy Motion --------------------------------------------------------------{{{
 
+  let g:EasyMotion_use_smartsign_us = 1
+  let g:EasyMotion_do_mapping = 0
+  let g:EasyMotion_prompt = 'DAaaaaamn → → → '
+  nmap ss <Plug>(easymotion-s2)
+  nmap sd <Plug>(easymotion-s)
+  nmap sf <Plug>(easymotion-overwin-f)
+  map  sh <Plug>(easymotion-linebackward)
+  map  sl <Plug>(easymotion-lineforward)
+  map  s/ <Plug>(easymotion-sn)
+  omap s/ <Plug>(easymotion-tn)
+  map  sn <Plug>(easymotion-next)
+  map  sp <Plug>(easymotion-prev)
 
+" }}}
 
+function! Set_italics()
+  hi htmlArg gui=italic
+  hi Comment gui=italic
+  hi Type    gui=italic
+
+  hi htmlArg cterm=italic
+  hi Comment cterm=italic
+  hi Type    cterm=italic
+endfunction
+
+nnoremap <silent><Leader>b :<C-u>call <SID>toggle_background()<CR>
+
+function! s:toggle_background()
+  if ! exists('g:colors_name')
+    echomsg 'No colorscheme set'
+    return
+  endif
+  let l:scheme = g:colors_name
+
+  if l:scheme =~# 'dark' || l:scheme =~# 'light'
+    " Rotate between different theme backgrounds
+    execute 'colorscheme' (l:scheme =~# 'dark'
+          \ ? substitute(l:scheme, 'dark', 'light', '')
+          \ : substitute(l:scheme, 'light', 'dark', ''))
+  else
+    execute 'set background='.(&background ==# 'dark' ? 'light' : 'dark')
+    if ! exists('g:colors_name')
+      execute 'colorscheme' l:scheme
+      echomsg 'The colorscheme `'.l:scheme
+            \ .'` doesn''t have background variants!'
+    else
+      echo 'Set colorscheme to '.&background.' mode'
+    endif
+  endif
+  call Set_italics()
+endfunction
 

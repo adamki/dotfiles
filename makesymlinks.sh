@@ -17,7 +17,7 @@ dir=~/adams-dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old                   # old dotfiles backup directory
 neovimpath=~/.config/nvim
 alacrittypath=~/.config/alacritty
-files="config/nvim/init.vim config/alacritty/alacritty.yml zshrc tmux.conf tmuxlinesnapshot.conf"          # list of files/folders to symlink in homedir
+files="config/nvim/init.vim config/alacritty/alacritty.yml zshrc tmux.conf"          # list of files/folders to symlink in homedir
 # files="bashrc vimrc vim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
 
 
