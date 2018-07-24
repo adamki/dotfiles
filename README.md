@@ -6,7 +6,9 @@ This setup involves the following technologies:
 * tmux - https://github.com/tmux/tmux/wiki
 * Karabiner Elementts - https://github.com/tekezo/Karabiner-Elements
 * ZSH - https://github.com/robbyrussell/oh-my-zsh
-* Spectable - https://www.spectacleapp.com/
+* Spectacle - https://www.spectacleapp.com/
+* oh-my-zsh - https://github.com/varsitytutors/varsitytutors#getting-started
+* zsh-spaceship -  https://github.com/denysdovhan/spaceship-prompt#oh-my-zsh
 
 Lets get started with building my dev environment. This assums you are using Mac OS.
 ___
