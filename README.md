@@ -6,6 +6,7 @@ This setup involves the following technologies:
 * tmux - https://github.com/tmux/tmux/wiki
 * Karabiner Elementts - https://github.com/tekezo/Karabiner-Elements
 * ZSH - https://github.com/robbyrussell/oh-my-zsh
+* Spectable - https://www.spectacleapp.com/
 
 Lets get started with building my dev environment. This assums you are using Mac OS.
 ___
