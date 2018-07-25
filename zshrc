@@ -1,6 +1,13 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/A075140/.oh-my-zsh
 
+# setup NVM directory
+export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
+
+# load RBENV automatically
+eval "$(rbenv init -)"
+
 ZSH_THEME="spaceship"
 HYPHEN_INSENSITIVE="true"
 
