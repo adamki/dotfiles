@@ -47,7 +47,12 @@ This script executes the following:
     * `~/.tmuxlinesnapshot.conf` -> `/Users/A075140/adams-dotfiles/tmuxlinesnapshot.conf`
     * `~/aliases` -> `/Users/A075140/adams-dotfiles/aliases`
 
-It is now recommended that you restart your terminal completely
+It is now recommended that you restart your terminal completely.
+
+Opening NVIM for the first time.... recommended steps:
+* `:PlugInstall`
+* `:CheckHealth`
+
 
 ___
 
