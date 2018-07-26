@@ -7,26 +7,19 @@
 * Spectacle window mgmt - https://www.spectacleapp.com/
 * Karabiner keybind Util - https://pqrs.org/osx/karabiner/
 * Slack - https://itunes.apple.com/us/app/slack/id803453959?mt=12
+* MailSpring - https://getmailspring.com/download
+* Spotify - https://www.spotify.com/us/download/other/
 
 This setup involves the following technologies:
-* Alacritty - https://github.com/jwilm/alacritty
+* Alacritty - https://github.com/jwilm/alacritty#manual-installation
 * neovim - https://neovim.io/
 * tmux - https://github.com/tmux/tmux/wiki
 * ZSH - https://github.com/robbyrussell/oh-my-zsh
 * oh-my-zsh - https://github.com/varsitytutors/varsitytutors#getting-started
 * zsh-spaceship -  https://github.com/denysdovhan/spaceship-prompt#oh-my-zsh
+* Homebrew - https://brew.sh/
 
 Lets get started with building my dev environment. This assums you are using Mac OS.
-___
-
-##### Brew
-Brew manages packages for Mac OS users. Installation instructions here: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-##### Alacritty
-Alacritty claims to be the fastest terminal emulator. It prioritizes simplicity over being a feature rich terminal such as iTerm 2.
-
-Installation is outlined here: https://github.com/jwilm/alacritty#manual-installation
-
 ___
 
 ##### cloning down the dot files
@@ -35,8 +28,9 @@ ___
 * You should have True colors enabled in your terminal
 * tmux should be installed (brew install tmux)
 
-Ok, now lets gets started
+Ok, now lets gets started: 
 
+###### Step 1:
 * `git clone git@github.com:adamki/adams-dotfiles.git`
 *  `cd adams-dotfiles`
 *  `chmod +x makesymlinks.sh`
@@ -55,6 +49,7 @@ This script executes the following:
 
 It is now recommended that you restart your terminal completely.
 
+###### Step 2: 
 Opening NVIM for the first time.... recommended steps:
 * `:PlugInstall`
 * `:CheckHealth`
