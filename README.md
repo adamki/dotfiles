@@ -1,12 +1,18 @@
 ### These are my Dotfiles.
 
+##### General tools used:
+* Karabiner Elementts - https://github.com/tekezo/Karabiner-Elements
+* Brave Browser - https://brave.com/download/
+* Chrome Browser - https://www.google.com/chrome/?brand=CHBD&gclid=EAIaIQobChMI-oz-jN693AIVEYTICh3DuQh9EAAYASAAEgJy2vD_BwE&gclsrc=aw.ds&dclid=CLGSo5nevdwCFZEofwod0pEJAQ
+* Spectacle window mgmt - https://www.spectacleapp.com/
+* Karabiner keybind Util - https://pqrs.org/osx/karabiner/
+* Slack - https://itunes.apple.com/us/app/slack/id803453959?mt=12
+
 This setup involves the following technologies:
 * Alacritty - https://github.com/jwilm/alacritty
 * neovim - https://neovim.io/
 * tmux - https://github.com/tmux/tmux/wiki
-* Karabiner Elementts - https://github.com/tekezo/Karabiner-Elements
 * ZSH - https://github.com/robbyrussell/oh-my-zsh
-* Spectacle - https://www.spectacleapp.com/
 * oh-my-zsh - https://github.com/varsitytutors/varsitytutors#getting-started
 * zsh-spaceship -  https://github.com/denysdovhan/spaceship-prompt#oh-my-zsh
 
