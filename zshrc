@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/A075140/.oh-my-zsh
+export ZSH=/Users/$USER/.oh-my-zsh
 
 # setup NVM directory
 export NVM_DIR="$HOME/.nvm"
