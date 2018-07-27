@@ -11,7 +11,6 @@
 # 3.  ./makesymlinks.sh
 ################################################################################
 
-
 ########## Variables
 dir=~/adams-dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old                   # old dotfiles backup directory
