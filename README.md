@@ -33,9 +33,9 @@ You'll most likely need the following dependencies:
 * `brew install nvm`
 * `brew install npm`
 
-Ok, now lets gets started: 
+Ok, now lets gets started:
 
-###### Step 1:
+##### Step 1:
 * `git clone git@github.com:adamki/adams-dotfiles.git`
 *  `cd adams-dotfiles`
 *  `chmod +x makesymlinks.sh`
@@ -54,11 +54,11 @@ This script executes the following:
 
 It is now recommended that you restart your terminal completely.
 
-###### Step 2: 
+##### Step 2:
 Opening NVIM for the first time.
 
 Before opening Neovim... might as well avoid some errors and do the following:
-* Install Plug Manager: 
+* Install Plug Manager:
   ```
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
