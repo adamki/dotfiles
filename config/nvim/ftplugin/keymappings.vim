@@ -7,8 +7,8 @@
   nnoremap <Leader>q :q<CR>
   nnoremap <Leader>Q :q!<CR>
   nnoremap <Leader>x :x<CR>
-  " reload nvimrc from soource
-  nnoremap <Leader>r :so ~/.config/nvim_adam/init.vim<CR>
+  " reload nvimrc from source
+  nnoremap <Leader>r :so ~/.config/nvim/init.vim<CR>
   " copy current file path
   nmap cp :let @+= expand("%") <cr>
   " bind Search/Replace to Leader
