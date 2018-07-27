@@ -11,13 +11,13 @@
 * Spotify - https://www.spotify.com/us/download/other/
 
 This setup involves the following technologies:
+* Homebrew - https://brew.sh/
 * Alacritty - https://github.com/jwilm/alacritty#manual-installation
 * neovim - https://neovim.io/
 * tmux - https://github.com/tmux/tmux/wiki
 * ZSH - https://github.com/robbyrussell/oh-my-zsh
 * oh-my-zsh - https://github.com/varsitytutors/varsitytutors#getting-started
 * zsh-spaceship -  https://github.com/denysdovhan/spaceship-prompt#oh-my-zsh
-* Homebrew - https://brew.sh/
 
 Lets get started with building my dev environment. This assums you are using Mac OS.
 ___
