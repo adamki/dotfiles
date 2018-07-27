@@ -16,8 +16,8 @@
 dir=~/adams-dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old                   # old dotfiles backup directory
 neovimpath=~/.config/nvim
-alacrittypath=~/.config/alacritty
-files="config/nvim/init.vim config/alacritty/alacritty.yml zshrc tmux.conf"          # list of files/folders to symlink in homedir
+ftpluginpath=~/.config/nvim/ftplugin
+files="config/nvim/init.vim config/nvim/ftplugin/nerdtree.vim config/nvim/ftplugin/system.vim config/nvim/ftplugin/keymappings.vim config/nvim/ftplugin/aesthetic.vim zshrc tmux.conf"          # list of files/folders to symlink in homedir 
 # files="bashrc vimrc vim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
 
 
@@ -26,9 +26,9 @@ printf "Creating needed dir path for Neovim install...................done"
 mkdir -p $neovimpath
 printf "\n\n\n"
 
-# Set up NVIM path
-printf "Creating needed dir path for Alacritty install................done"
-mkdir -p $alacrittypath
+# Set up ftplugin path
+printf "Creating needed dir path for nvim/ftplugin install................done"
+mkdir -p $ftpluginpath
 printf "\n\n\n"
 
 # create dotfiles_old in homedir
