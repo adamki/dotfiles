@@ -31,6 +31,7 @@ ___
 You'll most likely need the following dependencies:
 * `brew install rbenv`
 * `brew install nvm`
+* `brew install npm`
 
 Ok, now lets gets started: 
 
@@ -62,14 +63,11 @@ Before opening Neovim... might as well avoid some errors and do the following:
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   ```
-* ===============================
-
-
+___
+You'll want to run both of these `neovim` commands. `PlugInstall` will remove and plug errors. However... youll likely run into issues with `pip2`, `pip3`, and `python-provider` issues as various `neovim` plugin rely on them. Now is a good time to resolve those.
 
 * `:PlugInstall`
 * `:CheckHealth`
-
-
 ___
 
 ### Enable True Colors
