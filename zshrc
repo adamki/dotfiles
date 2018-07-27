@@ -14,7 +14,6 @@ HYPHEN_INSENSITIVE="true"
 plugins=(osx node)
 
 # User configuration
-
 export MANPATH="/usr/local/man:$MANPATH"
 export PATH="/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
 
