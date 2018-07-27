@@ -27,7 +27,6 @@ ___
 *__ATTN__* Before proceedng, you should have the following dependencies resolved:
 * Operator Mono (Light, Book, & Light Italic) should be stored in your Mac OS FontBook
 * You should have True colors enabled in your terminal
-* tmux should be installed (brew install tmux)
 
 Ok, now lets gets started: 
 
