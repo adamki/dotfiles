@@ -28,6 +28,10 @@ ___
 * Operator Mono (Light, Book, & Light Italic) should be stored in your Mac OS FontBook
 * You should have True colors enabled in your terminal
 
+You'll most likely need the following dependencies:
+* `brew install rbenv`
+* `brew install nvm`
+
 Ok, now lets gets started: 
 
 ###### Step 1:
@@ -50,21 +54,22 @@ This script executes the following:
 It is now recommended that you restart your terminal completely.
 
 ###### Step 2: 
-Opening NVIM for the first time.... recommended steps:
+Opening NVIM for the first time.
+
+Before opening Neovim... might as well avoid some errors and do the following:
+* Install Plug Manager: 
+  ```
+  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  ```
+* ===============================
+
+
+
 * `:PlugInstall`
 * `:CheckHealth`
 
 
-___
-
-
-##### Plug manager
-I use `Plug` to manage vim dependencies. Be sure to install it first
-
-```
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
 ___
 
 ### Enable True Colors
