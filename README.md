@@ -13,6 +13,7 @@
 This setup involves the following technologies:
 * Homebrew - https://brew.sh/
 * Alacritty - https://github.com/jwilm/alacritty#manual-installation
+* iTerm 2 - https://www.iterm2.com/downloads.html
 * neovim - https://neovim.io/
 * tmux - https://github.com/tmux/tmux/wiki
 * ZSH - https://github.com/robbyrussell/oh-my-zsh
