@@ -10,17 +10,25 @@
 # 2.  chmod +x makesymlinks.sh
 # 3.  ./makesymlinks.sh
 ################################################################################
+
 ########## Variables
 dir=~/adams-dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old                   # old dotfiles backup directory
 neovimpath=~/.config/nvim
 ftpluginpath=~/.config/nvim/ftplugin
+alacrittypath=~/.config/alacritty
+
 files="config/nvim/init.vim config/nvim/ftplugin/nerdtree.vim config/nvim/ftplugin/system.vim config/nvim/ftplugin/keymappings.vim config/nvim/ftplugin/aesthetic.vim zshrc tmux.conf"          # list of files/folders to symlink in homedir
-# files="bashrc vimrc vim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
+files="bashrc vimrc vim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
 
 # Set up NVIM path
 printf "Creating needed dir path for Neovim install...................done"
 mkdir -p $neovimpath
+printf "\n\n\n"
+
+# Set up ftplugin path
+printf "Creating needed dir path for alacritty install................done"
+mkdir -p $alacrittypath
 printf "\n\n\n"
 
 # Set up ftplugin path

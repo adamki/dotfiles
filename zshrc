@@ -5,9 +5,6 @@ export ZSH=/Users/$USER/.oh-my-zsh
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
 
-# load RBENV automatically
-eval "$(rbenv init -)"
-
 ZSH_THEME="spaceship"
 HYPHEN_INSENSITIVE="true"
 
@@ -15,7 +12,7 @@ plugins=(osx node)
 
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
-export PATH="/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
+export PATH="$PATH:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
 
 # put rustup and cargo in runtime path
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -53,3 +50,6 @@ function weather() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# load RBENV automatically
+eval "$(rbenv init -)"

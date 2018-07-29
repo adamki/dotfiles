@@ -165,6 +165,7 @@ source ~/.config/nvim/ftplugin/keymappings.vim
 " }}}
 
 " Vim-Devicons -------------------------------------------------------------{{{
+
   " after a re-source, fix syntax matching issues (concealing brackets):
   if exists('g:loaded_webdevicons')
       call webdevicons#refresh()
@@ -588,4 +589,6 @@ function! s:toggle_background()
   endif
   call Set_italics()
 endfunction
+
+call Set_italics()
 
