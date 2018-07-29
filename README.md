@@ -100,6 +100,3 @@ xterm-256color-italic|xterm with 256 colors and italic,
 * if you using iTerm, enable the new `.terminfo` file by profiles > terminal > Report Terminal Type = xterm-256color-italic
 * if you are using Alacritty, enable the new `.terminfo` file by changing the value found at env > TERM
 
-
-
-
