@@ -7,7 +7,6 @@
   let g:enable_italic_font = 1                    " Make sure to italicize
   " let g:indentLine_char = '| '                  " line indent icon
   " highlight LineNr ctermfg=grey ctermbg=white
-  set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
 
   let g:tmuxline_preset = {
       \'a'    : '#S',
