@@ -5,6 +5,7 @@ export ZSH=/Users/$USER/.oh-my-zsh
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 ZSH_THEME="spaceship"
 HYPHEN_INSENSITIVE="true"
 
@@ -48,8 +49,6 @@ export HISTCONTROL=erasedups
 function weather() {
   curl -4 http://wttr.in/$1
 }
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # load RBENV automatically
 eval "$(rbenv init -)"
