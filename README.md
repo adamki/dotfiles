@@ -32,6 +32,8 @@ You'll most likely need the following dependencies:
 * `brew install rbenv`
 * `brew install nvm`
 * `brew install npm`
+* `brew install ripgrep`
+* `brew install the_silver_searcher`
 
 Ok, now lets gets started:
 

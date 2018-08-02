@@ -1,10 +1,8 @@
 syntax on                                       " enable syntax
 set background=dark                             " must go before :colorscheme
 let g:nord_comment_brightness = 20              " bright comments. (1 - 20)
-colorscheme nova                     " must go after set bg
+colorscheme two-firewatch                       " must go after set bg
 let g:enable_italic_font = 1                    " Make sure to italicize
-" let g:indentLine_char = '| '                  " line indent icon
-" highlight LineNr ctermfg=grey ctermbg=white
 
 let g:tmuxline_preset = {
       \'a'    : '#S',

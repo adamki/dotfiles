@@ -66,8 +66,6 @@
   Plug 'neomake/neomake'
   Plug 'benjie/neomake-local-eslint.vim'
   Plug 'jaawerth/neomake-local-eslint-first'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
   Plug 'alvan/vim-closetag'
   Plug 'rking/ag.vim'
 
@@ -225,7 +223,6 @@
 
     " Setup ignore patterns in your .agignore file!
     " https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
-
     call denite#custom#var('grep', 'command', ['ag'])
     call denite#custom#var('grep', 'recursive_opts', [])
     call denite#custom#var('grep', 'pattern_opt', [])
@@ -233,17 +230,6 @@
     call denite#custom#var('grep', 'final_opts', [])
     call denite#custom#var('grep', 'default_opts',
           \ [ '--skip-vcs-ignores', '--vimgrep', '--smart-case', '--hidden' ])
-
-  elseif executable('ack')
-    " Ack command
-    call denite#custom#var('grep', 'command', ['ack'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', ['--match'])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-    call denite#custom#var('grep', 'default_opts',
-         \ ['--ackrc', $HOME.'/.config/ackrc', '-H',
-         \ '--nopager', '--nocolor', '--nogroup', '--column'])
   endif
 
   " KEY MAPPINGS

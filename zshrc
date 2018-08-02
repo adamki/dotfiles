@@ -5,11 +5,13 @@ export ZSH=/Users/$USER/.oh-my-zsh
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 ZSH_THEME="spaceship"
 HYPHEN_INSENSITIVE="true"
 
-plugins=(osx node)
+plugins=(
+  osx
+  node
+)
 
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
@@ -49,6 +51,10 @@ export HISTCONTROL=erasedups
 function weather() {
   curl -4 http://wttr.in/$1
 }
+
+# tell FZF to use ripgrep
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 # load RBENV automatically
 eval "$(rbenv init -)"
