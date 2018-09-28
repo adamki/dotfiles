@@ -1,39 +1,44 @@
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/$USER/.oh-my-zsh
-
-# setup NVM directory
-export NVM_DIR="$HOME/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
-
-ZSH_THEME="spaceship"
-HYPHEN_INSENSITIVE="true"
-
-plugins=(
-  osx
-  node
-)
-
+# setup path to antigen ZSH pachage manager
+source /usr/local/share/antigen/antigen.zsh
+# set path
+export PATH="/usr/local/bin:$PATH"
+# set up GoLang
+export PATH="$PATH:$GOPATH/bin"
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
 export PATH="$PATH:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
-
 # put rustup and cargo in runtime path
 export PATH="$HOME/.cargo/bin:$PATH"
 export DOTFILES="/Users/$USER/adams-dotfiles"
 
-source $ZSH/oh-my-zsh.sh
 source $DOTFILES/aliases
 source $DOTFILES/custom-spaceship-prompt
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle heroku
+antigen bundle pip
+antigen bundle lein
+antigen bundle command-not-found
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
+
+# Tell Antigen that you're done.
+antigen apply
 
 # make vim defaut editor
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # Store 10,000 history entries
-export HISTSIZE=10000
+export HISTSIZE=12000
 # Don't store duplicates
 export HISTCONTROL=erasedups
 
@@ -48,13 +53,22 @@ export HISTCONTROL=erasedups
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-function weather() {
-  curl -4 http://wttr.in/$1
-}
-
 # tell FZF to use ripgrep
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+
+
+# handles TMUX pathing issue(s):
+# https://github.com/creationix/nvm/issues/1880
+if [ -f /etc/profile ]; then
+  PATH=""
+  source /etc/profile
+fi
+
+# setup nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # load RBENV automatically
 eval "$(rbenv init -)"
