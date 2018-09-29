@@ -4,7 +4,7 @@
 * Karabiner Elementts - https://github.com/tekezo/Karabiner-Elements
 * Brave Browser - https://brave.com/download/
 * Chrome Browser - https://www.google.com/chrome/?brand=CHBD&gclid=EAIaIQobChMI-oz-jN693AIVEYTICh3DuQh9EAAYASAAEgJy2vD_BwE&gclsrc=aw.ds&dclid=CLGSo5nevdwCFZEofwod0pEJAQ
-* Spectacle window mgmt - https://www.spectacleapp.com/
+* Spectacle Window Tiler - https://www.spectacleapp.com/
 * Karabiner keybind Util - https://pqrs.org/osx/karabiner/
 * Slack - https://itunes.apple.com/us/app/slack/id803453959?mt=12
 * MailSpring - https://getmailspring.com/download
@@ -17,7 +17,7 @@ This setup involves the following technologies:
 * neovim - https://neovim.io/
 * tmux - https://github.com/tmux/tmux/wiki
 * ZSH - https://github.com/robbyrussell/oh-my-zsh
-* oh-my-zsh -https://github.com/robbyrussell/oh-my-zsh#basic-installation
+* Antigen for ZSH- https://github.com/zsh-users/antigen
 * zsh-spaceship -  https://github.com/denysdovhan/spaceship-prompt#oh-my-zsh
 
 Lets get started with building my dev environment. This assums you are using Mac OS.

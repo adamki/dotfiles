@@ -17,17 +17,14 @@
   " appearance - search - syntax - italix
 
   " colors
-  Plug 'chriskempson/base16-vim'
-  Plug 'arcticicestudio/nord-vim'
   Plug 'rafi/awesome-vim-colorschemes'
   Plug 'trevordmiller/nova-vim'
-  Plug 'zeis/vim-kolor'
 
   " syntax
-  Plug 'sheerun/vim-polyglot'
   " Plug 'othree/yajs'
   " Plug 'othree/es.next.syntax.vim'
   " Plug 'jelera/vim-javascript-syntax'
+  Plug 'sheerun/vim-polyglot'
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'
   Plug 'elzr/vim-json'
@@ -71,7 +68,6 @@
 
   "
   Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
-  Plug 'junegunn/limelight.vim', {'on': 'Goyo'}
   Plug 'terryma/vim-expand-region'
   Plug 'nathanaelkane/vim-indent-guides'
 
@@ -100,7 +96,7 @@
 
 " Airline/TABS Config-------------------------------------------------------{{{
 
-  let g:airline_theme='nova'
+  let g:airline_theme='twofirewatch'
   " allow TAB to toggle tabs
   nmap <Tab> <C-w>w
   nmap <S-Tab> <C-w>W
@@ -487,16 +483,15 @@
 
   let g:goyo_width = 120
   nnoremap <Leader>G :Goyo<CR>
-  autocmd! User GoyoEnter Limelight
-  autocmd! User GoyoLeave Limelight!
 
 "  }}}
 
 " Easy Motion --------------------------------------------------------------{{{
 
+  let g:EasyMotion_smartcase = 1
   let g:EasyMotion_use_smartsign_us = 1
   let g:EasyMotion_do_mapping = 0
-  let g:EasyMotion_prompt = 'DAaaaaamn → → → '
+  let g:EasyMotion_prompt = '→ → →'
   nmap ss <Plug>(easymotion-s2)
   nmap sd <Plug>(easymotion-s)
   nmap sf <Plug>(easymotion-overwin-f)
@@ -551,5 +546,3 @@
   call Set_italics()
 
 " }}}
-
-
