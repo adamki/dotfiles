@@ -212,22 +212,14 @@
         \ 'buffer,file_mru,file_old',
         \ 'converters', ['converter_relative_word'])
 
-  " FIND and GREP COMMANDS
-  if executable('ag')
-    " The Silver Searcher
-    call denite#custom#var('file_rec', 'command',
-          \ ['ag', '-U', '--hidden', '--follow', '--nocolor', '--nogroup', '-g', ''])
-
-    " Setup ignore patterns in your .agignore file!
-    " https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
-    call denite#custom#var('grep', 'command', ['ag'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', [])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-    call denite#custom#var('grep', 'default_opts',
-          \ [ '--skip-vcs-ignores', '--vimgrep', '--smart-case', '--hidden' ])
-  endif
+  " Ripgrep command on grep source
+  call denite#custom#var('grep', 'command', ['rg'])
+  call denite#custom#var('grep', 'default_opts',
+        \ ['--vimgrep', '--no-heading'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'final_opts', [])
 
   " KEY MAPPINGS
   let insert_mode_mappings = [
