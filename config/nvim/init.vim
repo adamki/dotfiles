@@ -514,6 +514,7 @@
     hi htmlArg cterm=italic
     hi Comment cterm=italic
     hi Type    cterm=italic
+
   endfunction
 
   nnoremap <silent><Leader>b :<C-u>call <SID>toggle_background()<CR>
