@@ -35,6 +35,7 @@
 
   " improve Vim interface
   Plug 'rhysd/accelerated-jk'
+  Plug 'szw/vim-maximizer'
 
   " vim extensions
   Plug 'jiangmiao/auto-pairs'
@@ -66,8 +67,7 @@
   Plug 'alvan/vim-closetag'
   Plug 'rking/ag.vim'
 
-  "
-  Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
+  " MISC
   Plug 'terryma/vim-expand-region'
   Plug 'nathanaelkane/vim-indent-guides'
 
@@ -96,7 +96,8 @@
 
 " Airline/TABS Config-------------------------------------------------------{{{
 
-  let g:airline_theme='twofirewatch'
+  let g:airline_theme='onedark'
+
   " allow TAB to toggle tabs
   nmap <Tab> <C-w>w
   nmap <S-Tab> <C-w>W
@@ -341,7 +342,6 @@
    " deoplete tab-complete
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-  " tern
   " jump to definition
   autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR> let g:tern#is_show_argument_hints_enabled = 1
   " jump to definition in new buffer
@@ -479,10 +479,9 @@
 
 " }}}
 
-" Goyo and Limelight -------------------------------------------------------{{{
+" Maximizer -------------------------------------------------------{{{
 
-  let g:goyo_width = 120
-  nnoremap <Leader>G :Goyo<CR>
+  nnoremap <Leader><Space> :MaximizerToggle!<CR>
 
 "  }}}
 
@@ -507,6 +506,7 @@
 " Set_italics function ----------------------------------------------------{{{
 
   function! Set_italics()
+
     hi htmlArg gui=italic
     hi Comment gui=italic
     hi Type    gui=italic
