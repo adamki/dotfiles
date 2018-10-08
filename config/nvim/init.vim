@@ -55,9 +55,11 @@
   Plug 'airblade/vim-gitgutter'
   Plug 'shime/vim-livedown'
   Plug 'easymotion/vim-easymotion'
+  Plug 'junegunn/fzf.vim'
 
   " IDE level enhancements
   Plug 'shougo/denite.nvim'
+  Plug 'chemzqm/denite-git'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
@@ -311,8 +313,8 @@
   " custom omni source markers
   call deoplete#custom#source('buffer', 'mark', 'ℬ')
   call deoplete#custom#source('ternjs', 'mark', '')
-  call deoplete#custom#source('omni', 'mark', '⌾')
-  call deoplete#custom#source('file', 'mark', 'file')
+  call deoplete#custom#source('omni',   'mark', '⌾')
+  call deoplete#custom#source('file',   'mark', 'file')
 
   " let carlitux Use deoplete.
   let g:tern_request_timeout = 1
@@ -327,6 +329,7 @@
                   \ 'javascript.jsx',
                   \ 'vue'
                   \ ]
+
   " Use tern_for_vim.
   let g:tern#command = ["tern"]
   let g:tern#arguments = ["--persistent"]
@@ -539,3 +542,13 @@
   call Set_italics()
 
 " }}}
+
+" IndentGuides -------------------------------------------------------------{{{
+
+  let g:indent_guides_color_change_percent = 3
+  let g:indent_guides_guide_size = 1
+  let g:indent_guides_start_level = 2
+  let g:indent_guides_enable_on_vim_startup = 1
+
+"  }}}
+
