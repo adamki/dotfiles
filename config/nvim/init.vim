@@ -35,41 +35,39 @@
 
   " improve Vim interface
   Plug 'rhysd/accelerated-jk'
-  Plug 'szw/vim-maximizer'
-
-  " vim extensions
+  Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
+  Plug 'terryma/vim-expand-region'
+  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'alvan/vim-closetag'
   Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-fugitive'
   Plug 'vim-airline/vim-airline'
-  Plug 'mhinz/vim-sayonara'
-  Plug 'jreybert/vimagit', {'on': ['Magit', 'MagitOnly']}
+  Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'ryanoasis/vim-devicons'
   Plug 'tomtom/tcomment_vim'
-  Plug 'tpope/vim-markdown', {'for': 'markdown'}
   Plug 'christoomey/vim-tmux-navigator'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'shime/vim-livedown', {'for': 'markdown'}
+  Plug 'easymotion/vim-easymotion'
+
+  " vim extensions
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'jreybert/vimagit', {'on': ['Magit', 'MagitOnly']}
+  Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-eunuch'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'shime/vim-livedown'
-  Plug 'easymotion/vim-easymotion'
+  Plug 'junegunn/fzf.vim'
 
   " IDE level enhancements
   Plug 'shougo/denite.nvim'
+  Plug 'chemzqm/denite-git'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'neomake/neomake'
   Plug 'benjie/neomake-local-eslint.vim'
-  Plug 'jaawerth/neomake-local-eslint-first'
-  Plug 'alvan/vim-closetag'
-  Plug 'rking/ag.vim'
-
-  " MISC
-  Plug 'terryma/vim-expand-region'
-  Plug 'nathanaelkane/vim-indent-guides'
+  " Plug 'jaawerth/neomake-local-eslint-first'
 
   call plug#end()
 
@@ -202,32 +200,20 @@
     \ 'matchers', ['matcher_cpsm', 'matcher_fuzzy'])
   endif
 
-  " SORTERS
-  " Default is 'sorter_rank'
-  call denite#custom#source('z', 'sorters', ['sorter_z'])
-
   " CONVERTERS
   " Default is none
   call denite#custom#source(
         \ 'buffer,file_mru,file_old',
         \ 'converters', ['converter_relative_word'])
 
-  " FIND and GREP COMMANDS
-  if executable('ag')
-    " The Silver Searcher
-    call denite#custom#var('file_rec', 'command',
-          \ ['ag', '-U', '--hidden', '--follow', '--nocolor', '--nogroup', '-g', ''])
-
-    " Setup ignore patterns in your .agignore file!
-    " https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
-    call denite#custom#var('grep', 'command', ['ag'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', [])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-    call denite#custom#var('grep', 'default_opts',
-          \ [ '--skip-vcs-ignores', '--vimgrep', '--smart-case', '--hidden' ])
-  endif
+  " Ripgrep command on grep source
+  call denite#custom#var('grep', 'command', ['rg'])
+  call denite#custom#var('grep', 'default_opts',
+        \ ['--vimgrep', '--no-heading'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'final_opts', [])
 
   " KEY MAPPINGS
   let insert_mode_mappings = [
@@ -278,10 +264,10 @@
   nnoremap <silent><expr> <LocalLeader>p  &filetype == 'help' ?
         \ ":\<C-u>pop\<CR>" : ":\<C-u>Denite -mode=normal jump\<CR>"
   nnoremap <silent><LocalLeader>h :<C-u>Denite help<CR>
-  "  nnoremap <silent><LocalLeader>m :<C-u>Denite mpc -buffer-name=mpc<CR>
+  " nnoremap <silent><LocalLeader>m :<C-u>Denite mpc -buffer-name=mpc<CR>
   nnoremap <silent><LocalLeader>/ :<C-u>Denite line<CR>
   nnoremap <silent><LocalLeader>* :<C-u>DeniteCursorWord line<CR>
-  nnoremap <silent><LocalLeader>z :<C-u>Denite z<CR>
+  " nnoremap <silent><LocalLeader>z :<C-u>Denite z<CR>
   nnoremap <silent><LocalLeader>; :<C-u>Denite command command_history<CR>
 
   " chemzqm/denite-git
@@ -319,8 +305,8 @@
   " custom omni source markers
   call deoplete#custom#source('buffer', 'mark', 'ℬ')
   call deoplete#custom#source('ternjs', 'mark', '')
-  call deoplete#custom#source('omni', 'mark', '⌾')
-  call deoplete#custom#source('file', 'mark', 'file')
+  call deoplete#custom#source('omni',   'mark', '⌾')
+  call deoplete#custom#source('file',   'mark', 'file')
 
   " let carlitux Use deoplete.
   let g:tern_request_timeout = 1
@@ -335,6 +321,7 @@
                   \ 'javascript.jsx',
                   \ 'vue'
                   \ ]
+
   " Use tern_for_vim.
   let g:tern#command = ["tern"]
   let g:tern#arguments = ["--persistent"]
@@ -479,7 +466,7 @@
 
 " }}}
 
-" Maximizer -------------------------------------------------------{{{
+" Maximizer ----------------------------------------------------------------{{{
 
   nnoremap <Leader><Space> :MaximizerToggle!<CR>
 
@@ -503,7 +490,7 @@
 
 " }}}
 
-" Set_italics function ----------------------------------------------------{{{
+" Set_italics function -----------------------------------------------------{{{
 
   function! Set_italics()
 
@@ -547,3 +534,19 @@
   call Set_italics()
 
 " }}}
+
+" IndentGuides -------------------------------------------------------------{{{
+
+  let g:indent_guides_color_change_percent = 3
+  let g:indent_guides_guide_size = 1
+  let g:indent_guides_start_level = 2
+  let g:indent_guides_enable_on_vim_startup = 1
+
+"  }}}
+
+" fzf (https://github.com/junegunn/fzf#as-vim-plugin)-----------------------{{{
+
+  set rtp+=/usr/local/opt/fzf
+
+"  }}}
+
