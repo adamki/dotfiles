@@ -53,9 +53,11 @@ export HISTCONTROL=erasedups
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+# enable FZF fuzzy find and auto-complete
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # tell FZF to use ripgrep
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
 
 
 # handles TMUX pathing issue(s):
@@ -70,5 +72,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# load RBENV automatically
+# setup RBENV
 eval "$(rbenv init -)"

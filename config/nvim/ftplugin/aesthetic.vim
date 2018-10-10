@@ -5,8 +5,8 @@ colo hybrid                                     " must go after set bg
 let g:enable_italic_font = 1                    " Make sure to italicize
 
 " transparent guiBG
-" hi! Normal ctermbg=NONE guibg=NONE
-" hi! Nontext ctermbg=NONE guibg=NONE
+hi! Normal ctermbg=NONE guibg=NONE
+hi! Nontext ctermbg=NONE guibg=NONE
 
 let g:tmuxline_preset = {
       \'a'    : '#S',
