@@ -19,6 +19,7 @@
   " colors
   Plug 'rafi/awesome-vim-colorschemes'
   Plug 'trevordmiller/nova-vim'
+  Plug 'chriskempson/base16-vim'
 
   " syntax
   " Plug 'othree/yajs'
@@ -67,7 +68,7 @@
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'neomake/neomake'
   Plug 'benjie/neomake-local-eslint.vim'
-  " Plug 'jaawerth/neomake-local-eslint-first'
+  Plug 'jaawerth/neomake-local-eslint-first'
 
   call plug#end()
 
@@ -246,26 +247,25 @@
     call denite#custom#map('normal', m[0], m[1], m[2])
   endfor
 
-  nnoremap <silent><LocalLeader>r :<C-u>Denite -resume -refresh<CR>
-  nnoremap <silent><LocalLeader>f :<C-u>Denite file_rec<CR>
-  nnoremap <silent><LocalLeader>b :<C-u>Denite buffer file_old -default-action=switch<CR>
-  nnoremap <silent><LocalLeader>d :<C-u>Denite directory_rec -default-action=cd<CR>
-  nnoremap <silent><LocalLeader>v :<C-u>Denite register -buffer-name=register<CR>
-  xnoremap <silent><LocalLeader>v :<C-u>Denite register -buffer-name=register -default-action=replace<CR>
-  nnoremap <silent><LocalLeader>l :<C-u>Denite location_list -buffer-name=list<CR>
-  nnoremap <silent><LocalLeader>q :<C-u>Denite quickfix -buffer-name=list<CR>
-  nnoremap <silent><LocalLeader>g :<C-u>Denite grep<CR>
-  nnoremap <silent><LocalLeader>j :<C-u>Denite jump change file_point<CR>
-  nnoremap <silent><LocalLeader>o :<C-u>Denite outline<CR>
-  nnoremap <silent><LocalLeader>s :<C-u>Denite session -buffer-name=list<CR>
-  nnoremap <silent><expr> <LocalLeader>t &filetype == 'help' ? "g\<C-]>" :
+  nnoremap <silent><LocalLeader>;r :<C-u>Denite -resume -refresh<CR>
+  nnoremap <silent><LocalLeader>;f :<C-u>Denite file_rec<CR>
+  nnoremap <silent><LocalLeader>;b :<C-u>Denite buffer file_old -default-action=switch<CR>
+  nnoremap <silent><LocalLeader>;d :<C-u>Denite directory_rec -default-action=cd<CR>
+  xnoremap <silent><LocalLeader>;v :<C-u>Denite register -buffer-name=register -default-action=replace<CR>
+  " nnoremap <silent><LocalLeader>;l :<C-u>Denite location_list -buffer-name=list<CR>
+  " nnoremap <silent><LocalLeader>;q :<C-u>Denite quickfix -buffer-name=list<CR>
+  nnoremap <silent><LocalLeader>;g :<C-u>Denite grep<CR>
+  nnoremap <silent><LocalLeader>;j :<C-u>Denite jump change file_point<CR>
+  nnoremap <silent><LocalLeader>;o :<C-u>Denite outline<CR>
+  nnoremap <silent><LocalLeader>;s :<C-u>Denite session -buffer-name=list<CR>
+  nnoremap <silent><expr> <LocalLeader>;t &filetype == 'help' ? "g\<C-]>" :
         \ ":\<C-u>DeniteCursorWord -buffer-name=tag
         \  tag:include\<CR>"
-  nnoremap <silent><expr> <LocalLeader>p  &filetype == 'help' ?
+  nnoremap <silent><expr> <LocalLeader>;p  &filetype == 'help' ?
         \ ":\<C-u>pop\<CR>" : ":\<C-u>Denite -mode=normal jump\<CR>"
-  nnoremap <silent><LocalLeader>h :<C-u>Denite help<CR>
+  nnoremap <silent><LocalLeader>;h :<C-u>Denite help<CR>
   " nnoremap <silent><LocalLeader>m :<C-u>Denite mpc -buffer-name=mpc<CR>
-  nnoremap <silent><LocalLeader>/ :<C-u>Denite line<CR>
+  nnoremap <silent><LocalLeader>;/ :<C-u>Denite line<CR>
   nnoremap <silent><LocalLeader>* :<C-u>DeniteCursorWord line<CR>
   " nnoremap <silent><LocalLeader>z :<C-u>Denite z<CR>
   nnoremap <silent><LocalLeader>; :<C-u>Denite command command_history<CR>
@@ -413,7 +413,7 @@
   highlight! GitGutterDelete ctermfg=darkred guifg=darkred
   highlight! GitGutterChangeDelete ctermfg=darkred guifg=darkred
 
-  highlight clear SignColumn
+
   highlight GitGutterAdd ctermfg=green
   highlight GitGutterChange ctermfg=yellow
   highlight GitGutterDelete ctermfg=red
@@ -431,7 +431,7 @@
 
   " Neomake 'Makers'
   let g:neomake_javascript_enabled_makers = ['eslint']
-  let g:neomake_go_enabled_makers = ['go']
+  let g:neomake_go_enabled_makers = ['go', 'rubocop']
   let g:neomake_warning_sign = {'text': '? '}
   let g:neomake_error_sign = {'text': '! '}
 
@@ -546,7 +546,49 @@
 
 " fzf (https://github.com/junegunn/fzf#as-vim-plugin)-----------------------{{{
 
+  " set run time path of fzf install
   set rtp+=/usr/local/opt/fzf
 
-"  }}}
+  " enable <C-n>/<C-p> as tab thru previous fzf sessions
+  let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+  nnoremap <LocalLeader>ff :FZF<space>
+  " Fuzzy Find current file directory
+  nnoremap <LocalLeader>F :Files <c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
+  " Fuzzy Find current working directory
+  nnoremap <LocalLeader>f :Files <cr>
+  nnoremap <LocalLeader>b :Buffers<cr>
+  nnoremap <LocalLeader>g :Rg<cr>
+  nnoremap <LocalLeader>l :Lines<cr>
+  nnoremap <LocalLeader>B :BLines<cr>
+  nnoremap <LocalLeader>t :Tags<cr>
+  nnoremap <LocalLeader>h :Helptags<cr>
+  " old files / open Buffers
+  nnoremap <LocalLeader>r :History<cr>
+  " command history
+  nnoremap <LocalLeader>R :History:<cr>
+  " search history
+  nnoremap <LocalLeader>/ :History/<cr>
+  nnoremap <LocalLeader>gg :GFiles<cr>
+  nnoremap <LocalLeader>G :GFiles?<cr>
+  nnoremap <LocalLeader>cc :Commits<cr>
+  nnoremap <LocalLeader>C :Colors<cr>
+  nnoremap <LocalLeader>c :Commands<cr>
+
+  " remove status line for FZF sessions
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+        \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+  nmap <leader><tab> <plug>(fzf-maps-n)
+  xmap <leader><tab> <plug>(fzf-maps-x)
+  omap <leader><tab> <plug>(fzf-maps-o)
+
+  " Insert mode completion
+  imap <c-x><c-k> <plug>(fzf-complete-word)
+  imap <c-x><c-f> <plug>(fzf-complete-path)
+  imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+  imap <c-x><c-l> <plug>(fzf-complete-line)
+  imap <c-x><c-t> <plug>(fzf-complete-buffer-line)
+
+  "  }}}
