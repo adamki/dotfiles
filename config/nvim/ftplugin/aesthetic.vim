@@ -1,7 +1,7 @@
 syntax on                                       " enable syntax
 set background=dark                             " must go before :colorscheme
 let g:nord_comment_brightness = 20              " bright comments. (1 - 20)
-colo hybrid                                     " must go after set bg
+colo one                                     " must go after set bg
 let g:enable_italic_font = 1                    " Make sure to italicize
 
 " transparent guiBG

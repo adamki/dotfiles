@@ -11,8 +11,9 @@ nmap cp :let @+= expand("%") <cr>
 " bind Search/Replace to Leader
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 " better line end navigation
-noremap H ^
-noremap L g_
+" !!!! Temp disabled as it overrides (H)igh, (M)iddle, (L)low
+" noremap H ^
+" noremap L g_
 " vim omnicomplete
 inoremap <C-f> <C-x><C-f>
 " better lateral block movement

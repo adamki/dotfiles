@@ -97,12 +97,15 @@
 
   let g:airline_theme='onedark'
 
-  " allow TAB to toggle tabs
+  " allow TAB to toggle windows
   nmap <Tab> <C-w>w
   nmap <S-Tab> <C-w>W
   cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
+  nnoremap tt  :tabnew<CR>
   nnoremap tj  :tabnext<CR>
   nnoremap tk  :tabprev<CR>
+  nnoremap th  :tabfirst<CR>
+  nnoremap tl  :tablast<CR>
 
   set noshowmode                                                       " hide vim's mode status
   set hidden                                                           " hide buffers instead of unload them
@@ -136,7 +139,6 @@
   let g:airline_section_x = airline#section#create([''])
   let g:airline_section_y = airline#section#create([''])
 
-    nmap <leader>T :tabnew<CR>
     nmap ]b :bnext<CR>
     nmap [b :bprev<CR>
     nmap <leader>1 <Plug>AirlineSelectTab1
@@ -537,7 +539,7 @@
 
 " IndentGuides -------------------------------------------------------------{{{
 
-  let g:indent_guides_color_change_percent = 3
+  let g:indent_guides_color_change_percent = 1
   let g:indent_guides_guide_size = 1
   let g:indent_guides_start_level = 2
   let g:indent_guides_enable_on_vim_startup = 1
@@ -557,6 +559,7 @@
   nnoremap <LocalLeader>F :Files <c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
   " Fuzzy Find current working directory
   nnoremap <LocalLeader>f :Files <cr>
+  nnoremap <LocalLeader>w :Windows <cr>
   nnoremap <LocalLeader>b :Buffers<cr>
   nnoremap <LocalLeader>g :Rg<cr>
   nnoremap <LocalLeader>l :Lines<cr>

@@ -15,7 +15,7 @@ set list                              " show white space
 autocmd BufWritePre * %s/\s\+$//e     " remove unwanted space(s) on Buffer Pre-write
 set noswapfile                        " do NOT create swapfiles for new buffers
 filetype on                           " let vim detect fileType
-set number relativenumber             " line numbers!
+set number                            " line numbers!
 set numberwidth=3                     " make number gutter small
 set tabstop=2 shiftwidth=2 expandtab  " better tabs and line shifts
 
