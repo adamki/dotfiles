@@ -1,7 +1,7 @@
 " no ex mode
 nnoremap Q <nop>
 nnoremap <Leader>w :w<CR>
-nnoremap q :q<CR>
+nnoremap q         :q<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader>x :x<CR>
