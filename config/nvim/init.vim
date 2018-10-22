@@ -580,8 +580,7 @@
   nnoremap <LocalLeader>cc   :Commits<cr>
   nnoremap <LocalLeader>C    :Colors<cr>
   nnoremap <LocalLeader>c    :Commands<cr>
-  nnoremap <LocalLeader><bs> :Rg<>
-
+  nnoremap <LocalLeader><bs>  :Rg <C-R><C-W><CR>
   " remove status line for FZF sessions
   autocmd! FileType fzf
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
