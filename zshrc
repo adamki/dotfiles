@@ -57,9 +57,8 @@ export HISTCONTROL=erasedups
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # tell FZF to use ripgrep
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-
+export FZF_CTRL_T_OPTS='--preview "(highlight -O ansi -l {} || cat {} || tree -C {}) 2> /dev/null | head -200" --bind "?:toggle-preview"'
 export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
-
 
 # handles TMUX pathing issue(s):
 # https://github.com/creationix/nvm/issues/1880

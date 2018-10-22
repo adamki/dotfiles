@@ -1,4 +1,5 @@
 " neovim settings
+set encoding=utf8                     " Set encoding to UTF-8 to show glyphs
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 tnoremap <Esc> <C-\><C-n>             " enable ESC behavior when in terminal emulator
 set mouse=a                           " enable mouse mode
@@ -19,7 +20,6 @@ set number                            " line numbers!
 set numberwidth=3                     " make number gutter small
 set tabstop=2 shiftwidth=2 expandtab  " better tabs and line shifts
 
-au FileType python setl sw=2 sts=2 et
 set virtualedit=                      " unset virtualedit
 set wildmenu                          " better vim command completion
 set laststatus=2                      " always show statusline in window

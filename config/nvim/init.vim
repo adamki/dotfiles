@@ -69,6 +69,7 @@
   Plug 'neomake/neomake'
   Plug 'benjie/neomake-local-eslint.vim'
   Plug 'jaawerth/neomake-local-eslint-first'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
   call plug#end()
 
@@ -80,6 +81,7 @@
   source ~/.config/nvim/ftplugin/system.vim
   source ~/.config/nvim/ftplugin/keymappings.vim
   source ~/.config/nvim/ftplugin/nerdtree.vim
+  source ~/.config/nvim/ftplugin/filetypes.vim
 
 "  }}}
 
@@ -433,7 +435,8 @@
 
   " Neomake 'Makers'
   let g:neomake_javascript_enabled_makers = ['eslint']
-  let g:neomake_go_enabled_makers = ['go', 'rubocop']
+  let g:neomake_go_enabled_makers = ['go']
+  let g:neomake_ruby_enabled_makers = ['rubocop']
   let g:neomake_warning_sign = {'text': '? '}
   let g:neomake_error_sign = {'text': '! '}
 
@@ -554,29 +557,30 @@
   " enable <C-n>/<C-p> as tab thru previous fzf sessions
   let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-  nnoremap <LocalLeader>ff :FZF<space>
+  nnoremap <LocalLeader>ff   :FZF<space>
   " Fuzzy Find current file directory
-  nnoremap <LocalLeader>F :Files <c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
+  nnoremap <LocalLeader>F    :Files <c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
   " Fuzzy Find current working directory
-  nnoremap <LocalLeader>f :Files <cr>
-  nnoremap <LocalLeader>w :Windows <cr>
-  nnoremap <LocalLeader>b :Buffers<cr>
-  nnoremap <LocalLeader>g :Rg<cr>
-  nnoremap <LocalLeader>l :Lines<cr>
-  nnoremap <LocalLeader>B :BLines<cr>
-  nnoremap <LocalLeader>t :Tags<cr>
-  nnoremap <LocalLeader>h :Helptags<cr>
+  nnoremap <LocalLeader>f    :Files <cr>
+  nnoremap <LocalLeader>w    :Windows <cr>
+  nnoremap <LocalLeader>b    :Buffers<cr>
+  nnoremap <LocalLeader>g    :Rg<cr>
+  nnoremap <LocalLeader>l    :Lines<cr>
+  nnoremap <LocalLeader>B    :BLines<cr>
+  nnoremap <LocalLeader>t    :Tags<cr>
+  nnoremap <LocalLeader>h    :Helptags<cr>
   " old files / open Buffers
-  nnoremap <LocalLeader>r :History<cr>
+  nnoremap <LocalLeader>r    :History<cr>
   " command history
-  nnoremap <LocalLeader>R :History:<cr>
+  nnoremap <LocalLeader>R    :History:<cr>
   " search history
-  nnoremap <LocalLeader>/ :History/<cr>
-  nnoremap <LocalLeader>gg :GFiles<cr>
-  nnoremap <LocalLeader>G :GFiles?<cr>
-  nnoremap <LocalLeader>cc :Commits<cr>
-  nnoremap <LocalLeader>C :Colors<cr>
-  nnoremap <LocalLeader>c :Commands<cr>
+  nnoremap <LocalLeader>/    :History/<cr>
+  nnoremap <LocalLeader>gg   :GFiles<cr>
+  nnoremap <LocalLeader>G    :GFiles?<cr>
+  nnoremap <LocalLeader>cc   :Commits<cr>
+  nnoremap <LocalLeader>C    :Colors<cr>
+  nnoremap <LocalLeader>c    :Commands<cr>
+  nnoremap <LocalLeader><bs> :Rg<>
 
   " remove status line for FZF sessions
   autocmd! FileType fzf
