@@ -13,7 +13,7 @@
 This setup involves the following technologies:
 * Homebrew - https://brew.sh/
 * Alacritty - https://github.com/jwilm/alacritty#manual-installation
-* iTerm 2 - https://www.iterm2.com/downloads.html
+* FZF - https://github.com/junegunn/fzf
 * neovim - https://neovim.io/
 * tmux - https://github.com/tmux/tmux/wiki
 * ZSH - https://github.com/robbyrussell/oh-my-zsh
@@ -33,7 +33,7 @@ You'll most likely need the following dependencies:
 * `brew install nvm`
 * `brew install npm`
 * `brew install ripgrep`
-* `brew install the_silver_searcher`
+* `brew install fzf`
 
 Ok, now lets gets started:
 
@@ -102,3 +102,7 @@ xterm-256color-italic|xterm with 256 colors and italic,
 * if you using iTerm, enable the new `.terminfo` file by profiles > terminal > Report Terminal Type = xterm-256color-italic
 * if you are using Alacritty, enable the new `.terminfo` file by changing the value found at env > TERM
 
+##### MISC
+Much of my dotfiles have come from the influence of others. CHeck them out here:
+* https://github.com/webpro/awesome-dotfiles
+* https://github.com/rafi/vim-config
