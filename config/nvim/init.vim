@@ -1,16 +1,3 @@
-"     █████╗ ██████╗  █████╗ ███╗   ███╗ █╗ ███████╗
-"    ██╔══██╗██╔══██╗██╔══██╗████╗ ████ ╚═╝ ██╔════╝
-"    ███████║██║  ██║███████║██╔████╔██║    ███████╗
-"    ██╔══██║██║  ██║██╔══██║██║╚██╔╝██║    ╚════██║
-"    ██║  ██║██████╔╝██║  ██║██║ ╚═╝ ██║    ███████║
-"    ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝    ╚══════╝
-"                        ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-"                        ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-"                        ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-"                        ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-"                        ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-"                        ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-
 " Setup Plug  --------------------------------------------------------------{{{
 
   call plug#begin('~/.local/share/nvim/plugged')
@@ -35,7 +22,6 @@
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
 
   " improve Vim interface
-  Plug 'rhysd/accelerated-jk'
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'terryma/vim-expand-region'
   Plug 'nathanaelkane/vim-indent-guides'
@@ -95,23 +81,20 @@
 
 " Airline/TABS Config-------------------------------------------------------{{{
 
-  let g:airline_theme='onedark'
-
   " allow TAB to toggle windows
-  nmap <Tab> <C-w>w
-  nmap <S-Tab> <C-w>W
-  cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
+  nnoremap tq  :Sayonara<CR>
   nnoremap tt  :tabnew<CR>
   nnoremap tj  :tabnext<CR>
   nnoremap tk  :tabprev<CR>
   nnoremap th  :tabfirst<CR>
   nnoremap tl  :tablast<CR>
+  nmap ]b :bnext<CR>
+  nmap [b :bprev<CR>
 
-  set noshowmode                                                       " hide vim's mode status
-  set hidden                                                           " hide buffers instead of unload them
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif                                                                " set up symbol dictionary
+
   let g:airline#extensions#tabline#enabled = 1                         " enables tabline
   let g:airline#extensions#tabline#buffer_idx_mode = 1                 " enable buffer indices
   let g:airline#extensions#neomake#error_symbol='E: '                   " neomake lint(error)
@@ -120,27 +103,15 @@
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'  " show abbreviated filepath
 
   let g:airline#extensions#branch#enabled = 1
-  let g:airline#extensions#branch#empty_message = 'No Repo Found'
+  let g:airline#extensions#branch#empty_message = 'Not in Git Repo'
 
-  " let g:airline_powerline_fonts = 1                                  " disabled cuz i dont have a patched font =(
-  " let g:airline_symbols.branch = ''                                 " git branch symbol!
+  let g:airline_powerline_fonts = 1                                  " disabled cuz i dont have a patched font =(
+  let g:airline_symbols.branch = ''                                 " git branch symbol!
 
   let g:airline#extensions#neomake#enabled = 1
 
   " tab shortcuts ----------------------------------------------------------{{{
 
-  let g:airline_left_sep ='▛ '
-  let g:airline_right_sep = '▞'
-
-  let g:airline#extensions#tabline#left_sep = '▛ '
-  let g:airline#extensions#tabline#right_sep = '▞'
-
-  let g:airline_section_a = airline#section#create([''])
-  let g:airline_section_x = airline#section#create([''])
-  let g:airline_section_y = airline#section#create([''])
-
-    nmap ]b :bnext<CR>
-    nmap [b :bprev<CR>
     nmap <leader>1 <Plug>AirlineSelectTab1
     nmap <leader>2 <Plug>AirlineSelectTab2
     nmap <leader>3 <Plug>AirlineSelectTab3
@@ -341,13 +312,6 @@
 
 "}}}
 
-" J/K accelerated ----------------------------------------------------------{{{
-
-  nmap j <Plug>(accelerated_jk_gj)
-  nmap k <Plug>(accelerated_jk_gk)
-
-"  }}}
-
 " Expand Region ------------------------------------------------------------{{{
 
   xmap v <Plug>(expand_region_expand)
@@ -376,6 +340,12 @@
   omap s/ <Plug>(easymotion-tn)
   map  sn <Plug>(easymotion-next)
   map  sp <Plug>(easymotion-prev)
+
+" }}}
+
+" TMUX Navigator --------------------------------------------------------------{{{
+
+  let g:tmux_navigator_disable_when_zoomed = 1                 " Disable tmux navigator when zooming the Vim pane
 
 " }}}
 
@@ -443,14 +413,18 @@
 
   nnoremap <LocalLeader>ff   :FZF<space>
   " Fuzzy Find current file directory
-  nnoremap <LocalLeader>F    :Files <c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
+  nnoremap <LocalLeader>F    :Files<c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
   " Fuzzy Find current working directory
-  nnoremap <LocalLeader>f    :Files <cr>
-  nnoremap <LocalLeader>w    :Windows <cr>
-  nnoremap <LocalLeader>b    :Buffers<cr>
+  nnoremap <LocalLeader>f    :Files<cr>
   nnoremap <LocalLeader>g    :Rg<cr>
-  nnoremap <LocalLeader>l    :Lines<cr>
-  nnoremap <LocalLeader>B    :BLines<cr>
+  " Search under cursor
+  nnoremap <LocalLeader><bs>  :Rg <C-R><C-W><CR>
+
+  nnoremap <LocalLeader>m    :Marks<cr>
+  nnoremap <LocalLeader>w    :Windows<cr>
+  nnoremap <LocalLeader>b    :Buffers<cr>
+  nnoremap <LocalLeader>L    :Lines<cr>
+  nnoremap <LocalLeader>l    :BLines<cr>
   nnoremap <LocalLeader>t    :Tags<cr>
   nnoremap <LocalLeader>h    :Helptags<cr>
   " old files / open Buffers
@@ -459,12 +433,13 @@
   nnoremap <LocalLeader>R    :History:<cr>
   " search history
   nnoremap <LocalLeader>/    :History/<cr>
+  " Git
   nnoremap <LocalLeader>gg   :GFiles<cr>
   nnoremap <LocalLeader>G    :GFiles?<cr>
   nnoremap <LocalLeader>cc   :Commits<cr>
+  " system
   nnoremap <LocalLeader>C    :Colors<cr>
   nnoremap <LocalLeader>c    :Commands<cr>
-  nnoremap <LocalLeader><bs>  :Rg <C-R><C-W><CR>
   " remove status line for FZF sessions
   autocmd! FileType fzf
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
@@ -481,4 +456,4 @@
   imap <c-x><c-l> <plug>(fzf-complete-line)
   imap <c-x><c-t> <plug>(fzf-complete-buffer-line)
 
-  "  }}}
+" }}}

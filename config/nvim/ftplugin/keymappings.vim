@@ -1,14 +1,31 @@
 " no ex mode
 nnoremap Q <nop>
+
+" exiting nvim
 nnoremap <Leader>w :w<CR>
 nnoremap q         :q<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader>x :x<CR>
+
 " reload nvimrc from source
 nnoremap <Leader>r :so ~/.config/nvim/init.vim<CR>
+
+" allow TAB to toggle windows
+nmap <Tab>   <C-w>w
+nmap <S-Tab> <C-w>W
+
+" buffer switching
+nmap ]b :bnext<CR>
+nmap [b :bprev<CR>
+
+" NERDTree invocation
+nnoremap <silent> <LocalLeader>e :<C-u>NERDTreeToggle<CR>
+nnoremap <silent> <LocalLeader>a :<C-u>NERDTreeFind<CR>
+
 " copy current file path
 nmap cp :let @+= expand("%") <cr>
+
 " bind Search/Replace to Leader
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
