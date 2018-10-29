@@ -22,6 +22,7 @@
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
 
   " improve Vim interface
+  Plug 'itchyny/vim-cursorword'
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'terryma/vim-expand-region'
   Plug 'nathanaelkane/vim-indent-guides'
@@ -52,7 +53,6 @@
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'neomake/neomake'
   Plug 'benjie/neomake-local-eslint.vim'
-  Plug 'jaawerth/neomake-local-eslint-first'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
   call plug#end()
@@ -80,27 +80,13 @@
 " }}}
 
 " Airline/TABS Config-------------------------------------------------------{{{
-
-  " allow TAB to toggle windows
-  nnoremap tq  :Sayonara<CR>
-  nnoremap tt  :tabnew<CR>
-  nnoremap tj  :tabnext<CR>
-  nnoremap tk  :tabprev<CR>
-  nnoremap th  :tabfirst<CR>
-  nnoremap tl  :tablast<CR>
-  nmap ]b :bnext<CR>
-  nmap [b :bprev<CR>
-
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif                                                                " set up symbol dictionary
 
-  let g:airline#extensions#tabline#enabled = 1                         " enables tabline
-  let g:airline#extensions#tabline#buffer_idx_mode = 1                 " enable buffer indices
-  let g:airline#extensions#neomake#error_symbol='E: '                   " neomake lint(error)
+  let g:airline_inactive_collapse=1
 
-  let g:airline#extensions#neomake#warning_symbol='W:  '                " neomake lint(error)
-  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'  " show abbreviated filepath
+  let g:airline#extensions#tabline#enabled = 1                         " enables tabline
 
   let g:airline#extensions#branch#enabled = 1
   let g:airline#extensions#branch#empty_message = 'Not in Git Repo'
@@ -109,32 +95,6 @@
   let g:airline_symbols.branch = ''                                 " git branch symbol!
 
   let g:airline#extensions#neomake#enabled = 1
-
-  " tab shortcuts ----------------------------------------------------------{{{
-
-    nmap <leader>1 <Plug>AirlineSelectTab1
-    nmap <leader>2 <Plug>AirlineSelectTab2
-    nmap <leader>3 <Plug>AirlineSelectTab3
-    nmap <leader>4 <Plug>AirlineSelectTab4
-    nmap <leader>5 <Plug>AirlineSelectTab5
-    nmap <leader>6 <Plug>AirlineSelectTab6
-    nmap <leader>7 <Plug>AirlineSelectTab7
-    nmap <leader>8 <Plug>AirlineSelectTab8
-    nmap <leader>9 <Plug>AirlineSelectTab9
-    let g:airline#extensions#tabline#buffer_idx_format = {
-          \ '0': '0 ',
-          \ '1': '1 ',
-          \ '2': '2 ',
-          \ '3': '3 ',
-          \ '4': '4 ',
-          \ '5': '5 ',
-          \ '6': '6 ',
-          \ '7': '7 ',
-          \ '8': '8 ',
-          \ '9': '9 ',
-          \}                                                             " make tab indices look normal
-
-  "  }}}
 " }}}
 
 " Vim-Devicons -------------------------------------------------------------{{{
@@ -207,52 +167,52 @@
 
 " Fold, gets it's own section  ---------------------------------------------{{{
 
-  function! MyFoldText() " {{{
-    " Get first non-blank line
-    let fs = v:foldstart
-    while getline(fs) =~? '^\s*$' | let fs = nextnonblank(fs + 1)
-    endwhile
-    if fs > v:foldend
-      let line = getline(v:foldstart)
-    else
-      let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
-    endif
+function! MyFoldText() " {{{
+  " Get first non-blank line
+  let fs = v:foldstart
+  while getline(fs) =~? '^\s*$' | let fs = nextnonblank(fs + 1)
+  endwhile
+  if fs > v:foldend
+    let line = getline(v:foldstart)
+  else
+    let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+  endif
 
-    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
-    let foldSize = 1 + v:foldend - v:foldstart
-    let foldSizeStr = ' ' . foldSize . ' lines '
-    let foldLevelStr = repeat('+--', v:foldlevel)
-    let lineCount = line('$')
-    let foldPercentage = printf('[%.1f', (foldSize*1.0)/lineCount*100) . '%] '
-    let expansionString = repeat('.', w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
-    return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
-  endfunction " }}}
+  let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+  let foldSize = 1 + v:foldend - v:foldstart
+  let foldSizeStr = ' ' . foldSize . ' lines '
+  let foldLevelStr = repeat('+--', v:foldlevel)
+  let lineCount = line('$')
+  let foldPercentage = printf('[%.1f', (foldSize*1.0)/lineCount*100) . '%] '
+  let expansionString = repeat('.', w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+  return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+endfunction " }}}
 
-  set foldtext=MyFoldText()
+set foldtext=MyFoldText()
 
-  autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
-  autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
-  autocmd FileType vim setlocal fdc=1
-  set foldlevel=99
+autocmd FileType vim setlocal fdc=1
+set foldlevel=99
 
-  " Space to toggle folds.
-  autocmd FileType vim setlocal foldmethod=marker
-  autocmd FileType vim setlocal foldlevel=0
+" Space to toggle folds.
+autocmd FileType vim setlocal foldmethod=marker
+autocmd FileType vim setlocal foldlevel=0
 
-  autocmd FileType javascript,html,css,scss,typescript setlocal foldlevel=99
+autocmd FileType javascript,html,css,scss,typescript setlocal foldlevel=99
 
-  autocmd FileType css,scss,json setlocal foldmethod=marker
-  autocmd FileType css,scss,json setlocal foldmarker={,}
+autocmd FileType css,scss,json setlocal foldmethod=marker
+autocmd FileType css,scss,json setlocal foldmarker={,}
 
-  autocmd FileType coffee setl foldmethod=indent
-  let g:xml_syntax_folding = 1
-  autocmd FileType xml setl foldmethod=syntax
+autocmd FileType coffee setl foldmethod=indent
+let g:xml_syntax_folding = 1
+autocmd FileType xml setl foldmethod=syntax
 
-  autocmd FileType html setl foldmethod=expr
-  autocmd FileType html setl foldexpr=HTMLFolds()
+autocmd FileType html setl foldmethod=expr
+autocmd FileType html setl foldexpr=HTMLFolds()
 
-  autocmd FileType javascript,typescript,json,go,rust,ruby setl foldmethod=syntax
+autocmd FileType javascript,typescript,json,go,rust,ruby setl foldmethod=syntax
 
 " }}}
 
@@ -290,10 +250,9 @@
 
   " Neomake 'Makers'
   let g:neomake_javascript_enabled_makers = ['eslint']
+  let g:neomake_jsx_enabled_makers = ['eslint']
   let g:neomake_go_enabled_makers = ['go']
   let g:neomake_ruby_enabled_makers = ['rubocop']
-  let g:neomake_warning_sign = {'text': '? '}
-  let g:neomake_error_sign = {'text': '! '}
 
   hi NeomakeErrorSign ctermfg=red
   hi NeomakeWarningSign ctermfg=yellow
@@ -343,54 +302,9 @@
 
 " }}}
 
-" TMUX Navigator --------------------------------------------------------------{{{
+" TMUX Navigator -----------------------------------------------------------{{{
 
   let g:tmux_navigator_disable_when_zoomed = 1                 " Disable tmux navigator when zooming the Vim pane
-
-" }}}
-
-" Set_italics function -----------------------------------------------------{{{
-
-  function! Set_italics()
-
-    hi htmlArg gui=italic
-    hi Comment gui=italic
-    hi Type    gui=italic
-
-    hi htmlArg cterm=italic
-    hi Comment cterm=italic
-    hi Type    cterm=italic
-
-  endfunction
-
-  nnoremap <silent><Leader>b :<C-u>call <SID>toggle_background()<CR>
-
-  function! s:toggle_background()
-    if ! exists('g:colors_name')
-      echomsg 'No colorscheme set'
-      return
-    endif
-    let l:scheme = g:colors_name
-
-    if l:scheme =~# 'dark' || l:scheme =~# 'light'
-      " Rotate between different theme backgrounds
-      execute 'colorscheme' (l:scheme =~# 'dark'
-            \ ? substitute(l:scheme, 'dark', 'light', '')
-            \ : substitute(l:scheme, 'light', 'dark', ''))
-    else
-      execute 'set background='.(&background ==# 'dark' ? 'light' : 'dark')
-      if ! exists('g:colors_name')
-        execute 'colorscheme' l:scheme
-        echomsg 'The colorscheme `'.l:scheme
-              \ .'` doesn''t have background variants!'
-      else
-        echo 'Set colorscheme to '.&background.' mode'
-      endif
-    endif
-    call Set_italics()
-  endfunction
-
-  call Set_italics()
 
 " }}}
 
