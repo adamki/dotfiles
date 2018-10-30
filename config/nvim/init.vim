@@ -1,8 +1,5 @@
 " Setup Plug  --------------------------------------------------------------{{{
-
   call plug#begin('~/.local/share/nvim/plugged')
-  " appearance - search - syntax - italix
-
   " colors
   Plug 'rafi/awesome-vim-colorschemes'
   Plug 'trevordmiller/nova-vim'
@@ -54,77 +51,60 @@
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
   call plug#end()
-
 " }}}
 
 " ftplugin imports ---------------------------------------------------------{{{
-
   source ~/.config/nvim/ftplugin/aesthetic.vim
   source ~/.config/nvim/ftplugin/system.vim
   source ~/.config/nvim/ftplugin/keymappings.vim
   source ~/.config/nvim/ftplugin/nerdtree.vim
   source ~/.config/nvim/ftplugin/filetypes.vim
-
 "  }}}
 
 " MarkDown Live Previews ---------------------------------------------------{{{
-
-  " should markdown preview get shown automatically upon opening markdown buffer
-  let g:livedown_autorun = 1
-
-  " should the browser window pop-up upon previewing
-  let g:livedown_open = 1
-
+  let g:livedown_autorun = 1                                          " automatically launch new browser/preview
+  let g:livedown_open = 1                                             " browser automatically opens window upon previewing
 " }}}
 
 " Airline/TABS Config-------------------------------------------------------{{{
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
-  endif                                                                " set up symbol dictionary
-
-  let g:airline_inactive_collapse=1
-
-  let g:airline#extensions#tabline#enabled = 1                         " enables tabline
-
-  let g:airline#extensions#branch#enabled = 1
-  let g:airline#extensions#branch#empty_message = 'Not in Git Repo'
-
-  let g:airline_powerline_fonts = 1                                  " disabled cuz i dont have a patched font =(
+  endif                                                              " set up symbol dictionary
+  let g:airline_powerline_fonts = 1                                  " enable powerline icons
   let g:airline_symbols.branch = ''                                 " git branch symbol!
-
-  let g:airline#extensions#neomake#enabled = 1
+  let g:airline_inactive_collapse=1                                  " truncate left side of status bar for inactive windows
+  let g:airline#extensions#tabline#enabled = 1                       " enables tabline
+  let g:airline#extensions#branch#enabled = 1                        " integrate fugitive
+  let g:airline#extensions#branch#empty_message = 'Not in Git Repo'  " output if !git
+  let g:airline#extensions#ale#enabled = 1                           " integrate ALE linter
+  let airline#extensions#ale#show_line_numbers = 1                   " show ALE output
 " }}}
 
 " Vim-Devicons -------------------------------------------------------------{{{
-
   " after a re-source, fix syntax matching issues (concealing brackets):
   if exists('g:loaded_webdevicons')
       call webdevicons#refresh()
   endif
-
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
   let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
-
 " }}}
 
 " Deoplete  ----------------------------------------------------------------{{{
-
-  "start Deoplete always
-  let g:deoplete#enable_at_startup = 1
-
-  " use deoplete for .jsx
-  let g:jsx_ext_required = 0
-
-  autocmd CompleteDone * pclose
-  let g:deoplete#file#enable_buffer_path=1
-
-  " custom omni source markers
+  " custom omni source markers. Must be called before using deoplete
   call deoplete#custom#source('buffer', 'mark', 'ℬ')
   call deoplete#custom#source('ternjs', 'mark', '')
   call deoplete#custom#source('omni',   'mark', '⌾')
   call deoplete#custom#source('file',   'mark', 'file')
+  " let g:deoplete#file#enable_buffer_path=1                         " I THINK THIS CAN BE REMOVED
+  let g:deoplete#enable_at_startup = 1                               " start Deoplete always
+  let g:jsx_ext_required = 0                                         " use deoplete for .jsx
+  autocmd CompleteDone * pclose                                      " close the preview window after completion is done.
+  " deoplete tab-complete
+  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>
+" }}}
 
+" tern for vim   ------------------------------------------------------------{{{
   " let carlitux Use deoplete.
   let g:tern_request_timeout = 1
   let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
@@ -143,24 +123,14 @@
   let g:tern#command = ["tern"]
   let g:tern#arguments = ["--persistent"]
 
-   " deoplete tab-complete
-  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
   " jump to definition
   autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR> let g:tern#is_show_argument_hints_enabled = 1
   " jump to definition in new buffer
   autocmd FileType javascript nnoremap <silent> <buffer> gb! :TernDefSplit<CR>
-
 " }}}
 
 " Javascript ---------------------------------------------------------------{{{
-
-  " dont care about elzr/vim-json quote conceal
-  let g:vim_json_syntax_conceal = 0
-
-  " let pangloss/js handle flow
-  let g:javascript_plugin_flow = 1
-
+  let g:javascript_plugin_flow = 1                                   " enables syntax highlight for flow.js
 " }}}
 
 " Fold, gets it's own section  ---------------------------------------------{{{
@@ -215,32 +185,10 @@ autocmd FileType javascript,typescript,json,go,rust,ruby setl foldmethod=syntax
 " }}}
 
 " GitGutter ----------------------------------------------------------------{{{
-
-  let g:gitgutter_enabled = 1
-
-  let g:gitgutter_sign_added = '▎'
-  let g:gitgutter_sign_modified = '▎'
-  let g:gitgutter_sign_removed = '▏'
-  let g:gitgutter_sign_removed_first_line = '▔'
-  let g:gitgutter_sign_modified_removed = '▋'
-
-  highlight clear SignColumn
-  highlight! GitGutterAdd ctermfg=darkgreen guifg=darkgreen
-  highlight! GitGutterChange ctermfg=yellow guifg=yellow
-  highlight! GitGutterDelete ctermfg=darkred guifg=darkred
-  highlight! GitGutterChangeDelete ctermfg=darkred guifg=darkred
-
-
-  highlight GitGutterAdd ctermfg=green
-  highlight GitGutterChange ctermfg=yellow
-  highlight GitGutterDelete ctermfg=red
-  highlight GitGutterChangeDelete ctermfg=yellow
-
-  " }}}
+  let g:gitgutter_enabled = 1                                        " Init GitGutter
+" }}}
 
 " ALE ----------------------------------------------------------------------{{{
-
-  let g:airline#extensions#ale#enabled = 1
   let g:ale_linters = {
         \  'jsx': ['eslint'],
         \  'javascript': ['eslint'],
@@ -249,56 +197,33 @@ autocmd FileType javascript,typescript,json,go,rust,ruby setl foldmethod=syntax
   let b:ale_fixers = {
         \'javascript': ['prettier', 'eslint']
         \}
-
 "  }}}
 
 " Polyglot -----------------------------------------------------------------{{{
-
-  let g:polyglot_disabled = ['javascript', 'json', 'jsx']
-
+  let g:polyglot_disabled = ['javascript', 'json', 'jsx']            " these are disabled so that dedicated JS Plugins do the syntax highlighting
 " }}}
 
 " Close-Tag ----------------------------------------------------------------{{{
-
-  let g:closetag_filenames = '*.html,*.jsx,*.js,*.html.erb'
-
+  let g:closetag_filenames = '*.html,*.jsx,*.js,*.html.erb'          " close tags on these files
 "}}}
 
 " Easy Motion --------------------------------------------------------------{{{
-
-  let g:EasyMotion_smartcase = 1
-  let g:EasyMotion_use_smartsign_us = 1
-  let g:EasyMotion_do_mapping = 0
-  let g:EasyMotion_prompt = '→ → →'
-
+  let g:EasyMotion_smartcase = 1                                     " match upper and lower case
+  let g:EasyMotion_use_smartsign_us = 1                              " match smart chars
 " }}}
 
 " TMUX Navigator -----------------------------------------------------------{{{
-
-  let g:tmux_navigator_disable_when_zoomed = 1                 " Disable tmux navigator when zooming the Vim pane
-
+  let g:tmux_navigator_disable_when_zoomed = 1                       " Disable tmux navigator when zooming the Vim pane
 " }}}
 
 " IndentGuides -------------------------------------------------------------{{{
-
-  let g:indent_guides_color_change_percent = 1
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_start_level = 2
-  let g:indent_guides_enable_on_vim_startup = 1
-
+  let g:indent_guides_enable_on_vim_startup = 1                      " initialize the indent lines on startup
+  let g:indent_guides_color_change_percent = 1                       " make the indent lines very dim
+  let g:indent_guides_guide_size = 1                                 " make the indent lines skinny
+  let g:indent_guides_start_level = 2                                " make the indent lines start 2 spaces in
 "  }}}
 
-" fzf (https://github.com/junegunn/fzf#as-vim-plugin)-----------------------{{{
-
-  " set run time path of fzf install
-  set rtp+=/usr/local/opt/fzf
-
-  " enable <C-n>/<C-p> as tab thru previous fzf sessions
-  let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-  " remove status line for FZF sessions
-  autocmd! FileType fzf
-  autocmd  FileType fzf set laststatus=0 noshowmode noruler
-        \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
+" fzf ----------------------------------------------------------------------{{{
+  set rtp+=/usr/local/opt/fzf                                        " set run time path of fzf install
+  let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n>/<C-p> as tab thru previous fzf sessions
 " }}}
