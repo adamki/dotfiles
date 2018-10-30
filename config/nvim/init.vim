@@ -15,7 +15,6 @@
   Plug 'sheerun/vim-polyglot'
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'
-  Plug 'elzr/vim-json'
   Plug 'othree/javascript-libraries-syntax.vim'
 
   " Folding (see fold section)
@@ -51,8 +50,7 @@
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
-  Plug 'neomake/neomake'
-  Plug 'benjie/neomake-local-eslint.vim'
+  Plug 'w0rp/ale'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
   call plug#end()
@@ -240,22 +238,17 @@ autocmd FileType javascript,typescript,json,go,rust,ruby setl foldmethod=syntax
 
   " }}}
 
-" NeoMake ------------------------------------------------------------------{{{
+" ALE ----------------------------------------------------------------------{{{
 
-  " dont open error window
-  let g:neomake_open_list = 0
-
-  " When reading a buffer (after 1s), and when writing.
-  call neomake#configure#automake('rw', 1000)
-
-  " Neomake 'Makers'
-  let g:neomake_javascript_enabled_makers = ['eslint']
-  let g:neomake_jsx_enabled_makers = ['eslint']
-  let g:neomake_go_enabled_makers = ['go']
-  let g:neomake_ruby_enabled_makers = ['rubocop']
-
-  hi NeomakeErrorSign ctermfg=red
-  hi NeomakeWarningSign ctermfg=yellow
+  let g:airline#extensions#ale#enabled = 1
+  let g:ale_linters = {
+        \  'jsx': ['eslint'],
+        \  'javascript': ['eslint'],
+        \  'ruby': ['rubocop']
+        \ }
+  let b:ale_fixers = {
+        \'javascript': ['prettier', 'eslint']
+        \}
 
 "  }}}
 
@@ -271,34 +264,12 @@ autocmd FileType javascript,typescript,json,go,rust,ruby setl foldmethod=syntax
 
 "}}}
 
-" Expand Region ------------------------------------------------------------{{{
-
-  xmap v <Plug>(expand_region_expand)
-  xmap V <Plug>(expand_region_shrink)
-
-" }}}
-
-" Maximizer ----------------------------------------------------------------{{{
-
-  nnoremap <Leader><Space> :MaximizerToggle!<CR>
-
-"  }}}
-
 " Easy Motion --------------------------------------------------------------{{{
 
   let g:EasyMotion_smartcase = 1
   let g:EasyMotion_use_smartsign_us = 1
   let g:EasyMotion_do_mapping = 0
   let g:EasyMotion_prompt = '→ → →'
-  nmap ss <Plug>(easymotion-s2)
-  nmap sd <Plug>(easymotion-s)
-  nmap sf <Plug>(easymotion-overwin-f)
-  map  sh <Plug>(easymotion-linebackward)
-  map  sl <Plug>(easymotion-lineforward)
-  map  s/ <Plug>(easymotion-sn)
-  omap s/ <Plug>(easymotion-tn)
-  map  sn <Plug>(easymotion-next)
-  map  sp <Plug>(easymotion-prev)
 
 " }}}
 
@@ -325,49 +296,9 @@ autocmd FileType javascript,typescript,json,go,rust,ruby setl foldmethod=syntax
   " enable <C-n>/<C-p> as tab thru previous fzf sessions
   let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-  nnoremap <LocalLeader>ff   :FZF<space>
-  " Fuzzy Find current file directory
-  nnoremap <LocalLeader>F    :Files<c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
-  " Fuzzy Find current working directory
-  nnoremap <LocalLeader>f    :Files<cr>
-  nnoremap <LocalLeader>g    :Rg<cr>
-  " Search under cursor
-  nnoremap <LocalLeader><bs>  :Rg <C-R><C-W><CR>
-
-  nnoremap <LocalLeader>m    :Marks<cr>
-  nnoremap <LocalLeader>w    :Windows<cr>
-  nnoremap <LocalLeader>b    :Buffers<cr>
-  nnoremap <LocalLeader>L    :Lines<cr>
-  nnoremap <LocalLeader>l    :BLines<cr>
-  nnoremap <LocalLeader>t    :Tags<cr>
-  nnoremap <LocalLeader>h    :Helptags<cr>
-  " old files / open Buffers
-  nnoremap <LocalLeader>r    :History<cr>
-  " command history
-  nnoremap <LocalLeader>R    :History:<cr>
-  " search history
-  nnoremap <LocalLeader>/    :History/<cr>
-  " Git
-  nnoremap <LocalLeader>gg   :GFiles<cr>
-  nnoremap <LocalLeader>G    :GFiles?<cr>
-  nnoremap <LocalLeader>cc   :Commits<cr>
-  " system
-  nnoremap <LocalLeader>C    :Colors<cr>
-  nnoremap <LocalLeader>c    :Commands<cr>
   " remove status line for FZF sessions
   autocmd! FileType fzf
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
         \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-  nmap <leader><tab> <plug>(fzf-maps-n)
-  xmap <leader><tab> <plug>(fzf-maps-x)
-  omap <leader><tab> <plug>(fzf-maps-o)
-
-  " Insert mode completion
-  imap <c-x><c-k> <plug>(fzf-complete-word)
-  imap <c-x><c-f> <plug>(fzf-complete-path)
-  imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-  imap <c-x><c-l> <plug>(fzf-complete-line)
-  imap <c-x><c-t> <plug>(fzf-complete-buffer-line)
 
 " }}}

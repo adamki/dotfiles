@@ -1,7 +1,6 @@
 " no ex mode
 nnoremap Q <nop>
 
-
 " reload nvimrc from source
 nnoremap <Leader>r :so ~/.config/nvim/init.vim<CR>
 
@@ -54,6 +53,7 @@ noremap 0 ^
 
 " vim omnicomplete
 inoremap <C-f> <C-x><C-f>
+
 " better lateral block movement
 vmap < <gv
 vmap > >gv
@@ -95,7 +95,69 @@ function! s:toggle_background()
   endif
   call Set_italics()
 endfunction
-
 " toggle background
-nnoremap <silent><Leader>b :<C-u>call <SID>toggle_background()<CR>
+nnoremap <Leader>b :<C-u>call <SID>toggle_background()<CR>
+
+" Toggle Maximizer
+nnoremap <Leader><Space> :MaximizerToggle!<CR>
+
+" vim expand region
+xmap v <Plug>(expand_region_expand)
+xmap V <Plug>(expand_region_shrink)
+
+" EASYMotion
+nmap ss <Plug>(easymotion-s2)
+nmap sd <Plug>(easymotion-s)
+nmap sf <Plug>(easymotion-overwin-f)
+map  sh <Plug>(easymotion-linebackward)
+map  sl <Plug>(easymotion-lineforward)
+map  s/ <Plug>(easymotion-sn)
+omap s/ <Plug>(easymotion-tn)
+map  sn <Plug>(easymotion-next)
+map  sp <Plug>(easymotion-prev)
+
+" FZF
+nnoremap <LocalLeader>ff   :FZF<space>
+" Fuzzy Find current file directory
+nnoremap <LocalLeader>F    :Files<c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
+" Fuzzy Find current working directory
+nnoremap <LocalLeader>f    :Files<cr>
+nnoremap <LocalLeader>g    :Rg<cr>
+" Search under cursor
+nnoremap <LocalLeader><bs>  :Rg <C-R><C-W><CR>
+nnoremap <LocalLeader>m    :Marks<cr>
+nnoremap <LocalLeader>w    :Windows<cr>
+nnoremap <LocalLeader>b    :Buffers<cr>
+nnoremap <LocalLeader>L    :Lines<cr>
+nnoremap <LocalLeader>l    :BLines<cr>
+nnoremap <LocalLeader>t    :Tags<cr>
+nnoremap <LocalLeader>h    :Helptags<cr>
+" old files / open Buffers
+nnoremap <LocalLeader>r    :History<cr>
+" command history
+nnoremap <LocalLeader>R    :History:<cr>
+" search history
+nnoremap <LocalLeader>/    :History/<cr>
+" Git
+nnoremap <LocalLeader>gg   :GFiles<cr>
+nnoremap <LocalLeader>G    :GFiles?<cr>
+nnoremap <LocalLeader>cc   :Commits<cr>
+" system
+nnoremap <LocalLeader>C    <plug>:Colors<cr>
+nnoremap <LocalLeader>c    :Commands<cr>
+
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+imap <c-x><c-t> <plug>(fzf-complete-buffer-line)
+
+" NERDTree invocation
+" nnoremap <silent> <LocalLeader>e :<C-u>NERDTreeToggle<CR>
+" nnoremap <silent> <LocalLeader>a :<C-u>NERDTreeFind<CR>
 
