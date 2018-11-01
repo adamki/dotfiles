@@ -99,22 +99,11 @@ endfunction
 nnoremap <Leader>b :<C-u>call <SID>toggle_background()<CR>
 
 " Toggle Maximizer
-nnoremap <Leader><Space> :MaximizerToggle!<CR>
+nnoremap <LocalLeader>z :MaximizerToggle!<CR>
 
 " vim expand region
 xmap v <Plug>(expand_region_expand)
 xmap V <Plug>(expand_region_shrink)
-
-" EASYMotion
-nmap ss <Plug>(easymotion-s2)
-nmap sd <Plug>(easymotion-s)
-nmap sf <Plug>(easymotion-overwin-f)
-map  sh <Plug>(easymotion-linebackward)
-map  sl <Plug>(easymotion-lineforward)
-map  s/ <Plug>(easymotion-sn)
-omap s/ <Plug>(easymotion-tn)
-map  sn <Plug>(easymotion-next)
-map  sp <Plug>(easymotion-prev)
 
 " FZF
 nnoremap <LocalLeader>ff   :FZF<space>
@@ -143,7 +132,7 @@ nnoremap <LocalLeader>gg   :GFiles<cr>
 nnoremap <LocalLeader>G    :GFiles?<cr>
 nnoremap <LocalLeader>cc   :Commits<cr>
 " system
-nnoremap <LocalLeader>C    <plug>:Colors<cr>
+nnoremap <LocalLeader>C    :Colors<cr>
 nnoremap <LocalLeader>c    :Commands<cr>
 
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -156,8 +145,3 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-t> <plug>(fzf-complete-buffer-line)
-
-" NERDTree invocation
-" nnoremap <silent> <LocalLeader>e :<C-u>NERDTreeToggle<CR>
-" nnoremap <silent> <LocalLeader>a :<C-u>NERDTreeFind<CR>
-

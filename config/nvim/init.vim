@@ -10,9 +10,10 @@ Plug 'chriskempson/base16-vim'
 " Plug 'othree/es.next.syntax.vim'
 " Plug 'jelera/vim-javascript-syntax'
 Plug 'sheerun/vim-polyglot'
+" Plug 'othree/javascript-libraries-syntax.vim'
+" Plug 'elzr/vim-json'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim'
 
 " Folding (see fold section)
 Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
@@ -42,6 +43,7 @@ Plug 'jreybert/vimagit', {'on': ['Magit', 'MagitOnly']}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'junegunn/fzf.vim'
+Plug 'k0kubun/vim-open-github'
 
 " IDE level enhancements
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -100,8 +102,7 @@ call deoplete#custom#source('file',   'mark', 'file')
 let g:deoplete#enable_at_startup = 1                               " start Deoplete always
 let g:jsx_ext_required = 0                                         " use deoplete for .jsx
 autocmd CompleteDone * pclose                                      " close the preview window after completion is done.
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"            " deoplete tab-scroll
 " }}}
 
 " {{{ tern for vim
@@ -195,7 +196,8 @@ let g:ale_linters = {
       \  'ruby': ['rubocop']
       \ }
 let b:ale_fixers = {
-      \'javascript': ['prettier', 'eslint']
+      \'javascript': ['prettier', 'eslint'],
+      \'js': ['prettier', 'eslint']
       \}
 "  }}}
 
