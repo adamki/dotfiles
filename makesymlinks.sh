@@ -12,50 +12,56 @@
 ################################################################################
 
 ########## Variables
-dir=~/adams-dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old                   # old dotfiles backup directory
+dir=~/adams-dotfiles
+backupdir=~/dotfiles_old
 neovimpath=~/.config/nvim
 ftpluginpath=~/.config/nvim/ftplugin
 alacrittypath=~/.config/alacritty
 
-files="config/nvim/init.vim config/nvim/ftplugin/nerdtree.vim config/nvim/ftplugin/system.vim config/nvim/ftplugin/keymappings.vim config/nvim/ftplugin/aesthetic.vim zshrc tmux.conf"          # list of files/folders to symlink in homedir
-files="bashrc vimrc vim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
+ # list of files/folders to symlink in homedir
+files="tmux.conf
+vimrc
+zshrc
+config/nvim/init.vim
+config/nvim/ftplugin/nerdtree.vim
+config/nvim/ftplugin/system.vim
+config/nvim/ftplugin/keymappings.vim
+config/nvim/ftplugin/aesthetic.vim
+config/nvim/ftplugin/filetypes.vim
+config/nvim/ftplugin/fold.vim
+config/alacritty/alacritty.yml"
 
 # Set up NVIM path
-printf "Creating needed dir path for Neovim install...................done"
 mkdir -p $neovimpath
-printf "\n\n\n"
+printf "Created dir: $neovimpath ...............................................done. \n"
 
 # Set up ftplugin path
-printf "Creating needed dir path for alacritty install................done"
 mkdir -p $alacrittypath
-printf "\n\n\n"
+printf "Created dir: $alacrittypath ..........................................done. \n"
 
 # Set up ftplugin path
-printf "Creating needed dir path for nvim/ftplugin install................done"
 mkdir -p $ftpluginpath
-printf "\n\n\n"
+printf "Created dir: $ftpluginpath ......................................done. \n"
 
 # create dotfiles_old in homedir
-printf  "Creating $olddir for backup of any existing dotfiles in ~ ...done"
-mkdir -p $olddir
-printf "\n\n\n"
+mkdir -p $backupdir
+printf  "Created dir: $backupdir ...............................................done. \n"
 
 # change to the dotfiles directory
-printf "Changing to the $dir directory................................done"
 cd $dir
-printf "\n\n\n"
+printf "CD to dir: $dir ...............................................done. \n"
+
+printf "\n\n"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
 for file in $files; do
-    printf "Moving any existing dotfiles from ~ to $olddir................done"
-    mv ~/.$file $olddir
-    printf "\n\n\n"
-
-    printf "Creating symlink to $file in home directory...................done"
+    mv ~/.$file $backupdir
     ln -s $dir/$file ~/.$file
-    printf "\n\n\n"
+    printf "Symlinking ~/$file ----------------- >>>  $dir/$file \n"
 done
+
+printf "\n\n"
+printf "Complete"
 
 install_zsh () {
 # Test to see if zshell is installed.  If it is:
@@ -88,6 +94,5 @@ else
     fi
   fi
 }
-
 
 install_zsh
