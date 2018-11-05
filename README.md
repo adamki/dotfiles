@@ -25,8 +25,9 @@ ___
 
 ##### cloning down the dot files
 *__ATTN__* Before proceedng, you should have the following dependencies resolved:
-* Operator Mono (Light, Book, & Light Italic) should be stored in your Mac OS FontBook
-* You should have True colors enabled in your terminal
+* ~~Operator Mono (Light, Book, & Light Italic)~~ Dank Mono should be installed in your Mac OS FontBook
+* You should have True colors enabled in your terminal. See true colors section
+
 
 You'll most likely need the following dependencies:
 * `brew install rbenv`
@@ -39,9 +40,9 @@ Ok, now lets gets started:
 
 ##### Step 1:
 * `git clone git@github.com:adamki/adams-dotfiles.git`
-*  `cd adams-dotfiles`
-*  `chmod +x makesymlinks.sh`
-*  `./makesymlinks.sh`
+* `cd adams-dotfiles`
+* `chmod +x makesymlinks.sh`
+* `./makesymlinks.sh`
 
 This script executes the following:
 * dumps old dotfiles into a newly created dir called `dotfiles_old`
@@ -49,10 +50,11 @@ This script executes the following:
 * sets ZSH as default shell
 * symlinks the following:
     * `~/.config/nvim/init.vim` -> `~/adams-dotfiles/config/nvim/init.vim`
+    * `~/.config/nvim/fplugin/*` -> `~/adams-dotfiles/config/fplugin/*`
     * `~/.config/alacritty/alacritty.yml` -> `~/adams-dotfiles/alacritty/alacritty.yml`
-    * `~/.tmux.conf` -> `/Users/A075140/adams-dotfiles/tmux.conf`
-    * `~/.tmuxlinesnapshot.conf` -> `/Users/A075140/adams-dotfiles/tmuxlinesnapshot.conf`
-    * `~/aliases` -> `/Users/A075140/adams-dotfiles/aliases`
+    * `~/.tmux.conf` -> `~/adams-dotfiles/tmux.conf`
+    * `~/.vimrc` -> `~/adams-dotfiles/vimrc`
+    * `~/.zshrc` -> `~/adams-dotfiles/zshrc`
 
 It is now recommended that you restart your terminal completely.
 

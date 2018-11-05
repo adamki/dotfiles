@@ -6,9 +6,9 @@
 
 ################################################################################
 # three steps to syncing dotfiles on a new machine.
-# 1.  cd ~/adams-dotfiles
-# 2.  chmod +x makesymlinks.sh
-# 3.  ./makesymlinks.sh
+# 1. cd ~/adams-dotfiles
+# 2. chmod +x makesymlinks.sh
+# 3. ./makesymlinks.sh
 ################################################################################
 
 ########## Variables

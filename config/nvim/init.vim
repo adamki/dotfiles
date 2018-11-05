@@ -11,7 +11,6 @@ Plug 'chriskempson/base16-vim'
 " Plug 'jelera/vim-javascript-syntax'
 Plug 'sheerun/vim-polyglot'
 " Plug 'othree/javascript-libraries-syntax.vim'
-" Plug 'elzr/vim-json'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 
@@ -179,3 +178,5 @@ let g:indent_guides_start_level = 2                                " make the in
 set rtp+=/usr/local/opt/fzf                                        " set run time path of fzf install
 let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n>/<C-p> as tab thru previous fzf sessions
 " }}}
+
+call Set_italics()
