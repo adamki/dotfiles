@@ -63,6 +63,10 @@ source ~/.config/nvim/ftplugin/nerdtree.vim
 source ~/.config/nvim/ftplugin/filetypes.vim
 " }}}
 
+" {{{ VIM-initialize
+  call Set_italics()
+" }}}
+
 " {{{ liveDown
 let g:livedown_autorun = 1                                          " automatically launch new browser/preview
 let g:livedown_open = 1                                             " browser automatically opens window upon previewing
@@ -178,5 +182,3 @@ let g:indent_guides_start_level = 2                                " make the in
 set rtp+=/usr/local/opt/fzf                                        " set run time path of fzf install
 let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n>/<C-p> as tab thru previous fzf sessions
 " }}}
-
-call Set_italics()
