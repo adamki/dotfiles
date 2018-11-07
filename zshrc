@@ -2,7 +2,7 @@
 source /usr/local/share/antigen/antigen.zsh
 # set path
 export PATH="/usr/local/bin:$PATH"
-# set up GoLang
+
 export PATH="$PATH:$GOPATH/bin"
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
@@ -74,3 +74,10 @@ export NVM_DIR="$HOME/.nvm"
 
 # setup RBENV
 eval "$(rbenv init -)"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
