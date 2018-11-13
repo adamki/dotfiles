@@ -1,14 +1,5 @@
 # setup path to antigen ZSH pachage manager
 source /usr/local/share/antigen/antigen.zsh
-# set path
-export PATH="/usr/local/bin:$PATH"
-
-export PATH="$PATH:$GOPATH/bin"
-# User configuration
-export MANPATH="/usr/local/man:$MANPATH"
-export PATH="$PATH:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
-# put rustup and cargo in runtime path
-export PATH="$HOME/.cargo/bin:$PATH"
 export DOTFILES="/Users/$USER/adams-dotfiles"
 
 source $DOTFILES/aliases
@@ -67,13 +58,34 @@ if [ -f /etc/profile ]; then
   source /etc/profile
 fi
 
-# setup nvm
+# Setup nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# setup RBENV
+# Setup path
+export PATH="/usr/local/bin:$PATH"
+
+# Setup RBENV
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Setup pip
+USER_BASE_PATH=$(python -m site --user-base)
+export PATH=$PATH:$USER_BASE_PATH/bin
+
+# Setup GoLang
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$GOROOT/bin"
+
+# User configuration
+export MANPATH="/usr/local/man:$MANPATH"
+export PATH="$PATH:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
+
+# Setup Rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
