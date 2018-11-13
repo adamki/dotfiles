@@ -87,11 +87,8 @@
 
   " IDE level enhancements
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-  Plug 'sebdah/vim-delve'
-  Plug 'jodosha/vim-godebug'
   Plug 'majutsushi/tagbar'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } "{{{ VIM-GO
-    let g:go_auto_type_info = 1
     let g:go_highlight_build_constraints = 1
     let g:go_highlight_extra_types = 1
     let g:go_highlight_fields = 1
