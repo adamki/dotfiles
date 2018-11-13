@@ -3,7 +3,6 @@ source /usr/local/share/antigen/antigen.zsh
 export DOTFILES="/Users/$USER/adams-dotfiles"
 
 source $DOTFILES/aliases
-source $DOTFILES/custom-spaceship-prompt
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
