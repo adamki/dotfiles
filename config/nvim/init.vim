@@ -26,10 +26,10 @@
   Plug 'tpope/vim-surround'
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'nathanaelkane/vim-indent-guides' " {{{ indent-guides
+
     let g:indent_guides_enable_on_vim_startup = 1                      " initialize the indent lines on startup
-    let g:indent_guides_color_change_percent = 1                       " make the indent lines very dim
+    let g:indent_guides_color_change_percent = 5                       " make the indent lines very dim
     let g:indent_guides_guide_size = 1                                 " make the indent lines skinny
-    let g:indent_guides_start_level = 2                                " make the indent lines start 2 spaces in
   "  }}}
   Plug 'alvan/vim-closetag' " {{{ close-tag
     let g:closetag_filenames = '*.html,*.jsx,*.js,*.html.erb'          " close tags on these files
