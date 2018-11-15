@@ -1,0 +1,55 @@
+# ORDER
+SPACESHIP_PROMPT_ORDER=(
+  jobs     # Background jobs indicator
+  user     # before prompt char
+  host     #
+  line_sep      # Line break
+  dir           # Current directory section
+  git           # Git section (git_branch + git_status)
+  char          # YOUR PROMPT
+)
+
+SPACESHIP_RPROMPT_ORDER=(
+  node          # Node section
+  ruby          # Ruby section
+  rust          # Rust section
+  xcode         # Xcode section
+  swift         # Swift section
+  golang        # Go section
+  docker        # Docker section
+  venv          # virtualenv section
+  pyenv         # Pyenv section
+  package       # Package version
+  elixir        # Elixir section
+  php           # PHP section
+  haskell       # Haskell Stack section
+  julia         # Julia section
+  aws           # Amazon Web Services section
+  conda         # conda virtualenv section
+  dotnet        # .NET section
+  ember         # Ember.js section
+  kubecontext   # Kubectl context section
+)
+
+# USER
+SPACESHIP_USER_PREFIX="" # remove `with` before username
+SPACESHIP_USER_SUFFIX="" # remove space before host
+
+# HOST
+# Result will look like this:
+#   username@:(hostname)
+SPACESHIP_HOST_PREFIX="@:("
+SPACESHIP_HOST_SUFFIX=") "
+
+# DIR
+SPACESHIP_DIR_PREFIX=""
+SPACESHIP_DIR_TRUNC=2
+
+# GIT
+SPACESHIP_GIT_PREFIX=''
+SPACESHIP_GIT_SUFFIX=' '
+SPACESHIP_GIT_BRANCH_SUFFIX="" # remove space after branch name
+# Unwrap git status from `[...]`
+SPACESHIP_GIT_STATUS_PREFIX=""
+SPACESHIP_GIT_STATUS_SUFFIX=""
+
