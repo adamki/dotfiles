@@ -49,12 +49,14 @@ This script executes the following:
 * installs ZSH
 * sets ZSH as default shell
 * symlinks the following:
-    * `~/.config/nvim/init.vim` -> `~/adams-dotfiles/config/nvim/init.vim`
-    * `~/.config/nvim/fplugin/*` -> `~/adams-dotfiles/config/fplugin/*`
-    * `~/.config/alacritty/alacritty.yml` -> `~/adams-dotfiles/alacritty/alacritty.yml`
-    * `~/.tmux.conf` -> `~/adams-dotfiles/tmux.conf`
-    * `~/.vimrc` -> `~/adams-dotfiles/vimrc`
-    * `~/.zshrc` -> `~/adams-dotfiles/zshrc`
+  |~/.*                           |~/dotfiles/*                   |
+  |-------------------------------|-------------------------------|
+  | `~/.tmux.conf` | `~/adams-dotfiles/tmux.conf` |
+  | `~/.vimrc` | `~/adams-dotfiles/vimrc` |
+  | `~/.zshrc` | `~/adams-dotfiles/zshrc` |
+  | `~/.config/nvim/init.vim` | `~/adams-dotfiles/config/nvim/init.vim` |
+  | `~/.config/nvim/fplugin/*` | `~/adams-dotfiles/config/fplugin/*` |
+  | `~/.config/alacritty/alacritty.yml` | `~/adams-dotfiles/alacritty/alacritty.yml` |
 
 It is now recommended that you restart your terminal completely.
 
