@@ -14,7 +14,6 @@
   Plug 'easymotion/vim-easymotion'
   Plug 'jiangmiao/auto-pairs'
   Plug 'ryanoasis/vim-devicons'
-  Plug 'terryma/vim-expand-region'
   Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'

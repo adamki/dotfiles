@@ -11,10 +11,6 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader>x :x<CR>
 
-" WINDOWS
-nmap <Tab>   <C-w>w
-nmap <S-Tab> <C-w>W
-
 let g:elite_mode = 1
 if get(g:, 'elite_mode')
   nnoremap <Up>    :resize +2<CR>
@@ -100,10 +96,6 @@ nnoremap <Leader>b :<C-u>call <SID>toggle_background()<CR>
 
 " Toggle Maximizer
 nnoremap <LocalLeader>z :MaximizerToggle!<CR>
-
-" vim expand region
-xmap v <Plug>(expand_region_expand)
-xmap V <Plug>(expand_region_shrink)
 
 " FZF
 nnoremap <LocalLeader>ff   :FZF<space>
