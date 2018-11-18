@@ -14,11 +14,11 @@ alias h='history'
 alias hs='history | fzf'
 
 # Other
-alias aliases="cat ~/adams-dotfiles/aliases"
-alias alacritty="nvim ~/adams-dotfiles/config/alacritty/alacritty.yml"
-alias nc="nvim ~/adams-dotfiles/config/nvim/init.vim"
-alias dots="cd ~/adams-dotfiles"
-alias zshrc="nvim ~/adams-dotfiles/zshrc"
+alias aliases="cat ~/dotfiles/aliases"
+alias alacritty="nvim ~/dotfiles/config/alacritty/alacritty.yml"
+alias nc="nvim ~/dotfiles/config/nvim/init.vim"
+alias dots="cd ~/dotfiles"
+alias zshrc="nvim ~/dotfiles/zshrc"
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 
 alias ri="nvim -u ~/.config/rafi_nvim/init.vim"

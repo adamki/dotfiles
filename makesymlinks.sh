@@ -12,7 +12,7 @@
 ################################################################################
 
 ########## Variables
-dir=~/adams-dotfiles
+dir=~/dotfiles
 backupdir=~/dotfiles_old
 neovimpath=~/.config/nvim
 ftpluginpath=~/.config/nvim/ftplugin

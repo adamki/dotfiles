@@ -1,5 +1,5 @@
 # Set $DOTFILES
-export DOTFILES="/Users/$USER/adams-dotfiles"
+export DOTFILES="/Users/$USER/dotfiles"
 
 # IMPORTS
 source $DOTFILES/aliases
