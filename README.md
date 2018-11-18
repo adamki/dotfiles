@@ -49,9 +49,10 @@ This script executes the following:
 * installs ZSH
 * sets ZSH as default shell
 * symlinks the following:
+
   |~/.*                           |~/dotfiles/*                   |
   |-------------------------------|-------------------------------|
-  | `~/.tmux.conf` | `~/adams-dotfiles/tmux.conf` |
+  | `~/.tmux.conf`                | `~/adams-dotfiles/tmux.conf`  |
   | `~/.vimrc` | `~/adams-dotfiles/vimrc` |
   | `~/.zshrc` | `~/adams-dotfiles/zshrc` |
   | `~/.config/nvim/init.vim` | `~/adams-dotfiles/config/nvim/init.vim` |
