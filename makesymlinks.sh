@@ -18,7 +18,7 @@ neovimpath=~/.config/nvim
 ftpluginpath=~/.config/nvim/ftplugin
 alacrittypath=~/.config/alacritty
 
- # list of files/folders to symlink in homedir
+# list of files/folders to symlink in homedir
 files="tmux.conf
 vimrc
 zshrc
