@@ -45,8 +45,8 @@ export PATH=$PATH:$USER_BASE_PATH/bin
 # Setup GoLang
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-export PATH="$PATH:$GOPATH/bin"
-export PATH="$PATH:$GOROOT/bin"
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
 export PATH="$PATH:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
