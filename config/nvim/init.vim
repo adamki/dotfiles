@@ -3,6 +3,7 @@
   " colors
   Plug 'trevordmiller/nova-vim'
   Plug 'chriskempson/base16-vim'
+  Plug 'morhetz/gruvbox'
   " Language support
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'
