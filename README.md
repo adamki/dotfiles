@@ -1,7 +1,7 @@
 ### These are my Dotfiles.
 
 ##### General tools used:
-* Karabiner Elementts - https://github.com/tekezo/Karabiner-Elements
+* Karabiner Elements - https://github.com/tekezo/Karabiner-Elements
 * Brave Browser - https://brave.com/download/
 * Chrome Browser - https://www.google.com/chrome/?brand=CHBD&gclid=EAIaIQobChMI-oz-jN693AIVEYTICh3DuQh9EAAYASAAEgJy2vD_BwE&gclsrc=aw.ds&dclid=CLGSo5nevdwCFZEofwod0pEJAQ
 * Spectacle Window Tiler - https://www.spectacleapp.com/
@@ -39,8 +39,8 @@ You'll most likely need the following dependencies:
 Ok, now lets gets started:
 
 ##### Step 1:
-* `git clone git@github.com:adamki/adams-dotfiles.git`
-* `cd adams-dotfiles`
+* `git clone git@github.com:adamki/dotfiles.git`
+* `cd ~/dotfiles`
 * `chmod +x makesymlinks.sh`
 * `./makesymlinks.sh`
 
@@ -50,14 +50,14 @@ This script executes the following:
 * sets ZSH as default shell
 * symlinks the following:
 
-  |~/.*                           |~/dotfiles/*                   |
-  |-------------------------------|-------------------------------|
-  | `~/.tmux.conf`                | `~/adams-dotfiles/tmux.conf`  |
-  | `~/.vimrc` | `~/adams-dotfiles/vimrc` |
-  | `~/.zshrc` | `~/adams-dotfiles/zshrc` |
-  | `~/.config/nvim/init.vim` | `~/adams-dotfiles/config/nvim/init.vim` |
-  | `~/.config/nvim/fplugin/*` | `~/adams-dotfiles/config/fplugin/*` |
-  | `~/.config/alacritty/alacritty.yml` | `~/adams-dotfiles/alacritty/alacritty.yml` |
+  |~/.*                                 |~/dotfiles/*                                |
+  |-------------------------------------|--------------------------------------------|
+  | `~/.tmux.conf`                      | `~/dotfiles/tmux.conf`               |
+  | `~/.vimrc`                          | `~/dotfiles/vimrc`                   |
+  | `~/.zshrc`                          | `~/dotfiles/zshrc`                   |
+  | `~/.config/nvim/init.vim`           | `~/dotfiles/config/nvim/init.vim`    |
+  | `~/.config/nvim/fplugin/*`          | `~/dotfiles/config/fplugin/*`        |
+  | `~/.config/alacritty/alacritty.yml` | `~/dotfiles/alacritty/alacritty.yml` |
 
 It is now recommended that you restart your terminal completely.
 
