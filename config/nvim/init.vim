@@ -33,6 +33,7 @@
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-fugitive'
   Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'w0rp/ale'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   " miscellaneous

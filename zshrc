@@ -14,6 +14,9 @@ export HISTCONTROL=erasedups # Don't store duplicates
 # setup path to antigen ZSH pachage manager
 source /usr/local/share/antigen/antigen.zsh
 antigen use oh-my-zsh
+antigen bundle colorize
+antigen bundle colored-man-pages
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
 antigen apply  # Tell Antigen that you're done.
 
