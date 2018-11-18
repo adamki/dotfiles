@@ -1,47 +1,46 @@
 " {{{ VIM-Plug
   call plug#begin('~/.local/share/nvim/plugged')
   " colors
-  Plug 'rafi/awesome-vim-colorschemes'
   Plug 'trevordmiller/nova-vim'
   Plug 'chriskempson/base16-vim'
-  " syntax
+  " Language support
   Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'sheerun/vim-polyglot'
   Plug 'pangloss/vim-javascript'
-  " Folding (see fold section)
-  Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
-  " improve Vim interface
-  Plug 'itchyny/vim-cursorword'
-  Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
-  Plug 'terryma/vim-expand-region'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'sheerun/vim-polyglot'
+  " improved Movement/Actions
+  Plug 'alvan/vim-closetag'
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'easymotion/vim-easymotion'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'terryma/vim-expand-region'
+  Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
+  " improved interface
+  Plug 'airblade/vim-gitgutter'
+  Plug 'itchyny/vim-cursorword'
+  Plug 'jreybert/vimagit', {'on': ['Magit', 'MagitOnly']}
+  Plug 'junegunn/fzf.vim'
+  Plug 'k0kubun/vim-open-github'
+  Plug 'majutsushi/tagbar'
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'nathanaelkane/vim-indent-guides'
-  Plug 'alvan/vim-closetag'
-  Plug 'vim-airline/vim-airline'
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'tomtom/tcomment_vim'
   Plug 'scrooloose/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'airblade/vim-gitgutter'
   Plug 'shime/vim-livedown', {'for': 'markdown'}
-  Plug 'easymotion/vim-easymotion'
-  " vim extensions
-  Plug 'jreybert/vimagit', {'on': ['Magit', 'MagitOnly']}
-  Plug 'tpope/vim-fugitive'
+  Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
-  Plug 'k0kubun/vim-open-github'
-  Plug 'junegunn/fzf.vim'
-  " IDE level enhancements
-  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-  Plug 'majutsushi/tagbar'
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+  Plug 'tpope/vim-fugitive'
+  Plug 'vim-airline/vim-airline'
   Plug 'w0rp/ale'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  " miscellaneous
+  Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
+  " integrations
+  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   call plug#end()
 " }}}
 
