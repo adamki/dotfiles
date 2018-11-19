@@ -35,6 +35,13 @@ nnoremap tl  :tablast<CR>
 nnoremap <silent> <LocalLeader>e :<C-u>NERDTreeToggle<CR>
 nnoremap <silent> <LocalLeader>a :<C-u>NERDTreeFind<CR>
 
+" Toggle Maximizer
+nnoremap <LocalLeader>z :MaximizerToggle!<CR>
+
+" Git Gutter
+nnoremap <Leader>ga :GitGutterStageHunk<cr>
+nnoremap <Leader>gt :GitGutterLineHighlightsToggle<cr>
+
 " copy current file path
 nmap cp :let @+= expand("%") <cr>
 
@@ -66,36 +73,6 @@ nnoremap ˚ :m .-2<CR>==
 " move lines in insert
 inoremap ∆ <Esc>:m .+1<CR>==gi
 inoremap ˚ <Esc>:m .-2<CR>==gi
-
-function! s:toggle_background()
-  if ! exists('g:colors_name')
-    echomsg 'No colorscheme set'
-    return
-  endif
-  let l:scheme = g:colors_name
-
-  if l:scheme =~# 'dark' || l:scheme =~# 'light'
-    " Rotate between different theme backgrounds
-    execute 'colorscheme' (l:scheme =~# 'dark'
-          \ ? substitute(l:scheme, 'dark', 'light', '')
-          \ : substitute(l:scheme, 'light', 'dark', ''))
-  else
-    execute 'set background='.(&background ==# 'dark' ? 'light' : 'dark')
-    if ! exists('g:colors_name')
-      execute 'colorscheme' l:scheme
-      echomsg 'The colorscheme `'.l:scheme
-            \ .'` doesn''t have background variants!'
-    else
-      echo 'Set colorscheme to '.&background.' mode'
-    endif
-  endif
-  call Set_italics()
-endfunction
-" toggle background
-nnoremap <Leader>b :<C-u>call <SID>toggle_background()<CR>
-
-" Toggle Maximizer
-nnoremap <LocalLeader>z :MaximizerToggle!<CR>
 
 " FZF
 nnoremap <LocalLeader>ff   :FZF<space>
@@ -138,5 +115,30 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-t> <plug>(fzf-complete-buffer-line)
 
-nnoremap <Leader>ga :GitGutterStageHunk<cr>
-nnoremap <Leader>gt :GitGutterLineHighlightsToggle<cr>
+" toggle_background
+function! s:toggle_background()
+  if ! exists('g:colors_name')
+    echomsg 'No colorscheme set'
+    return
+  endif
+  let l:scheme = g:colors_name
+
+  if l:scheme =~# 'dark' || l:scheme =~# 'light'
+    " Rotate between different theme backgrounds
+    execute 'colorscheme' (l:scheme =~# 'dark'
+          \ ? substitute(l:scheme, 'dark', 'light', '')
+          \ : substitute(l:scheme, 'light', 'dark', ''))
+  else
+    execute 'set background='.(&background ==# 'dark' ? 'light' : 'dark')
+    if ! exists('g:colors_name')
+      execute 'colorscheme' l:scheme
+      echomsg 'The colorscheme `'.l:scheme
+            \ .'` doesn''t have background variants!'
+    else
+      echo 'Set colorscheme to '.&background.' mode'
+    endif
+  endif
+  call Set_italics()
+endfunction
+
+nnoremap <Leader>b :<C-u>call <SID>toggle_background()<CR>

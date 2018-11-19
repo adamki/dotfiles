@@ -2,8 +2,12 @@
   call plug#begin('~/.local/share/nvim/plugged')
   " colors
   Plug 'trevordmiller/nova-vim'
-  Plug 'chriskempson/base16-vim'
   Plug 'morhetz/gruvbox'
+  Plug 'arcticicestudio/nord-vim'
+  Plug 'AlessandroYorba/Alduin'
+  Plug 'junegunn/seoul256.vim'
+  Plug 'kristijanhusak/vim-hybrid-material'
+  Plug 'joshdick/onedark.vim'
   " Language support
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'
