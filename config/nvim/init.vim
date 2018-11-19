@@ -4,10 +4,10 @@
   Plug 'trevordmiller/nova-vim'
   Plug 'morhetz/gruvbox'
   Plug 'arcticicestudio/nord-vim'
-  Plug 'AlessandroYorba/Alduin'
   Plug 'junegunn/seoul256.vim'
   Plug 'kristijanhusak/vim-hybrid-material'
   Plug 'joshdick/onedark.vim'
+  Plug 'drewtempelmeyer/palenight.vim'
   " Language support
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'

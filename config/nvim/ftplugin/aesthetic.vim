@@ -1,5 +1,5 @@
 set background=dark                              " must go before :colorscheme
-colo hybrid_reverse                              " must go after set bg
+colo gruvbox                                     " must go after set bg
 let g:enable_italic_font = 1                     " Make sure to italicize
 
 function! Set_italics()
@@ -12,7 +12,7 @@ function! Set_italics()
   hi Type    cterm=italic
 endfunction
 
-let g:airline_theme='hybrid'                     " Airline theme
+let g:airline_theme='gruvbox'                     " Airline theme
 
 let g:airline_left_sep ='▛'
 let g:airline_right_sep = '▞'

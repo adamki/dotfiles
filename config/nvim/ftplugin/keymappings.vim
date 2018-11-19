@@ -75,19 +75,19 @@ inoremap ∆ <Esc>:m .+1<CR>==gi
 inoremap ˚ <Esc>:m .-2<CR>==gi
 
 " FZF
-nnoremap <LocalLeader>ff   :FZF<space>
+nnoremap fzf               :FZF<space>
 " Fuzzy Find current file directory
-nnoremap <LocalLeader>F    :Files<c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
+nnoremap <LocalLeader>ff   :Files<c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
 " Fuzzy Find current working directory
 nnoremap <LocalLeader>f    :Files<cr>
 nnoremap <LocalLeader>g    :Rg<cr>
 " Search under cursor
-nnoremap <LocalLeader><bs>  :Rg <C-R><C-W><CR>
+nnoremap <LocalLeader><bs> :Rg <C-R><C-W><CR>
 nnoremap <LocalLeader>m    :Marks<cr>
 nnoremap <LocalLeader>w    :Windows<cr>
 nnoremap <LocalLeader>b    :Buffers<cr>
-nnoremap <LocalLeader>L    :Lines<cr>
-nnoremap <LocalLeader>l    :BLines<cr>
+nnoremap <LocalLeader>l    :Lines<cr>
+nnoremap <LocalLeader>bl   :BLines<cr>
 nnoremap <LocalLeader>t    :Tags<cr>
 nnoremap <LocalLeader>h    :Helptags<cr>
 " old files / open Buffers
