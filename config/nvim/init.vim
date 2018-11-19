@@ -8,12 +8,13 @@
   Plug 'kristijanhusak/vim-hybrid-material'
   Plug 'joshdick/onedark.vim'
   Plug 'drewtempelmeyer/palenight.vim'
+  Plug 'haishanh/night-owl.vim'
   " Language support
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'sheerun/vim-polyglot'
-  " improved Movement/Actions
+  " improved Movements & Motions
   Plug 'alvan/vim-closetag'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'easymotion/vim-easymotion'
