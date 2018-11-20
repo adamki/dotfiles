@@ -27,6 +27,7 @@
   Plug 'airblade/vim-gitgutter'
   Plug 'itchyny/vim-cursorword'
   Plug 'jreybert/vimagit', {'on': ['Magit', 'MagitOnly']}
+  Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'k0kubun/vim-open-github'
   Plug 'majutsushi/tagbar'

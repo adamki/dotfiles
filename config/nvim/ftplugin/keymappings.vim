@@ -1,6 +1,7 @@
 " no ex mode
 nnoremap Q <nop>
-
+" enable ESC behavior when in terminal emulator
+tnoremap <Esc> <C-\><C-n>
 " reload nvimrc from source
 nnoremap <Leader>r :so ~/.config/nvim/init.vim<CR>
 
@@ -75,19 +76,19 @@ inoremap ∆ <Esc>:m .+1<CR>==gi
 inoremap ˚ <Esc>:m .-2<CR>==gi
 
 " FZF
-nnoremap fzf               :FZF<space>
+nnoremap <LocalLeader>f    :FZF<space><CR>
 " Fuzzy Find current file directory
-nnoremap <LocalLeader>ff   :Files<c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
+nnoremap <LocalLeader>F    :Files<c-r>=fnameescape(expand('%:p:h'))<cr>
 " Fuzzy Find current working directory
-nnoremap <LocalLeader>f    :Files<cr>
-nnoremap <LocalLeader>g    :Rg<cr>
+nnoremap <LocalLeader>ff   :Files<cr>
+nnoremap <LocalLeader>gg   :Rg<cr>
 " Search under cursor
 nnoremap <LocalLeader><bs> :Rg <C-R><C-W><CR>
 nnoremap <LocalLeader>m    :Marks<cr>
 nnoremap <LocalLeader>w    :Windows<cr>
 nnoremap <LocalLeader>b    :Buffers<cr>
-nnoremap <LocalLeader>l    :Lines<cr>
-nnoremap <LocalLeader>bl   :BLines<cr>
+nnoremap <LocalLeader>L    :Lines<cr>
+nnoremap <LocalLeader>l    :BLines<cr>
 nnoremap <LocalLeader>t    :Tags<cr>
 nnoremap <LocalLeader>h    :Helptags<cr>
 " old files / open Buffers
@@ -97,7 +98,7 @@ nnoremap <LocalLeader>R    :History:<cr>
 " search history
 nnoremap <LocalLeader>/    :History/<cr>
 " Git
-nnoremap <LocalLeader>gg   :GFiles<cr>
+nnoremap <LocalLeader>gf   :GFiles<cr>
 nnoremap <LocalLeader>G    :GFiles?<cr>
 nnoremap <LocalLeader>cc   :Commits<cr>
 " system

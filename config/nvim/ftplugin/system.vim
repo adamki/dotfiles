@@ -5,7 +5,6 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1        " sets colors to be true
 set termguicolors                        " enable true colors
 let mapleader = "\<space>"               " <Leader>
 let maplocalleader=";"                   " <LocalLeader>
-tnoremap <Esc> <C-\><C-n>                " enable ESC behavior when in terminal emulator
 set mouse=a                              " enable mouse mode
 set colorcolumn=80                       " keep lines short
 set clipboard+=unnamedplus               " visual copy works to native OS
