@@ -33,10 +33,6 @@ if [ -f /etc/profile ]; then
   source /etc/profile
 fi
 
-# Setup nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # Setup PATH
 export PATH="/usr/local/bin:$PATH"
 # Setup RBENV
@@ -62,3 +58,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+ eval "$(rbenv init -)"   # I think this line needs go last
