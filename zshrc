@@ -37,7 +37,9 @@ fi
 export PATH="/usr/local/bin:$PATH"
 # Setup RBENV
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# Setup nvm
+export NVM_DIR=~/.nvm
+. $(brew --prefix nvm)/nvm.sh
 # Setup PIP
 USER_BASE_PATH=$(python -m site --user-base)
 export PATH=$PATH:$USER_BASE_PATH/bin
