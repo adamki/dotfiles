@@ -10,7 +10,6 @@ set colorcolumn=80                       " keep lines short
 set clipboard+=unnamedplus               " visual copy works to native OS
 set nopaste                              " but default to nopaste
 set pastetoggle=<f6>                     " toggle paste/nopaste
-set list                                 " show white space
 autocmd BufWritePre * %s/\s\+$//e        " remove unwanted space(s) on Buffer Pre-write
 set noswapfile                           " do NOT create swapfiles for new buffers
 filetype on                              " let vim detect fileType
