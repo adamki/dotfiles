@@ -58,11 +58,15 @@ noremap 0 ^
 " vim omnicomplete
 inoremap <C-f> <C-x><C-f>
 
+" better lateral block movement
+vmap < <gv
+vmap > >gv
+
 " Use tab for indenting in visual mode
 vnoremap <Tab> >gv|
 vnoremap <S-Tab> <gv
-nnoremap > >>_
-nnoremap < <<_
+" nnoremap > >>_
+" nnoremap < <<_
 
 " move lines in normal
 nnoremap ∆ :m .+1<CR>==
