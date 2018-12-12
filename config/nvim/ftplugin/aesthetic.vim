@@ -1,5 +1,5 @@
 set background=dark                              " must go before :colorscheme
-colo gruvbox                              " must go after set bg
+colo onedark                                     " must go after set bg
 let g:enable_italic_font = 1                     " Make sure to italicize
 
 function! Set_italics()

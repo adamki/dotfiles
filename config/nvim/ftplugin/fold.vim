@@ -1,3 +1,6 @@
+" {{{
+" }}}
+
 function! MyFoldText() " {{{
   " Get first non-blank line
   let fs = v:foldstart
@@ -17,7 +20,8 @@ function! MyFoldText() " {{{
   let foldPercentage = printf('[%.1f', (foldSize*1.0)/lineCount*100) . '%] '
   let expansionString = repeat('.', w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
   return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
-endfunction " }}}
+endfunction
+" }}}
 
 set foldtext=MyFoldText()
 
