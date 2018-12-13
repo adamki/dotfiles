@@ -64,6 +64,10 @@ set rtp+=/usr/local/opt/fzf                                        " set run tim
 let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n>/<C-p> as tab thru previous fzf sessions
 " }}}
 
+" pbogut/fzf-mru ----------------------{{{
+let g:fzf_mru_relative = 1
+" }}}
+
 " fatih/vim-go ------------------------{{{
 let g:go_fmt_options = 0
 let g:go_highlight_build_constraints = 1
