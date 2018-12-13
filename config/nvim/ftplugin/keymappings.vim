@@ -58,17 +58,17 @@ inoremap ˚ <Esc>:m .-2<CR>==gi
 " NERDTree invocation
 nnoremap <silent> <LocalLeader>e :<C-u>NERDTreeToggle<CR>
 nnoremap <silent> <LocalLeader>a :<C-u>NERDTreeFind<CR>
-" Toggle Maximizer
+" Maximizer Toggling
 nnoremap <LocalLeader>z :MaximizerToggle!<CR>
-" Git Gutter
+" GitGutter
 nnoremap <Leader>ga :GitGutterStageHunk<CR>
 nnoremap <Leader>gt :GitGutterLineHighlightsToggle<CR>
-" FINDING
+" FINDING(FZF)
 nnoremap <LocalLeader>ff   :Files<CR>
 nnoremap <LocalLeader>F    :Files <c-r>=fnameescape(expand('%:p:h'))<CR><CR>
 nnoremap <LocalLeader>gg   :Rg<CR>
 nnoremap <LocalLeader><bs> :Rg <C-R><C-W><CR>
-" NAVIGATING
+" NAVIGATING(FZF)
 nnoremap <LocalLeader>L    :Lines<CR>
 nnoremap <LocalLeader>b    :Buffers<CR>
 nnoremap <LocalLeader>h    :Helptags<CR>
@@ -76,24 +76,24 @@ nnoremap <LocalLeader>l    :BLines<CR>
 nnoremap <LocalLeader>m    :Marks<CR>
 nnoremap <LocalLeader>t    :Tags<CR>
 nnoremap <LocalLeader>w    :Windows<CR>
-" RECENTS
+" RECENTS(FZF)
 nnoremap <LocalLeader>/    :History/<CR>
 nnoremap <LocalLeader>r    :History:<CR>
 nnoremap <LocalLeader>y    :FZFMru<CR>
-" GIT
+" GIT(FZF)
 nnoremap <LocalLeader>C    :BCommits<CR>
 nnoremap <LocalLeader>c    :Commits<CR>
 nnoremap <LocalLeader>g    :GFiles?<CR>
 nnoremap <LocalLeader>gf   :GFiles<CR>
-" SYSTEM COMMANDS
+" SYSTEM COMMANDS(FZF)
 nnoremap <LocalLeader>:    :Commands<CR>
-" COMPLETION
+" COMPLETION(FZF)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-t> <plug>(fzf-complete-buffer-line)
-" MISCELLANEOUS
+" MISCELLANEOUS(FZF)
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
