@@ -40,17 +40,17 @@ nnoremap <silent> <LocalLeader>a :<C-u>NERDTreeFind<CR>
 nnoremap <LocalLeader>z :MaximizerToggle!<CR>
 
 " Git Gutter
-nnoremap <Leader>ga :GitGutterStageHunk<cr>
-nnoremap <Leader>gt :GitGutterLineHighlightsToggle<cr>
+nnoremap <Leader>ga :GitGutterStageHunk<CR>
+nnoremap <Leader>gt :GitGutterLineHighlightsToggle<CR>
 
 " copy current file path
-nmap cp :let @+= expand("%") <cr>
+nmap cp :let @+= expand("%") <CR>
 
 " bind Search/Replace to Leader
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
 " toggle relativenumber / norelativenumber
-nmap <F2> :set rnu! nornu?<cr>
+nmap <F2> :set rnu! nornu?<CR>
 
 " better line end navigation
 noremap 0 ^
@@ -76,33 +76,33 @@ inoremap ∆ <Esc>:m .+1<CR>==gi
 inoremap ˚ <Esc>:m .-2<CR>==gi
 
 " FINDING
-nnoremap <LocalLeader>ff   :Files<cr>
-nnoremap <LocalLeader>F    :Files <c-r>=fnameescape(expand('%:p:h'))<cr><cr>
-nnoremap <LocalLeader>gg   :Rg<cr>
+nnoremap <LocalLeader>ff   :Files<CR>
+nnoremap <LocalLeader>F    :Files <c-r>=fnameescape(expand('%:p:h'))<CR><CR>
+nnoremap <LocalLeader>gg   :Rg<CR>
 nnoremap <LocalLeader><bs> :Rg <C-R><C-W><CR>
 
 " NAVIGATING
-nnoremap <LocalLeader>L    :Lines<cr>
-nnoremap <LocalLeader>b    :Buffers<cr>
-nnoremap <LocalLeader>h    :Helptags<cr>
-nnoremap <LocalLeader>l    :BLines<cr>
-nnoremap <LocalLeader>m    :Marks<cr>
-nnoremap <LocalLeader>t    :Tags<cr>
-nnoremap <LocalLeader>w    :Windows<cr>
+nnoremap <LocalLeader>L    :Lines<CR>
+nnoremap <LocalLeader>b    :Buffers<CR>
+nnoremap <LocalLeader>h    :Helptags<CR>
+nnoremap <LocalLeader>l    :BLines<CR>
+nnoremap <LocalLeader>m    :Marks<CR>
+nnoremap <LocalLeader>t    :Tags<CR>
+nnoremap <LocalLeader>w    :Windows<CR>
 
 " RECENTS
-nnoremap <LocalLeader>/    :History/<cr>
-nnoremap <LocalLeader>r    :History:<cr>
-nnoremap <LocalLeader>y    :FZFMru<cr>
+nnoremap <LocalLeader>/    :History/<CR>
+nnoremap <LocalLeader>r    :History:<CR>
+nnoremap <LocalLeader>y    :FZFMru<CR>
 
 " GIT
-nnoremap <LocalLeader>C    :BCommits<cr>
-nnoremap <LocalLeader>c    :Commits<cr>
-nnoremap <LocalLeader>g    :GFiles?<cr>
-nnoremap <LocalLeader>gf   :GFiles<cr>
+nnoremap <LocalLeader>C    :BCommits<CR>
+nnoremap <LocalLeader>c    :Commits<CR>
+nnoremap <LocalLeader>g    :GFiles?<CR>
+nnoremap <LocalLeader>gf   :GFiles<CR>
 
 " SYSTEM COMMANDS
-nnoremap <LocalLeader>:    :Commands<cr>
+nnoremap <LocalLeader>:    :Commands<CR>
 
 " COMPLETION
 imap <c-x><c-f> <plug>(fzf-complete-path)
