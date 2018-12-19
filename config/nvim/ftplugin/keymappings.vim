@@ -56,8 +56,8 @@ inoremap ˚ <Esc>:m .-2<CR>==gi
 
 " {{{ PLUGS
 " NERDTree invocation
-nnoremap <silent> <LocalLeader>e :<C-u>NERDTreeToggle<CR>
-nnoremap <silent> <LocalLeader>a :<C-u>NERDTreeFind<CR>
+nnoremap <LocalLeader>e :<C-u>NERDTreeToggle<CR>
+nnoremap <LocalLeader>a :<C-u>NERDTreeFind<CR>
 " Maximizer Toggling
 nnoremap <LocalLeader>z :MaximizerToggle!<CR>
 " GitGutter
@@ -126,3 +126,11 @@ function! s:toggle_background()
 endfunction
 nnoremap <Leader>b :<C-u>call <SID>toggle_background()<CR>
 " }}}
+
+
+
+
+
+
+
+
