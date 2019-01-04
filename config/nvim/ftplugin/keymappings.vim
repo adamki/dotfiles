@@ -64,15 +64,15 @@ nnoremap <LocalLeader>z :MaximizerToggle!<CR>
 nnoremap <Leader>ga :GitGutterStageHunk<CR>
 nnoremap <Leader>gt :GitGutterLineHighlightsToggle<CR>
 " FINDING(FZF)
-nnoremap <LocalLeader>ff   :Files<CR>
+nnoremap <LocalLeader>f    :Files<CR>
 nnoremap <LocalLeader>F    :Files <c-r>=fnameescape(expand('%:p:h'))<CR><CR>
-nnoremap <LocalLeader>gg   :Rg<CR>
+nnoremap <LocalLeader>g    :Rg<CR>
 nnoremap <LocalLeader><bs> :Rg <C-R><C-W><CR>
 " NAVIGATING(FZF)
-nnoremap <LocalLeader>L    :Lines<CR>
 nnoremap <LocalLeader>b    :Buffers<CR>
 nnoremap <LocalLeader>h    :Helptags<CR>
 nnoremap <LocalLeader>l    :BLines<CR>
+nnoremap <LocalLeader>L    :Lines<CR>
 nnoremap <LocalLeader>m    :Marks<CR>
 nnoremap <LocalLeader>t    :Tags<CR>
 nnoremap <LocalLeader>w    :Windows<CR>
@@ -83,7 +83,7 @@ nnoremap <LocalLeader>y    :FZFMru<CR>
 " GIT(FZF)
 nnoremap <LocalLeader>C    :BCommits<CR>
 nnoremap <LocalLeader>c    :Commits<CR>
-nnoremap <LocalLeader>g    :GFiles?<CR>
+nnoremap <LocalLeader>gs   :GFiles?<CR>
 nnoremap <LocalLeader>gf   :GFiles<CR>
 " SYSTEM COMMANDS(FZF)
 nnoremap <LocalLeader>:    :Commands<CR>
@@ -94,9 +94,9 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-t> <plug>(fzf-complete-buffer-line)
 " MISCELLANEOUS(FZF)
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
+nmap <LocalLeader><tab> <plug>(fzf-maps-n)
+xmap <LocalLeader><tab> <plug>(fzf-maps-x)
+omap <LocalLeader><tab> <plug>(fzf-maps-o)
 " }}}
 
 " {{{ MISC
@@ -126,11 +126,3 @@ function! s:toggle_background()
 endfunction
 nnoremap <Leader>b :<C-u>call <SID>toggle_background()<CR>
 " }}}
-
-
-
-
-
-
-
-

@@ -43,21 +43,3 @@ autocmd BufReadPost *
       \ if line("'\"") > 0 && line ("'\"") <= line("$") |
       \   exe "normal! g'\"" |
       \ endif " remember cursor position
-
-
-" UPDATES TMUX STATUS-WINDOW WITH CURRENT FILE NAME
-" BEWARE : May slow down buffer switching
-" autocmd BufEnter,BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " .expand("%"))
-" autocmd VimLeave * call system("tmux rename-window zsh")
-set t_ts=^[]2;
-set t_fs=^[\\
-" Turn on setting the title.
-set title
-" The following causes vim to refresh the title each time we change buffers.
-" Otherwise it will only set the title once at startup.
-augroup RefreshTitle
-  autocmd!
-  " The concatenation of the colon is a hack to prevent vim from
-  " interpreting the string as a modeline.
-  autocmd BufEnter * let &titlestring = expand("%:p:t:h")
-augroup END
