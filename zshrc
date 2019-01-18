@@ -62,3 +62,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 [[ -f /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 
  eval "$(rbenv init -)"   # I think this line needs go last
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

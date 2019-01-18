@@ -37,6 +37,7 @@ endif
 if !&sidescrolloff
   set sidescrolloff=8                    " Show next 8 columns while side-scrolling.
 endif
+autocmd BufWinEnter,WinEnter term://* startinsert "automatically use insert mode when entering a term pane
 " always place cursor at zz
 autocmd BufRead * normal zz
 autocmd BufReadPost *

@@ -29,8 +29,8 @@
   Plug 'jreybert/vimagit', {'on': ['Magit', 'MagitOnly']}
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
-  Plug 'pbogut/fzf-mru.vim'
-  Plug 'k0kubun/vim-open-github'
+  Plug 'pbogut/fzf-mru.vim', {'on': 'FZFMru'}
+  Plug 'k0kubun/vim-open-github', {'on': 'OpenGithub'}
   Plug 'majutsushi/tagbar'
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'nathanaelkane/vim-indent-guides'
