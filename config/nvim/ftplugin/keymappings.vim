@@ -83,8 +83,8 @@ nnoremap <LocalLeader>y    :FZFMru<CR>
 " GIT(FZF)
 nnoremap <LocalLeader>C    :BCommits<CR>
 nnoremap <LocalLeader>c    :Commits<CR>
-nnoremap <LocalLeader>gs   :GFiles?<CR>
-nnoremap <LocalLeader>gf   :GFiles<CR>
+nnoremap <LocalLeader>Gs   :GFiles?<CR>
+nnoremap <LocalLeader>Gf   :GFiles<CR>
 " SYSTEM COMMANDS(FZF)
 nnoremap <LocalLeader>:    :Commands<CR>
 " COMPLETION(FZF)
