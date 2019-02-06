@@ -1,6 +1,6 @@
 ### These are my Dotfiles.
 
----
+___
 ##### General tools used:
 * Karabiner Elements - https://github.com/tekezo/Karabiner-Elements
 * Brave Browser - https://brave.com/download/
@@ -75,7 +75,7 @@ ___
 You'll want to run both of these `neovim` commands. `PlugInstall` will remove and plug errors. However... youll likely run into issues with `pip2`, `pip3`, and `python-provider` issues as various `neovim` plugin rely on them. Now is a good time to resolve those.
 
 * `:PlugInstall`
-* `:CheckHealth`
+* `:checkhealth`
 ___
 
 ### Enable True Colors
