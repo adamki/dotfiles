@@ -12,7 +12,7 @@ export HISTSIZE=12000 # Store 10,000 history entries
 export HISTCONTROL=erasedups # Don't store duplicates
 
 # setup path to antigen ZSH pachage manager
-source /usr/local/share/antigen/antigen.zsh
+source $HOME/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle colorize
 antigen bundle colored-man-pages

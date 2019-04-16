@@ -108,10 +108,15 @@ autocmd FileType javascript nnoremap <silent> <buffer> gb! :TernDefSplit<CR>
 " }}}
 
 " w0rp/ale ----------------------------{{{
+let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {
+      \  'go': ['golint'],
+      \  'html': ['htmlhint'],
       \  'jsx': ['eslint'],
       \  'javascript': ['eslint'],
-      \  'ruby': ['rubocop']
+      \  'json': ['jsonlint'],
+      \  'ruby': ['rubocop'],
+      \  'vim': ['vint']
       \ }
 let b:ale_fixers = {
       \'javascript': ['prettier', 'eslint'],

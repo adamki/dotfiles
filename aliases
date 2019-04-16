@@ -14,7 +14,7 @@ alias h='history'
 alias hs='history | fzf'
 
 # Other
-alias aliases="cat ~/dotfiles/aliases"
+alias aliases="cat ~/dotfiles/aliases | fzf"
 alias alacritty="nvim ~/dotfiles/config/alacritty/alacritty.yml"
 alias nc="nvim ~/dotfiles/config/nvim/init.vim"
 alias dots="cd ~/dotfiles"

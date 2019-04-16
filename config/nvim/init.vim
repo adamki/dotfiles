@@ -9,6 +9,7 @@
   Plug 'joshdick/onedark.vim'
   Plug 'drewtempelmeyer/palenight.vim'
   Plug 'haishanh/night-owl.vim'
+  Plug 'blueshirts/darcula'
   " Language support
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'

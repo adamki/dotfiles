@@ -8,6 +8,7 @@ nnoremap <Leader>r :so ~/.config/nvim/init.vim<CR>
 " writing/exiting nvim
 nnoremap <Leader>w :w<CR>
 nnoremap q         :q<CR>
+nnoremap Q         :q!<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader>x :x<CR>
