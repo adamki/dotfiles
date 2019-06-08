@@ -1,5 +1,5 @@
 # Set $DOTFILES
-export DOTFILES="/Users/$USER/dotfiles"
+export DOTFILES="/home/$USER/dotfiles"
 
 # IMPORTS
 source $DOTFILES/aliases
@@ -16,6 +16,7 @@ source $HOME/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle colorize
 antigen bundle colored-man-pages
+antigen bundle paulirish/git-open
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
 antigen apply  # Tell Antigen that you're done.
@@ -27,41 +28,11 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --glob "!.git/*"
 export FZF_CTRL_T_OPTS='--preview "(highlight -O ansi -l {} || cat {} || tree -C {}) 2> /dev/null | head -200" --bind "?:toggle-preview"'
 export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
 
-# handles TMUX pathing issue(s): https://github.com/creationix/nvm/issues/1880
-if [ -f /etc/profile ]; then
-  PATH=""
-  source /etc/profile
-fi
+# sets up nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Setup PATH
-export PATH="/usr/local/bin:$PATH"
-# Setup RBENV
-export PATH="$HOME/.rbenv/bin:$PATH"
-# Setup nvm
-export NVM_DIR=~/.nvm
-. $(brew --prefix nvm)/nvm.sh
-# Setup PIP
-USER_BASE_PATH=$(python -m site --user-base)
-export PATH=$PATH:$USER_BASE_PATH/bin
-# Setup GoLang
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-# User configuration
-export MANPATH="/usr/local/man:$MANPATH"
-export PATH="$PATH:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/Users/$USER/bin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin"
-# Setup Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+#set up YARN
+export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/adamjensen/.nvm/versions/node/v6.11.5/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-
- eval "$(rbenv init -)"   # I think this line needs go last
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
+neofetch

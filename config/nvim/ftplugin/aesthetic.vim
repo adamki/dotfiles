@@ -2,6 +2,9 @@ set background=dark                              " must go before :colorscheme
 colo onedark                                        " must go after set bg
 let g:enable_italic_font = 1                     " Make sure to italicize
 
+au ColorScheme * hi Normal ctermbg=none guibg=none
+au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
+
 function! Set_italics()
   hi htmlArg gui=italic
   hi Comment gui=italic
@@ -11,11 +14,3 @@ function! Set_italics()
   hi Comment cterm=italic
   hi Type    cterm=italic
 endfunction
-
-let g:airline_theme='onedark'                     " Airline theme
-
-let g:airline_left_sep ='▛'
-let g:airline_right_sep = '▞'
-
-let g:airline#extensions#tabline#left_sep = '▛'
-let g:airline#extensions#tabline#right_sep = '▞'

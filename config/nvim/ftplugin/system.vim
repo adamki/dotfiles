@@ -7,7 +7,7 @@ let mapleader = "\<space>"               " <Leader>
 let maplocalleader=";"                   " <LocalLeader>
 set mouse=a                              " enable mouse mode
 set colorcolumn=80                       " keep lines short
-set clipboard+=unnamedplus               " visual copy works to native OS
+set clipboard=unnamedplus
 set nopaste                              " but default to nopaste
 set pastetoggle=<f6>                     " toggle paste/nopaste
 autocmd BufWritePre * %s/\s\+$//e        " remove unwanted space(s) on Buffer Pre-write

@@ -4,30 +4,28 @@
   Plug 'trevordmiller/nova-vim'
   Plug 'morhetz/gruvbox'
   Plug 'arcticicestudio/nord-vim'
-  Plug 'junegunn/seoul256.vim'
   Plug 'kristijanhusak/vim-hybrid-material'
-  Plug 'joshdick/onedark.vim'
-  Plug 'drewtempelmeyer/palenight.vim'
-  Plug 'haishanh/night-owl.vim'
-  Plug 'blueshirts/darcula'
+  Plug 'connorholyday/vim-snazzy'
+  Plug 'rakr/vim-two-firewatch'
   " Language support
   Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'leafgarland/typescript-vim'
   Plug 'pangloss/vim-javascript'
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'HerringtonDarkholme/yats.vim'
   Plug 'sheerun/vim-polyglot'
   " improved Movements & Motions
   Plug 'alvan/vim-closetag'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'easymotion/vim-easymotion'
   Plug 'jiangmiao/auto-pairs'
-  Plug 'ryanoasis/vim-devicons'
   Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   " improved interface
+  Plug 'chrisbra/Colorizer'
   Plug 'airblade/vim-gitgutter'
   Plug 'itchyny/vim-cursorword'
-  Plug '/usr/local/opt/fzf'
+  Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'pbogut/fzf-mru.vim', {'on': 'FZFMru'}
   Plug 'k0kubun/vim-open-github', {'on': 'OpenGithub'}
@@ -42,14 +40,16 @@
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'w0rp/ale'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
   " miscellaneous
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
   " integrations
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-  call plug#end()
+  Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+ " For async completion
+
+ call plug#end()
 " }}}
 
 " {{{ filetype imports

@@ -31,11 +31,16 @@ ___
 
 
 You'll most likely need the following dependencies:
-* `brew install rbenv`
-* `brew install nvm`
-* `brew install npm`
-* `brew install ripgrep`
-* `brew install fzf`
+
+* rbenv
+* nvm
+* npm
+* ripgrep
+* fzf
+* neofetch
+* kitty
+* polybar
+* Ligaturizer (optional)
 
 Ok, now lets gets started:
 
@@ -107,6 +112,15 @@ xterm-256color-italic|xterm with 256 colors and italic,
 * compile the new color path by running this command: `tic xterm-256color-italic.terminfo`.
 * if you using iTerm, enable the new `.terminfo` file by profiles > terminal > Report Terminal Type = xterm-256color-italic
 * if you are using Alacritty, enable the new `.terminfo` file by changing the value found at env > TERM
+
+##### Purging CapsLock
+I don't ever use `CapsLock`.
+On Mac, I use Karibiner and KaribinerElements.
+On Linux, include the following
+
+```
+echo "\nsetxkbmap -option 'caps:ctrl_modifier' \nxcape -e '#66=Escape'" >> ~/.profile
+```
 
 ##### MISC
 Much of my dotfiles have come from the influence of others. CHeck them out here:

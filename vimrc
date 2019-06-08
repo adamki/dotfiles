@@ -1,5 +1,4 @@
 set nocompatible                         " use Vim over Vi
-filetype off                             " required
 set number                               " line nums
 
 " Omg, vim, Imma edit the same file multiple times, okay? fkn deal with it workround for .swo and swp files
@@ -10,5 +9,3 @@ set updatecount=0                        " Don't try to write swapfiles after so
 
 set backspace=indent,eol,start           " Make backspace behave in a sane manner.
 
-syntax on                                " Switch syntax highlighting on
-filetype plugin indent on                " Enable file type detection and do language-dependent indenting.

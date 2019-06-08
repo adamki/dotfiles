@@ -15,13 +15,14 @@ alias hs='history | fzf'
 
 # Other
 alias aliases="cat ~/dotfiles/aliases | fzf"
-alias alacritty="nvim ~/dotfiles/config/alacritty/alacritty.yml"
-alias nc="nvim ~/dotfiles/config/nvim/init.vim"
 alias dots="cd ~/dotfiles"
+alias nc="nvim ~/dotfiles/config/nvim/init.vim"
 alias zshrc="nvim ~/dotfiles/zshrc"
+
+alias kc="nvim ~/.config/kitty/kitty.conf"
+alias ic="nvim ~/.config/i3/config"
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 
-alias ri="nvim -u ~/.config/rafi_nvim/init.vim"
 alias ni='nvim -u ~/.config/nvim/init.vim'
 
 # Tmux

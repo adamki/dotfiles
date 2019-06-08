@@ -9,11 +9,11 @@ let g:airline#extensions#tabline#enabled = 1                       " enables tab
 let g:airline#extensions#branch#enabled = 1                        " integrate fugitive
 let g:airline#extensions#branch#empty_message = 'Not in Git Repo'  " output if !git
 let g:airline#extensions#ale#enabled = 1                           " integrate ALE linter
-let airline#extensions#ale#show_line_numbers = 1                   " show ALE output
+let g:airline#extensions#ale#show_line_numbers = 1                   " show ALE output
 " }}}
 
 " sheerun/vim-polyglot ----------------{{{
-let g:polyglot_disabled = ['javascript', 'json', 'jsx']            " these are disabled so that dedicated JS Plugins do the syntax highlighting
+let g:polyglot_disabled = ['javascript', 'json', 'jsx', 'tsx']            " these are disabled so that dedicated JS Plugins do the syntax highlighting
 " }}}
 
 " Pangloss/vim-javascript -------------{{{
@@ -27,18 +27,7 @@ let g:indent_guides_guide_size = 1                                 " make the in
 " }}}
 
 " alvan/vim-closetag ------------------{{{
-let g:closetag_filenames = '*.html,*.jsx,*.js,*.html.erb'          " close tags on these files
-" }}}
-
-" ryanoasis/vim-devicons --------------{{{
-" after a re-source, fix syntax matching issues (concealing brackets):
-if exists('g:loaded_webdevicons')
-  call webdevicons#refresh()
-endif
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
-
+let g:closetag_filenames = '*.html,*.jsx,*.js,*.tsx,*.html.erb'          " close tags on these files
 " }}}
 
 " christoomey/vim-tmux-navigator ------{{{
@@ -66,18 +55,6 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n
 
 " pbogut/fzf-mru ----------------------{{{
 let g:fzf_mru_relative = 1
-" }}}
-
-" fatih/vim-go ------------------------{{{
-let g:go_fmt_options = 0
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
 " }}}
 
 " Shougo/deoplete.nvim ----------------{{{
@@ -114,12 +91,18 @@ let g:ale_linters = {
       \  'html': ['htmlhint'],
       \  'jsx': ['eslint'],
       \  'javascript': ['eslint'],
-      \  'json': ['jsonlint'],
-      \  'ruby': ['rubocop'],
-      \  'vim': ['vint']
       \ }
 let b:ale_fixers = {
       \'javascript': ['prettier', 'eslint'],
-      \'js': ['prettier', 'eslint']
+      \'js': ['prettier', 'eslint'],
+      \'tsx': ['prettier', 'eslint']
       \}
+let g:ale_echo_msg_format = 'ALE: [%linter%] %s [%severity%]'
+" }}}
+
+" mhartington/nvim-typescript ---------{{{
+  " disable auto check
+  let g:nvim_typescript#diagnostics_enable = 0
+  " only auto check on save/write
+  autocmd BufWrite *.ts,*.tsx TSGetDiagnostics
 " }}}
