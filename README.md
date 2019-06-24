@@ -1,50 +1,198 @@
 ### These are my Dotfiles.
-
 ___
-##### General tools used:
-* Karabiner Elements - https://github.com/tekezo/Karabiner-Elements
-* Brave Browser - https://brave.com/download/
-* Chrome Browser - https://www.google.com/chrome/?brand=CHBD&gclid=EAIaIQobChMI-oz-jN693AIVEYTICh3DuQh9EAAYASAAEgJy2vD_BwE&gclsrc=aw.ds&dclid=CLGSo5nevdwCFZEofwod0pEJAQ
-* Spectacle Window Tiler - https://www.spectacleapp.com/
-* Karabiner keybind Util - https://pqrs.org/osx/karabiner/
+
+#### General Productivity tools:
 * Slack - https://itunes.apple.com/us/app/slack/id803453959?mt=12
 * MailSpring - https://getmailspring.com/download
 * Spotify - https://www.spotify.com/us/download/other/
-
-This setup involves the following technologies:
-* Homebrew - https://brew.sh/
-* Alacritty - https://github.com/jwilm/alacritty#manual-installation
-* FZF - https://github.com/junegunn/fzf
-* neovim - https://neovim.io/
-* tmux - https://github.com/tmux/tmux/wiki
-* ZSH - https://github.com/robbyrussell/oh-my-zsh
-* Antigen for ZSH- https://github.com/zsh-users/antigen
-* zsh-spaceship -  https://github.com/denysdovhan/spaceship-prompt#oh-my-zsh
-
-Lets get started with building my dev environment. This assums you are using Mac OS.
 ___
 
-##### cloning down the dot files
-*__ATTN__* Before proceedng, you should have the following dependencies resolved:
-* ~~Operator Mono (Light, Book, & Light Italic)~~ Dank Mono should be installed in your Mac OS FontBook
-* You should have True colors enabled in your terminal. See true colors section
+## Dependencies
+
+## General Sanity/First items
+
+#### Re-Map CapsLock to control/ESC.
+
+- Install `xcape`.
+
+- Depending on your DE, this will be slightly different.
+
+- On `Mac`, Get started with `Karibiner` and `Karibiner-elements`
+
+- On `Gnome 3.x`, place the following script in `./profile
+
+- On `XFCE4`, place the following script in a file and use `Settings > Session and Startup > Application Autostart` tasks to call the file. Note: don't forget to make the file executable first
+
+```
+# make CapsLock behave like Ctrl:
+setxkbmap -option ctrl:nocaps
+
+# make short-pressed Ctrl behave like Escape:
+xcape -e 'Control_L=Escape'
+```
+
+#### Misc
+I like to install some of the following mono-spaced fonts:
+
+* Operator Mono
+* Dank Mono
+* Hack
+* Fira Code
+
+For system fonts, these are good starters:
+
+* San Francisco ?
+* Overpass
+
+---
+## Shell commandline tools
+This sets up ZSH, antigen ZSH manager, and zsh-spaceship prompt, and neofetch for some fanciness
+
+#### Install zsh
+Ubuntu/Debian: `sudo apt-get update && sudo apt-get -y install zsh`
+
+Manjaro: installed via pamac
+
+#### Set zsh as default:
+
+`chsh -s $(which zsh)`
+
+*_At this point, you should verify that ZSH is the default shell_
+
+#### Install Antigen
+* Ubuntu/Debian: `apt-get install zsh-antigen`
+
+* Manjaro: `curl -L git.io/antigen > antigen.zsh`
+
+#### Install neofetch
+
+* Ubuntu/Debian: `sudo apt-get install neofetch`
+
+* Manjaro: `sudo pacman -S neofetch`
 
 
-You'll most likely need the following dependencies:
+#### Install ripgrep
+* Debian Sid/MXLinux/
+```
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.1/ripgrep_11.0.1_amd64.deb
+sudo dpkg -i ripgrep_11.0.1_amd64.deb
 
-* rbenv
-* nvm
-* npm
-* ripgrep
-* fzf
-* neofetch
-* kitty
-* polybar
-* Ligaturizer (optional)
+```
+* Ubuntu: `sudo apt-get install ripgrep`
 
-Ok, now lets gets started:
+* Manjaro: `sudo pacman -S ripgrep`
 
-##### Step 1:
+##### Install fzf(Optional)
+* Manjaro: `sudo pacman -S fzf`
+__This can be instaled via the fzf.vim plugin__
+
+* Other
+```
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+
+#### Install tmux
+* Ubuntu/Debian: `sudo apt-get install tmux`
+
+* Manjaro: `sudo pacman -S tmux`
+
+#### Install tpm
+
+All distros: `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+
+#### Set/check true colors
+
+```
+awk 'BEGIN{
+    s="/\\/\\/\\/\\/\\"; s=s s s s s s s s s s s s s s s s s s s s s s s;
+    for (colnum = 0; colnum<256; colnum++) {
+        r = 255-(colnum*255/255);
+        g = (colnum*510/255);
+        b = (colnum*255/255);
+        if (g>255) g = 510-g;
+        printf "\033[48;2;%d;%d;%dm", r,g,b;
+        printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
+        printf "%s\033[0m", substr(s,colnum+1,1);
+    }
+    printf "\n";
+}'
+```
+
+#### Install kitty terminal
+* Most Distros: ` curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin `
+* Manjaro: install via pamac
+
+---
+
+## Languages (these should happen BEFORE neovim as well)
+#### Install nvm, node, and npm
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | zsh
+nvm --version  # check for proper install
+nvm install node
+```
+
+This `curl` script will install/update your system's NVM. It also appends an autostart script to the end of your `.bashrc`. Normally, you'd need to manually include this in your `.zshrc`, but it is already included in this repo's `.zshrc`
+
+#### Install rbenv and then ruby
+```
+wget -q https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer -O- | zsh
+rbenv install [arg]
+rbenv global [arg]
+```
+
+#### Install Gem
+
+* Ubuntu/Debian: `sudo apt-get install rubygems`
+* Manjaro: `pacman -S rubygems`
+
+and then: `gem install bundler`
+
+---
+## Neovim
+#### Installation
+
+* Manjaro: `sudo pacman -S neovim`
+* Ubuntu/Debian(I've had the best luck using flatpak):
+```
+flatpak install flathub io.neovim.nvim
+flatpak run io.neovim.nvim
+```
+
+---
+## Neovim Dependencies
+#### Plug Manager
+* All *nix OS's:
+```
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+#### Neovim Providers
+
+* Ruby provider: `gem install neovim`
+
+* Node Provider: `npm install -g neovim`
+
+* Python2 provider: `python2 -m pip install --user --upgrade pynvim`
+
+    If your system doesn't have pip2:
+    * Ubuntu/Debian: `sudo apt-get install python2-pip`
+    * Manjaro: `sudo pacman -S python2-pip`
+
+* Python3 provider: `python3 -m pip install --user --upgrade pynvim`
+
+    If your system doesn't have pip3:
+
+    * Ubuntu/Debian: `sudo apt-get install python3-pip`
+    * Manjaro: `sudo pacman -S python-pip`
+
+* _It is best to run :checkhealth and resolve all missing requirements before proceeding_
+
+---
+
+##### Cloning down dotfiles:
 * `git clone git@github.com:adamki/dotfiles.git`
 * `cd ~/dotfiles`
 * `chmod +x makesymlinks.sh`
@@ -67,62 +215,6 @@ This script executes the following:
 
 It is now recommended that you restart your terminal completely.
 
-##### Step 2:
-Opening NVIM for the first time.
-
-Before opening Neovim... might as well avoid some errors and do the following:
-* Install Plug Manager:
-  ```
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  ```
-___
-You'll want to run both of these `neovim` commands. `PlugInstall` will remove and plug errors. However... youll likely run into issues with `pip2`, `pip3`, and `python-provider` issues as various `neovim` plugin rely on them. Now is a good time to resolve those.
-
-* `:PlugInstall`
-* `:checkhealth`
-___
-
-### Enable True Colors
-checking for True Colors:
-```
-awk 'BEGIN{
-    s="/\\/\\/\\/\\/\\"; s=s s s s s s s s s s s s s s s s s s s s s s s;
-    for (colnum = 0; colnum<256; colnum++) {
-        r = 255-(colnum*255/255);
-        g = (colnum*510/255);
-        b = (colnum*255/255);
-        if (g>255) g = 510-g;
-        printf "\033[48;2;%d;%d;%dm", r,g,b;
-        printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
-        printf "%s\033[0m", substr(s,colnum+1,1);
-    }
-    printf "\n";
-}'
-```
-
-* create a file called `xterm-256color-italic.terminfo` in your home dir. Paste the following snippet in the newly created file:
-```
-# A xterm-256color based TERMINFO that adds the escape sequences for italic.
-xterm-256color-italic|xterm with 256 colors and italic,
-  sitm=\E[3m, ritm=\E[23m,
-  use=xterm-256color,
-```
-
-* compile the new color path by running this command: `tic xterm-256color-italic.terminfo`.
-* if you using iTerm, enable the new `.terminfo` file by profiles > terminal > Report Terminal Type = xterm-256color-italic
-* if you are using Alacritty, enable the new `.terminfo` file by changing the value found at env > TERM
-
-##### Purging CapsLock
-I don't ever use `CapsLock`.
-On Mac, I use Karibiner and KaribinerElements.
-On Linux, include the following
-
-```
-echo "\nsetxkbmap -option 'caps:ctrl_modifier' \nxcape -e '#66=Escape'" >> ~/.profile
-```
-
-##### MISC
-Much of my dotfiles have come from the influence of others. CHeck them out here:
-* https://github.com/webpro/awesome-dotfiles
-* https://github.com/rafi/vim-config
+## Other Things to do:
+* add SSH keys to local keyring
+*

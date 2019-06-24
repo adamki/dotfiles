@@ -17,6 +17,7 @@ backupdir=~/dotfiles_old
 neovimpath=~/.config/nvim
 ftpluginpath=~/.config/nvim/ftplugin
 alacrittypath=~/.config/alacritty
+kittypath=~/.config/kitty
 
 # list of files/folders to symlink in homedir
 files="tmux.conf
@@ -30,15 +31,16 @@ config/nvim/ftplugin/keymappings.vim
 config/nvim/ftplugin/aesthetic.vim
 config/nvim/ftplugin/filetypes.vim
 config/nvim/ftplugin/fold.vim
-config/alacritty/alacritty.yml"
+config/kitty/kitty.conf
+config/kitty/one-dark-256.conf"
 
 # Set up NVIM path
 mkdir -p $neovimpath
 printf "Created dir: $neovimpath ...............................................done. \n"
 
-# Set up ftplugin path
-mkdir -p $alacrittypath
-printf "Created dir: $alacrittypath ..........................................done. \n"
+# Set up kitty path
+mkdir -p $kittypath
+printf "Created dir: $kittypath ..........................................done. \n"
 
 # Set up ftplugin path
 mkdir -p $ftpluginpath

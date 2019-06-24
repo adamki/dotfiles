@@ -32,7 +32,5 @@ export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-#set up YARN
-export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
 
-neofetch
+neofetch | lolcat

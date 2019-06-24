@@ -9,7 +9,7 @@
   Plug 'rakr/vim-two-firewatch'
   " Language support
   Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'leafgarland/typescript-vim'
+  " Plug 'leafgarland/typescript-vim'
   Plug 'pangloss/vim-javascript'
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'sheerun/vim-polyglot'
@@ -25,7 +25,7 @@
   Plug 'chrisbra/Colorizer'
   Plug 'airblade/vim-gitgutter'
   Plug 'itchyny/vim-cursorword'
-  Plug '~/.fzf'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'pbogut/fzf-mru.vim', {'on': 'FZFMru'}
   Plug 'k0kubun/vim-open-github', {'on': 'OpenGithub'}
@@ -46,7 +46,7 @@
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-  Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+  " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
  " For async completion
 
  call plug#end()
