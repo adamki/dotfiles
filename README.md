@@ -64,12 +64,11 @@ Manjaro: installed via pamac
 
 * Manjaro: `curl -L git.io/antigen > antigen.zsh`
 
-#### Install neofetch
+#### Install ufetch
 
-* Ubuntu/Debian: `sudo apt-get install neofetch`
+* Ubuntu/Debian: `sudo apt-get install ufetch`
 
-* Manjaro: `sudo pacman -S neofetch`
-
+* Manjaro: `sudo pacman -S ufetch`
 
 #### Install ripgrep
 * Debian Sid/MXLinux/
