@@ -18,6 +18,8 @@ neovimpath=~/.config/nvim
 ftpluginpath=~/.config/nvim/ftplugin
 alacrittypath=~/.config/alacritty
 kittypath=~/.config/kitty
+i3path=~/.config/i3
+rofipath=~/.config/rofi
 
 # list of files/folders to symlink in homedir
 files="tmux.conf
@@ -32,6 +34,8 @@ config/nvim/ftplugin/aesthetic.vim
 config/nvim/ftplugin/filetypes.vim
 config/nvim/ftplugin/fold.vim
 config/kitty/kitty.conf
+config/i3/config
+config/rofi/config
 config/kitty/one-dark-256.conf"
 
 # Set up NVIM path
@@ -49,6 +53,14 @@ printf "Created dir: $ftpluginpath ......................................done. \
 # create dotfiles_old in homedir
 mkdir -p $backupdir
 printf  "Created dir: $backupdir ...............................................done. \n"
+
+# create i3 path
+mkdir -p $i3path
+printf  "Created dir: $i3path ...............................................done. \n"
+
+# create rofi path
+mkdir -p $rofipath
+printf  "Created dir: $rofipath ...............................................done. \n"
 
 # change to the dotfiles directory
 cd $dir
