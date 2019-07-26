@@ -91,6 +91,7 @@ bindsym $mod+a focus parent
 
 # focus the child container
 # bindsym $mod+d focus child
+bindsym $mod+shift+a focus child
 
 # Define names for default workspaces for which we configure key bindings later on. We use
 # variables to avoid repeating the names in multiple places.
@@ -186,8 +187,10 @@ client.urgent           #C10004 #900000 #ffffff #900000 #C10004
 exec kitty
 exec_always compton -f
 
-# set bg img
-exec_always feh --bg-scale /home/adamki/Pictures/florida-waves.jpg
+# set bg img with feh/nitrogen
+# exec_always feh --bg-scale /usr/share/backgrounds/manjaro-wallpapers-18.0/Manjaro_Perspective_light.jpg
+exec --no-startup-id nitrogen --restore
+
 # launch polybar
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # run lock.sh script
@@ -201,7 +204,6 @@ smart_borders on
 # i3 gaps config
 gaps inner 8
 gaps outer 8
-
 # much faster key reepeaatt
 # first val set delay until repeat
 # second val is repeats per second
