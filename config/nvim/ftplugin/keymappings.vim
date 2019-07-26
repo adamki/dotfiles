@@ -48,11 +48,8 @@ vnoremap <S-Tab> <gv
 " nnoremap > >>_
 " nnoremap < <<_
 " move lines in normal
-nnoremap ∆ :m .+1<CR>==
-nnoremap ˚ :m .-2<CR>==
-" move lines in insert
-inoremap ∆ <Esc>:m .+1<CR>==gi
-inoremap ˚ <Esc>:m .-2<CR>==gi
+nnoremap <C-down> :m .+1<CR>==
+nnoremap <C-up> :m .-2<CR>==
 " }}}
 
 " {{{ PLUGS

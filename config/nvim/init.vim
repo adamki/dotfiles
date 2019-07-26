@@ -7,12 +7,14 @@
   Plug 'kristijanhusak/vim-hybrid-material'
   Plug 'connorholyday/vim-snazzy'
   Plug 'rakr/vim-two-firewatch'
+  Plug 'mhartington/oceanic-next'
   " Language support
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'leafgarland/typescript-vim'
   Plug 'pangloss/vim-javascript'
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'sheerun/vim-polyglot'
+  Plug 'ap/vim-css-color'
   " improved Movements & Motions
   Plug 'alvan/vim-closetag'
   Plug 'christoomey/vim-tmux-navigator'
@@ -48,7 +50,6 @@
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
  " For async completion
-
  call plug#end()
 " }}}
 
