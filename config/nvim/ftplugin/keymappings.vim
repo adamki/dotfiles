@@ -47,9 +47,9 @@ vnoremap <Tab> >gv|
 vnoremap <S-Tab> <gv
 " nnoremap > >>_
 " nnoremap < <<_
-" move lines in normal
-nnoremap <C-down> :m .+1<CR>==
-nnoremap <C-up> :m .-2<CR>==
+" move lines in visual
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 " }}}
 
 " {{{ PLUGS
