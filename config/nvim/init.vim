@@ -24,16 +24,14 @@
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   " improved interface
-  Plug 'chrisbra/Colorizer'
   Plug 'airblade/vim-gitgutter'
   Plug 'itchyny/vim-cursorword'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'pbogut/fzf-mru.vim', {'on': 'FZFMru'}
   Plug 'k0kubun/vim-open-github', {'on': 'OpenGithub'}
-  Plug 'majutsushi/tagbar'
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
-  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'Yggdroot/indentLine'
   Plug 'scrooloose/nerdtree'
   Plug 'shime/vim-livedown', {'for': 'markdown'}
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
