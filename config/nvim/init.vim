@@ -10,7 +10,6 @@
   Plug 'mhartington/oceanic-next'
   " Language support
   Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'leafgarland/typescript-vim'
   Plug 'pangloss/vim-javascript'
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'sheerun/vim-polyglot'
@@ -39,14 +38,14 @@
   Plug 'tpope/vim-fugitive'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'w0rp/ale'
   " miscellaneous
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
   " integrations
-  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-  Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+  " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
  " For async completion
  call plug#end()
 " }}}
