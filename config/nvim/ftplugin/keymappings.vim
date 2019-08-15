@@ -91,6 +91,31 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-t> <plug>(fzf-complete-buffer-line)
+" COC.nvim
+" Show all diagnostics
+nnoremap <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <space>s  :<C-u>CocList -I symbols<C-W><cr>
+
+" Do default action for next item.
+nnoremap <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <space>p  :<C-u>CocListResume<CR>
+
+nmap <silent> <leader>dd <Plug>(coc-definition)
+nmap <silent> <leader>dr <Plug>(coc-references)
+nmap <silent> <leader>dj <Plug>(coc-implementation)
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " MISCELLANEOUS(FZF)
 nmap <LocalLeader><tab> <plug>(fzf-maps-n)
 xmap <LocalLeader><tab> <plug>(fzf-maps-x)
