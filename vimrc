@@ -8,4 +8,3 @@ set noswapfile                           " don't create swapfiles for new buffer
 set updatecount=0                        " Don't try to write swapfiles after some number of updates
 
 set backspace=indent,eol,start           " Make backspace behave in a sane manner.
-
