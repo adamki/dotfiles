@@ -4,10 +4,8 @@
   Plug 'trevordmiller/nova-vim'
   Plug 'morhetz/gruvbox'
   Plug 'arcticicestudio/nord-vim'
-  Plug 'kristijanhusak/vim-hybrid-material'
-  Plug 'connorholyday/vim-snazzy'
+  Plug 'joshdick/onedark.vim'
   Plug 'rakr/vim-two-firewatch'
-  Plug 'mhartington/oceanic-next'
   " Language support
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'
