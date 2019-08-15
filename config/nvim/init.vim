@@ -9,6 +9,8 @@
   " Language support
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'pangloss/vim-javascript'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'peitalin/vim-jsx-typescript'
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'sheerun/vim-polyglot'
   Plug 'ap/vim-css-color'
