@@ -14,7 +14,7 @@
   Plug 'ap/vim-css-color'
   " improved Movements & Motions
   Plug 'alvan/vim-closetag'
-  Plug 'christoomey/vim-tmux-navigator'
+  " Plug 'christoomey/vim-tmux-navigator'
   Plug 'easymotion/vim-easymotion'
   Plug 'jiangmiao/auto-pairs'
   Plug 'tomtom/tcomment_vim'
