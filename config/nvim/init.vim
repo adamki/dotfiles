@@ -28,7 +28,6 @@
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'pbogut/fzf-mru.vim', {'on': 'FZFMru'}
-  Plug 'k0kubun/vim-open-github', {'on': 'OpenGithub'}
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'Yggdroot/indentLine'
   Plug 'scrooloose/nerdtree'
@@ -36,6 +35,8 @@
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
+  Plug 'shumphrey/fugitive-gitlab.vim', { 'on': 'Gbrowse' }
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   " miscellaneous
