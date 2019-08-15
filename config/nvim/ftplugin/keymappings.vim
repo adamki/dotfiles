@@ -14,10 +14,10 @@ nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader>x :x<CR>
 let g:elite_mode = 1
 if get(g:, 'elite_mode')
-  nnoremap <Up>    :resize +2<CR>
-  nnoremap <Down>  :resize -2<CR>
-  nnoremap <Left>  :vertical resize +2<CR>
-  nnoremap <Right> :vertical resize -2<CR>
+  nnoremap <S-Up>    :resize +2<CR>
+  nnoremap <S-Down>  :resize -2<CR>
+  nnoremap <S-Left>  :vertical resize +2<CR>
+  nnoremap <S-Right> :vertical resize -2<CR>
 endif
 " BUFFERS
 nmap ]b :bnext<CR>
