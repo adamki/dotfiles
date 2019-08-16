@@ -45,6 +45,6 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n
 let g:fzf_mru_relative = 1
 " }}}
 
-" neoclide/coc.vim ---------------------{{{
-let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-yank']
+" neoclide/coc.vim --------------------{{{
+let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-snippets']
 " }}}

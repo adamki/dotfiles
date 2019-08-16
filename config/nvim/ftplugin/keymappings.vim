@@ -92,6 +92,8 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-t> <plug>(fzf-complete-buffer-line)
 " COC.nvim
+" expand snippets
+imap <C-l> <Plug>(coc-snippets-expand)
 " Show all diagnostics
 nnoremap <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
@@ -101,7 +103,7 @@ nnoremap <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <space>s  :<C-u>CocList -I symbols<C-W><cr>
+nnoremap <space>s  :<C-u>CocList symbols<cr>
 
 " Do default action for next item.
 nnoremap <space>j  :<C-u>CocNext<CR>
