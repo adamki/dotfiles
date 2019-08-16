@@ -1,9 +1,7 @@
 set background=dark                              " must go before :colorscheme
-colo nova                                        " must go after set bg
+colo iceberg                                     " must go after set bg
 let g:enable_italic_font = 1                     " Make sure to italicize
 let g:nova_transparent = 1
-au ColorScheme * hi Normal ctermbg=none guibg=none
-au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
 
 function! Set_italics()
   hi htmlArg gui=italic
