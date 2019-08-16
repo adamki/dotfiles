@@ -45,8 +45,9 @@
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
   Plug 'shumphrey/fugitive-gitlab.vim', { 'on': 'Gbrowse' }
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  Plug 'itchyny/lightline.vim'
+  " Plug 'vim-airline/vim-airline'
+  " Plug 'vim-airline/vim-airline-themes'
   " miscellaneous
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
   " integrations

@@ -1,13 +1,35 @@
-" vim-airline/vim-airline -------------{{{
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif                                                              " set up symbol dictionary
-let g:airline_powerline_fonts = 1                                  " enable powerline icons
-let g:airline_symbols.branch = ''                                 " git branch symbol!
-let g:airline_inactive_collapse=1                                  " truncate left side of status bar for inactive windows
-let g:airline#extensions#tabline#enabled = 0                       " enables tabline
-let g:airline#extensions#branch#enabled = 1                        " integrate fugitive
-let g:airline#extensions#branch#empty_message = 'Not in Git Repo'  " output if !git
+" itchyny/lightline -------------------{{{
+let g:lightline = {
+      \ 'colorscheme': 'iceberg',
+      \ 'active': {
+      \   'left': [ [ 'paste' ],
+      \             [ 'readonly', 'filename', 'gitbranch', 'fugitive', 'modified'] ],
+      \   'right': [ [ 'cocstatus', 'currentfunction' ],
+      \              [ 'lineinfo', 'percent' ],
+      \              [  ] ]
+      \ },
+      \ 'inactive': {
+      \    'left': [ [ 'relativepath' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction',
+			\   'fugitive': 'LightlineFugitive'
+      \ },
+      \ }
+
+function! LightlineFugitive()
+  if exists('*fugitive#head')
+    let branch = fugitive#head()
+    return branch !=# '' ? ''.branch : ''
+  endif
+  return ''
+endfunction
+
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
 " }}}
 
 " Pangloss/vim-javascript -------------{{{
