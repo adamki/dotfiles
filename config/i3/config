@@ -197,7 +197,7 @@ exec --no-startup-id nitrogen --restore
 # exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
 
 # add borders to app windows
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 1
 
 # Activate smart borders (always)
 smart_borders on
@@ -217,6 +217,8 @@ gaps outer 8
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # # Sreen brightness controls
+# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessUp exec brightnessctl set 5%+ # increase screen brightness

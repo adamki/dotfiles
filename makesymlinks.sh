@@ -20,6 +20,7 @@ alacrittypath=~/.config/alacritty
 kittypath=~/.config/kitty
 i3path=~/.config/i3
 rofipath=~/.config/rofi
+polybarpath=~/.config/polybar
 
 # list of files/folders to symlink in homedir
 files="tmux.conf

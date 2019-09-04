@@ -1,6 +1,5 @@
 " itchyny/lightline -------------------{{{
 let g:lightline = {
-      \ 'colorscheme': 'iceberg',
       \ 'active': {
       \   'left': [ [ 'paste' ],
       \             [ 'readonly', 'filename', 'gitbranch', 'fugitive', 'modified'] ],
@@ -32,20 +31,17 @@ endfunction
 
 " }}}
 
-" Pangloss/vim-javascript -------------{{{
-let g:javascript_plugin_flow = 1                                   " enables syntax highlight for flow.js
-"  }}}
+" Yggdroot/indentLine -----------------{{{
+let g:indentLine_char = '▏'
+" }}}
 
 " alvan/vim-closetag ------------------{{{
 let g:closetag_filenames = '*.html,*.jsx,*.js,*.tsx,*.html.erb'          " close tags on these files
 " }}}
 
-" christoomey/vim-tmux-navigator ------{{{
-let g:tmux_navigator_disable_when_zoomed = 1                       " Disable tmux navigator when zooming the Vim pane
-" }}}
-
 " airblade/vim-gitgutter --------------{{{
 let g:gitgutter_enabled = 1                                        " Init GitGutter
+let g:gitgutter_sign_allow_clobber = 0                             " git gutter symbols to have lowest priority
 " }}}
 
 " shime/vim-livedown ------------------{{{
@@ -68,5 +64,22 @@ let g:fzf_mru_relative = 1
 " }}}
 
 " neoclide/coc.vim --------------------{{{
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
 let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-snippets']
 " }}}

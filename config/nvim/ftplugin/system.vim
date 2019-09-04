@@ -44,3 +44,12 @@ autocmd BufReadPost *
       \ if line("'\"") > 0 && line ("'\"") <= line("$") |
       \   exe "normal! g'\"" |
       \ endif " remember cursor position
+
+" COC.nvim based settings
+set nobackup                             " Some servers have issues with backup files, see #649
+set nowritebackup                        " Some servers have issues with backup files, see #649
+set cmdheight=2                          " Better display for messages
+set updatetime=300                       " You will have bad experience for diagnostic messages when it's default 4000.
+set shortmess+=c                         " don't give |ins-completion-menu| messages.
+set signcolumn=yes                       " always show signcolumns
+
