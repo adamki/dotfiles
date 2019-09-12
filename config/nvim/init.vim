@@ -10,7 +10,6 @@
   Plug 'flrnprz/plastic.vim'
   " Language support
   Plug 'sheerun/vim-polyglot'
-  Plug 'HerringtonDarkholme/yats.vim'
   Plug 'ap/vim-css-color'
   " improved Movements & Motions
   Plug 'alvan/vim-closetag'

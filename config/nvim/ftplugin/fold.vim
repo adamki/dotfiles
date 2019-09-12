@@ -1,6 +1,3 @@
-" {{{
-" }}}
-
 function! MyFoldText() " {{{
   " Get first non-blank line
   let fs = v:foldstart
