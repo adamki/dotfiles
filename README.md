@@ -203,14 +203,14 @@ This script executes the following:
 * sets ZSH as default shell
 * symlinks the following:
 
-  |~/.*                                 |~/dotfiles/*                                |
-  |-------------------------------------|--------------------------------------------|
-  | `~/.tmux.conf`                      | `~/dotfiles/tmux.conf`               |
-  | `~/.vimrc`                          | `~/dotfiles/vimrc`                   |
-  | `~/.zshrc`                          | `~/dotfiles/zshrc`                   |
-  | `~/.config/nvim/init.vim`           | `~/dotfiles/config/nvim/init.vim`    |
-  | `~/.config/nvim/fplugin/*`          | `~/dotfiles/config/fplugin/*`        |
-  | `~/.config/alacritty/alacritty.yml` | `~/dotfiles/alacritty/alacritty.yml` |
+  |~/.*                               |~/dotfiles/*                                |
+  |-----------------------------------|--------------------------------------------|
+  | `~/.tmux.conf`                      | `~/dotfiles/tmux.conf`                       |
+  | `~/.vimrc`                          | `~/dotfiles/vimrc`                           |
+  | `~/.zshrc`                          | `~/dotfiles/zshrc`                           |
+  | `~/.config/nvim/init.vim`           | `~/dotfiles/config/nvim/init.vim`            |
+  | `~/.config/nvim/fplugin/*`          | `~/dotfiles/config/fplugin/*`                |
+  | `~/.config/alacritty/alacritty.yml` | `~/dotfiles/alacritty/alacritty.yml`         |
 
 It is now recommended that you restart your terminal completely.
 
