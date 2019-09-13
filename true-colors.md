@@ -1,4 +1,4 @@
-create a file called `xterm-256color-italic.terminfo` in your home dir. Paste the following snippet in the newly created file:
+Create a file called `xterm-256color-italic.terminfo` in your home dir. Paste the following snippet in the newly created file:
 ```
 # A xterm-256color based TERMINFO that adds the escape sequences for italic.
 xterm-256color-italic|xterm with 256 colors and italic,
