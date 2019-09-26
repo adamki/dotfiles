@@ -1,5 +1,5 @@
 set background=dark                               " must go before :colorscheme
-colo onedark                                      " must go after set bg
+colo rigel                                      " must go after set bg
 let g:enable_italic_font = 1                      " Make sure to italicize
 let g:nova_transparent = 1
 
@@ -13,4 +13,4 @@ function! Set_italics()
   hi Type    cterm=italic
 endfunction
 
-let g:lightline.colorscheme='one'                 " Airline theme
+let g:lightline = { 'colorscheme': 'rigel' }

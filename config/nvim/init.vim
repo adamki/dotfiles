@@ -8,6 +8,7 @@
   Plug 'rakr/vim-two-firewatch'
   Plug 'jacoborus/tender.vim'
   Plug 'flrnprz/plastic.vim'
+  Plug 'Rigellute/rigel'
   " Language support
   Plug 'sheerun/vim-polyglot'
   Plug 'ap/vim-css-color'

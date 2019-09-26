@@ -32,5 +32,6 @@ export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+eval $(keychain --eval --quiet id_ed25519 id_rsa ~/.ssh/id_ed25519.pub)
 
 ufetch | lolcat
