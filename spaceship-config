@@ -31,25 +31,9 @@ SPACESHIP_RPROMPT_ORDER=(
   kubecontext   # Kubectl context section
 )
 
-# USER
-SPACESHIP_USER_PREFIX="" # remove `with` before username
-SPACESHIP_USER_SUFFIX="" # remove space before host
-
-# HOST
-# Result will look like this:
-#   username@:(hostname)
 SPACESHIP_HOST_PREFIX="@:("
 SPACESHIP_HOST_SUFFIX=") "
 
-# DIR
-SPACESHIP_DIR_PREFIX=""
-SPACESHIP_DIR_TRUNC=2
+SPACESHIP_DIR_TRUNC=0
 
-# GIT
-SPACESHIP_GIT_PREFIX=''
-SPACESHIP_GIT_SUFFIX=' '
-SPACESHIP_GIT_BRANCH_SUFFIX="" # remove space after branch name
-# Unwrap git status from `[...]`
-SPACESHIP_GIT_STATUS_PREFIX=""
-SPACESHIP_GIT_STATUS_SUFFIX=""
-
+SPACESHIP_CHAR_SYMBOL=" ❯ "
