@@ -17,7 +17,11 @@ ___
 
 - Depending on your DE, this will be slightly different.
 
-- On `Mac`, Get started with `Karibiner` and `Karibiner-elements`
+- On `Mac`, Get started with and `Karibiner-elements`
+```
+On Mac, this is done by adding a 'complex modification' called 'Change Caps_Lock to control if pressed with other keys, to escape if pressed alone.
+
+```
 
 - On `Gnome 3.x`, place the following script in `./profile
 
@@ -45,30 +49,54 @@ For system fonts, these are good starters:
 * Overpass
 
 ---
-## Shell commandline tools
-This sets up ZSH, antigen ZSH manager, and zsh-spaceship prompt, and neofetch for some fanciness
+## Shell  and Shell tools
+
+#### Install kitty terminal
+* Most Distros/MacOS: ` curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin `
+* Manjaro: install via pamac
+
+Now to install some of the following dependencies: 
+* ZSH
+* antigen for ZSH
+* zsh-spaceship prompt
+* neofetch
+* lolcat
 
 #### Install zsh
-Ubuntu/Debian: `sudo apt-get update && sudo apt-get -y install zsh`
+* Ubuntu/Debian: `sudo apt-get update && sudo apt-get -y install zsh`
 
-Manjaro: installed via pamac
+* Manjaro: installed via pamac
+
+* MacOS: `brew install zsh`
 
 #### Set zsh as default:
 
+* Verify that zsh is installed: `zsh --version`
 `chsh -s $(which zsh)`
 
-*_At this point, you should verify that ZSH is the default shell_
+*_At this point, you should verify that ZSH is the default shell_. `echo $SHELL` should return `/bin/zsh` of something similar
 
 #### Install Antigen
 * Ubuntu/Debian: `apt-get install zsh-antigen`
 
 * Manjaro: `curl -L git.io/antigen > antigen.zsh`
 
-#### Install ufetch
+* MacOS: `brew install antigen`
 
-* Ubuntu/Debian: `sudo apt-get install ufetch`
+#### Install neofetch
 
-* Manjaro: `sudo pacman -S ufetch`
+* Ubuntu/Debian: `sudo apt-get install neofetch`
+
+* Manjaro: `sudo pacman -S neofetch`
+
+* MacOS: `brew install neofetch`
+
+#### Install lolcat
+* Ubuntu/Debian: `sudo gem install lolcat`
+
+* Manjaro: `sudo gem install lolcat`
+
+* MacOS: `sudo gem install lolcat`
 
 #### Install ripgrep
 * Debian Sid/MXLinux/
@@ -81,11 +109,14 @@ sudo dpkg -i ripgrep_11.0.1_amd64.deb
 
 * Manjaro: `sudo pacman -S ripgrep`
 
+* MacOS: `brew install ripgrep`
+
 ##### Install fzf(Optional)
 * Manjaro: `sudo pacman -S fzf`
 __This can be instaled via the fzf.vim plugin__
 
-* Other
+* Other:
+
 ```
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
@@ -95,6 +126,8 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 * Ubuntu/Debian: `sudo apt-get install tmux`
 
 * Manjaro: `sudo pacman -S tmux`
+
+* `brew install tmux`
 
 #### Install tpm
 
@@ -117,11 +150,6 @@ awk 'BEGIN{
     printf "\n";
 }'
 ```
-
-#### Install kitty terminal
-* Most Distros: ` curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin `
-* Manjaro: install via pamac
-
 ---
 
 ## Languages (these should happen BEFORE neovim as well)
