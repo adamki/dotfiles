@@ -51,3 +51,4 @@ alias gri='git rebase --interactive'
 alias gra='git rebase --abort'
 alias gcp='git cherry-pick'
 alias gco='git checkout'
+alias gy="git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' | pbcopy"
