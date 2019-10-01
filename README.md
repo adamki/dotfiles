@@ -1,12 +1,6 @@
 ### These are my Dotfiles.
 ___
 
-#### General Productivity tools:
-* Slack - https://itunes.apple.com/us/app/slack/id803453959?mt=12
-* MailSpring - https://getmailspring.com/download
-* Spotify - https://www.spotify.com/us/download/other/
-___
-
 ## Dependencies
 
 ## General Sanity/First items
@@ -49,6 +43,7 @@ For system fonts, these are good starters:
 * Overpass
 
 ---
+
 ## Shell  and Shell tools
 
 #### Install kitty terminal
@@ -237,26 +232,18 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 ##### Cloning down dotfiles:
 * `git clone git@github.com:adamki/dotfiles.git`
 * `cd ~/dotfiles`
-* `chmod +x makesymlinks.sh`
-* `./makesymlinks.sh`
+
+NOTE: There are ** TWO ** similar files for symlinking. Make sure to choose the OS Specific one
+
+* `chmod +x makesymlinks_mac.sh` || `chmod +x makesymlinks_linux.sh`
+* `./makesymlinks_mac.sh` || `./makesymlinks_linux.sh`
 
 This script executes the following:
 * dumps old dotfiles into a newly created dir called `dotfiles_old`
 * installs ZSH
 * sets ZSH as default shell
-* symlinks the following:
-
-  |~/.*                               |~/dotfiles/*                                |
-  |-----------------------------------|--------------------------------------------|
-  | `~/.tmux.conf`                      | `~/dotfiles/tmux.conf`                       |
-  | `~/.vimrc`                          | `~/dotfiles/vimrc`                           |
-  | `~/.zshrc`                          | `~/dotfiles/zshrc`                           |
-  | `~/.config/nvim/init.vim`           | `~/dotfiles/config/nvim/init.vim`            |
-  | `~/.config/nvim/fplugin/*`          | `~/dotfiles/config/fplugin/*`                |
-  | `~/.config/alacritty/alacritty.yml` | `~/dotfiles/alacritty/alacritty.yml`         |
 
 It is now recommended that you restart your terminal completely.
 
 ## Other Things to do:
 * add SSH keys to local keyring
-*
