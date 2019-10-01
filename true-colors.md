@@ -24,4 +24,3 @@ awk 'BEGIN{
     printf "\n";
 }'
 ```
-
