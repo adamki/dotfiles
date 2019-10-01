@@ -25,7 +25,7 @@
   Plug 'junegunn/fzf.vim'
   Plug 'pbogut/fzf-mru.vim', {'on': 'FZFMru'}
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
-  Plug 'Yggdroot/indentLine'
+  Plug 'nathanaelkane/vim-indent-guides'
   Plug 'scrooloose/nerdtree'
   Plug 'shime/vim-livedown', {'for': 'markdown'}
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
