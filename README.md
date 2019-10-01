@@ -55,7 +55,7 @@ For system fonts, these are good starters:
 * Most Distros/MacOS: ` curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin `
 * Manjaro: install via pamac
 
-Now to install some of the following dependencies: 
+Now to install some of the following dependencies:
 * ZSH
 * antigen for ZSH
 * zsh-spaceship prompt
@@ -154,6 +154,8 @@ awk 'BEGIN{
 
 ## Languages (these should happen BEFORE neovim as well)
 #### Install nvm, node, and npm
+
+* For all OS's:
 ```
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | zsh
 nvm --version  # check for proper install
@@ -163,16 +165,27 @@ nvm install node
 This `curl` script will install/update your system's NVM. It also appends an autostart script to the end of your `.bashrc`. Normally, you'd need to manually include this in your `.zshrc`, but it is already included in this repo's `.zshrc`
 
 #### Install rbenv and then ruby
+
+* Linux
 ```
 wget -q https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer -O- | zsh
 rbenv install [arg]
 rbenv global [arg]
 ```
 
+* MacOS: `brew install rbenv`
+
+NOTE: `rbenv` setup has been problematic. It is best to follow the directions in the documentation and confirm that it is setup using the `rbenv-doctor` script here:
+NOTE: MacOS ships with a system install of Ruby. It is best to install an updated/supported global version (and set this version as the system default) that to avoid conflicts before proceeding
+
+
+https://github.com/rbenv/rbenv#installation
+
 #### Install Gem
 
 * Ubuntu/Debian: `sudo apt-get install rubygems`
 * Manjaro: `pacman -S rubygems`
+* MacOS: as long as you've used rbenv to install a local ruby version, no action is needed
 
 and then: `gem install bundler`
 
@@ -186,6 +199,7 @@ and then: `gem install bundler`
 flatpak install flathub io.neovim.nvim
 flatpak run io.neovim.nvim
 ```
+* MacOS: I've not had success using the pre-built `brew` package as it hasn't been updated imo.
 
 ---
 ## Neovim Dependencies
@@ -207,6 +221,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     If your system doesn't have pip2:
     * Ubuntu/Debian: `sudo apt-get install python2-pip`
     * Manjaro: `sudo pacman -S python2-pip`
+    * MacOS:  `brew install pytnon2`
 
 * Python3 provider: `python3 -m pip install --user --upgrade pynvim`
 
