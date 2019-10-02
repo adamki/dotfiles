@@ -9,6 +9,7 @@
   Plug 'jacoborus/tender.vim'
   Plug 'flrnprz/plastic.vim'
   Plug 'Rigellute/rigel'
+  Plug 'drewtempelmeyer/palenight.vim'
   " Language support
   Plug 'sheerun/vim-polyglot'
   Plug 'ap/vim-css-color'
