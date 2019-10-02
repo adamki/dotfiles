@@ -145,6 +145,11 @@ awk 'BEGIN{
     printf "\n";
 }'
 ```
+
+#### Install Misc Shell tools
+* Ranger
+* htop
+* gotop
 ---
 
 ## Languages (these should happen BEFORE neovim as well)
