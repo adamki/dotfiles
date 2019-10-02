@@ -62,6 +62,8 @@ echo 'Installing NPM Packages...'
 npm install -g ${GLOBAL_NPM[@]}
 
 # MISC INSTALLS
+echo "Installing Kitty Terminal..."
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 echo "Installing TPM..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Installing NVM..."
