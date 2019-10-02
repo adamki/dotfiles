@@ -109,7 +109,7 @@ sudo dpkg -i ripgrep_11.0.1_amd64.deb
 ##### Install fzf(Optional)
 * Manjaro: `sudo pacman -S fzf`
 __This can be instaled via the fzf.vim plugin__
-
+* MacOS: `brew install fzf` && `/usr/local/opt/fzf/install`
 * Other:
 
 ```
@@ -245,8 +245,6 @@ NOTE: There are ** TWO ** similar files for symlinking. Make sure to choose the 
 
 This script executes the following:
 * dumps old dotfiles into a newly created dir called `dotfiles_old`
-* installs ZSH
-* sets ZSH as default shell
 
 It is now recommended that you restart your terminal completely.
 
