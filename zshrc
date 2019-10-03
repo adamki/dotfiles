@@ -12,9 +12,18 @@ export HISTSIZE=12000 # Store 10,000 history entries
 export HISTCONTROL=erasedups # Don't store duplicates
 
 # setup path to antigen ZSH pachage manager
+case `uname` in
+  Darwin)
+    source /usr/local/share/antigen/antigen.zsh
+    # set up rbenv
+    eval "$(rbenv init -)"
+  ;;
+  Linux)
+    source $HOME/antigen.zsh
+    eval $(keychain --eval --quiet id_ed25519 id_rsa ~/.ssh/id_ed25519.pub)
+  ;;
+esac
 
-# source $HOME/antigen.zsh
-source /usr/local/share/antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle colorize
 antigen bundle colored-man-pages
@@ -33,12 +42,6 @@ export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
 # sets up nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# set up rbenv
-eval "$(rbenv init -)"
-
-# eval $(keychain --eval --quiet id_ed25519 id_rsa ~/.ssh/id_ed25519.pub)
-
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 neofetch | lolcat
