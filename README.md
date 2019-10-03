@@ -44,23 +44,22 @@ For system fonts, these are good starters:
 
 ---
 
-## Shell  and Shell tools
+## Shell and Shell tools
 
 #### Install kitty terminal
-* Most Distros/MacOS: ` curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin `
+* Most Distros/MacOS: `curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin `
 * Manjaro: install via pamac
 
 Now to install some of the following dependencies:
 * ZSH
 * antigen for ZSH
-* zsh-spaceship prompt
 * neofetch
 * lolcat
 
 #### Install zsh
 * Ubuntu/Debian: `sudo apt-get update && sudo apt-get -y install zsh`
 
-* Manjaro: installed via pamac
+* Manjaro: `sudo pacman -S zsh`
 
 * MacOS: `brew install zsh`
 
@@ -122,7 +121,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 * Manjaro: `sudo pacman -S tmux`
 
-* `brew install tmux`
+* MacOS: `brew install tmux`
 
 #### Install tpm
 
