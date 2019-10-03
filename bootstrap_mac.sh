@@ -10,6 +10,13 @@ echo "Upating Brew..."
 # Update homebrew recipes
 brew update
 
+TAPS=(
+  homebrew/cask-fonts
+  koekeishiya/formulae
+)
+echo 'Tapping Homebrew...'
+brew tap ${TAPS[@]}
+
 PACKAGES=(
   zsh
   antigen
@@ -23,35 +30,35 @@ PACKAGES=(
   gotop
   rbenv
   python2
+  yabai
+  skhd
 )
 echo "Installing packages..."
 brew install ${PACKAGES[@]}
-echo "Cleaning up..."
-brew cleanup
 
 CASKS=(
   firefox
   slack
 )
-
 echo "Installing cask apps..."
 brew cask install ${CASKS[@]}
+
+FONTS=(
+  font-fira-code
+)
+echo "Installing Fonts..."
+brew cask install ${FONTS[@]}
+
+echo "Cleaning up..."
+brew cleanup
 
 GEMS=(
   bundler
   neovim
 )
-
 echo "Install Gems..."
 gem install ${GEMS[@]}
 
-FONTS=(
-  font-fira-code
-)
-
-echo "Installing Fonts..."
-brew tap homebrew/cask-fonts
-brew cask install ${FONTS[@]}
 
 GLOBAL_NPM=(
   neovim

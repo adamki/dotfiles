@@ -22,6 +22,8 @@ kittypath=~/.config/kitty
 files="tmux.conf
 vimrc
 zshrc
+yabairc
+skhdrc
 config/nvim/init.vim
 config/nvim/ftplugin/plugins.vim
 config/nvim/ftplugin/nerdtree.vim
