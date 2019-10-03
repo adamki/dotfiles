@@ -24,6 +24,7 @@ vimrc
 zshrc
 yabairc
 skhdrc
+config/nvim/coc-settings.json
 config/nvim/init.vim
 config/nvim/ftplugin/plugins.vim
 config/nvim/ftplugin/nerdtree.vim
