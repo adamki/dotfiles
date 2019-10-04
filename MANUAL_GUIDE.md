@@ -1,10 +1,3 @@
-### These are my Dotfiles.
-___
-
-## Dependencies
-
-## General Sanity/First items
-
 #### Re-Map CapsLock to control/ESC.
 
 - Install `xcape`.
@@ -232,20 +225,3 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 * _It is best to run :checkhealth and resolve all missing requirements before proceeding_
 
 ---
-
-##### Cloning down dotfiles:
-* `git clone git@github.com:adamki/dotfiles.git`
-* `cd ~/dotfiles`
-
-NOTE: There are ** TWO ** similar files for symlinking. Make sure to choose the OS Specific one
-
-* `chmod +x makesymlinks_mac.sh` || `chmod +x makesymlinks_linux.sh`
-* `./makesymlinks_mac.sh` || `./makesymlinks_linux.sh`
-
-This script executes the following:
-* dumps old dotfiles into a newly created dir called `dotfiles_old`
-
-It is now recommended that you restart your terminal completely.
-
-## Other Things to do:
-* add SSH keys to local keyring
