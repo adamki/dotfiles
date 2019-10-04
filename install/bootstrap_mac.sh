@@ -1,7 +1,7 @@
 #!/bin/bash
 . "${DOTFILES}/utils/colors.sh"
 
-echo -e "${yellow}Check if Brew is installed${reset}"
+echo -e "${HR}Starting Boostrap Script...\n\nCheck if Brew is installed${reset}${HR}"
 if test ! $(which brew); then
   echo -e "${yellow}Installing Brew...${reset}"
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

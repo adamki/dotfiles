@@ -13,7 +13,6 @@ LINUX_SYMLINKS="${INSTALL_DIR}/makesymlinks_linux.sh"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   echo "coming soon"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  echo -e "${HR}Starting Bootstrap Script${HR}"
   . "$BOOTSTRAP_MAC"
-  # . "$SYMLINK_MAC"
+  . "$SYMLINK_MAC"
 fi

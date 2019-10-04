@@ -11,6 +11,7 @@
 # 3. ./makesymlinks.sh
 ################################################################################
 
+. "${DOTFILES}/utils/colors.sh"
 ########## Variables
 dir=~/dotfiles
 backupdir=~/dotfiles_old
@@ -18,7 +19,15 @@ neovimpath=~/.config/nvim
 ftpluginpath=~/.config/nvim/ftplugin
 kittypath=~/.config/kitty
 
-# list of files/folders to symlink in homedir
+echo -e "${HR}Starting Symlink Script...\n\nCreating Directories...${HR}"
+mkdir -p $neovimpath
+mkdir -p $kittypath
+mkdir -p $ftpluginpath
+mkdir -p $backupdir
+
+echo -e "${HR}Changing Directories: ${dir}${HR}\n\n"
+cd $dir
+
 files="tmux.conf
 vimrc
 zshrc
@@ -35,34 +44,18 @@ config/nvim/ftplugin/filetypes.vim
 config/nvim/ftplugin/fold.vim
 config/kitty/kitty.conf"
 
-# Set up NVIM path
-mkdir -p $neovimpath
-printf "Created dir: $neovimpath ...............................................done. \n"
-
-# Set up kitty path
-mkdir -p $kittypath
-printf "Created dir: $kittypath ..........................................done. \n"
-
-# Set up ftplugin path
-mkdir -p $ftpluginpath
-printf "Created dir: $ftpluginpath ......................................done. \n"
-
-# create dotfiles_old in homedir
-mkdir -p $backupdir
-printf  "Created dir: $backupdir ...............................................done. \n"
-
-# change to the dotfiles directory
-cd $dir
-printf "CD to dir: $dir ...............................................done. \n"
-
-printf "\n\n"
-
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
 for file in $files; do
+    echo -e "${HR}Attepting Symlink for: $file${HR}"
     mv ~/.$file $backupdir
+    mvvalue=$?
     ln -s $dir/$file ~/.$file
-    printf "Symlinking ~/$file ----------------- >>>  $dir/$file \n"
+    lnvalue=$?
+
+    if [[ $mvvalue -ne 0 ]] || [[ $lnvalue -ne 0 ]]; then
+      echo -e "${red}Warning:${reset} Symlink already exists for: ${red}${file}${reset}"
+    else
+      echo -e "${green}.$file${reset} has been symlinked to: ${green}dotfiles/$file${reset}"
+    fi
 done
 
-printf "\n\n"
-printf "Complete"
+echo -e "\n\n${HR}Symlinking Complete!\nOld config files have been backed up to ${green}$backupdir${reset}${HR}"
