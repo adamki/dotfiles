@@ -80,7 +80,7 @@ nvm --version
 echo -e "${HR}Installing Latest Node...${HR}"
 nvm install node #"node is alway latest version"
 echo -e "${HR}Check rbenv installation...${HR}"
-curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | zsh
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 echo -e "${HR}Installing Neovim...${HR}"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
