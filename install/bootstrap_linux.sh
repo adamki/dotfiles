@@ -34,6 +34,7 @@ PACKAGES=(
   i3-gaps
   rofi
   compton
+  nitrogen
 )
 
 echo -e "${HR}Installing Packages...${HR}"

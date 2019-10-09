@@ -30,8 +30,7 @@ font pango: Cantarall Light 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
-
+bindsym $mod+Return exec ~/.local/kitty.app/bin/kitty
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -184,7 +183,7 @@ client.unfocused        #333333 #424242 #888888 #292d2e #333333
 client.urgent           #C10004 #900000 #ffffff #900000 #C10004
 
 # apps to start on boot
-exec kitty
+exec ~/.local/kitty.app/bin/kitty
 exec_always compton -f
 
 # set bg img with feh/nitrogen
