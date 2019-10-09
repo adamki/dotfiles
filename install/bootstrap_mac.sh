@@ -68,6 +68,9 @@ echo -e "${HR}Installing GLOBAL NPM Packages......${HR}"
 npm install -g ${GLOBAL_NPM[@]}
 
 # MISC INSTALLS
+echo -e "${hr}Installing Plug...${hr}"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo -e "${HR}Installing Kitty Terminal...${HR}"
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 echo -e "${HR}Installing TPM...${HR}"

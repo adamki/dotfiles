@@ -44,7 +44,10 @@ GEMS=(
 echo -e "${HR}Installing Gems...${HR}"
 sudo gem install ${GEMS[@]}
 
-echo -e "${HR}Installing Kitty Terminal...${HR}"
+echo -e "${hr}Installing Plug...${hr}"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+echo -e "${hr}installing kitty terminal...${hr}"
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 echo -e "${HR}Installing TPM...${HR}"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
