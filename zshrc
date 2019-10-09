@@ -20,7 +20,7 @@ case `uname` in
   ;;
   Linux)
     source $HOME/antigen.zsh
-    eval $(keychain --eval --quiet id_ed25519 id_rsa ~/.ssh/id_ed25519.pub)
+    # eval $(keychain --eval --quiet id_ed25519 id_rsa ~/.ssh/id_ed25519.pub)
   ;;
 esac
 
