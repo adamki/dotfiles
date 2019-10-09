@@ -42,12 +42,17 @@ This Installation script will:
 | tmux      |    Both    |
 | rbenv     |    Both    |
 | python2   |    Both    |
+| Fira      |    Both    |
+| xcape     |    linux   |
+| i3-gaps   |    linux   |
+| compton   |    linux   |
+| rofi      |    linux   |
+| feh       |    linux   |
 | firefox   |    MacOS   |
 | slack     |    MacOS   |
 | yabai     |    MacOS   |
 | skhd      |    MacOS   |
 | homebrew  |    MacOS   |
-| Fira      |    MacOS   |
 
 
 
