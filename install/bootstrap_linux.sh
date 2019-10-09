@@ -12,6 +12,7 @@ PAMAC_PACKAGES="
 "
 pamac clone $PAMAC_PACKAGES
 pamac build $PAMAC_PACKAGES
+pamac install lolcat
 
 PACKAGES=(
   xcape
@@ -40,7 +41,6 @@ echo -e "${HR}Installing Fonts...${HR}"
 sudo pacman -S ${FONTS[@]}
 
 GEMS=(
-  lolcat
   bundler
 )
 
