@@ -3,7 +3,7 @@
 # install
 
 echo -e "${HR}Starting Boostrap Script...\n\nUpdating Pacman${reset}${HR}"
-sudo pacman -Syu
+sudo pacman-mirrors --fasttrack && sudo pacman -Syyu
 
 PAMAC_PACKAGES="
   rbenv
