@@ -11,7 +11,7 @@
 # 3. ./makesymlinks.sh
 ################################################################################
 
-. "${DOTFILES}/utils/colors.sh"
+ . ./utils/colors.sh
 ########## Variables
 dir=~/dotfiles
 backupdir=~/dotfiles_old

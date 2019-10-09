@@ -1,5 +1,5 @@
 #!/bin/bash
-. "${DOTFILES}/utils/colors.sh"
+. ./utils/colors.sh
 # install
 
 echo -e "${HR}Starting Boostrap Script...\n\nUpdating Pacman${reset}${HR}"

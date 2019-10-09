@@ -1,5 +1,5 @@
 #!/bin/bash
-. "${DOTFILES}/utils/colors.sh"
+. ./utils/colors.sh
 
 echo -e "${HR}Starting Boostrap Script...\n\nCheck if Brew is installed${reset}${HR}"
 if test ! $(which brew); then
