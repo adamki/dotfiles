@@ -5,14 +5,20 @@
 echo -e "${HR}Starting Boostrap Script...\n\nUpdating Pacman${reset}${HR}"
 sudo pacman-mirrors --fasttrack && sudo pacman -Syyu
 
-PAMAC_PACKAGES="
+PAMAC_REPOS="
   rbenv
   gotop
   neovim-nightly
 "
-pamac clone $PAMAC_PACKAGES
-pamac build $PAMAC_PACKAGES
-pamac install lolcat
+pamac clone $PAMAC_REPOS
+pamac build $PAMAC_REPOS
+
+PAMAC_PACKAGES=(
+  lolcat
+  feh
+)
+
+pamac install ${PAMAC_PACKAGES[0]}
 
 PACKAGES=(
   xcape

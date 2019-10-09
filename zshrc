@@ -19,6 +19,7 @@ case `uname` in
     eval "$(rbenv init -)"
   ;;
   Linux)
+    PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
     source $HOME/antigen.zsh
     # eval $(keychain --eval --quiet id_ed25519 id_rsa ~/.ssh/id_ed25519.pub)
   ;;
@@ -37,7 +38,6 @@ autoload -Uz compinit
 compinit
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
-
 # enable FZF fuzzy find and auto-complete
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # tell FZF to use ripgrep
