@@ -1,17 +1,18 @@
 #!/bin/bash
 # Setup PATHS
-INSTALL_DIR="${DOTFILES}/install"
+INSTALL_DIR="~/dotfiles/install"
 
 BOOTSTRAP_MAC="${INSTALL_DIR}/bootstrap_mac.sh"
 SYMLINK_MAC="${INSTALL_DIR}/makesymlinks_mac.sh"
 
-LINUX_INSTALL="${INSTALL_DIR}/bootstrap_linux.sh"
-LINUX_SYMLINKS="${INSTALL_DIR}/makesymlinks_linux.sh"
+BOOTSTRAP_LINUX="${INSTALL_DIR}/bootstrap_linux.sh"
+SYMLINK_LINUX="${INSTALL_DIR}/makesymlinks_linux.sh"
 
-. "${DOTFILES}/utils/colors.sh"
+. "~/dotfiles/utils/colors.sh"
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  echo "coming soon"
+  . "$BOOTSTRAP_LINUX"
+  . "$SYMLINK_LINUX"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   . "$BOOTSTRAP_MAC"
   . "$SYMLINK_MAC"

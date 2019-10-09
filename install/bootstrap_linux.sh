@@ -1,11 +1,19 @@
 #!/bin/bash
-echo "Starting bootstrapping"
+. "${DOTFILES}/utils/colors.sh"
 # install
 
-echo "Updating pacman..."
+echo -e "${HR}Starting Boostrap Script...\n\nUpdating Pacman${reset}${HR}"
 sudo pacman -Syu
 
-THINGS=(
+PAMAC_PACKAGES="
+  rbenv
+  gotop
+  neovim-nightly
+"
+pamac clone $PAMAC_PACKAGES
+pamac build $PAMAC_PACKAGES
+
+PACKAGES=(
   xcape
   zsh
   neofetch
@@ -13,21 +21,19 @@ THINGS=(
   fzf
   tmux
   ranger
-  gotop
   htop
-  rbenv
   firefox
   rubygems
 )
 
-echo "Installing packages..."
-sudo pacman -S ${THINGS[@]}
+echo -e "${HR}Installing Packages...${HR}"
+sudo pacman -S ${PACKAGES[@]}
 
 FONTS=(
   otf-fira-code
 )
 
-echo "Installing fonts..."
+echo -e "${HR}Installing Fonts...${HR}"
 sudo pacman -S ${FONTS[@]}
 
 GEMS=(
@@ -35,24 +41,32 @@ GEMS=(
   bundler
 )
 
-echo "Installing GEMS..."
+echo -e "${HR}Installing Gems...${HR}"
 sudo gem install ${GEMS[@]}
 
-# MISC INSTALLS
-echo "Installing Kitty Terminal..."
+echo -e "${HR}Installing Kitty Terminal...${HR}"
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-
-echo "Installing Antigen..."
-curl -L git.io/antigen > antigen.zsh
-
-echo "Installing TPM..."
+echo -e "${HR}Installing TPM...${HR}"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-echo "Installing NVM..."
+echo "Installing Antigen..."
+curl -L git.io/antigen > ~/antigen.zsh
+echo -e "${HR}Installing NVM...${HR}"
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | zsh
-nvm --version  # check for proper install
-nvm install node
-
-echo "Setting up Ruby..."
-rbenv install [arg]
-rbenv global [arg]
+echo -e "${HR}Checking NVM version...${HR}"
+source ${HOME}/.nvm/nvm.sh
+nvm --version
+echo -e "${HR}Installing Latest Node...${HR}"
+nvm install node #"node is alway latest version"
+echo -e "${HR}Check rbenv installation...${HR}"
+mkdir -p "$(rbenv root)"/plugins
+git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+rbenv install $(rbenv install -l | grep -v - | tail -1)
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+echo -e "${HR}Installing Neovim Python Providers...${HR}"
+python2 -m pip install --user --upgrade pynvim
+python3 -m pip install --user --upgrade pynvim
+echo -e "${HR}Set up FZF keymappings...${HR}"
+~/.fzf/install
+echo -e "${HR}Set default shell to Zsh...${HR}"
+chsh -s $(which zsh)
+echo -e "${HR}\nBootstrap Complete!\n${HR}"

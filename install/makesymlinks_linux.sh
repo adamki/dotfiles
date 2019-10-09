@@ -11,6 +11,7 @@
 # 3. ./makesymlinks.sh
 ################################################################################
 
+. "${DOTFILES}/utils/colors.sh"
 ########## Variables
 dir=~/dotfiles
 backupdir=~/dotfiles_old
@@ -22,7 +23,17 @@ i3path=~/.config/i3
 rofipath=~/.config/rofi
 polybarpath=~/.config/polybar
 
-# list of files/folders to symlink in homedir
+echo -e "${HR}Starting Symlink Script...\n\nCreating Directories...${HR}"
+mkdir -p $neovimpath
+mkdir -p $kittypath
+mkdir -p $ftpluginpath
+mkdir -p $backupdir
+mkdir -p $i3path
+mkdir -p $rofipath
+
+echo -e "${HR}Changing Directories: ${dir}${HR}\n\n"
+cd $dir
+
 files="tmux.conf
 vimrc
 zshrc
@@ -40,72 +51,19 @@ config/i3/config
 config/rofi/config
 config/kitty/one-dark-256.conf"
 
-# Set up NVIM path
-mkdir -p $neovimpath
-printf "Created dir: $neovimpath ...............................................done. \n"
-
-# Set up kitty path
-mkdir -p $kittypath
-printf "Created dir: $kittypath ..........................................done. \n"
-
-# Set up ftplugin path
-mkdir -p $ftpluginpath
-printf "Created dir: $ftpluginpath ......................................done. \n"
-
-# create dotfiles_old in homedir
-mkdir -p $backupdir
-printf  "Created dir: $backupdir ...............................................done. \n"
-
-# create i3 path
-mkdir -p $i3path
-printf  "Created dir: $i3path ...............................................done. \n"
-
-# create rofi path
-mkdir -p $rofipath
-printf  "Created dir: $rofipath ...............................................done. \n"
-
-# change to the dotfiles directory
-cd $dir
-printf "CD to dir: $dir ...............................................done. \n"
-
-printf "\n\n"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
 for file in $files; do
+    echo -e "${HR}Attepting Symlink for: $file${HR}"
     mv ~/.$file $backupdir
+    mvvalue=$?
     ln -s $dir/$file ~/.$file
-    printf "Symlinking ~/$file ----------------- >>>  $dir/$file \n"
+    lnvalue=$?
+    if [[ $mvvalue -ne 0 ]] || [[ $lnvalue -ne 0 ]]; then
+      echo -e "${red}Warning:${reset} Symlink already exists for: ${red}${file}${reset}"
+    else
+      echo -e "${green}.$file${reset} has been symlinked to: ${green}dotfiles/$file${reset}"
+    fi
 done
 
-printf "\n\n"
-printf "Complete"
-
-install_zsh () {
-# Test to see if zshell is installed.  If it is:
-if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
-  # Set the default shell to zsh if it isn't currently set to zsh
-  if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-    chsh -s $(which zsh)
-  fi
-else
-  # If zsh isn't installed, get the platform of the current machine
-  platform=$(uname);
-  # If the platform is Linux, try an apt-get to install zsh and then recurse
-  if [[ $platform == 'Linux' ]]; then
-    if [[ -f /etc/redhat-release ]]; then
-      sudo yum install zsh
-      install_zsh
-    fi
-    if [[ -f /etc/debian_version ]]; then
-      sudo apt-get install zsh
-      install_zsh
-    fi
-    # If the platform is OS X, tell the user to install zsh :)
-    elif [[ $platform == 'Darwin' ]]; then
-      printf "Please install zsh, then re-run this script! \n"
-      exit
-    fi
-  fi
-}
-
-# install_zsh
+echo -e "\n\n${HR}Symlinking Complete!\nOld config files have been backed up to ${green}$backupdir${reset}${HR}"
