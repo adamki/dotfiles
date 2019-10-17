@@ -1,7 +1,8 @@
 #! /bin/bash
+. ./utils/colors.sh
 
 echo -e "${HR}Starting Boostrap Script...\n\nUpdating APT-GET${reset}${HR}"
-sudo apt-get update
+sudo apt-get update && sudo apt-get upgrade
 
 PACKAGES="
   neovim
@@ -21,7 +22,7 @@ PACKAGES="
   nitrogen
   feh
   bundler
-  fonts-firecode
+  fonts-firacode
   lolcat
   rbenv
 "
