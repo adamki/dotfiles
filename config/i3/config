@@ -197,7 +197,7 @@ exec compton --config ~/.config/compton/compton.conf -b
 # exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
 
 # add borders to app windows
-for_window [class="^.*"] border pixel 5
+for_window [class="^.*"] border pixel 3
 
 # Activate smart borders (always)
 # smart_borders on
