@@ -29,10 +29,10 @@ PACKAGES="
 
 sudo apt-get install $PACKAGES
 
-
-echo -e "${hr}Installing NVIM appimage...${hr}"
+echo -e "${HR}Installing NVIM appimage...${HR}"
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
-chmod u+x nvim.appimage
+mv ./nvim.appimage ~/nvim.appimage
+chmod u+x ~/nvim.appimage
 echo -e "${hr}Installing Plug...${hr}"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

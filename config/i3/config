@@ -184,12 +184,11 @@ client.urgent           #C10004 #900000 #ffffff #900000 #C10004
 
 # apps to start on boot
 exec ~/.local/kitty.app/bin/kitty
-exec compton --config ~/.config/compton/compton.conf -b
+exec_always compton -b --config /home/adamki/.config/compton/compton.conf
 
-# exec compton --backend glx --vsync opengl-swc
 # set bg img with feh/nitrogen
 # exec_always feh --bg-scale /usr/share/backgrounds/manjaro-wallpapers-18.0/Manjaro_Perspective_light.jpg
-# exec --no-startup-id nitrogen --restore
+exec --no-startup-id nitrogen --restore
 
 # launch polybar
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
