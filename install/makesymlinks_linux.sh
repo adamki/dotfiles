@@ -17,11 +17,11 @@ dir=~/dotfiles
 backupdir=~/dotfiles_old
 neovimpath=~/.config/nvim
 ftpluginpath=~/.config/nvim/ftplugin
-alacrittypath=~/.config/alacritty
 kittypath=~/.config/kitty
 i3path=~/.config/i3
 rofipath=~/.config/rofi
 polybarpath=~/.config/polybar
+comptonpath=~/.config/compton
 
 echo -e "${HR}Starting Symlink Script...\n\nCreating Directories...${HR}"
 mkdir -p $neovimpath
@@ -49,6 +49,7 @@ config/nvim/ftplugin/fold.vim
 config/kitty/kitty.conf
 config/i3/config
 config/rofi/config
+config/compton/compton.conf
 config/kitty/one-dark-256.conf"
 
 

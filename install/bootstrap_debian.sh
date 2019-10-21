@@ -5,9 +5,9 @@ echo -e "${HR}Starting Boostrap Script...\n\nUpdating APT-GET${reset}${HR}"
 sudo apt-get update && sudo apt-get upgrade
 
 PACKAGES="
-  neovim
   ruby-neovim
   xcape
+  xclip
   zsh
   neofetch
   ripgrep
@@ -29,11 +29,16 @@ PACKAGES="
 
 sudo apt-get install $PACKAGES
 
+
+echo -e "${hr}Installing NVIM appimage...${hr}"
+curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+chmod u+x nvim.appimage
 echo -e "${hr}Installing Plug...${hr}"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo -e "${hr}installing kitty terminal...${hr}"
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
+    launch=n
 echo -e "${HR}Installing TPM...${HR}"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Installing Antigen..."

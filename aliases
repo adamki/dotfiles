@@ -13,7 +13,12 @@ alias psg='ps aux | fzf'
 alias h='history'
 alias hs='history | fzf'
 
-# Other
+case `uname` in
+  Linux)
+   alias nvim="~/nvim.appimage"
+  ;;
+esac
+
 alias aliases="cat ~/dotfiles/aliases | fzf"
 alias dots="cd ~/dotfiles"
 alias nc="nvim ~/dotfiles/config/nvim/init.vim"

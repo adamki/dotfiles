@@ -44,6 +44,7 @@ This Installation script will:
 | python2   |    Both    |
 | Fira      |    Both    |
 | xcape     |    linux   |
+| xclip     |    linux   |
 | i3-gaps   |    linux   |
 | compton   |    linux   |
 | rofi      |    linux   |
