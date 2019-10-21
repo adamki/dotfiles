@@ -13,7 +13,10 @@ set pastetoggle=<f6>                     " toggle paste/nopaste
 autocmd BufWritePre * %s/\s\+$//e        " remove unwanted space(s) on Buffer Pre-write
 set noswapfile                           " do NOT create swapfiles for new buffers
 filetype on                              " let vim detect fileType
-set rnu                                  " relative line numbers!
+set nu                                   " Display current line number
+" only show relative nums on active buffers
+autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 set numberwidth=3                        " make number gutter small
 set tabstop=2 shiftwidth=2 expandtab     " better tabs and line shifts
 set noshowmode                           " hide vim's mode status

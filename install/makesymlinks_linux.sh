@@ -30,6 +30,7 @@ mkdir -p $ftpluginpath
 mkdir -p $backupdir
 mkdir -p $i3path
 mkdir -p $rofipath
+mkdir -p $comptonpath
 
 echo -e "${HR}Changing Directories: ${dir}${HR}\n\n"
 cd $dir
