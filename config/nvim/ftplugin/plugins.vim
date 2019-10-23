@@ -57,7 +57,6 @@ let g:EasyMotion_use_smartsign_us = 1                              " match smart
 " }}}
 
 " junegunn/fzf.vim --------------------{{{
-set rtp+=/usr/local/opt/fzf                                        " set run time path of fzf install
 let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n>/<C-p> as tab thru previous fzf sessions
 
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }

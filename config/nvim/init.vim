@@ -22,7 +22,7 @@
   Plug 'tpope/vim-surround'
   " improved interface
   Plug 'airblade/vim-gitgutter'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'pbogut/fzf-mru.vim', {'on': 'FZFMru'}
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
