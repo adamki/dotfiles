@@ -11,7 +11,6 @@ PACKAGES="
   zsh
   neofetch
   ripgrep
-  fzf
   tmux
   ranger
   htop
@@ -58,7 +57,8 @@ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor 
 echo -e "${HR}Installing Neovim Python Providers...${HR}"
 python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
-echo -e "${HR}Set up FZF keymappings...${HR}"
+echo -e "${HR}Cloning FZF...${HR}"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 echo -e "${HR}Set default shell to Zsh...${HR}"
 chsh -s $(which zsh)

@@ -92,8 +92,6 @@ python3 -m pip install --user --upgrade pynvim
 echo -e "${HR}Cloning FZF...${HR}"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
-echo -e "${HR}Set up FZF keymappings...${HR}"
-/usr/local/opt/fzf/install
 echo -e "${HR}Set default shell to Zsh...${HR}"
 chsh -s $(which zsh)
 echo -e "${HR}\nBootstrap Complete!\n${HR}"
