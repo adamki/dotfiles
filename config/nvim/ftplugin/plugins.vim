@@ -1,11 +1,13 @@
 " itchyny/lightline -------------------{{{
 let g:lightline = {
+      \ 'colorscheme': 'rigel',
+      \ 'separator': { 'left': '▓▒░', 'right': '░▒▓' },
+      \ 'subseparator': { 'left': '>', 'right': '' },
       \ 'active': {
       \   'left': [ [ 'paste' ],
       \             [ 'readonly', 'filename', 'gitbranch', 'fugitive', 'modified'] ],
       \   'right': [ [ 'cocstatus', 'currentfunction' ],
-      \              [ 'lineinfo', 'percent' ],
-      \              [  ] ]
+      \              [ 'lineinfo', 'percent' ] ]
       \ },
       \ 'inactive': {
       \    'left': [ [ 'relativepath' ] ]
@@ -28,7 +30,6 @@ endfunction
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
 endfunction
-
 " }}}
 
 " nathanaelkane/vim-indent-guides -----{{{

@@ -26,5 +26,3 @@ function! Set_transparency()
   hi FoldColumn guibg=none
   hi VertSplit guibg=none ctermbg=none
 endfunction
-
-let g:lightline = { 'colorscheme': 'nord' }

@@ -9,5 +9,6 @@
   ],
   "diagnostic.errorSign": "E",
   "diagnostic.warningSign": "W",
-  "diagnostic.infoSign": "I"
+  "diagnostic.infoSign": "I",
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true
 }
