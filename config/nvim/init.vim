@@ -46,13 +46,13 @@
 " {{{ filetype imports
   source ~/.config/nvim/ftplugin/plugins.vim
   source ~/.config/nvim/ftplugin/fold.vim
-  source ~/.config/nvim/ftplugin/aesthetic.vim
   source ~/.config/nvim/ftplugin/system.vim
   source ~/.config/nvim/ftplugin/keymappings.vim
-  source ~/.config/nvim/ftplugin/nerdtree.vim
   source ~/.config/nvim/ftplugin/filetypes.vim
+  source ~/.config/nvim/ftplugin/aesthetic.vim
 " }}}
 
 " {{{ VIM-initialize
   call Set_italics()
+  call Set_transparency()
 " }}}

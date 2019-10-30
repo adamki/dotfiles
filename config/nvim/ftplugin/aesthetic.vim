@@ -1,10 +1,9 @@
 set background=dark                               " must go before :colorscheme
-colo onedark                                      " must go after set bg
+colo rigel                                      " must go after set bg
 let g:enable_italic_font = 1                      " Make sure to italicize
-let g:nova_transparent = 1
+" let g:nova_transparent = 1
 
-au ColorScheme * hi Normal ctermbg=none guibg=none
-au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
+" au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
 
 function! Set_italics()
   hi htmlArg gui=italic
@@ -16,4 +15,16 @@ function! Set_italics()
   hi Type    cterm=italic
 endfunction
 
-let g:lightline = { 'colorscheme': 'one' }
+function! Set_transparency()
+  hi clear CursorLineNR
+  hi Normal ctermbg=none guibg=none
+  hi GitGutterAdd guibg=none guifg=green
+  hi GitGutterChange guibg=none guifg=yellow
+  hi GitGutterDelete guibg=none guifg=red
+  hi GitGutterChangeDelete guibg=none guifg=red
+  hi LineNr guibg=none ctermbg=none
+  hi FoldColumn guibg=none
+  hi VertSplit guibg=none ctermbg=none
+endfunction
+
+let g:lightline = { 'colorscheme': 'nord' }

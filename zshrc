@@ -41,9 +41,15 @@ kitty + complete setup zsh | source /dev/stdin
 # enable FZF fuzzy find and auto-complete
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # tell FZF to use ripgrep
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --glob "" --ignore-file ~/.ripgrepignore'
 export FZF_CTRL_T_OPTS='--preview "(highlight -O ansi -l {} || cat {} || tree -C {}) 2> /dev/null | head -200" --bind "?:toggle-preview"'
 export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+--color=dark
+--color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+--color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
+'
+
 
 # sets up nvm
 export NVM_DIR="$HOME/.nvm"

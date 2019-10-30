@@ -42,7 +42,8 @@ config/nvim/ftplugin/keymappings.vim
 config/nvim/ftplugin/aesthetic.vim
 config/nvim/ftplugin/filetypes.vim
 config/nvim/ftplugin/fold.vim
-config/kitty/kitty.conf"
+config/kitty/kitty.conf
+ripgrepignore"
 
 for file in $files; do
     echo -e "${HR}Attepting Symlink for: $file${HR}"

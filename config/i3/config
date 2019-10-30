@@ -179,7 +179,7 @@ mode "resize" {
 }
 
 # class                 border  backgr  text    indicator child_border
-client.focused          #2FB3BC #50556B #EAEAEA #2FB3BC #2FB3BC
+client.focused          #aa79f2 #50556B #EAEAEA #aa79f2 #aa79f2
 client.focused_inactive #1B3309 #192433 #BCBCBC #484e50 #3f6b84
 client.unfocused        #333333 #424242 #888888 #292d2e #333333
 client.urgent           #C10004 #900000 #ffffff #900000 #C10004
