@@ -10,5 +10,13 @@
   "diagnostic.errorSign": "E",
   "diagnostic.warningSign": "W",
   "diagnostic.infoSign": "I",
-  "coc.preferences.currentFunctionSymbolAutoUpdate": true
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  },
 }

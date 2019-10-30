@@ -61,6 +61,7 @@ gem install ${GEMS[@]}
 GLOBAL_NPM=(
   neovim
   livedown
+  bash-language-server
 )
 
 echo -e "${HR}Installing GLOBAL NPM Packages......${HR}"

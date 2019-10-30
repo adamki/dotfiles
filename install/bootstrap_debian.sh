@@ -26,6 +26,11 @@ PACKAGES="
   rbenv
 "
 
+GLOBAL_NPM_PACKAGES="
+  livedown
+  bash-language-server
+"
+
 sudo apt-get install $PACKAGES
 
 echo -e "${HR}Installing NVIM appimage...${HR}"
@@ -49,6 +54,8 @@ source ${HOME}/.nvm/nvm.sh
 nvm --version
 echo -e "${HR}Installing Latest Node...${HR}"
 nvm install node #"node is alway latest version"
+echo -e "${HR}Installing NPM Packages...${HR}"
+npm i -g $GLOBAL_NPM_PACKAGES
 echo -e "${HR}Check rbenv installation...${HR}"
 mkdir -p "$(rbenv root)"/plugins
 git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build

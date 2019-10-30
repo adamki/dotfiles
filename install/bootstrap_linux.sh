@@ -50,6 +50,11 @@ GEMS=(
   bundler
 )
 
+GLOBAL_NPM_PACKAGES=(
+  livedown
+  bash-language-server
+)
+
 echo -e "${HR}Installing Gems...${HR}"
 sudo gem install ${GEMS[@]}
 
@@ -69,6 +74,8 @@ source ${HOME}/.nvm/nvm.sh
 nvm --version
 echo -e "${HR}Installing Latest Node...${HR}"
 nvm install node #"node is alway latest version"
+echo -e "${HR}Installing NPM Packages...${HR}"
+npm i -g $GLOBAL_NPM_PACKAGES
 echo -e "${HR}Check rbenv installation...${HR}"
 mkdir -p "$(rbenv root)"/plugins
 git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
