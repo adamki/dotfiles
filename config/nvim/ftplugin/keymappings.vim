@@ -59,8 +59,8 @@ nnoremap <C-H> <C-W><C-H>
 
 " {{{ PLUGS
 " NERDTree invocation
-nnoremap <LocalLeader>e :<C-u>NERDTreeToggle<CR>
-nnoremap <LocalLeader>a :<C-u>NERDTreeFind<CR>
+" nnoremap <LocalLeader>e :<C-u>NERDTreeToggle<CR>
+" nnoremap <LocalLeader>a :<C-u>NERDTreeFind<CR>
 " Maximizer Toggling
 nnoremap <LocalLeader>z :MaximizerToggle!<CR>
 " GitGutter
