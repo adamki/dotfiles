@@ -89,6 +89,8 @@ let g:fzf_mru_relative = 1
 " }}}
 
 " neoclide/coc.vim --------------------{{{
+let g:coc_global_extensions = ['coc-eslint', 'coc-yank', 'coc-snippets', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-css']
+
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
