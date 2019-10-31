@@ -89,7 +89,15 @@ let g:fzf_mru_relative = 1
 " }}}
 
 " neoclide/coc.vim --------------------{{{
-let g:coc_global_extensions = ['coc-eslint', 'coc-yank', 'coc-snippets', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-css']
+let g:coc_global_extensions = [
+  \'coc-eslint',
+  \'coc-yank',
+  \'coc-snippets',
+  \'coc-json',
+  \'coc-tsserver',
+  \'coc-html',
+  \'coc-css'
+  \]
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -107,8 +115,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-snippets']
 " }}}
 
 " scrooloose/NERDTree -----------------{{{
