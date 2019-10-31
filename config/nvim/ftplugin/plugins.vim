@@ -2,15 +2,17 @@
 let g:lightline = {
       \ 'colorscheme': 'rigel',
       \ 'separator': { 'left': '▓▒░', 'right': '░▒▓' },
-      \ 'subseparator': { 'left': '>', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
       \ 'active': {
-      \   'left': [ [ 'paste' ],
-      \             [ 'readonly', 'filename', 'gitbranch', 'fugitive', 'modified'] ],
+      \   'left': [ [ 'paste', 'modified' ],
+      \             [ 'gitbranch', 'fugitive' ],
+      \             [ 'readonly', 'filename',  'modified']],
       \   'right': [ [ 'cocstatus', 'currentfunction' ],
-      \              [ 'lineinfo', 'percent' ] ]
+      \              [ 'lineinfo']]
       \ },
       \ 'inactive': {
-      \    'left': [ [ 'relativepath' ] ]
+      \    'left': [ [ 'none' ], [ 'relativepath', 'modified' ]],
+      \    'right': [ [] ]
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
@@ -22,7 +24,7 @@ let g:lightline = {
 function! LightlineFugitive()
   if exists('*fugitive#head')
     let branch = fugitive#head()
-    return branch !=# '' ? ''.branch : ''
+    return branch !=# '' ? ' '.branch : ''
   endif
   return ''
 endfunction
@@ -30,12 +32,6 @@ endfunction
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
 endfunction
-" }}}
-
-" nathanaelkane/vim-indent-guides -----{{{
-let g:indent_guides_auto_colors = 1
-let g:indent_guides_color_change_percent = 1
-let g:indent_guides_enable_on_vim_startup = 1
 " }}}
 
 " alvan/vim-closetag ------------------{{{
