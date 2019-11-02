@@ -41,7 +41,6 @@ zshrc
 config/nvim/coc-settings.json
 config/nvim/init.vim
 config/nvim/ftplugin/plugins.vim
-config/nvim/ftplugin/nerdtree.vim
 config/nvim/ftplugin/system.vim
 config/nvim/ftplugin/keymappings.vim
 config/nvim/ftplugin/aesthetic.vim

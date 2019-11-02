@@ -58,9 +58,6 @@ nnoremap <C-H> <C-W><C-H>
 " }}}
 
 " {{{ PLUGS
-" NERDTree invocation
-" nnoremap <LocalLeader>e :<C-u>NERDTreeToggle<CR>
-" nnoremap <LocalLeader>a :<C-u>NERDTreeFind<CR>
 " RANGER.vim
 nmap - :Ranger<CR>
 " Maximizer Toggling

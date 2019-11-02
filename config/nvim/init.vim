@@ -29,7 +29,6 @@
   Plug 'Yggdroot/indentLine'
   Plug 'francoiscabrol/ranger.vim'
   Plug 'rbgrouleff/bclose.vim'
-  " Plug 'scrooloose/nerdtree'
   Plug 'shime/vim-livedown', {'for': 'markdown'}
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
