@@ -24,6 +24,8 @@ PACKAGES="
   fonts-firacode
   lolcat
   rbenv
+  w3m-img
+  ranger
 "
 
 GLOBAL_NPM_PACKAGES="
