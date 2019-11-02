@@ -113,6 +113,12 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 " }}}
 
+" francoiscabrol/ranger.cim -----------{{{
+" open ranger when vim open a directory
+let g:ranger_replace_netrw = 1
+let g:ranger_map_keys = 0
+"  }}}
+
 " scrooloose/NERDTree -----------------{{{
 " let g:NERDTreeMinimalUI = 1
 " let g:NERDTreeWinSize = 30

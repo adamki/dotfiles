@@ -200,10 +200,10 @@ exec --no-startup-id nitrogen --restore
 for_window [class="^.*"] border pixel 3
 
 # Activate smart borders (always)
-# smart_borders on
+smart_borders on
 # i3 gaps config
-# gaps inner 8
-# gaps outer 8
+gaps inner 8
+gaps outer 8
 # much faster key reepeaatt
 # first val set delay until repeat
 # second val is repeats per second
