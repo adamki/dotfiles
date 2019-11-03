@@ -1,6 +1,6 @@
 " itchyny/lightline -------------------{{{
 let g:lightline = {
-      \ 'colorscheme': 'rigel',
+      \ 'colorscheme': 'one',
       \ 'separator': { 'left': '▓▒░', 'right': '░▒▓' },
       \ 'subseparator': { 'left': '', 'right': '' },
       \ 'active': {
@@ -113,7 +113,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 " }}}
 
-" francoiscabrol/ranger.cim -----------{{{
+" francoiscabrol/ranger.vim -----------{{{
 " open ranger when vim open a directory
 let g:ranger_replace_netrw = 1
 let g:ranger_map_keys = 0
