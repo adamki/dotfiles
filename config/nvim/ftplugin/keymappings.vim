@@ -59,7 +59,7 @@ nnoremap <C-H> <C-W><C-H>
 
 " {{{ PLUGS
 " RANGER.vim
-nmap - :Ranger<CR>
+nmap - :CocCommand explorer<CR>
 " Maximizer Toggling
 nnoremap <LocalLeader>z :MaximizerToggle!<CR>
 " GitGutter

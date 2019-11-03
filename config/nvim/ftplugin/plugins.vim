@@ -92,7 +92,8 @@ let g:coc_global_extensions = [
   \'coc-json',
   \'coc-tsserver',
   \'coc-html',
-  \'coc-css'
+  \'coc-css',
+  \'coc-explorer'
   \]
 
 " Highlight symbol under cursor on CursorHold
@@ -112,9 +113,3 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 " }}}
-
-" francoiscabrol/ranger.vim -----------{{{
-" open ranger when vim open a directory
-let g:ranger_replace_netrw = 1
-let g:ranger_map_keys = 0
-"  }}}

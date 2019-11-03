@@ -34,6 +34,7 @@ PACKAGES=(
   rofi
   compton
   nitrogen
+  w3m-img
 )
 
 echo -e "${HR}Installing Packages...${HR}"
@@ -53,6 +54,7 @@ GEMS=(
 GLOBAL_NPM_PACKAGES=(
   livedown
   bash-language-server
+  neovim
 )
 
 echo -e "${HR}Installing Gems...${HR}"

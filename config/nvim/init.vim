@@ -27,8 +27,6 @@
   Plug 'pbogut/fzf-mru.vim', {'on': 'FZFMru'}
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'Yggdroot/indentLine'
-  Plug 'francoiscabrol/ranger.vim'
-  Plug 'rbgrouleff/bclose.vim'
   Plug 'shime/vim-livedown', {'for': 'markdown'}
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
