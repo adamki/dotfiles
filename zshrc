@@ -15,11 +15,8 @@ export HISTCONTROL=erasedups # Don't store duplicates
 case `uname` in
   Darwin)
     source /usr/local/share/antigen/antigen.zsh
-    # set up rbenv
-    eval "$(rbenv init -)"
   ;;
   Linux)
-    PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
     source $HOME/antigen.zsh
     # eval $(keychain --eval --quiet id_ed25519 id_rsa ~/.ssh/id_ed25519.pub)
   ;;
@@ -56,6 +53,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+# sets up rbenv
+eval "$(rbenv init -)"
 # print sys info
 neofetch

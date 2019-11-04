@@ -1,5 +1,8 @@
 {
   "suggest.echodocSupport": true,
+  "explorer.keyMappings": {
+
+  },
   "suggest.maxCompleteItemCount": 20,
   "eslint.filetypes": [
     "javascript",

@@ -27,7 +27,6 @@
   Plug 'pbogut/fzf-mru.vim', {'on': 'FZFMru'}
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'Yggdroot/indentLine'
-  " Plug 'scrooloose/nerdtree'
   Plug 'shime/vim-livedown', {'for': 'markdown'}
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
@@ -56,8 +55,3 @@
   call Set_italics()
   call Set_transparency()
 " }}}
-
-nnoremap - :<C-u>Vexplore<CR>
-let g:netrw_winsize = 25
-let g:netrw_browse_split = 2
-let g:netrw_liststyle=3
