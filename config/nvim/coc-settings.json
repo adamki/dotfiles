@@ -1,8 +1,6 @@
 {
   "suggest.echodocSupport": true,
-  "explorer.keyMappings": {
-
-  },
+  "explorer.keyMappings": {},
   "suggest.maxCompleteItemCount": 20,
   "eslint.filetypes": [
     "javascript",
@@ -22,4 +20,6 @@
       "ignoredRootPaths": ["~"]
     }
   },
+  "tsserver.enableJavascript": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 }

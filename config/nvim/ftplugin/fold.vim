@@ -31,8 +31,6 @@ set foldlevel=99
 autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType vim setlocal foldlevel=0
 
-autocmd FileType javascript,html,css,scss,typescript setlocal foldlevel=99
-
 autocmd FileType css,scss,json setlocal foldmethod=marker
 autocmd FileType css,scss,json setlocal foldmarker={,}
 
@@ -43,4 +41,5 @@ autocmd FileType xml setl foldmethod=syntax
 autocmd FileType html setl foldmethod=expr
 autocmd FileType html setl foldexpr=HTMLFolds()
 
-autocmd FileType javascript,typescript,json,go,rust,ruby setl foldmethod=syntax
+autocmd FileType javascript,typescript,json,go,rust,ruby,typescriptreact setl foldmethod=syntax
+autocmd FileType javascript,html,css,scss,typescript,typescriptreact setlocal foldlevel=99
