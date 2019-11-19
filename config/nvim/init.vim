@@ -24,10 +24,10 @@
   Plug 'airblade/vim-gitgutter'
   Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
-  Plug 'pbogut/fzf-mru.vim', {'on': 'FZFMru'}
+  Plug 'pbogut/fzf-mru.vim'
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'Yggdroot/indentLine'
-  Plug 'shime/vim-livedown', {'for': 'markdown'}
+  Plug 'shime/vim-livedown', {'for': 'markdown', 'do': 'npm install -g livedown'}
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-fugitive'
