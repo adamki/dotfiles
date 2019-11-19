@@ -1,6 +1,11 @@
 {
-  "suggest.echodocSupport": true,
   "explorer.keyMappings": {},
+  "explorer.quitOnOpen": true,
+  "explorer.file.autoReveal": true,
+  "explorer.file.autoExpandSingleDirectory": false,
+  "explorer.file.column.indent.indentLine": true,
+  "explorer.file.columns": ["selection","clip","diagnosticError","indent","icon","filename","readonly"],
+  "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
   "eslint.filetypes": [
     "javascript",

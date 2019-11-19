@@ -31,8 +31,8 @@
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-rhubarb'
-  Plug 'shumphrey/fugitive-gitlab.vim'
+  Plug 'tpope/vim-rhubarb', {'on': 'Gbrowse'}
+  Plug 'shumphrey/fugitive-gitlab.vim', {'on': 'Gbrowse'}
   Plug 'itchyny/lightline.vim'
   " miscellaneous
   Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
