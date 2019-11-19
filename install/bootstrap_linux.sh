@@ -42,6 +42,7 @@ sudo pacman -S ${PACKAGES[@]}
 
 FONTS=(
   otf-fira-code
+  ttf-hack
 )
 
 echo -e "${HR}Installing Fonts...${HR}"

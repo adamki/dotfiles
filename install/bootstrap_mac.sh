@@ -43,6 +43,7 @@ brew cask install ${CASKS[@]}
 
 FONTS=(
   font-fira-code
+  caskroom/fonts/font-hack
 )
 echo -e "${HR}Installing Fonts...${HR}"
 brew cask install ${FONTS[@]}

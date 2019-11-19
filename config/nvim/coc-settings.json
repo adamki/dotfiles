@@ -5,6 +5,7 @@
   "explorer.file.autoExpandSingleDirectory": false,
   "explorer.file.column.indent.indentLine": true,
   "explorer.file.columns": ["selection","clip","diagnosticError","indent","icon","filename","readonly"],
+  "explorer.icon.enableNerdfont": true,
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
   "eslint.filetypes": [
