@@ -28,14 +28,12 @@
   Plug 'shime/vim-livedown', {'for': 'markdown', 'do': 'npm install -g livedown'}
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
+  Plug 'itchyny/lightline.vim'
+  " integrations
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb', {'on': 'Gbrowse'}
   Plug 'shumphrey/fugitive-gitlab.vim', {'on': 'Gbrowse'}
-  Plug 'itchyny/lightline.vim'
-  " miscellaneous
-  Plug 'nelstrom/vim-markdown-folding', {'for': 'markdown'}
-  " integrations
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  " For async completion
  call plug#end()
 " }}}
