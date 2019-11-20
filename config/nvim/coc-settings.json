@@ -1,10 +1,8 @@
 {
-  "explorer.keyMappings": {},
   "explorer.quitOnOpen": true,
   "explorer.file.autoReveal": true,
   "explorer.file.autoExpandSingleDirectory": false,
   "explorer.file.column.indent.indentLine": true,
-  "explorer.file.columns": ["selection","clip","diagnosticError","indent","icon","filename","readonly"],
   "explorer.icon.enableNerdfont": true,
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
@@ -18,15 +16,45 @@
   "diagnostic.warningSign": "W",
   "diagnostic.infoSign": "I",
   "diagnostic.checkCurrentLine": true,
-  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
+    },
+   "vimls": {
+      "module": ".config/yarn/global/node_modules/vim-language-server/bin/index.js",
+      "args": ["--node-ipc"],
+      "initializationOptions": {
+        "iskeyword": "@,48-57,_,192-255,-#", // vim iskeyword option
+        "vimruntime": "", // $VIMRUNTIME option
+        "runtimepath": "",   // vim runtime path separate by `,`
+        "diagnostic": {
+          "enable": true
+        },
+        "indexes": {
+          "runtimepath": true,      // if index runtimepath's vim files this will effect the suggest
+          "gap": 100,               // index time gap between next file
+          "count": 3,               // count of files index at the same time
+          "projectRootPatterns" : ["strange-root-pattern", ".git", "autoload", "plugin"] // Names of files used as the mark of project root. If empty, the default value [".git", "autoload", "plugin"] will be used
+        },
+        "suggest": {
+          "fromVimruntime": true,   // completionItems from vimruntime's vim files
+          "fromRuntimepath": false  // completionItems from runtimepath's vim files, if this is true that fromVimruntime is true
+        }
+      },
+      "filetypes": [ "vim" ]
     }
   },
   "tsserver.enableJavascript": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "git.enableGutters": true,
+  "coc.preferences.bracketEnterImprove": false,
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "list.insertMappings": {
+    "<C-v>": "action:vsplit",
+    "<C-x>": "action:split",
+    "<C-t>": "action:tabe"
+  }
 }

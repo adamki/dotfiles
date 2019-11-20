@@ -81,14 +81,16 @@ let g:fzf_mru_relative = 1
 
 " neoclide/coc.vim --------------------{{{
 let g:coc_global_extensions = [
+  \'coc-git',
+  \'coc-vimlsp',
   \'coc-eslint',
   \'coc-yank',
-  \'coc-snippets',
   \'coc-json',
   \'coc-tsserver',
   \'coc-html',
   \'coc-css',
-  \'coc-explorer'
+  \'coc-explorer',
+  \'coc-highlight',
   \]
 
 " Highlight symbol under cursor on CursorHold
@@ -104,7 +106,8 @@ augroup end
 
 " Use `:Fold` to fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 " }}}
+
+" Yggdroot/indentLine -----------------{{{
+let g:indentLine_fileTypeExclude = ['coc-explorer']
+"}}}
