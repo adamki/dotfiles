@@ -38,11 +38,6 @@ endfunction
 let g:closetag_filenames = '*.html,*.jsx,*.js,*.tsx,*.html.erb'          " close tags on these files
 " }}}
 
-" airblade/vim-gitgutter --------------{{{
-let g:gitgutter_enabled = 1                                        " Init GitGutter
-let g:gitgutter_sign_allow_clobber = 0                             " git gutter symbols to have lowest priority
-" }}}
-
 " shime/vim-livedown ------------------{{{
 let g:livedown_autorun = 1                                          " automatically launch new browser/preview
 let g:livedown_open = 1                                             " browser automatically opens window upon previewing
