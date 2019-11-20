@@ -23,13 +23,13 @@
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
     },
-   "vimls": {
-      "module": ".config/yarn/global/node_modules/vim-language-server/bin/index.js",
-      "args": ["--node-ipc"],
+    "vimls": {
+      "command": "vim-language-server",
+      "args": ["--stdio"],
       "initializationOptions": {
         "iskeyword": "@,48-57,_,192-255,-#", // vim iskeyword option
-        "vimruntime": "", // $VIMRUNTIME option
-        "runtimepath": "",   // vim runtime path separate by `,`
+        "vimruntime": "",                    // $VIMRUNTIME option
+        "runtimepath": "",                   // vim runtime path separate by `,`
         "diagnostic": {
           "enable": true
         },
