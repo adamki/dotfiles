@@ -1,6 +1,6 @@
 " itchyny/lightline -------------------{{{
 let g:lightline = {
-      \ 'colorscheme': 'rigel',
+      \ 'colorscheme': 'one',
       \ 'separator': { 'left': '▓▒░', 'right': '░▒▓' },
       \ 'subseparator': { 'left': '', 'right': '' },
       \ 'active': {
