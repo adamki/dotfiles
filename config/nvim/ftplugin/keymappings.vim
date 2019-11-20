@@ -58,8 +58,6 @@ nnoremap <C-H> <C-W><C-H>
 " }}}
 
 " {{{ PLUGS
-" RANGER.vim
-nmap - :CocCommand explorer<CR>
 " Maximizer Toggling
 nnoremap <LocalLeader>z :MaximizerToggle!<CR>
 " GitGutter
@@ -99,9 +97,8 @@ imap <c-x><c-t> <plug>(fzf-complete-buffer-line)
 nmap <LocalLeader><tab> <plug>(fzf-maps-n)
 xmap <LocalLeader><tab> <plug>(fzf-maps-x)
 omap <LocalLeader><tab> <plug>(fzf-maps-o)
-" better tab/shit+tab completion(COC)
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Explorer(COC)
+nmap - :CocCommand explorer<CR>
 " Use `[c` and `]c` to navigate diagnostics(COC)
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
@@ -119,27 +116,27 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-" Show all diagnostics(COC)
+" multiple cursors(COC)
+nmap <expr> <silent> <C-space> <SID>select_current_word()
+function! s:select_current_word()
+  if !get(g:, 'coc_cursors_activated', 0)
+    return "\<Plug>(coc-cursors-word)"
+  endif
+  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
+endfunc
+" CocList utils(COC)
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions(COC)
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands(COC)
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document(COC)
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols(COC)
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.(COC)
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.(COC)
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list(COC)
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-" display recently yanked entries (COC-Yank)
 nnoremap <silent> <space>y  :<C-u>CocList -A yank<cr>
-" Remap for rename current word(COC)
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" rename current word(COC)
 nmap <leader>rn <Plug>(coc-rename)
-" Remap for format selected region(COC)
+" format selected region(COC)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 " Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python(COC)
