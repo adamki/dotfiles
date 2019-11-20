@@ -21,7 +21,6 @@
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   " improved interface
-  Plug 'airblade/vim-gitgutter'
   Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'pbogut/fzf-mru.vim'

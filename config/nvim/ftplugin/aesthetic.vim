@@ -17,11 +17,12 @@ endfunction
 
 function! Set_transparency()
   hi clear CursorLineNR
+  hi SignColumn guibg=none
   hi Normal ctermbg=none guibg=none
-  hi GitGutterAdd guibg=none guifg=green
-  hi GitGutterChange guibg=none guifg=yellow
-  hi GitGutterDelete guibg=none guifg=red
-  hi GitGutterChangeDelete guibg=none guifg=red
+  " hi GitGutterAdd guibg=none guifg=green
+  " hi GitGutterChange guibg=none guifg=yellow
+  " hi GitGutterDelete guibg=none guifg=red
+  " hi GitGutterChangeDelete guibg=none guifg=red
   hi LineNr guibg=none ctermbg=none
   hi FoldColumn guibg=none
   hi VertSplit guibg=none ctermbg=none
