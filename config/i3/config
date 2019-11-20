@@ -204,6 +204,7 @@ smart_borders on
 # i3 gaps config
 gaps inner 8
 gaps outer 8
+
 # much faster key reepeaatt
 # first val set delay until repeat
 # second val is repeats per second
