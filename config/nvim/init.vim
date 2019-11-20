@@ -1,18 +1,17 @@
 " {{{ VIM-Plug
   call plug#begin('~/.local/share/nvim/plugged')
   " colors
-  Plug 'trevordmiller/nova-vim'
   Plug 'morhetz/gruvbox'
-  Plug 'arcticicestudio/nord-vim'
   Plug 'joshdick/onedark.vim'
-  Plug 'rakr/vim-two-firewatch'
-  Plug 'jacoborus/tender.vim'
-  Plug 'flrnprz/plastic.vim'
   Plug 'Rigellute/rigel'
-  Plug 'drewtempelmeyer/palenight.vim'
+  " Plug 'trevordmiller/nova-vim'
+  " Plug 'arcticicestudio/nord-vim'
+  " Plug 'rakr/vim-two-firewatch'
+  " Plug 'jacoborus/tender.vim'
+  " Plug 'flrnprz/plastic.vim'
+  " Plug 'drewtempelmeyer/palenight.vim'
   " Language support
   Plug 'sheerun/vim-polyglot'
-  Plug 'ap/vim-css-color'
   " improved Movements & Motions
   Plug 'alvan/vim-closetag'
   Plug 'easymotion/vim-easymotion'
