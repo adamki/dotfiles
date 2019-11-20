@@ -43,7 +43,6 @@ This Installation script will:
 | rbenv     |    Both    |
 | python2   |    Both    |
 | Fira      |    Both    |
-| Hack      |    Both    |
 | xcape     |    linux   |
 | xclip     |    linux   |
 | i3-gaps   |    linux   |

@@ -22,7 +22,6 @@ PACKAGES="
   feh
   bundler
   fonts-firacode
-  fonts-hack
   lolcat
   w3m-img
   ranger
