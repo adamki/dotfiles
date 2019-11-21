@@ -19,8 +19,8 @@ This Installation script will:
 
 ## Technologies included
 
-| Software  |    OS       |
-|-----------|:------------:|
+| Software  |    OS      |
+|-----------|------------|
 | kitty     |    Both    |
 | Z Shell   |    Both    |
 | Ranger    |    Both    |
@@ -54,6 +54,3 @@ This Installation script will:
 | yabai     |    MacOS   |
 | skhd      |    MacOS   |
 | homebrew  |    MacOS   |
-
-
-
