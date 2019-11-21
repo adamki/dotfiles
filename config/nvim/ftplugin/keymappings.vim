@@ -42,9 +42,6 @@ inoremap <C-f> <C-x><C-f>
 " better lateral block movement
 vmap < <gv
 vmap > >gv
-" Use tab for indenting in visual mode
-vnoremap <Tab> >gv|
-vnoremap <S-Tab> <gv
 " nnoremap > >>_
 " nnoremap < <<_
 " move lines in visual
@@ -136,10 +133,9 @@ nmap <leader>rn <Plug>(coc-rename)
 " format selected region(COC)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python(COC)
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+" Use <C-a> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+xmap <Tab> <Plug>(coc-range-select)
+xmap <S-Tab> <Plug>(coc-range-select-backword)
 " }}}
 
 " {{{ MISC
