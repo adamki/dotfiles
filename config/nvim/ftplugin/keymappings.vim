@@ -60,9 +60,6 @@ nnoremap <C-H> <C-W><C-H>
 " {{{ PLUGS
 " Maximizer Toggling
 nnoremap <LocalLeader>z :MaximizerToggle!<CR>
-" GitGutter
-nnoremap <Leader>ga :GitGutterStageHunk<CR>
-nnoremap <Leader>gt :GitGutterLineHighlightsToggle<CR>
 " FINDING(FZF)
 nnoremap <LocalLeader>f    :Files<CR>
 nnoremap <LocalLeader>F    :Files <c-r>=fnameescape(expand('%:p:h'))<CR><CR>
@@ -100,8 +97,8 @@ omap <LocalLeader><tab> <plug>(fzf-maps-o)
 " Explorer(COC)
 nmap - :CocCommand explorer<CR>
 " Use `[c` and `]c` to navigate diagnostics(COC)
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 " Remap keys for gotos(COC)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
