@@ -59,6 +59,7 @@ echo -e "${HR}Installing Gems...${HR}"
 gem install ${GEMS[@]}
 
 GLOBAL_NPM=(
+  eslint
   neovim
   livedown
   bash-language-server

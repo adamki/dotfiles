@@ -6,12 +6,8 @@
   "explorer.icon.enableNerdfont": true,
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "javascriptreact"
-  ],
+  "eslint.packageManager": "npm",
+  "eslint.filetypes": [ "javascript", "javascriptreact" ],
   "diagnostic.errorSign": "E",
   "diagnostic.warningSign": "W",
   "diagnostic.infoSign": "I",

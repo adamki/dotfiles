@@ -33,6 +33,7 @@ GLOBAL_NPM_PACKAGES="
   livedown
   bash-language-server
   neovim
+  eslint
 "
 
 GEMS="
