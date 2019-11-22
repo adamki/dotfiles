@@ -42,7 +42,7 @@ config/nvim/coc-settings.json
 config/nvim/init.vim
 config/nvim/ftplugin/plugins.vim
 config/nvim/ftplugin/system.vim
-config/nvim/ftplugin/keymappings.vim
+config/nvim/ftplugin/keymaps.vim
 config/nvim/ftplugin/aesthetic.vim
 config/nvim/ftplugin/filetypes.vim
 config/nvim/ftplugin/fold.vim

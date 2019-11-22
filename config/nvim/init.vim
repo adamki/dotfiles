@@ -37,7 +37,7 @@
   source ~/.config/nvim/ftplugin/plugins.vim
   source ~/.config/nvim/ftplugin/fold.vim
   source ~/.config/nvim/ftplugin/system.vim
-  source ~/.config/nvim/ftplugin/keymappings.vim
+  source ~/.config/nvim/ftplugin/keymaps.vim
   source ~/.config/nvim/ftplugin/filetypes.vim
   source ~/.config/nvim/ftplugin/aesthetic.vim
 " }}}
