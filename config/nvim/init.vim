@@ -4,12 +4,7 @@
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
   Plug 'Rigellute/rigel'
-  " Plug 'trevordmiller/nova-vim'
-  " Plug 'arcticicestudio/nord-vim'
-  " Plug 'rakr/vim-two-firewatch'
-  " Plug 'jacoborus/tender.vim'
-  " Plug 'flrnprz/plastic.vim'
-  " Plug 'drewtempelmeyer/palenight.vim'
+  Plug 'trevordmiller/nova-vim'
   " Language support
   Plug 'sheerun/vim-polyglot'
   " improved Movements & Motions
