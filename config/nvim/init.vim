@@ -45,4 +45,5 @@
 " {{{ VIM-initialize
   call Set_italics()
   call Set_transparency()
+  call NumberToggle()
 " }}}

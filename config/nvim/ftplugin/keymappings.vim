@@ -34,7 +34,9 @@ nmap cp :let @+= expand("%") <CR>
 " bind Search/Replace to Leader
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 " toggle relativenumber / norelativenumber
-nmap <F2> :set rnu! nornu?<CR>
+" nmap <F2> :set rnu! nornu?<CR>
+nnoremap <F2> :<C-u>call NumberToggle()<CR>
+
 " better line end navigation
 noremap 0 ^
 " vim omnicomplete
@@ -164,4 +166,16 @@ function! s:toggle_background()
   call Set_italics()
 endfunction
 nnoremap <Leader>b :<C-u>call <SID>toggle_background()<CR>
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber number
+    autocmd BufEnter,FocusGained,InsertLeave * set norelativenumber number
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber number
+  else
+    set relativenumber number
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber number
+    autocmd BufLeave,FocusLost,InsertEnter   * set relativenumber number
+  endif
+endfunc
 " }}}
