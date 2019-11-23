@@ -1,4 +1,7 @@
 {
+  "explorer.keyMappings": {
+    "<C-v>": "openInVsplit",
+  },
   "explorer.quitOnOpen": true,
   "explorer.file.autoReveal": true,
   "explorer.file.column.indent.indentLine": true,

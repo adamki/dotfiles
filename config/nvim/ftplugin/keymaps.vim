@@ -36,7 +36,8 @@ nnoremap <Leader>S :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 " toggle relativenumber / norelativenumber
 " nmap <F2> :set rnu! nornu?<CR>
 nnoremap <F2> :<C-u>call NumberToggle()<CR>
-
+" print vim ID of char under cursor
+map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 " better line end navigation
 noremap 0 ^
 " vim omnicomplete

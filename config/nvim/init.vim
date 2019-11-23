@@ -4,9 +4,9 @@
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
   Plug 'Rigellute/rigel'
-  Plug 'trevordmiller/nova-vim'
   " Language support
   Plug 'sheerun/vim-polyglot'
+  Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
   " improved Movements & Motions
   Plug 'alvan/vim-closetag'
   Plug 'easymotion/vim-easymotion'
@@ -43,7 +43,7 @@
 " }}}
 
 " {{{ VIM-initialize
-  call Set_italics()
+  " call Set_italics()
   call Set_transparency()
   call NumberToggle()
 " }}}
