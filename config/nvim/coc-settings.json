@@ -1,6 +1,6 @@
 {
   "explorer.keyMappings": {
-    "<C-v>": "openInVsplit",
+    "<C-v>": "openInVsplit"
   },
   "explorer.quitOnOpen": true,
   "explorer.file.autoReveal": true,
