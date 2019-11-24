@@ -62,6 +62,7 @@ GLOBAL_NPM=(
   eslint
   neovim
   livedown
+  vim-language-server
   bash-language-server
 )
 

@@ -42,6 +42,9 @@ This Installation script will:
 | tmux      |    Both    |
 | rbenv     |    Both    |
 | python2   |    Both    |
+| bash-language-server      |    Both    |
+| vim-language-server      |    Both    |
+| Fira      |    Both    |
 | Fira      |    Both    |
 | xcape     |    linux   |
 | xclip     |    linux   |
