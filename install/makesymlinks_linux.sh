@@ -50,7 +50,8 @@ config/kitty/kitty.conf
 config/i3/config
 config/rofi/config
 config/compton/compton.conf
-config/kitty/one-dark-256.conf"
+config/kitty/one-dark-256.conf
+ripgrepignore"
 
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
