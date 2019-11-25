@@ -1,5 +1,5 @@
 # open terminal
-alt - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
+alt - return : /Applications/Kitty.app/Contents/MacOS/kitty -d ~
 
 #restart SKHD
 ctrl + alt + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
