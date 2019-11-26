@@ -30,6 +30,7 @@ PACKAGES=(
   python2
   yabai
   skhd
+  --HEAD neovim
 )
 echo -e "${HR}Installing Brew Packages...${HR}"
 brew install ${PACKAGES[@]}
