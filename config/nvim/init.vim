@@ -34,16 +34,17 @@
 " }}}
 
 " {{{ filetype imports
-  source ~/.config/nvim/ftplugin/plugins.vim
-  source ~/.config/nvim/ftplugin/fold.vim
   source ~/.config/nvim/ftplugin/system.vim
-  source ~/.config/nvim/ftplugin/keymaps.vim
+  source ~/.config/nvim/ftplugin/plugins.vim
+  source ~/.config/nvim/ftplugin/functions.vim
+  source ~/.config/nvim/ftplugin/fold.vim
   source ~/.config/nvim/ftplugin/filetypes.vim
   source ~/.config/nvim/ftplugin/aesthetic.vim
+  source ~/.config/nvim/ftplugin/keymaps.vim
 " }}}
 
 " {{{ VIM-initialize
   " call Set_italics()
   call Set_transparency()
-  call NumberToggle()
+  call Toggle_number()
 " }}}

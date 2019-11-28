@@ -46,6 +46,7 @@ config/nvim/ftplugin/keymaps.vim
 config/nvim/ftplugin/aesthetic.vim
 config/nvim/ftplugin/filetypes.vim
 config/nvim/ftplugin/fold.vim
+config/nvim/ftplugin/functions.vim
 config/kitty/kitty.conf
 config/i3/config
 config/rofi/config

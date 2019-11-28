@@ -35,7 +35,9 @@ nmap cp :let @+= expand("%") <CR>
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 " toggle relativenumber / norelativenumber
 " nmap <F2> :set rnu! nornu?<CR>
-nnoremap <F2> :<C-u>call NumberToggle()<CR>
+nnoremap <F2> :<C-u>call Toggle_number()<CR>
+" toggle background
+nnoremap <Leader>b :<C-u>call <SID>Toggle_background()<CR>
 " print vim ID of char under cursor
 map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 " better line end navigation
@@ -140,44 +142,4 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " Use <C-a> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 xmap <Tab> <Plug>(coc-range-select)
 xmap <S-Tab> <Plug>(coc-range-select-backword)
-" }}}
-
-" {{{ MISC
-" toggle_background
-function! s:toggle_background()
-  if ! exists('g:colors_name')
-    echomsg 'No colorscheme set'
-    return
-  endif
-  let l:scheme = g:colors_name
-  if l:scheme =~# 'dark' || l:scheme =~# 'light'
-    " Rotate between different theme backgrounds
-    execute 'colorscheme' (l:scheme =~# 'dark'
-          \ ? substitute(l:scheme, 'dark', 'light', '')
-          \ : substitute(l:scheme, 'light', 'dark', ''))
-  else
-    execute 'set background='.(&background ==# 'dark' ? 'light' : 'dark')
-    if ! exists('g:colors_name')
-      execute 'colorscheme' l:scheme
-      echomsg 'The colorscheme `'.l:scheme
-            \ .'` doesn''t have background variants!'
-    else
-      echo 'Set colorscheme to '.&background.' mode'
-    endif
-  endif
-  call Set_italics()
-endfunction
-nnoremap <Leader>b :<C-u>call <SID>toggle_background()<CR>
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber number
-    autocmd BufEnter,FocusGained,InsertLeave * set norelativenumber number
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber number
-  else
-    set relativenumber number
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber number
-    autocmd BufLeave,FocusLost,InsertEnter   * set relativenumber number
-  endif
-endfunc
 " }}}

@@ -40,6 +40,7 @@ config/nvim/ftplugin/system.vim
 config/nvim/ftplugin/keymaps.vim
 config/nvim/ftplugin/aesthetic.vim
 config/nvim/ftplugin/filetypes.vim
+config/nvim/ftplugin/functions.vim
 config/nvim/ftplugin/fold.vim
 config/kitty/kitty.conf
 ripgrepignore"

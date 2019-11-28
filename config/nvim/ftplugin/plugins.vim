@@ -51,7 +51,7 @@ let g:EasyMotion_use_smartsign_us = 1                              " match smart
 " junegunn/fzf.vim --------------------{{{
 let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n>/<C-p> as tab thru previous fzf sessions
 
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+" let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
 function! FloatingFZF()
     let width = min([&columns - 4, max([80, &columns - 20])])
