@@ -57,6 +57,7 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap - :Vex<CR>
 " }}}
 
 " {{{ PLUGS
@@ -97,8 +98,6 @@ nmap <LocalLeader><tab> <plug>(fzf-maps-n)
 xmap <LocalLeader><tab> <plug>(fzf-maps-x)
 omap <LocalLeader><tab> <plug>(fzf-maps-o)
 imap <LocalLeader><tab> <plug>(fzf-maps-i)
-" Explorer(COC)
-nmap - :CocCommand explorer<CR>
 " Use `[d` and `]d` to navigate diagnostics(COC)
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
