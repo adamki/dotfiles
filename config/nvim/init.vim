@@ -6,10 +6,9 @@
   Plug 'Rigellute/rigel'
   " Language support
   Plug 'sheerun/vim-polyglot'
-  Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
+  " Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
   " improved Movements & Motions
   Plug 'alvan/vim-closetag'
-  Plug 'easymotion/vim-easymotion'
   Plug 'jiangmiao/auto-pairs'
   Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-repeat'
@@ -29,7 +28,6 @@
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb', {'on': 'Gbrowse'}
   Plug 'shumphrey/fugitive-gitlab.vim', {'on': 'Gbrowse'}
- " For async completion
  call plug#end()
 " }}}
 
