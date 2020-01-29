@@ -19,7 +19,6 @@ brew tap ${TAPS[@]}
 
 PACKAGES=(
   antigen
-  bat
   gotop
   htop
   neofetch
