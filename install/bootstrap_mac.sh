@@ -36,7 +36,6 @@ echo -e "${HR}Installing Brew Packages...${HR}"
 brew install ${PACKAGES[@]}
 
 CASKS=(
-  alacritty
   firefox
   slack
 )

@@ -47,17 +47,21 @@ config/nvim/ftplugin/aesthetic.vim
 config/nvim/ftplugin/filetypes.vim
 config/nvim/ftplugin/fold.vim
 config/nvim/ftplugin/functions.vim
+config/nvim/ftplugin/status.vim
 config/kitty/kitty.conf
 config/i3/config
 config/rofi/config
 config/compton/compton.conf
-config/kitty/one-dark-256.conf
 ripgrepignore"
 
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
 for file in $files; do
     echo -e "${HR}Attepting Symlink for: $file${HR}"
+    if [[ ! -f ~/.$file ]]; then
+      touch ~/.$file
+    fi
+
     mv ~/.$file $backupdir
     mvvalue=$?
     ln -s $dir/$file ~/.$file

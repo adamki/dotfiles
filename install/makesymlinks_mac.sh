@@ -41,12 +41,17 @@ config/nvim/ftplugin/keymaps.vim
 config/nvim/ftplugin/aesthetic.vim
 config/nvim/ftplugin/filetypes.vim
 config/nvim/ftplugin/functions.vim
+config/nvim/ftplugin/status.vim
 config/nvim/ftplugin/fold.vim
 config/kitty/kitty.conf
 ripgrepignore"
 
 for file in $files; do
     echo -e "${HR}Attepting Symlink for: $file${HR}"
+    if [[ ! -f ~/.$file ]]; then
+      touch ~/.$file
+    fi
+
     mv ~/.$file $backupdir
     mvvalue=$?
     ln -s $dir/$file ~/.$file
