@@ -18,24 +18,25 @@ echo -e "\n${yellow}Fetching Brew Taps...${reset}"
 brew tap ${TAPS[@]}
 
 PACKAGES=(
-  antigen
-  gotop
-  htop
-  neofetch
-  python2
-  ranger
-  rbenv
-  ripgrep
-  skhd
-  tmux
-  yabai
   zsh
+  antigen
+  neofetch
+  ripgrep
+  tmux
+  ranger
+  htop
+  gotop
+  rbenv
+  python2
+  yabai
+  skhd
   --HEAD neovim
 )
 echo -e "${HR}Installing Brew Packages...${HR}"
 brew install ${PACKAGES[@]}
 
 CASKS=(
+  alacritty
   firefox
   slack
 )

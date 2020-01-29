@@ -6,7 +6,7 @@
   Plug 'Rigellute/rigel'
   " Language support
   Plug 'sheerun/vim-polyglot'
-  Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
+  " Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
   " improved Movements & Motions
   Plug 'alvan/vim-closetag'
   Plug 'jiangmiao/auto-pairs'
