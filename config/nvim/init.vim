@@ -22,7 +22,7 @@
   Plug 'shime/vim-livedown', {'for': 'markdown', 'do': 'npm install -g livedown'}
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
-  Plug 'itchyny/lightline.vim'
+  " Plug 'itchyny/lightline.vim'
   " integrations
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'tpope/vim-fugitive'

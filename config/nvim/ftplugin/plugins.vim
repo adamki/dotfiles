@@ -1,37 +1,37 @@
 " itchyny/lightline -------------------{{{
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'separator': { 'left': '▓▒░', 'right': '░▒▓' },
-      \ 'subseparator': { 'left': '', 'right': '' },
-      \ 'active': {
-      \   'left': [ [ 'paste', 'modified' ],
-      \             [ 'gitbranch', 'fugitive' ],
-      \             [ 'readonly', 'filename',  'modified']],
-      \   'right': [ [ 'cocstatus', 'currentfunction' ],
-      \              [ 'lineinfo']]
-      \ },
-      \ 'inactive': {
-      \    'left': [ [ 'none' ], [ 'relativepath', 'modified' ]],
-      \    'right': [ [] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction',
-			\   'fugitive': 'LightlineFugitive'
-      \ },
-      \ }
-
-function! LightlineFugitive()
-  if exists('*fugitive#head')
-    let branch = fugitive#head()
-    return branch !=# '' ? ' '.branch : ''
-  endif
-  return ''
-endfunction
-
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
+" let g:lightline = {
+"       \ 'colorscheme': 'gruvbox',
+"       \ 'separator': { 'left': '▓▒░', 'right': '░▒▓' },
+"       \ 'subseparator': { 'left': '', 'right': '' },
+"       \ 'active': {
+"       \   'left': [ [ 'paste', 'modified' ],
+"       \             [ 'gitbranch', 'fugitive' ],
+"       \             [ 'readonly', 'filename',  'modified']],
+"       \   'right': [ [ 'cocstatus', 'currentfunction' ],
+"       \              [ 'lineinfo']]
+"       \ },
+"       \ 'inactive': {
+"       \    'left': [ [ 'none' ], [ 'relativepath', 'modified' ]],
+"       \    'right': [ [] ]
+"       \ },
+"       \ 'component_function': {
+"       \   'cocstatus': 'coc#status',
+"       \   'currentfunction': 'CocCurrentFunction',
+" 			\   'fugitive': 'LightlineFugitive'
+"       \ },
+"       \ }
+"
+" function! LightlineFugitive()
+"   if exists('*fugitive#head')
+"     let branch = fugitive#head()
+"     return branch !=# '' ? ' '.branch : ''
+"   endif
+"   return ''
+" endfunction
+"
+" function! CocCurrentFunction()
+"     return get(b:, 'coc_current_function', '')
+" endfunction
 " }}}
 
 " alvan/vim-closetag ------------------{{{
@@ -45,13 +45,13 @@ let g:livedown_open = 1                                             " browser au
 
 " junegunn/fzf.vim --------------------{{{
 let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n>/<C-p> as tab thru previous fzf sessions
+" let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 " let Rg show a preview window
 " see instructions here: https://github.com/junegunn/fzf.vim#example-rg-command-with-preview-window
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
 function! FloatingFZF()
     let width = min([&columns - 4, max([80, &columns - 20])])
