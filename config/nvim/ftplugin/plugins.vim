@@ -45,7 +45,12 @@ let g:livedown_open = 1                                             " browser au
 
 " junegunn/fzf.vim --------------------{{{
 let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n>/<C-p> as tab thru previous fzf sessions
-
+" let Rg show a preview window
+" see instructions here: https://github.com/junegunn/fzf.vim#example-rg-command-with-preview-window
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
 function! FloatingFZF()

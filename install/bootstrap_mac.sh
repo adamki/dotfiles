@@ -18,18 +18,19 @@ echo -e "\n${yellow}Fetching Brew Taps...${reset}"
 brew tap ${TAPS[@]}
 
 PACKAGES=(
-  zsh
   antigen
-  neofetch
-  ripgrep
-  tmux
-  ranger
-  htop
+  bat
   gotop
-  rbenv
+  htop
+  neofetch
   python2
-  yabai
+  ranger
+  rbenv
+  ripgrep
   skhd
+  tmux
+  yabai
+  zsh
   --HEAD neovim
 )
 echo -e "${HR}Installing Brew Packages...${HR}"
