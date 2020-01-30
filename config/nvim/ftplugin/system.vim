@@ -19,7 +19,6 @@ set noshowmode                           " hide vim's modal status
 set hidden                               " hide buffers instead of unload them
 set virtualedit=                         " unset virtualedit
 set wildmenu                             " better vim command completion
-set laststatus=1                         " 0 = never, 1 = only when more than one, 2 = always
 set nowrap                               " wrap lines at word
 set wildmode=list:longest,full           " better vim command completion
 set autoread                             " detect if file has changed

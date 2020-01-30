@@ -36,13 +36,13 @@
   source ~/.config/nvim/ftplugin/plugins.vim
   source ~/.config/nvim/ftplugin/functions.vim
   source ~/.config/nvim/ftplugin/fold.vim
-  source ~/.config/nvim/ftplugin/status.vim
   source ~/.config/nvim/ftplugin/filetypes.vim
   source ~/.config/nvim/ftplugin/aesthetic.vim
   source ~/.config/nvim/ftplugin/keymaps.vim
+  source ~/.config/nvim/ftplugin/status.vim
 " }}}
 
-"{{{ VIM-initialize
+" {{{ VIM-initialize
   call Set_italics()
   call Set_transparency()
   call Toggle_number()

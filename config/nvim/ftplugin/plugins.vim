@@ -1,39 +1,3 @@
-" itchyny/lightline -------------------{{{
-" let g:lightline = {
-"       \ 'colorscheme': 'gruvbox',
-"       \ 'separator': { 'left': '▓▒░', 'right': '░▒▓' },
-"       \ 'subseparator': { 'left': '', 'right': '' },
-"       \ 'active': {
-"       \   'left': [ [ 'paste', 'modified' ],
-"       \             [ 'gitbranch', 'fugitive' ],
-"       \             [ 'readonly', 'filename',  'modified']],
-"       \   'right': [ [ 'cocstatus', 'currentfunction' ],
-"       \              [ 'lineinfo']]
-"       \ },
-"       \ 'inactive': {
-"       \    'left': [ [ 'none' ], [ 'relativepath', 'modified' ]],
-"       \    'right': [ [] ]
-"       \ },
-"       \ 'component_function': {
-"       \   'cocstatus': 'coc#status',
-"       \   'currentfunction': 'CocCurrentFunction',
-" 			\   'fugitive': 'LightlineFugitive'
-"       \ },
-"       \ }
-"
-" function! LightlineFugitive()
-"   if exists('*fugitive#head')
-"     let branch = fugitive#head()
-"     return branch !=# '' ? ' '.branch : ''
-"   endif
-"   return ''
-" endfunction
-"
-" function! CocCurrentFunction()
-"     return get(b:, 'coc_current_function', '')
-" endfunction
-" }}}
-
 " alvan/vim-closetag ------------------{{{
 let g:closetag_filenames = '*.html,*.jsx,*.js,*.tsx,*.html.erb'          " close tags on these files
 " }}}
