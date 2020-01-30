@@ -21,6 +21,7 @@ PAMAC_PACKAGES=(
 pamac install ${PAMAC_PACKAGES[0]}
 
 PACKAGES=(
+  bat
   xcape
   zsh
   neofetch

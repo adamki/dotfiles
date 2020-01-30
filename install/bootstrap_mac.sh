@@ -18,6 +18,7 @@ echo -e "\n${yellow}Fetching Brew Taps...${reset}"
 brew tap ${TAPS[@]}
 
 PACKAGES=(
+  bat
   zsh
   antigen
   neofetch

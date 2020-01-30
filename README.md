@@ -57,3 +57,4 @@ This Installation script will:
 | yabai     |    MacOS   |
 | skhd      |    MacOS   |
 | homebrew  |    MacOS   |
+| bat       | MacOS/Arch   |
