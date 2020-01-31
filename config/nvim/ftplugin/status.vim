@@ -25,7 +25,7 @@ function! ActiveStatus()
 
   let statusline.="\ %#MyStatuslineLineGrey#"
   let statusline.="%3*"
-  let statusline.="%l/%L"
+  let statusline.="%c - %l/%L"
   let statusline.="%#MyStatuslineLineGrey#"
   let statusline.="%1*"
 

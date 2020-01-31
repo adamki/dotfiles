@@ -52,5 +52,11 @@ let g:coc_global_extensions = [
 " " }}}
 
 " Yggdroot/indentLine -----------------{{{
- let g:indentLine_fileTypeExclude = ['coc-explorer']
+let g:indentLine_fileTypeExclude = ['coc-explorer']
+"disable indentLine's strange concealling behavior(EX: hides quotes in JSON file)
+let g:indentLine_setConceal = 0
 "}}}
+
+" justinmk/vim-sneak ------------------{{{
+let g:sneak#s_next = 1
+" }}}

@@ -58,3 +58,5 @@ This Installation script will:
 | skhd      |    MacOS   |
 | homebrew  |    MacOS   |
 | bat       | MacOS/Arch   |
+
+Bat is * not currently supported on debian stable. Please download(dpkg -i) the `.deb` file from the official [BAT Releases page](https://github.com/sharkdp/bat/releases)

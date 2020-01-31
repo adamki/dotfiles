@@ -13,6 +13,7 @@
   Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
+  Plug 'justinmk/vim-sneak'
   " Improved interface
   Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
@@ -25,8 +26,8 @@
   " Integrations
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-rhubarb', {'on': 'Gbrowse'}
-  Plug 'shumphrey/fugitive-gitlab.vim', {'on': 'Gbrowse'}
+  Plug 'tpope/vim-rhubarb'
+  Plug 'shumphrey/fugitive-gitlab.vim'
  call plug#end()
 " }}}
 
