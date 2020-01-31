@@ -7,13 +7,13 @@
   " Language support
   Plug 'sheerun/vim-polyglot'
   " Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
-  " improved Movements & Motions
+  " Improved Movements & Motions
   Plug 'alvan/vim-closetag'
   Plug 'jiangmiao/auto-pairs'
   Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
-  " improved interface
+  " Improved interface
   Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'pbogut/fzf-mru.vim'
@@ -22,8 +22,7 @@
   Plug 'shime/vim-livedown', {'for': 'markdown', 'do': 'npm install -g livedown'}
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
-  " Plug 'itchyny/lightline.vim'
-  " integrations
+  " Integrations
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb', {'on': 'Gbrowse'}
@@ -32,9 +31,9 @@
 " }}}
 
 " {{{ filetype imports
+  source ~/.config/nvim/ftplugin/functions.vim
   source ~/.config/nvim/ftplugin/system.vim
   source ~/.config/nvim/ftplugin/plugins.vim
-  source ~/.config/nvim/ftplugin/functions.vim
   source ~/.config/nvim/ftplugin/fold.vim
   source ~/.config/nvim/ftplugin/filetypes.vim
   source ~/.config/nvim/ftplugin/aesthetic.vim
@@ -43,7 +42,7 @@
 " }}}
 
 " {{{ VIM-initialize
-  call Set_italics()
+  " call Set_italics()
   call Set_transparency()
   call Toggle_number()
 " }}}

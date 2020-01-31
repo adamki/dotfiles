@@ -72,5 +72,18 @@ function! MyFoldText() "MyFoldText {{{
   let foldPercentage = printf('[%.1f', (foldSize*1.0)/lineCount*100) . '%] '
   let expansionString = repeat('.', w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
   return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
-endfunction
-" }}}
+endfunction " }}}
+
+function! StatusDiagnostic() abort " StatusDiagnostic {{{
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return 'Clean' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, 'E' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, 'W' . info['warning'])
+  endif
+  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+endfunction "}}}
+
