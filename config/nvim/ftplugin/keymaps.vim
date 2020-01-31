@@ -8,7 +8,6 @@ nnoremap <Leader>r :so ~/.config/nvim/init.vim<CR>
 " writing/exiting nvim
 nnoremap <Leader>w :w<CR>
 " nnoremap q         :q<CR>
-nnoremap Q         :q!<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader>x :x<CR>
@@ -37,7 +36,7 @@ nnoremap <Leader>S :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 " nmap <F2> :set rnu! nornu?<CR>
 nnoremap <F2> :<C-u>call Toggle_number()<CR>
 " toggle background
-nnoremap <Leader>b :<C-u>call <SID>Toggle_background()<CR>
+nnoremap <Leader>b :call Toggle_background()<CR>
 " print vim ID of char under cursor
 map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 " better line end navigation
@@ -108,22 +107,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window(COC)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+nnoremap <silent> K :call Show_documentation()<CR>
 " multiple cursors(COC)
-nmap <expr> <silent> <C-space> <SID>select_current_word()
-function! s:select_current_word()
-  if !get(g:, 'coc_cursors_activated', 0)
-    return "\<Plug>(coc-cursors-word)"
-  endif
-  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
-endfunc
+nmap <expr> <silent> <C-space>  Select_current_word()
 " CocList utils(COC)
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>

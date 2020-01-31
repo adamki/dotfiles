@@ -31,9 +31,9 @@
 " }}}
 
 " {{{ filetype imports
-  source ~/.config/nvim/ftplugin/functions.vim
   source ~/.config/nvim/ftplugin/system.vim
   source ~/.config/nvim/ftplugin/plugins.vim
+  source ~/.config/nvim/ftplugin/functions.vim
   source ~/.config/nvim/ftplugin/fold.vim
   source ~/.config/nvim/ftplugin/filetypes.vim
   source ~/.config/nvim/ftplugin/aesthetic.vim
