@@ -43,7 +43,7 @@
 " }}}
 
 " {{{ VIM-initialize
-  " call Set_italics()
+  call Set_italics()
   call Set_transparency()
-  call Toggle_number()
+  " call Toggle_number()
 " }}}

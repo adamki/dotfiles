@@ -14,6 +14,7 @@ autocmd BufWritePre * %s/\s\+$//e        " remove unwanted space(s) on Buffer Pr
 set noswapfile                           " do NOT create swapfiles for new buffers
 filetype on                              " let vim detect fileType
 set numberwidth=3                        " make number gutter small
+set relativenumber number
 set tabstop=2 shiftwidth=2 expandtab     " better tabs and line shifts
 set noshowmode                           " hide vim's modal status
 set hidden                               " hide buffers instead of unload them

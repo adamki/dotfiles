@@ -1,12 +1,10 @@
 set background=dark                               " must go before :colorscheme
-colo gruvbox                                      " must go after set bg
+colo onedark                                      " must go after set bg
 let g:enable_italic_font = 1                      " Make sure to italicize
 
-" au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
-
 " STATUS BAR COLORS
-let statuslinebasebg = '#3c3836' " gruvbox
-" let statuslinebasebg = '#4b5263' " onedark
+" let statuslinebasebg = '#3c3836' " gruvbox
+let statuslinebasebg = '#343945' " onedark
 hi User1 guifg=grey guibg=NONE
 exe 'hi User2 guifg=lightred guibg=' . statuslinebasebg
 exe 'hi User3 guifg=lightblue guibg=' . statuslinebasebg
