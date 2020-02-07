@@ -4,9 +4,9 @@
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
   Plug 'Rigellute/rigel'
+  Plug 'dracula/vim', { 'as': 'dracula' }
   " Language support
   Plug 'sheerun/vim-polyglot'
-  " Plug 'herringtondarkholme/yats.vim'
   " Improved Movements & Motions
   Plug 'alvan/vim-closetag'
   Plug 'jiangmiao/auto-pairs'

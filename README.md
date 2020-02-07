@@ -30,7 +30,7 @@ This Installation script will:
 | vim-plug  |    Both    |
 | Antigen   |    Both    |
 | ripgrep   |    Both    |
-| neofetch  |    Both    |
+| pfetch    |    Both    |
 | lolcat    |    Both    |
 | bundler   |    Both    |
 | tpm       |    Both    |

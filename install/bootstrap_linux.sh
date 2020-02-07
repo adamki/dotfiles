@@ -24,7 +24,6 @@ PACKAGES=(
   bat
   xcape
   zsh
-  neofetch
   ripgrep
   tmux
   ranger
@@ -63,6 +62,8 @@ GLOBAL_NPM_PACKAGES=(
 echo -e "${HR}Installing Gems...${HR}"
 sudo gem install ${GEMS[@]}
 
+echo -e "${hr}Cloning Pfetch...${hr}"
+git clone git@github.com:dylanaraps/pfetch.git ~/pfetch
 echo -e "${hr}Installing Plug...${hr}"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

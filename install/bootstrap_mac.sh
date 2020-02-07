@@ -21,7 +21,6 @@ PACKAGES=(
   bat
   zsh
   antigen
-  neofetch
   ripgrep
   tmux
   ranger
@@ -72,6 +71,8 @@ echo -e "${HR}Installing GLOBAL NPM Packages......${HR}"
 npm install -g ${GLOBAL_NPM[@]}
 
 # MISC INSTALLS
+echo -e "${hr}Cloning Pfetch...${hr}"
+git clone git@github.com:dylanaraps/pfetch.git ~/pfetch
 echo -e "${hr}Installing Plug...${hr}"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

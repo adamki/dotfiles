@@ -57,4 +57,4 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 # print sys info
-neofetch
+~/pfetch/pfetch
