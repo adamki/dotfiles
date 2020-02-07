@@ -34,6 +34,7 @@ let g:coc_global_extensions = [
   \'coc-css',
   \'coc-explorer',
   \'coc-highlight',
+  \'coc-snippets',
   \]
 
 " Highlight symbol under cursor on CursorHold
@@ -54,7 +55,10 @@ let g:coc_global_extensions = [
 " Yggdroot/indentLine -----------------{{{
 let g:indentLine_fileTypeExclude = ['coc-explorer']
 "disable indentLine's strange concealling behavior(EX: hides quotes in JSON file)
-let g:indentLine_setConceal = 0
+autocmd FileType markdown let g:indentLine_enabled=0
+" Force IntentLine plugin to display quotes in JSON
+let g:vim_json_syntax_conceal = 0
+let g:indentLine_char = '┊'
 "}}}
 
 " justinmk/vim-sneak ------------------{{{

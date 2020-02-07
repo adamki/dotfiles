@@ -96,11 +96,16 @@ nmap <LocalLeader><tab> <plug>(fzf-maps-n)
 xmap <LocalLeader><tab> <plug>(fzf-maps-x)
 omap <LocalLeader><tab> <plug>(fzf-maps-o)
 imap <LocalLeader><tab> <plug>(fzf-maps-i)
+" SNIPPETS(COC)
+imap <C-l> <Plug>(coc-snippets-expand)
 " Explorer(COC)
 nmap - :CocCommand explorer<CR>
 " Use `[d` and `]d` to navigate diagnostics(COC)
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
+" Use `[g` and `]g` to navigate git changes(COC)
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
 " Remap keys for gotos(COC)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -111,6 +116,7 @@ nnoremap <silent> K :call Show_documentation()<CR>
 " multiple cursors(COC)
 nmap <expr> <silent> <C-space>  Select_current_word()
 " CocList utils(COC)
+nnoremap <silent> <space><space>  :<C-u>CocList <cr>
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>

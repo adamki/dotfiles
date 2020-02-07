@@ -6,7 +6,7 @@
   Plug 'Rigellute/rigel'
   " Language support
   Plug 'sheerun/vim-polyglot'
-  " Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
+  " Plug 'herringtondarkholme/yats.vim'
   " Improved Movements & Motions
   Plug 'alvan/vim-closetag'
   Plug 'jiangmiao/auto-pairs'
@@ -43,7 +43,7 @@
 " }}}
 
 " {{{ VIM-initialize
-  call Set_italics()
-  call Set_transparency()
-  " call Toggle_number()
+  " call Set_italics()
+  " call Set_transparency()
 " }}}
+

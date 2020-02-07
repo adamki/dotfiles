@@ -47,12 +47,12 @@
   },
   "tsserver.enableJavascript": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "git.enableGutters": true,
   "coc.preferences.bracketEnterImprove": false,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "list.insertMappings": {
     "<C-v>": "action:vsplit",
     "<C-x>": "action:split",
     "<C-t>": "action:tabe"
-  }
+  },
+  "git.enableGutters": true,
 }
