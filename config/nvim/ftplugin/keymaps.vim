@@ -104,8 +104,8 @@ nmap - :CocCommand explorer<CR>
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
 " Use `[g` and `]g` to navigate git changes(COC)
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
+nmap <silent> [g <Plug>(coc-git-prevchunk)
+nmap <silent> ]g <Plug>(coc-git-nextchunk)
 " Remap keys for gotos(COC)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -114,7 +114,7 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window(COC)
 nnoremap <silent> K :call Show_documentation()<CR>
 " multiple cursors(COC)
-nmap <expr> <silent> <C-space>  Select_current_word()
+nmap <expr> <silent> <C-space> Select_current_word()
 " CocList utils(COC)
 nnoremap <silent> <space><space>  :<C-u>CocList <cr>
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
@@ -131,7 +131,7 @@ nmap <leader>rn <Plug>(coc-rename)
 " format selected region(COC)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-" Use <C-a> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-xmap <Tab> <Plug>(coc-range-select)
-xmap <S-Tab> <Plug>(coc-range-select-backword)
+" Use <Tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <Tab> <Plug>(coc-range-select)
+xmap <S-Tab> <Plug>(coc-range-select-backward)
 " }}}

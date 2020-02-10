@@ -55,4 +55,5 @@
     "<C-t>": "action:tabe"
   },
   "git.enableGutters": true,
+  "coc.preferences.colorSupport": false,
 }

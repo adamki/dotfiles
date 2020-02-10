@@ -4,7 +4,7 @@
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
   Plug 'Rigellute/rigel'
-  Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'dracula/vim', { 'name': 'dracula' }
   " Language support
   Plug 'sheerun/vim-polyglot'
   " Improved Movements & Motions
