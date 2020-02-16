@@ -6,7 +6,6 @@ echo -e "${HR}Starting Boostrap Script...\n\nUpdating Pacman${reset}${HR}"
 sudo pacman-mirrors --fasttrack && sudo pacman -Syyu
 
 PAMAC_REPOS="
-  rbenv
   gotop
   neovim-nightly
 "
@@ -21,6 +20,7 @@ PAMAC_PACKAGES=(
 pamac install ${PAMAC_PACKAGES[@]}
 
 PACKAGES=(
+  curl
   bat
   xcape
   ripgrep
