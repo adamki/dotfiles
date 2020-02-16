@@ -84,11 +84,18 @@ echo -e "${HR}Installing Latest Node...${HR}"
 nvm install node #"node is alway latest version"
 echo -e "${HR}Installing NPM Packages...${HR}"
 npm i -g ${GLOBAL_NPM_PACKAGES[@]}
+
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+echo -e "${HR}Installing latest ruby and setting as system default...${HR}"
+rbenv install $(rbenv install -l | grep -v - | tail -1)
+rbenv global $(rbenv install -l | grep -v - | tail -1)
+echo -e "${HR}Installing RUBY Gems...${HR}"
+gem install $GEMS
 echo -e "${HR}Check rbenv installation...${HR}"
-mkdir -p "$(rbenv root)"/plugins
-git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-# rbenv install $(rbenv install -l | grep -v - | tail -1)
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+
+
+
 echo -e "${HR}Installing Neovim Python Providers...${HR}"
 python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
