@@ -18,7 +18,7 @@ PAMAC_PACKAGES=(
   feh
 )
 
-pamac install ${PAMAC_PACKAGES[0]}
+pamac install ${PAMAC_PACKAGES[@]}
 
 PACKAGES=(
   bat
