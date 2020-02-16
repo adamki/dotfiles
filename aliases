@@ -13,11 +13,9 @@ alias psg='ps aux | fzf'
 alias h='history'
 alias hs='history | fzf'
 
-case `uname` in
-  Linux)
+if [ -d /etc/lsb-release ]; then
    alias nvim="~/nvim.appimage"
-  ;;
-esac
+fi
 
 alias aliases="cat ~/dotfiles/aliases | fzf"
 alias dots="cd ~/dotfiles"

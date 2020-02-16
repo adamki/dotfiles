@@ -140,7 +140,7 @@ bindsym $mod+Tab workspace back_and_forth
 assign [class="Google-chrome"] $ws2
 assign [class="Mailspring"] $ws3
 assign [class="Slack"] $ws3
-assign [class="Firefox"] $ws4
+assign [class="firefox"] $ws4
 
 # lock the session
 # bindsym $mod+Shift+x exec $DOTFILES/config/i3/lock.sh

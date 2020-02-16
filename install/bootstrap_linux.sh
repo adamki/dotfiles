@@ -23,7 +23,6 @@ pamac install ${PAMAC_PACKAGES[0]}
 PACKAGES=(
   bat
   xcape
-  zsh
   ripgrep
   tmux
   ranger
@@ -34,7 +33,9 @@ PACKAGES=(
   rofi
   compton
   nitrogen
-  w3m-img
+  timeshift
+  timeshift-autosnap
+  zsh
 )
 
 echo -e "${HR}Installing Packages...${HR}"
@@ -49,6 +50,7 @@ sudo pacman -S ${FONTS[@]}
 
 GEMS=(
   bundler
+  neovim
 )
 
 GLOBAL_NPM_PACKAGES=(
@@ -81,7 +83,7 @@ nvm --version
 echo -e "${HR}Installing Latest Node...${HR}"
 nvm install node #"node is alway latest version"
 echo -e "${HR}Installing NPM Packages...${HR}"
-npm i -g $GLOBAL_NPM_PACKAGES
+npm i -g ${GLOBAL_NPM_PACKAGES[@]}
 echo -e "${HR}Check rbenv installation...${HR}"
 mkdir -p "$(rbenv root)"/plugins
 git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build

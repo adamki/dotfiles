@@ -28,8 +28,7 @@ mkdir -p $backupdir
 echo -e "${HR}Changing Directories: ${dir}${HR}\n\n"
 cd $dir
 
-files="tmux.conf
-vimrc
+files="vimrc
 zshrc
 yabairc
 skhdrc

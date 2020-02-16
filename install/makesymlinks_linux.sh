@@ -35,8 +35,7 @@ mkdir -p $comptonpath
 echo -e "${HR}Changing Directories: ${dir}${HR}\n\n"
 cd $dir
 
-files="tmux.conf
-vimrc
+files="vimrc
 zshrc
 config/nvim/coc-settings.json
 config/nvim/init.vim

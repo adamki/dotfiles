@@ -6,6 +6,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   fi
   if [ -f "/etc/arch-release" ]; then
     . ./install/bootstrap_linux.sh
+    . ./install/makesymlinks_linux.sh
   fi
   . ./install/makesymlinks_linux.sh
 elif [[ "$OSTYPE" == "darwin"* ]]; then
