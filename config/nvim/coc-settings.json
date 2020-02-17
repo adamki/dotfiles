@@ -8,6 +8,7 @@
   "explorer.icon.enableNerdfont": true,
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
+  "eslint.autoFixOnSave": true,
   "eslint.packageManager": "npm",
   "eslint.filetypes": [ "javascript", "javascriptreact", "typescript", "typescriptreact" ],
   "diagnostic.errorSign": "E",
