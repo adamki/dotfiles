@@ -6,7 +6,7 @@ set termguicolors                        " enable true colors
 let mapleader = "\<space>"               " <Leader>
 let maplocalleader=";"                   " <LocalLeader>
 set mouse=a                              " enable mouse mode
-set colorcolumn=80                       " keep lines short
+" set colorcolumn=80                       " keep lines short
 set clipboard=unnamedplus
 set nopaste                              " but default to nopaste
 set pastetoggle=<f6>                     " toggle paste/nopaste

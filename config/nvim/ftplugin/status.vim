@@ -39,12 +39,14 @@ endfunction
 
 function! InactiveStatus()
   let statusline=""
-  let statusline.="%1*"
-  let statusline.="\    %f"
-  let statusline.="%{&readonly?'\  ':''}"
-  let statusline.="%7*"
 
-  let statusline.="%{&modified?'\ \ ●':''}"
+  let statusline.="%="
+  let statusline.="%8*"
+  let statusline.="\%t"
+  let statusline.="%6*"
+  let statusline.="%{&readonly?'\  ':''}"
+  let statusline.="%{&modified?' \  ●' \: ''}"
+  let statusline.="%="
   return statusline
 endfunction
 

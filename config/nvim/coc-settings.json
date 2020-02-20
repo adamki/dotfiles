@@ -6,6 +6,7 @@
   "explorer.file.autoReveal": true,
   "explorer.file.column.indent.indentLine": true,
   "explorer.icon.enableNerdfont": true,
+  "suggest.snippetIndicator": "►",
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
   "eslint.autoFixOnSave": true,
@@ -55,6 +56,5 @@
     "<C-x>": "action:split",
     "<C-t>": "action:tabe"
   },
-  "git.enableGutters": true,
-  "coc.preferences.colorSupport": false,
+  "git.enableGutters": true
 }
