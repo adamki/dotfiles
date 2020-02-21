@@ -15,13 +15,12 @@
   Plug 'tpope/vim-surround'
   Plug 'justinmk/vim-sneak'
   " Improved interface
-  Plug 'ryanoasis/vim-devicons'
   Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'pbogut/fzf-mru.vim'
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'Yggdroot/indentLine'
-  Plug 'shime/vim-livedown', {'for': 'markdown', 'do': 'npm install -g livedown'}
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
   " Integrations

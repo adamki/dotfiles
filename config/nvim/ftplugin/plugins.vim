@@ -2,9 +2,8 @@
 let g:closetag_filenames = '*.html,*.jsx,*.js,*.tsx,*.html.erb'          " close tags on these files
 " }}}
 
-" shime/vim-livedown ------------------{{{
-let g:livedown_autorun = 1                                          " automatically launch new browser/preview
-let g:livedown_open = 1                                             " browser automatically opens window upon previewing
+" iamcco/markdown-preview.nvim---------{{{
+let g:mkdp_auto_start = 1
 " }}}
 
 " junegunn/fzf.vim --------------------{{{
