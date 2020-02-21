@@ -51,6 +51,7 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "coc.preferences.bracketEnterImprove": false,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "coc.preferences.colorSupport": true,
   "list.insertMappings": {
     "<C-v>": "action:vsplit",
     "<C-x>": "action:split",

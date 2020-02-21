@@ -15,11 +15,12 @@ function! Toggle_background() " Toggle_background {{{
       execute 'colorscheme' l:scheme
       echomsg 'The colorscheme `'.l:scheme
             \ .'` doesn''t have background variants!'
-    else
-      echo 'Set colorscheme to '.&background.' mode'
+    els
+      echo 'Set' l:scheme 'to '.&background.' mode'
     endif
   endif
   call Set_italics()
+  call Set_status_bar_colors()
 endfunction "}}}
 
 function! Toggle_number() " Toggle_number {{{
@@ -124,3 +125,37 @@ function! FloatingFZF() " FloatingFZF {{{
     call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
     au BufWipeout <buffer> exe 'bw '.s:buf
 endfunction " }}}
+
+function! Set_status_bar_colors()
+  if &background ==# 'dark'
+  " let statuslinebasebg = '#343945' " onedark
+    let $BAT_THEME = 'OneHalfDark'
+    let statuslinebasebg = '#3c3836' " gruvbox
+    exe 'hi User1 guifg=grey guibg=NONE'
+    exe 'hi User2 guifg=lightred guibg=' . statuslinebasebg
+    exe 'hi User3 guifg=lightblue guibg=' . statuslinebasebg
+    exe 'hi User4 guifg=slate guibg=' . statuslinebasebg
+    exe 'hi User5 guifg=darkcyan guibg=' . statuslinebasebg
+    exe 'hi User6 guifg=lightgreen guibg=' . statuslinebasebg
+
+    exe 'hi User7 guifg=darkgray guibg=NONE'
+    exe 'hi User8 guifg=darkgray guibg=' . statuslinebasebg
+
+    exe 'hi MyStatuslineLineGrey ctermfg=0 cterm=NONE ctermbg=NONE  guibg=NONE guifg=' . statuslinebasebg
+  endif
+  if &background ==# 'light'
+    let statuslinebasebg = '#ebdbb2' " gruvbox
+    let $BAT_THEME = 'OneHalfLight'
+    exe 'hi User1 guifg=darkgrey guibg=NONE'
+    exe 'hi User2 guifg=darkred guibg=' . statuslinebasebg
+    exe 'hi User3 guifg=darkblue guibg=' . statuslinebasebg
+    exe 'hi User4 guifg=slate guibg=' . statuslinebasebg
+    exe 'hi User5 guifg=darkcyan guibg=' . statuslinebasebg
+    exe 'hi User6 guifg=red guibg=' . statuslinebasebg
+
+    exe 'hi User7 guifg=darkgray guibg=NONE'
+    exe 'hi User8 guifg=darkgray guibg=' . statuslinebasebg
+
+    exe 'hi MyStatuslineLineGrey ctermfg=0 cterm=NONE ctermbg=NONE  guibg=NONE guifg=' . statuslinebasebg
+  endif
+endfunction

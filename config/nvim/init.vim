@@ -15,6 +15,7 @@
   Plug 'tpope/vim-surround'
   Plug 'justinmk/vim-sneak'
   " Improved interface
+  Plug 'ryanoasis/vim-devicons'
   Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'pbogut/fzf-mru.vim'
@@ -44,6 +45,6 @@
 
 " {{{ VIM-initialize
   call Set_italics()
-  call Set_transparency()
+  call Set_status_bar_colors()
+  " call Set_transparency()
 " }}}
-
