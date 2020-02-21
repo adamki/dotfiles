@@ -28,7 +28,6 @@ SPACESHIP_RPROMPT_ORDER=(
   conda         # conda virtualenv section
   dotnet        # .NET section
   ember         # Ember.js section
-  kubectl       # Kubectl context section
 )
 
 SPACESHIP_HOST_PREFIX="@:("
