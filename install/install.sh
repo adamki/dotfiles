@@ -10,7 +10,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     . ./install/linux_variables.sh
   fi
   if [ -f "/etc/arch-release" ]; then
-    . ./install/bootstrap_linux.sh
     . ./install/linux_variables.sh
   fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -59,3 +58,4 @@ done
 echo -e "\n"
 echo -e "${HR}"
 echo -e "${green}Symlinking Complete!\nOld config files have been backed up to $backupdir${reset}"
+. ./install/bootstrap_linux.sh

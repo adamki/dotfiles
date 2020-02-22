@@ -64,7 +64,7 @@ curl -L git.io/antigen > ~/antigen.zsh
 
 echo -e "${HR}"
 echo -e "${bold}Installing NVM...${normal}"
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | zsh
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 
 echo -e "${HR}"
 echo -e "${bold}Sourcing NVM...${normal}"
@@ -72,22 +72,30 @@ source ${HOME}/.nvm/nvm.sh
 nvm --version
 
 echo -e "${HR}"
-echo -e "${bold}Installing Latest Node...${normal}"
-nvm install node #"node is alway latest version"
-
-echo -e "${HR}"
-echo -e "${bold}Installing NPM Packages...${normal}"
-npm i -g ${GLOBAL_NPM_PACKAGES[@]}
-
-echo -e "${HR}"
 echo -e "${bold}Installing Rbenv...${normal}"
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
 ~/.rbenv/bin/rbenv init
+
+echo -e "${HR}"
+echo -e "${bold}Restarting Shell...${normal}"
+exec zsh
+
+echo -e "${HR}"
+echo -e "${bold}Installing Ruby Build...${normal}"
+mkdir -p "$(rbenv root)"/plugins
+git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 
 echo -e "${HR}"
 echo -e "${bold}RBENV doctor...${normal}"
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+
+# echo -e "${HR}"
+# echo -e "${bold}Installing Latest Node...${normal}"
+# nvm install node #"node is alway latest version"
+#
+# echo -e "${HR}"
+# echo -e "${bold}Installing NPM Packages...${normal}"
+# npm i -g ${GLOBAL_NPM_PACKAGES[@]}
 
 # echo -e "${HR}"
 # echo -e "${bold}Installing Latest Ruby...${normal}"
