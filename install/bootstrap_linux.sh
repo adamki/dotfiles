@@ -1,6 +1,5 @@
 #!/bin/bash
 . ./utils/colors.sh
-# install
 
 AUR_REPOS=(
   gotop
@@ -43,7 +42,7 @@ GLOBAL_NPM_PACKAGES=(
 
 echo -e "${HR}"
 echo -e "${bold}Looking for fastest Mirrors...${normal}"
-# sudo pacman-mirrors --fasttrack
+sudo pacman-mirrors --fasttrack
 
 echo -e "${HR}"
 echo -e "${bold}Updating Pacman...${normal}"
@@ -69,7 +68,8 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 echo -e "${HR}"
 echo -e "${bold}Installing Kitty Terminal...${normal}"
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
+  launch=n
 
 echo -e "${HR}"
 echo -e "${bold}Installing Antigen...${normal}"
