@@ -2,17 +2,14 @@
 . ./utils/colors.sh
 # install
 
-AUR_REPOS="
+AUR_REPOS=(
   gotop
   neovim-nightly
-"
-
-PAMAC_PACKAGES=(
-  feh
-  lolcat
 )
 
-PACKAGES=(
+PACMAN_PACKAGES=(
+  feh
+  lolcat
   bat
   compton
   curl
@@ -32,7 +29,7 @@ PACKAGES=(
   zsh
 )
 
-GEMS=(
+RUBY_GEMS=(
   bundler
   neovim
 )
@@ -40,14 +37,13 @@ GEMS=(
 GLOBAL_NPM_PACKAGES=(
   bash-language-server
   eslint
-  livedown
   neovim
   vim-language-server
 )
 
 echo -e "${HR}"
 echo -e "${bold}Looking for fastest Mirrors...${normal}"
-sudo pacman-mirrors --fasttrack
+# sudo pacman-mirrors --fasttrack
 
 echo -e "${HR}"
 echo -e "${bold}Updating Pacman...${normal}"
@@ -55,21 +51,12 @@ sudo pacman -Syyu
 
 echo -e "${HR}"
 echo -e "${bold}Cloning && Building AUR Repos...${normal}"
-pamac clone $AUR_REPOS
-pamac build $AUR_REPOS
-
-
-echo -e "${HR}"
-echo -e "${bold}Installing PAMAC Packages...${normal}"
-pamac install ${PAMAC_PACKAGES[@]}
+pamac clone ${AUR_REPOS[@]}
+pamac build ${AUR_REPOS[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Installing PACMAN Packages...${normal}"
-sudo pacman -S ${PACKAGES[@]}
-
-echo -e "${HR}"
-echo -e "${bold}Installing Gems...${normal}"
-sudo gem install ${GEMS[@]}
+sudo pacman -S ${PACMAN_PACKAGES[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Cloning pFetch...${normal}"
@@ -106,7 +93,7 @@ echo -e "${bold}Installing NPM Packages...${normal}"
 npm i -g ${GLOBAL_NPM_PACKAGES[@]}
 
 echo -e "${HR}"
-echo -e "${bold}RBENV doctor...${normal}"
+echo -e "${bold}Installing Rbenv...${normal}"
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 
 echo -e "${HR}"
@@ -118,14 +105,13 @@ echo -e "${bold}Setting Ruby Default...${normal}"
 rbenv global $(rbenv install -l | grep -v - | tail -1)
 
 echo -e "${HR}"
-echo -e "${bold}Installing Ruby Gesm...${normal}"
-gem install ${GEMS[@]}
-
-echo -e "${HR}"
 echo -e "${bold}RBENV doctor...${normal}"
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
-echo -e "${HR}Installing Neovim Python Providers...${HR}"
+echo -e "${HR}"
+echo -e "${bold}Installing Ruby Gesm...${normal}"
+gem install ${RUBY_GEMS[@]}
+
 echo -e "${HR}"
 echo -e "${bold}Installing NeoVIM Python Provider...${normal}"
 python2 -m pip install --user --upgrade pynvim
