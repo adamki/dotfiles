@@ -21,31 +21,28 @@ This Installation script will:
 
 | Software  |    OS      |
 |-----------|------------|
-| kitty     |    Both    |
-| Z Shell   |    Both    |
-| Ranger    |    Both    |
-| htop      |    Both    |
-| gotop     |    Both    |
-| Neovim    |    Both    |
-| vim-plug  |    Both    |
-| Antigen   |    Both    |
-| ripgrep   |    Both    |
-| pfetch    |    Both    |
-| lolcat    |    Both    |
-| bundler   |    Both    |
-| tpm       |    Both    |
-| livedown  |    Both    |
-| nvm       |    Both    |
-| node      |    Both    |
-| livedown  |    Both    |
-| fzf       |    Both    |
-| tmux      |    Both    |
-| rbenv     |    Both    |
-| python2   |    Both    |
-| bash-language-server      |    Both    |
-| vim-language-server      |    Both    |
-| Fira      |    Both    |
-| Fira      |    Both    |
+| kitty     |    All    |
+| Z Shell   |    All    |
+| Ranger    |    All    |
+| htop      |    All    |
+| gotop     |    All    |
+| Neovim    |    All    |
+| vim-plug  |    All    |
+| Antigen   |    All    |
+| ripgrep   |    All    |
+| pfetch    |    All    |
+| lolcat    |    All    |
+| bundler   |    All    |
+| tpm       |    All    |
+| nvm       |    All    |
+| node      |    All    |
+| fzf       |    All    |
+| tmux      |    All    |
+| rbenv     |    All    |
+| python2   |    All    |
+| bash-language-server      |    All    |
+| vim-language-server      |    All    |
+| Fira      |    All    |
 | xcape     |    linux   |
 | xclip     |    linux   |
 | i3-gaps   |    linux   |
@@ -57,6 +54,6 @@ This Installation script will:
 | yabai     |    MacOS   |
 | skhd      |    MacOS   |
 | homebrew  |    MacOS   |
-| bat       | MacOS/Arch   |
+| bat       |    All    |
 
 Bat is * not currently supported on debian stable. Please download(dpkg -i) the `.deb` file from the official [BAT Releases page](https://github.com/sharkdp/bat/releases)
