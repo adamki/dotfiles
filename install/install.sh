@@ -19,6 +19,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 echo -e "${HR}"
+echo -e "${bold}Deleting Old backups...${normal}"
+rm -rf $HOME/$backupdir/*
+
+echo -e "${HR}"
 echo -e "${bold}Making new Directories...${normal}"
 for directory in $directories; do
   echo -e "$Making ${directory}"
