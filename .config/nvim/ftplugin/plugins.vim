@@ -2,19 +2,18 @@
 let g:closetag_filenames = '*.html,*.jsx,*.js,*.tsx,*.html.erb'          " close tags on these files
 " }}}
 
-" shime/vim-livedown ------------------{{{
-let g:livedown_autorun = 1                                          " automatically launch new browser/preview
-let g:livedown_open = 1                                             " browser automatically opens window upon previewing
+" iamcco/markdown-preview.nvim---------{{{
+let g:mkdp_auto_start = 1
 " }}}
 
 " junegunn/fzf.vim --------------------{{{
 let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n>/<C-p> as tab thru previous fzf sessions
-" let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 " let Rg show a preview window
 " see instructions here: https://github.com/junegunn/fzf.vim#example-rg-command-with-preview-window
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   'rg --hidden --column --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 " }}}
 
@@ -38,7 +37,7 @@ let g:coc_global_extensions = [
   \]
 
 " Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " augroup mygroup
 "   autocmd!

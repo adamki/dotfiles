@@ -7,4 +7,8 @@ magenta=`tput setaf 5`
 cyan=`tput setaf 6`
 white=`tput setaf 7`
 reset=`tput sgr0`
-HR="\n${yellow}==================================${reset}\n"
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+HR="${yellow}==================================${reset}"

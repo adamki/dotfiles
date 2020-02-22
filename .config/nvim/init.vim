@@ -1,7 +1,7 @@
 " {{{ VIM-Plug
   call plug#begin('~/.local/share/nvim/plugged')
   " colors
-  Plug 'morhetz/gruvbox'
+  Plug 'lifepillar/vim-gruvbox8'
   Plug 'joshdick/onedark.vim'
   Plug 'Rigellute/rigel'
   Plug 'dracula/vim', { 'name': 'dracula' }
@@ -20,7 +20,7 @@
   Plug 'pbogut/fzf-mru.vim'
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'Yggdroot/indentLine'
-  Plug 'shime/vim-livedown', {'for': 'markdown', 'do': 'npm install -g livedown'}
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
   Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
   " Integrations
@@ -43,7 +43,7 @@
 " }}}
 
 " {{{ VIM-initialize
-  " call Set_italics()
+  call Set_italics()
+  call Set_status_bar_colors()
   " call Set_transparency()
 " }}}
-

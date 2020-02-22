@@ -101,37 +101,43 @@ imap <C-l> <Plug>(coc-snippets-expand)
 " Explorer(COC)
 nmap - :CocCommand explorer<CR>
 " Use `[d` and `]d` to navigate diagnostics(COC)
-nmap <silent> [d <Plug>(coc-diagnostic-prev)
-nmap <silent> ]d <Plug>(coc-diagnostic-next)
+nmap [d <Plug>(coc-diagnostic-prev)
+nmap ]d <Plug>(coc-diagnostic-next)
 " Use `[g` and `]g` to navigate git changes(COC)
-nmap <silent> [g <Plug>(coc-git-prevchunk)
-nmap <silent> ]g <Plug>(coc-git-nextchunk)
+nmap [c <Plug>(coc-git-prevchunk)
+nmap ]c <Plug>(coc-git-nextchunk)
 " Remap keys for gotos(COC)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap gd <Plug>(coc-definition)
+nmap gy <Plug>(coc-type-definition)
+nmap gi <Plug>(coc-implementation)
+nmap gr <Plug>(coc-references)
 " Use K to show documentation in preview window(COC)
 nnoremap <silent> K :call Show_documentation()<CR>
 " multiple cursors(COC)
 nmap <expr> <silent> <C-space> Select_current_word()
 " CocList utils(COC)
-nnoremap <silent> <space><space>  :<C-u>CocList <cr>
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <space>y  :<C-u>CocList -A yank<cr>
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <space><space> :<C-u>CocList <cr>
+nnoremap <space>a :<C-u>CocList diagnostics<cr>
+nnoremap <space>e :<C-u>CocList extensions<cr>
+nnoremap <space>c :<C-u>CocList commands<cr>
+nnoremap <space>o :<C-u>CocList outline<cr>
+nnoremap <space>s :<C-u>CocList -I symbols<cr>
+nnoremap <space>y :<C-u>CocList -A yank<cr>
+nnoremap <space>j :<C-u>CocNext<CR>
+nnoremap <space>k :<C-u>CocPrev<CR>
+nnoremap <space>p :<C-u>CocListResume<CR>
 " rename current word(COC)
 nmap <leader>rn <Plug>(coc-rename)
 " format selected region(COC)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 " Use <Tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <Tab> <Plug>(coc-range-select)
+" DO NOT MAP TO <TAB> as this overwrites default <C-i> behaviour
+vmap <Tab> <Plug>(coc-range-select)
+vmap <Tab> <Plug>(coc-range-select)
+vmap <S-Tab> <Plug>(coc-range-select-backward)
 xmap <S-Tab> <Plug>(coc-range-select-backward)
+" CTRL + j/k to tab through autocomplete selections
+inoremap <expr> <C-j> pumvisible() ? '<C-n>' : ''
+inoremap <expr> <C-k> pumvisible() ? '<C-p>' : ''
 " }}}

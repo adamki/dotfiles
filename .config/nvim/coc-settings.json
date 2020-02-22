@@ -6,8 +6,10 @@
   "explorer.file.autoReveal": true,
   "explorer.file.column.indent.indentLine": true,
   "explorer.icon.enableNerdfont": true,
+  "suggest.snippetIndicator": "►",
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
+  "eslint.autoFixOnSave": true,
   "eslint.packageManager": "npm",
   "eslint.filetypes": [ "javascript", "javascriptreact", "typescript", "typescriptreact" ],
   "diagnostic.errorSign": "E",
@@ -49,11 +51,11 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "coc.preferences.bracketEnterImprove": false,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "coc.preferences.colorSupport": true,
   "list.insertMappings": {
     "<C-v>": "action:vsplit",
     "<C-x>": "action:split",
     "<C-t>": "action:tabe"
   },
-  "git.enableGutters": true,
-  "coc.preferences.colorSupport": false,
+  "git.enableGutters": true
 }
