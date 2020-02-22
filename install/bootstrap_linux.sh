@@ -45,19 +45,6 @@ echo -e "${bold}Looking for fastest Mirrors...${normal}"
 sudo pacman-mirrors --fasttrack
 
 echo -e "${HR}"
-echo -e "${bold}Updating Pacman...${normal}"
-sudo pacman -Syyu
-
-echo -e "${HR}"
-echo -e "${bold}Cloning && Building AUR Repos...${normal}"
-pamac clone ${AUR_REPOS[@]}
-pamac build ${AUR_REPOS[@]}
-
-echo -e "${HR}"
-echo -e "${bold}Installing PACMAN Packages...${normal}"
-sudo pacman -S ${PACMAN_PACKAGES[@]}
-
-echo -e "${HR}"
 echo -e "${bold}Cloning pFetch...${normal}"
 git clone git@github.com:dylanaraps/pfetch.git ~/pfetch
 
@@ -121,6 +108,19 @@ echo -e "${HR}"
 echo -e "${bold}Installing FZF...${normal}"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+echo -e "${HR}"
+echo -e "${bold}Updating Pacman...${normal}"
+sudo pacman -Syyu
+
+echo -e "${HR}"
+echo -e "${bold}Cloning && Building AUR Repos...${normal}"
+pamac clone ${AUR_REPOS[@]}
+pamac build ${AUR_REPOS[@]}
+
+echo -e "${HR}"
+echo -e "${bold}Installing PACMAN Packages...${normal}"
+sudo pacman -S ${PACMAN_PACKAGES[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Changing default SHELL to FZF...${normal}"
