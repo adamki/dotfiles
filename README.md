@@ -6,8 +6,8 @@
 ## Getting Started
 _**Pre-Requisites**_: Set up your `.ssh` keys
 ```
-$ git clone git@github.com:adamki/dotfiles.git ~/dotfiles
-$ cd ~/dotfiles
+$ git clone git@github.com:adamki/dotfiles.git $HOME/dotfiles
+$ cd $HOME/dotfiles
 $ chmod +x install/install.sh
 ```
 
