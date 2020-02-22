@@ -81,50 +81,52 @@ npm i -g ${GLOBAL_NPM_PACKAGES[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Installing Rbenv...${normal}"
-curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
-
-echo -e "${HR}"
-echo -e "${bold}Installing Latest Ruby...${normal}"
-rbenv install $(rbenv install -l | grep -v - | tail -1)
-
-echo -e "${HR}"
-echo -e "${bold}Setting Ruby Default...${normal}"
-rbenv global $(rbenv install -l | grep -v - | tail -1)
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+~/.rbenv/bin/rbenv init
 
 echo -e "${HR}"
 echo -e "${bold}RBENV doctor...${normal}"
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
-echo -e "${HR}"
-echo -e "${bold}Installing Ruby Gesm...${normal}"
-gem install ${RUBY_GEMS[@]}
-
-echo -e "${HR}"
-echo -e "${bold}Installing NeoVIM Python Provider...${normal}"
-python2 -m pip install --user --upgrade pynvim
-python3 -m pip install --user --upgrade pynvim
-
-echo -e "${HR}"
-echo -e "${bold}Installing FZF...${normal}"
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-
-echo -e "${HR}"
-echo -e "${bold}Updating Pacman...${normal}"
-sudo pacman -Syyu
-
-echo -e "${HR}"
-echo -e "${bold}Cloning && Building AUR Repos...${normal}"
-pamac clone ${AUR_REPOS[@]}
-pamac build ${AUR_REPOS[@]}
-
-echo -e "${HR}"
-echo -e "${bold}Installing PACMAN Packages...${normal}"
-sudo pacman -S ${PACMAN_PACKAGES[@]}
-
-echo -e "${HR}"
-echo -e "${bold}Changing default SHELL to FZF...${normal}"
-chsh -s $(which zsh)
-
-echo -e "${HR}"
-echo -e "${bold}${green}Bootstrap Complete...${normal}"
+# echo -e "${HR}"
+# echo -e "${bold}Installing Latest Ruby...${normal}"
+# rbenv install $(rbenv install -l | grep -v - | tail -1)
+#
+# echo -e "${HR}"
+# echo -e "${bold}Setting Ruby Default...${normal}"
+# rbenv global $(rbenv install -l | grep -v - | tail -1)
+#
+# echo -e "${HR}"
+# echo -e "${bold}Installing Ruby Gesm...${normal}"
+# gem install ${RUBY_GEMS[@]}
+#
+# echo -e "${HR}"
+# echo -e "${bold}Installing NeoVIM Python Provider...${normal}"
+# python2 -m pip install --user --upgrade pynvim
+# python3 -m pip install --user --upgrade pynvim
+#
+# echo -e "${HR}"
+# echo -e "${bold}Installing FZF...${normal}"
+# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+# ~/.fzf/install
+#
+# echo -e "${HR}"
+# echo -e "${bold}Updating Pacman...${normal}"
+# sudo pacman -Syyu
+#
+# echo -e "${HR}"
+# echo -e "${bold}Cloning && Building AUR Repos...${normal}"
+# pamac clone ${AUR_REPOS[@]}
+# pamac build ${AUR_REPOS[@]}
+#
+# echo -e "${HR}"
+# echo -e "${bold}Installing PACMAN Packages...${normal}"
+# sudo pacman -S ${PACMAN_PACKAGES[@]}
+#
+# echo -e "${HR}"
+# echo -e "${bold}Changing default SHELL to FZF...${normal}"
+# chsh -s $(which zsh)
+#
+# echo -e "${HR}"
+# echo -e "${bold}${green}Bootstrap Complete...${normal}"
