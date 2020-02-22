@@ -30,7 +30,6 @@ BREW_CASKS=(
 GLOBAL_NPM_PACKAGES=(
   bash-language-server
   eslint
-  livedown
   neovim
   vim-language-server
 )
