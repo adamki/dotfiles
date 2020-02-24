@@ -24,7 +24,6 @@ PACKAGES=(
   ranger
   ripgrep
   rofi
-  rubygems
   timeshift
   timeshift-autosnap
   tmux
@@ -38,7 +37,7 @@ GEMS=(
 )
 
 GLOBAL_NPM_PACKAGES=(
-  bash-language-server
+  # bash-language-server
   eslint
   livedown
   neovim
@@ -58,10 +57,6 @@ echo -e "${bold}Cloning && Building AUR Repos...${normal}"
 pamac clone $AUR_REPOS
 pamac build $AUR_REPOS
 
-
-echo -e "${HR}"
-echo -e "${bold}Installing PAMAC Packages...${normal}"
-pamac install ${PAMAC_PACKAGES[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Installing PACMAN Packages...${normal}"
@@ -139,6 +134,14 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 echo -e "${HR}"
 echo -e "${bold}Changing default SHELL to FZF...${normal}"
 chsh -s $(which zsh)
+
+echo -e "${HR}"
+echo -e "${bold}Installing Ruby Gems...${normal}"
+sudo pacman -S rubygems
+
+echo -e "${HR}"
+echo -e "${bold}Installing PAMAC Packages...${normal}"
+pamac install ${PAMAC_PACKAGES[@]}
 
 echo -e "${HR}"
 echo -e "${bold}${green}Bootstrap Complete...${normal}"
