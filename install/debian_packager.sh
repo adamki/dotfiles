@@ -1,37 +1,26 @@
-#!/bin/bash
+#! /bin/bash
 . ./utils/colors.sh
 
-AUR_REPOS=(
-  gotop
-  neovim-nightly
-)
-
-PAMAC_PACKAGES=(
-  feh
-)
-
-PACMAN_PACKAGES=(
-  bat
+APT_PACKAGES=(
   compton
-  curl
-  firefox
+  feh
+  fonts-firacode
   htop
-  i3-gaps
+  i3
   nitrogen
-  otf-fira-code
+  python-pip
+  python3-pip
+  ranger
   ranger
   ripgrep
   rofi
-  timeshift
-  timeshift-autosnap
+  ruby-neovim
+  rubygems
   tmux
+  w3m-img
   xcape
-)
-
-RUBY_GEMS=(
-  bundler
-  neovim
-  lolcat
+  xclip
+  zsh
 )
 
 GLOBAL_NPM_PACKAGES=(
@@ -39,6 +28,12 @@ GLOBAL_NPM_PACKAGES=(
   eslint
   neovim
   vim-language-server
+)
+
+GEMS=(
+  bundler
+  lolcat
+  neovim
 )
 
 echo -e "${HR}"
@@ -59,11 +54,7 @@ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor 
 
 echo -e "${HR}"
 echo -e "${bold}Installing NPM Packages...${normal}"
-# npm i -g ${GLOBAL_NPM_PACKAGES[@]}
-npm i -g bash-language-server
-npm i -g eslint
-npm i -g neovim
-npm i -g vim-language-server
+npm i -g ${GLOBAL_NPM_PACKAGES[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Installing NeoVIM Python Provider...${normal}"
@@ -71,17 +62,14 @@ python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
 
 echo -e "${HR}"
-echo -e "${bold}Cloning && Building AUR Repos...${normal}"
-pamac clone ${AUR_REPOS[@]}
-pamac build ${AUR_REPOS[@]}
+echo -e "${bold}Installing APT Packages...${normal}"
+sudo apt-get install ${APT_PACKAGES[@]}
 
 echo -e "${HR}"
-echo -e "${bold}Installing PACMAN Packages...${normal}"
-sudo pacman -S ${PACMAN_PACKAGES[@]}
-
-echo -e "${HR}"
-echo -e "${bold}Installing PAMAC Packages...${normal}"
-pamac install ${PAMAC_PACKAGES[@]}
+echo -e "${bold}Getting NeoVIM appimage...${normal}"
+curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+mv -v ./nvim.appimage ~/nvim.appimage
+chmod u+x ~/nvim.appimage
 
 echo -e "${HR}"
 echo -e "${bold}${green}Packager Complete...${normal}"

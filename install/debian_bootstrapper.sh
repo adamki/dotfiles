@@ -1,24 +1,20 @@
-#!/bin/bash
+#! /bin/bash
 . ./utils/colors.sh
 
 echo -e "${HR}"
-echo -e "${bold}Looking for fastest Mirrors...${normal}"
-sudo pacman-mirrors --fasttrack
-
-echo -e "${HR}"
-echo -e "${bold}Updating Pacman...${normal}"
-sudo pacman -Syyu
+echo -e "${bold}Updating APT-GET...${normal}"
+sudo apt-get update && sudo apt-get upgrade
 
 echo -e "${HR}"
 echo -e "${bold}Installing Zsh...${normal}"
-sudo pacman -S zsh
+sudo apt-get install zsh
 
 echo -e "${HR}"
 echo -e "${bold}Installing Antigen...${normal}"
 curl -L git.io/antigen > ~/antigen.zsh
 
 echo -e "${HR}"
-echo -e "${bold}Installing rbenv...${normal}"
+echo -e "${bold}Installing Rbenv...${normal}"
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 
 . ./shell_utils.sh
@@ -26,6 +22,6 @@ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-install
 echo -e "${HR}"
 echo -e "${bold}${green}Bootstrapper Complete...${normal}"
 echo -e "${bold}${green}Starting ZSH now...${normal}"
-echo -e "${bold}${green}Please run ./install/linux_packager.sh${normal}"
+echo -e "${bold}${green}Please run ./install/debian_packager.sh${normal}"
 
 exec zsh

@@ -1,37 +1,29 @@
 #!/bin/bash
 . ./utils/colors.sh
 
-AUR_REPOS=(
-  gotop
-  neovim-nightly
+BREW_TAPS=(
+  homebrew/cask-fonts
+  koekeishiya/formulae
 )
 
-PAMAC_PACKAGES=(
-  feh
-)
-
-PACMAN_PACKAGES=(
+BREW_PACKAGES=(
   bat
-  compton
-  curl
-  firefox
+  gotop
   htop
-  i3-gaps
-  nitrogen
-  otf-fira-code
+  python2
   ranger
+  rbenv
   ripgrep
-  rofi
-  timeshift
-  timeshift-autosnap
+  skhd
   tmux
-  xcape
+  yabai
+  neovim
 )
 
-RUBY_GEMS=(
-  bundler
-  neovim
-  lolcat
+BREW_CASKS=(
+  firefox
+  font-fira-code
+  slack
 )
 
 GLOBAL_NPM_PACKAGES=(
@@ -39,6 +31,12 @@ GLOBAL_NPM_PACKAGES=(
   eslint
   neovim
   vim-language-server
+)
+
+RUBY_GEMS=(
+  bundler
+  lolcat
+  neovim
 )
 
 echo -e "${HR}"
@@ -58,12 +56,8 @@ echo -e "${bold}RBENV doctor...${normal}"
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
 echo -e "${HR}"
-echo -e "${bold}Installing NPM Packages...${normal}"
-# npm i -g ${GLOBAL_NPM_PACKAGES[@]}
-npm i -g bash-language-server
-npm i -g eslint
-npm i -g neovim
-npm i -g vim-language-server
+echo -e "${bold}Installing Global NPM packages...${normal}"
+npm install -g ${GLOBAL_NPM_PACKAGES[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Installing NeoVIM Python Provider...${normal}"
@@ -71,17 +65,20 @@ python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
 
 echo -e "${HR}"
-echo -e "${bold}Cloning && Building AUR Repos...${normal}"
-pamac clone ${AUR_REPOS[@]}
-pamac build ${AUR_REPOS[@]}
+echo -e "${bold}Fetching Brew Taps...${normal}"
+brew tap ${BREW_TAPS[@]}
 
 echo -e "${HR}"
-echo -e "${bold}Installing PACMAN Packages...${normal}"
-sudo pacman -S ${PACMAN_PACKAGES[@]}
+echo -e "${bold}Installing Brew Packages...${normal}"
+brew install ${BREW_PACKAGES[@]}
 
 echo -e "${HR}"
-echo -e "${bold}Installing PAMAC Packages...${normal}"
-pamac install ${PAMAC_PACKAGES[@]}
+echo -e "${bold}Installing Brew Casks...${normal}"
+brew cask install ${BREW_CASKS[@]}
+
+echo -e "${HR}"
+echo -e "${bold}Brew Cleanup...${normal}"
+brew cleanup
 
 echo -e "${HR}"
 echo -e "${bold}${green}Packager Complete...${normal}"
