@@ -2,10 +2,6 @@
 let g:closetag_filenames = '*.html,*.jsx,*.js,*.tsx,*.html.erb'          " close tags on these files
 " }}}
 
-" iamcco/markdown-preview.nvim---------{{{
-let g:mkdp_auto_start = 1
-" }}}
-
 " junegunn/fzf.vim --------------------{{{
 let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n>/<C-p> as tab thru previous fzf sessions
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }

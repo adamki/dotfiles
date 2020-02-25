@@ -81,4 +81,9 @@ echo -e "${bold}Brew Cleanup...${normal}"
 brew cleanup
 
 echo -e "${HR}"
+echo -e "${bold}Setting up Brew Services...${normal}"
+brew services start koekeishiya/formulae/yabai
+brew services start skhd
+
+echo -e "${HR}"
 echo -e "${bold}${green}Packager Complete...${normal}"
