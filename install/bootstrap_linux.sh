@@ -39,7 +39,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 echo -e "${HR}"
 echo -e "${bold}Installing NVM...${normal}"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | zsh
 
 echo -e "${HR}"
 echo -e "${bold}Sourcing NVM...${normal}"
