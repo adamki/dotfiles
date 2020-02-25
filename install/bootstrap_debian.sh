@@ -52,7 +52,7 @@ chmod u+x ~/nvim.appimage
 
 echo -e "${HR}"
 echo -e "${bold}Cloning pFetch...${normal}"
-git clone git@github.com:dylanaraps/pfetch.git ~/pfetch
+git clone https://github.com/dylanaraps/pfetch.git ~/pfetch
 
 echo -e "${HR}"
 echo -e "${bold}Installing Vim-Plug...${normal}"
