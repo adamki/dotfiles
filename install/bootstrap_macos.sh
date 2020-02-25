@@ -75,7 +75,7 @@ gem install ${RUBY_GEMS[@]}
 # MISC INSTALLS
 echo -e "${HR}"
 echo -e "${bold}Cloning pFetch...${normal}"
-git clone git@github.com:dylanaraps/pfetch.git ~/pfetch
+git clone https://github.com/dylanaraps/pfetch.git ~/pfetch
 
 echo -e "${HR}"
 echo -e "${bold}Installing Vim-Plug...${normal}"
@@ -84,7 +84,8 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 echo -e "${HR}"
 echo -e "${bold}Installing Kitty Terminal...${normal}"
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
+  launch=n
 
 echo -e "${HR}"
 echo -e "${bold}Installing NVM...${normal}"
