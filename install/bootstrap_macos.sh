@@ -88,7 +88,7 @@ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 echo -e "${HR}"
 echo -e "${bold}Installing NVM...${normal}"
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | zsh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 
 echo -e "${HR}"
 echo -e "${bold}Sourcing NVM...${normal}"

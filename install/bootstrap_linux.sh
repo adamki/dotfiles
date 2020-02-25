@@ -85,7 +85,7 @@ curl -L git.io/antigen > ~/antigen.zsh
 
 echo -e "${HR}"
 echo -e "${bold}Installing NVM...${normal}"
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | zsh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 
 echo -e "${HR}"
 echo -e "${bold}Sourcing NVM...${normal}"
@@ -113,7 +113,7 @@ echo -e "${bold}Setting Ruby Default...${normal}"
 rbenv global $(rbenv install -l | grep -v - | tail -1)
 
 echo -e "${HR}"
-echo -e "${bold}Installing Ruby Gesm...${normal}"
+echo -e "${bold}Installing Ruby Gems...${normal}"
 gem install ${GEMS[@]}
 
 echo -e "${HR}"
