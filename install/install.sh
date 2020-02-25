@@ -58,4 +58,3 @@ done
 echo -e "\n"
 echo -e "${HR}"
 echo -e "${green}Symlinking Complete!\nOld config files have been backed up to $backupdir${reset}"
-. ./install/bootstrap_linux.sh
