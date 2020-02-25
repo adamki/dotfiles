@@ -4,12 +4,10 @@
   Plug 'lifepillar/vim-gruvbox8'
   Plug 'joshdick/onedark.vim'
   Plug 'Rigellute/rigel'
-  Plug 'dracula/vim', { 'name': 'dracula' }
   " Language support
   Plug 'sheerun/vim-polyglot'
   " Improved Movements & Motions
   Plug 'alvan/vim-closetag'
-  Plug 'jiangmiao/auto-pairs'
   Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
