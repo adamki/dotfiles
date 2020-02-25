@@ -17,7 +17,7 @@ echo -e "${HR}"
 echo -e "${bold}Installing Rbenv...${normal}"
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 
-. ./shell_utils.sh
+source ./install/shell_utils.sh
 
 echo -e "${HR}"
 echo -e "${bold}${green}Bootstrapper Complete...${normal}"

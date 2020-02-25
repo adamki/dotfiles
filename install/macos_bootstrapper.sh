@@ -19,7 +19,7 @@ brew install zsh
 brew install antigen
 brew install rbenv
 
-. ./shell_utils.sh
+source ./install/shell_utils.sh
 
 echo -e "${HR}"
 echo -e "${bold}${green}Bootstrapper Complete...${normal}"
