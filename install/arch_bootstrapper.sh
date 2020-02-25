@@ -26,6 +26,6 @@ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-install
 echo -e "${HR}"
 echo -e "${bold}${green}Bootstrapper Complete...${normal}"
 echo -e "${bold}${green}Starting ZSH now...${normal}"
-echo -e "${bold}${green}Please run ./install/linux_packager.sh${normal}"
+echo -e "${bold}${green}Please run ./install/arch_packager.sh${normal}"
 
 exec zsh
