@@ -60,7 +60,7 @@ nnoremap <C-H> <C-W><C-H>
 
 " {{{ PLUGS
 " Maximizer Toggling
-nnoremap <LocalLeader>z :MaximizerToggle!<CR>
+nnoremap <LocalLeader>z <C-W>_<C-W><Bar>
 " FINDING(FZF)
 nnoremap <LocalLeader>f    :Files<CR>
 nnoremap <LocalLeader>F    :Files <c-r>=fnameescape(expand('%:p:h'))<CR><CR>

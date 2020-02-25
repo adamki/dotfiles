@@ -19,7 +19,6 @@
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'Yggdroot/indentLine'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-  Plug 'szw/vim-maximizer', {'on': ['Maximizer', 'MaximizerToggle']}
   Plug 'tpope/vim-eunuch'
   " Integrations
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
