@@ -26,6 +26,7 @@ PACMAN_PACKAGES=(
   timeshift-autosnap
   tmux
   xcape
+  xclip
 )
 
 RUBY_GEMS=(
