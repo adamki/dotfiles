@@ -9,7 +9,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   elif [ -f "/etc/arch-release" ]; then
     echo "ARCH"
     # . ./install/arch_bootstrapper.sh
-  elif [ -f "/etc/fedora-relase" ]; then
+  elif [ -f "/etc/fedora-release" ]; then
     echo "FEDORA"
     # . ./install/fedora_bootstrapper.sh
   fi
