@@ -1,25 +1,26 @@
-#! /bin/bash
+#!/bin/bash
 . ./utils/colors.sh
 
-APT_PACKAGES=(
-  compton
+DNF_PACKAGES=(
+  gotop
+  neovim-nightly
   feh
-  fonts-firacode
+  bat
+  compton
+  curl
+  firefox
   htop
-  i3
+  i3-gaps
   nitrogen
-  python-pip
-  python3-pip
+  otf-fira-code
   ranger
   ripgrep
   rofi
-  ruby-neovim
-  rubygems
   timeshift
+  timeshift-autosnap
   tmux
-  w3m-img
-  xcape
   xclip
+  xcape
 )
 
 GLOBAL_NPM_PACKAGES=(
@@ -31,8 +32,8 @@ GLOBAL_NPM_PACKAGES=(
 
 RUBY_GEMS=(
   bundler
-  lolcat
   neovim
+  lolcat
 )
 
 echo -e "${HR}"
@@ -61,14 +62,8 @@ python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
 
 echo -e "${HR}"
-echo -e "${bold}Installing APT Packages...${normal}"
-sudo apt-get install ${APT_PACKAGES[@]}
-
-echo -e "${HR}"
-echo -e "${bold}Getting NeoVIM appimage...${normal}"
-curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
-mv -v ./nvim.appimage ~/nvim.appimage
-chmod u+x ~/nvim.appimage
+echo -e "${bold}Installing PACMAN Packages...${normal}"
+sudo pacman -S ${DNF_PACKAGES[@]}
 
 echo -e "${HR}"
 echo -e "${bold}${green}Packager Complete...${normal}"
