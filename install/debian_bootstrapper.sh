@@ -31,5 +31,6 @@ echo -e "${HR}"
 echo -e "${bold}${green}Bootstrapper Complete...${normal}"
 echo -e "${bold}${green}Starting ZSH now...${normal}"
 echo -e "${bold}${green}Please run ./install/debian_packager.sh${normal}"
+echo -e "${bold}${red}Could NOT INSTALL BAT. Please see https://github.com/sharkdp/bat#on-ubuntu for manual install instructions${normal}"
 
 exec zsh
