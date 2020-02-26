@@ -1,26 +1,33 @@
 #!/bin/bash
 . ./utils/colors.sh
 
+DNF_COPR_REPOS=(
+  agriffis/neovim-nightly
+  evana/fira-code-fonts
+)
+
 DNF_PACKAGES=(
-  gotop
-  neovim-nightly
-  feh
   bat
   compton
   curl
+  feh
+  fira-code-fonts
   firefox
   htop
-  i3-gaps
+  i3
+  neovim
   nitrogen
-  otf-fira-code
+  python2-neovim
+  python3-neovim
+  python2
+  python3
   ranger
   ripgrep
   rofi
   timeshift
-  timeshift-autosnap
   tmux
-  xclip
   xcape
+  xclip
 )
 
 GLOBAL_NPM_PACKAGES=(
@@ -62,8 +69,12 @@ python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
 
 echo -e "${HR}"
-echo -e "${bold}Installing PACMAN Packages...${normal}"
-sudo pacman -S ${DNF_PACKAGES[@]}
+echo -e "${bold}Installing DNF Packages...${normal}"
+sudo dnf install -y ${DNF_PACKAGES[@]}
+
+echo -e "${HR}"
+echo -e "${bold}Installing COPR Packages...${normal}"
+dnf copr enable ${DNF_COPR_REPOS[@]}
 
 echo -e "${HR}"
 echo -e "${bold}${green}Packager Complete...${normal}"
