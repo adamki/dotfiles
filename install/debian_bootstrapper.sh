@@ -6,6 +6,14 @@ echo -e "${bold}Updating APT-GET...${normal}"
 sudo apt-get update && sudo apt-get upgrade
 
 echo -e "${HR}"
+echo -e "${bold}Installing git...${normal}"
+sudo apt-get install git
+
+echo -e "${HR}"
+echo -e "${bold}Installing curl...${normal}"
+sudo apt-get install curl
+
+echo -e "${HR}"
 echo -e "${bold}Installing Zsh...${normal}"
 sudo apt-get install zsh
 
