@@ -28,6 +28,7 @@ files="
 .yabairc
 .skhdrc
 .rgignore
+.gitignore_global
 .config/nvim/init.vim
 .config/nvim/coc-settings.json
 .config/nvim/ftplugin/plugins.vim
