@@ -41,15 +41,16 @@ RUBY_GEMS=(
   lolcat
 )
 
-# sudo dnf install git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
+# All of this is needed for ruby
+sudo dnf install git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
 
 echo -e "${HR}"
 echo -e "${bold}Installing Latest Ruby...${normal}"
-# rbenv install $(rbenv install -l | grep -v - | tail -1)
+rbenv install $(rbenv install -l | grep -v - | tail -1)
 
 echo -e "${HR}"
 echo -e "${bold}Setting Ruby Default...${normal}"
-# rbenv global $(rbenv install -l | grep -v - | tail -1)
+rbenv global $(rbenv install -l | grep -v - | tail -1)
 
 echo -e "${HR}"
 echo -e "${bold}Installing Ruby Gems...${normal}"
