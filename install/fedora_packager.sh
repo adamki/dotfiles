@@ -16,8 +16,6 @@ DNF_PACKAGES=(
   i3
   neovim
   nitrogen
-  python2-neovim
-  python3-neovim
   python2
   python3
   ranger
@@ -43,7 +41,7 @@ RUBY_GEMS=(
   lolcat
 )
 
-sudo dnf install git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
+# sudo dnf install git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
 
 echo -e "${HR}"
 echo -e "${bold}Installing Latest Ruby...${normal}"
@@ -72,7 +70,7 @@ python3 -m pip install --user --upgrade pynvim
 
 echo -e "${HR}"
 echo -e "${bold}Installing DNF Packages...${normal}"
-sudo dnf install -y ${DNF_PACKAGES[@]}
+sudo dnf install ${DNF_PACKAGES[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Installing COPR Packages...${normal}"
