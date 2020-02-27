@@ -64,13 +64,13 @@ echo -e "${bold}Installing NPM Packages...${normal}"
 npm i -g ${GLOBAL_NPM_PACKAGES[@]}
 
 echo -e "${HR}"
+echo -e "${bold}Installing DNF Packages...${normal}"
+sudo dnf install ${DNF_PACKAGES[@]}
+
+echo -e "${HR}"
 echo -e "${bold}Installing NeoVIM Python Provider...${normal}"
 python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
-
-echo -e "${HR}"
-echo -e "${bold}Installing DNF Packages...${normal}"
-sudo dnf install ${DNF_PACKAGES[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Installing COPR Packages...${normal}"
