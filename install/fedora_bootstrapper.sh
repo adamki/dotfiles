@@ -1,13 +1,13 @@
 #!/bin/bash
 . ./utils/colors.sh
 
-# echo -e "${HR}"
-# echo -e "${bold}Looking for fastest Mirrors...${normal}"
-# sudo pacman-mirrors --fasttrack
-
 echo -e "${HR}"
 echo -e "${bold}Updating DNF...${normal}"
 sudo dnf update
+
+echo -e "${HR}"
+echo -e "${bold}Updating Curl...${normal}"
+sudo dnf install curl
 
 echo -e "${HR}"
 echo -e "${bold}Installing Zsh...${normal}"
