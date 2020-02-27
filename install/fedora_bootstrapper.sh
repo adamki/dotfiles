@@ -10,6 +10,10 @@ echo -e "${bold}Updating DNF...${normal}"
 sudo dnf update
 
 echo -e "${HR}"
+echo -e "${bold}Installing git...${normal}"
+sudo dnf git
+
+echo -e "${HR}"
 echo -e "${bold}Installing Zsh...${normal}"
 sudo dnf install zsh
 
