@@ -13,7 +13,7 @@ alias psg='ps aux | fzf'
 alias h='history'
 alias hs='history | fzf'
 
-if [ -d /etc/lsb-release ]; then
+if [[ -d "/etc/lsb-release" ]] || [[ -d "/etc/fedora-release" ]]; then
    alias nvim="~/nvim.appimage"
 fi
 

@@ -2,7 +2,6 @@
 . ./utils/colors.sh
 
 DNF_COPR_REPOS=(
-  agriffis/neovim-nightly
   evana/fira-code-fonts
 )
 
@@ -48,11 +47,11 @@ sudo dnf install git-core zlib zlib-devel gcc-c++ patch readline readline-devel 
 
 echo -e "${HR}"
 echo -e "${bold}Installing Latest Ruby...${normal}"
-rbenv install $(rbenv install -l | grep -v - | tail -1)
+# rbenv install $(rbenv install -l | grep -v - | tail -1)
 
 echo -e "${HR}"
 echo -e "${bold}Setting Ruby Default...${normal}"
-rbenv global $(rbenv install -l | grep -v - | tail -1)
+# rbenv global $(rbenv install -l | grep -v - | tail -1)
 
 echo -e "${HR}"
 echo -e "${bold}Installing Ruby Gems...${normal}"
@@ -78,6 +77,12 @@ sudo dnf install -y ${DNF_PACKAGES[@]}
 echo -e "${HR}"
 echo -e "${bold}Installing COPR Packages...${normal}"
 sudo dnf copr enable ${DNF_COPR_REPOS[@]}
+
+echo -e "${HR}"
+echo -e "${bold}Getting NeoVIM appimage...${normal}"
+curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+mv -v ./nvim.appimage ~/nvim.appimage
+chmod u+x ~/nvim.appimage
 
 echo -e "${HR}"
 echo -e "${bold}${green}Packager Complete...${normal}"
