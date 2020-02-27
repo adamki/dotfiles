@@ -30,6 +30,7 @@ DNF_PACKAGES=(
   xclip
 )
 
+
 GLOBAL_NPM_PACKAGES=(
   bash-language-server
   eslint
@@ -42,6 +43,8 @@ RUBY_GEMS=(
   neovim
   lolcat
 )
+
+sudo dnf install git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
 
 echo -e "${HR}"
 echo -e "${bold}Installing Latest Ruby...${normal}"
@@ -74,7 +77,7 @@ sudo dnf install -y ${DNF_PACKAGES[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Installing COPR Packages...${normal}"
-dnf copr enable ${DNF_COPR_REPOS[@]}
+sudo dnf copr enable ${DNF_COPR_REPOS[@]}
 
 echo -e "${HR}"
 echo -e "${bold}${green}Packager Complete...${normal}"
