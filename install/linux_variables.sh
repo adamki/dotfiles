@@ -32,6 +32,7 @@ files="
 .vimrc
 .zshrc
 .rgignore
+.gitignore_global
 .config/i3/config
 .config/rofi/config
 .config/compton/compton.conf
