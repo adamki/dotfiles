@@ -1,3 +1,12 @@
+### Bind Caps_Lock to CTRL/ESC
+  * Install [Karabiner-Elements](https://pqrs.org/osx/ka)
+  * Add `Complex Modification` as shown below:
+
+    ```
+     Change caps_lock to control if pressed with other keys, to escape if pressed alone.
+    ```
+
+
 ### Setup Misson Control/Spaces switching
 1. Disable MacOS auto app/space re-arranging
 
@@ -20,3 +29,4 @@
     `brew services start koekeishiya/formulae/yabai`
 
     `brew services start skhd`
+
