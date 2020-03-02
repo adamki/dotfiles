@@ -30,7 +30,7 @@ $backupdir/$ftpluginpath
 
 files="
 .vimrc
-.zshrc
+.bash_profile
 .rgignore
 .gitignore_global
 .config/i3/config

@@ -9,7 +9,6 @@ This Installation script will:
   1. Install technologies listed [here](#technologies-included)
   2. Move all old configuration files into a directory called `~/dotfiles_old`
   3. Symlink new configuration files in `${HOME}` directory to `~/dotfiles`
-  4. Will set your default shell to Zsh
 
 ## Getting Started
   ```
@@ -30,7 +29,7 @@ This Installation script will:
 | Software  |    OS      |
 |-----------|------------|
 | kitty     |    All    |
-| Z Shell   |    All    |
+| Bash Shell   |    All    |
 | Ranger    |    All    |
 | htop      |    All    |
 | gotop     |    All    |
@@ -45,6 +44,7 @@ This Installation script will:
 | node      |    All    |
 | fzf       |    All    |
 | rbenv     |    All    |
+| starship bash  |    All   |
 | bash-language-server      |    All    |
 | vim-language-server      |    All    |
 | bat       |    All but debian    |

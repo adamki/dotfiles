@@ -20,7 +20,7 @@ fi
 alias aliases="cat ${HOME}/dotfiles/aliases | fzf"
 alias dots="cd ${HOME}/dotfiles"
 alias nc="nvim ${HOME}/dotfiles/.config/nvim/init.vim"
-alias zshrc="nvim ${HOME}/dotfiles/.zshrc"
+alias bashrc="nvim ${HOME}/dotfiles/.bash_profile"
 
 alias kc="nvim ${HOME}/dotfiles/.config/kitty/kitty.conf"
 alias ic="nvim ${HOME}/dotfiles/.config/i3/config"

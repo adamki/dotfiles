@@ -14,16 +14,14 @@ echo -e "${bold}Updating Brew...${normal}"
 brew update
 
 echo -e "${HR}"
-echo -e "${bold}Installing Zsh...${normal}"
-brew install zsh
-brew install antigen
+echo -e "${bold}Installing rbenv...${normal}"
 brew install rbenv
 
 source ./install/shell_utils.sh
 
 echo -e "${HR}"
 echo -e "${bold}${green}Bootstrapper Complete...${normal}"
-echo -e "${bold}${green}Starting ZSH now...${normal}"
+echo -e "${bold}${green}Restarting Bash now...${normal}"
 echo -e "${bold}${green}Please run ./install/macos_packager.sh${normal}"
 
-exec zsh
+exec bash

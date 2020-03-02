@@ -24,7 +24,7 @@ $backupdir/$ftpluginpath
 
 files="
 .vimrc
-.zshrc
+.bash_profile
 .yabairc
 .skhdrc
 .rgignore

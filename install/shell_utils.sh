@@ -2,6 +2,10 @@
 . ./utils/colors.sh
 
 echo -e "${HR}"
+echo -e "${bold}Installing Starship...${normal}"
+curl -fsSL https://starship.rs/install.sh | bash
+
+echo -e "${HR}"
 echo -e "${bold}Cloning pFetch...${normal}"
 git clone https://github.com/dylanaraps/pfetch.git ~/pfetch
 
@@ -34,5 +38,5 @@ echo -e "${bold}Installing Latest Node...${normal}"
 nvm install node #"node is alway latest version"
 
 echo -e "${HR}"
-echo -e "${bold}Changing default SHELL to ZSH...${normal}"
-chsh -s $(which zsh)
+echo -e "${bold}Changing default SHELL to bash...${normal}"
+chsh -s $(which bash)
