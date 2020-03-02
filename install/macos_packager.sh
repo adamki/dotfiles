@@ -3,14 +3,12 @@
 
 BREW_TAPS=(
   homebrew/cask-fonts
-  koekeishiya/formulae
 )
 
 BREW_PACKAGES=(
   bat
   gotop
   htop
-  python2
   ranger
   rbenv
   ripgrep
@@ -18,6 +16,7 @@ BREW_PACKAGES=(
   tmux
   yabai
   neovim
+  koekeishiya/formulae/yabai
 )
 
 BREW_CASKS=(
@@ -65,12 +64,12 @@ python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
 
 echo -e "${HR}"
-echo -e "${bold}Fetching Brew Taps...${normal}"
-brew tap ${BREW_TAPS[@]}
-
-echo -e "${HR}"
 echo -e "${bold}Installing Brew Packages...${normal}"
 brew install ${BREW_PACKAGES[@]}
+
+echo -e "${HR}"
+echo -e "${bold}Fetching Brew Taps...${normal}"
+brew tap ${BREW_TAPS[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Installing Brew Casks...${normal}"

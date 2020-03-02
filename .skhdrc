@@ -2,7 +2,7 @@
 alt - return : /Applications/Kitty.app/Contents/MacOS/kitty -d ~
 
 #restart SKHD
-ctrl + alt + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+shift + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 # focus window
 alt - h : yabai -m window --focus west
