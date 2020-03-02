@@ -140,7 +140,7 @@ bindsym $mod+Tab workspace back_and_forth
 assign [class="Google-chrome"] $ws2
 assign [class="Mailspring"] $ws3
 assign [class="Slack"] $ws3
-assign [class="firefox"] $ws4
+assign [class="Firefox"] $ws4
 
 # lock the session
 # bindsym $mod+Shift+x exec $DOTFILES/config/i3/lock.sh
@@ -186,7 +186,7 @@ client.urgent           #C10004 #900000 #ffffff #900000 #C10004
 
 # apps to start on boot
 exec ~/.local/kitty.app/bin/kitty
-# exec_always compton -b -f --blur-background --config $HOME/.config/compton/compton.conf
+exec_always compton -b -f --blur-background --config $HOME/.config/compton/compton.conf
 # set bg img with feh/nitrogen
 # exec_always feh --bg-scale /path/to/image
 exec --no-startup-id nitrogen --restore

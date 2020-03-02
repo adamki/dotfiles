@@ -35,6 +35,10 @@ RUBY_GEMS=(
   neovim
 )
 
+# was having issues installing a ruby
+sudo apt-get purge libssl-dev
+sudo apt-get install libssl-dev
+
 echo -e "${HR}"
 echo -e "${bold}Installing Latest Ruby...${normal}"
 rbenv install $(rbenv install -l | grep -v - | tail -1)
