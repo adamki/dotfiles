@@ -1,0 +1,65 @@
+configuration {
+    icon-theme:        "Numix";
+    font:              "Proxima Nova 14";
+    combi-modi:        "windowcd,run,drun";
+}
+
+* {
+    background-color:               transparent;
+    background:                     #2E3440E6;
+    background-alt:                 #E5E9F066;
+    text-color:                     #D8DEE9;
+    selected-text-color:            #000000;
+    primary:                        #A3BE8C;
+    urgent:                         #BF616A;
+}
+
+window {
+    transparency:                   "real";
+    background-color:               @background;
+}
+
+prompt {
+    enabled:                        true;
+    font:                           "Proxima Nova 24";
+    padding:                        50px 10px 0px 40px;
+}
+
+entry {
+    padding:                        10px 10px 10px 10px;
+    background-color:               transparent;
+    border:                         0px 0px solid 2px 0px;
+    border-color:                   @background-alt;
+    font:                           "Proxima Nova 12";
+}
+
+mainbox {
+    padding:                        10px 40px 10px 40px;
+}
+
+element {
+    padding:                        8px;
+}
+
+element normal.urgent, element alternate.urgent {
+    background-color:               @urgent;
+}
+
+element normal.active, element alternate.active {
+    background-color:               @background-alt;
+    color:                          @selected-text-color;
+}
+
+element selected {
+    background-color:               @background-alt;
+    color:                          @selected-text-color;
+}
+
+element selected.urgent {
+    background-color:               @urgent;
+}
+
+element selected.active {
+    background-color:               @background-alt;
+    color:                          @selected-text-color;
+}

@@ -35,7 +35,8 @@ bindsym $mod+Return exec ~/.local/kitty.app/bin/kitty
 bindsym $mod+Shift+q kill
 
 # Change appearance of Rofi in ~/.config/rofi/config
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+d exec rofi -theme drun -show drun
+bindsym $mod+Shift+d exec rofi -theme run -show window
 
 # There also is the (new) i3-dmenu-desktop which only displays applications shipping a .desktop
 # file. It is a wrapper around dmenu, so you need that installed.
