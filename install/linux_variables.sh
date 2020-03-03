@@ -33,8 +33,9 @@ files="
 .zshrc
 .rgignore
 .gitignore_global
-.config/i3/config
-.config/rofi/config
+.config/rofi/config.rasi
+.config/rofi/drun.rasi
+.config/rofi/run.rasi
 .config/compton/compton.conf
 .config/nvim/init.vim
 .config/nvim/coc-settings.json

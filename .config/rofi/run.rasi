@@ -1,0 +1,30 @@
+configuration {
+    theme:                          "config";
+    show-icons:                     false;
+}
+
+window {
+    height:                         320px;
+    width:                          320px;
+    border-radius:                  3px;
+    border:                         1px 1px solid 1px 1px;
+    border-color:                   #22252B;
+}
+
+prompt {
+    enabled:                        false;
+}
+
+entry  {
+    expand:                         false;
+    width:                          240px;
+    margin:                         20px 0px 20px 0px;
+}
+
+element {
+    expand:                         true;
+}
+
+element-text {
+    expand:                         true;
+}
