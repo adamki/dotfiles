@@ -1,6 +1,6 @@
 configuration {
     theme:                          "config";
-    show-icons:                     false;
+    show-icons:                     true;
 }
 
 window {

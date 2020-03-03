@@ -1,6 +1,6 @@
 configuration {
     icon-theme:        "Numix";
-    font:              "Proxima Nova 9";
+    font:              "Proxima Nova 14";
     combi-modi:        "windowcd,run,drun";
 }
 
@@ -17,11 +17,12 @@ configuration {
 window {
     transparency:                   "real";
     background-color:               @background;
-    full-screen: true;
 }
 
 prompt {
     enabled:                        true;
+    font:                           "Proxima Nova 24";
+    padding:                        50px 10px 0px 40px;
 }
 
 entry {

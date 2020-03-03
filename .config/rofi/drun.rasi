@@ -4,8 +4,8 @@ configuration {
 }
 
 window {
-    height:                         512px;
-    width:                          910px;
+    height:                         712px;
+    width:                          1310px;
     location:                       center;
     anchor:                         center;
     x-offset:                       0;
@@ -17,16 +17,17 @@ window {
 
 prompt {
     enabled:                        true;
+    margin:                         0px;
 }
 
 entry  {
     expand:                         false;
-    width:                          20em;
-    margin:                         40px 40px 20px 40px;
+    width:                          45em;
+    margin:                         50px 0px 0px 0px;
 }
 
 listview {
-    columns:                        5;
+    columns:                        3;
     margin:                         20px 40px 20px 40px;
 }
 
@@ -58,7 +59,7 @@ element selected.active {
 
 element-icon {
     size:                           48;
-    border:                         0px;
+    border:                         5px;
 }
 
 element-text {
