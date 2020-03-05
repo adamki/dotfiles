@@ -20,6 +20,10 @@ APT_PACKAGES=(
   w3m-img
   xcape
   xclip
+  appmenu-registrar
+  appmenu-gtk2-module
+  appmenu-gtk3-module
+  appmenu-qt
 )
 
 GLOBAL_NPM_PACKAGES=(
