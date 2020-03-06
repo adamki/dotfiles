@@ -9,6 +9,9 @@
   "suggest.snippetIndicator": "►",
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
+  "snippets.extends": {
+    "javascriptreact": ["typescript", "typescriptreact"]
+  },
   "eslint.autoFixOnSave": true,
   "eslint.packageManager": "npm",
   "eslint.filetypes": [ "javascript", "javascriptreact", "typescript", "typescriptreact" ],
