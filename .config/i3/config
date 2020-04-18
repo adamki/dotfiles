@@ -132,6 +132,14 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+
+# let I3 know which workspace goes on wich monitor
+workspace $ws1 output HDMI-2 eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output eDP-1
+
 # custom workspace navigation
 bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
