@@ -132,18 +132,12 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-
 # let I3 know which workspace goes on wich monitor
-workspace $ws1 output HDMI-2 eDP-1
+workspace $ws1 output HDMI-2
 workspace $ws2 output eDP-1
 workspace $ws3 output eDP-1
 workspace $ws4 output eDP-1
 workspace $ws5 output eDP-1
-
-# custom workspace navigation
-bindsym $mod+comma workspace prev
-bindsym $mod+period workspace next
-bindsym $mod+Tab workspace back_and_forth
 
 # USE 'xprop' in the terminal to find the class
 assign [class="Google-chrome"] $ws2
@@ -151,8 +145,13 @@ assign [class="Mailspring"] $ws3
 assign [class="Slack"] $ws3
 assign [class="Firefox"] $ws4
 
+# custom workspace navigation
+bindsym $mod+comma workspace prev
+bindsym $mod+period workspace next
+bindsym $mod+Tab workspace back_and_forth
+
 # lock the session
-# bindsym $mod+Shift+x exec $DOTFILES/config/i3/lock.sh
+bindsym $mod+Shift+x exec ~/dotfiles/.config/i3/lock.sh
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -187,23 +186,30 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-# class                 border  backgr  text    indicator child_border
-client.focused          #aa79f2 #50556B #EAEAEA #aa79f2 #aa79f2
-client.focused_inactive #1B3309 #192433 #BCBCBC #484e50 #3f6b84
-client.unfocused        #333333 #424242 #888888 #292d2e #333333
-client.urgent           #C10004 #900000 #ffffff #900000 #C10004
+# colour of border, background, text, indicator, and child_border
+#colors:                border  backgr. text    indicator
+client.focused          #007030 #007030 #ffffff #2b2b2b
+client.focused_inactive #888888 #2b2b2b #ffffff #2b2b2b
+client.unfocused        #888888 #2b2b2b #ffffff #2b2b2b
+client.urgent           #900000 #900000 #ffffff #2b2b2b
 
 # apps to start on boot
 exec ~/.local/kitty.app/bin/kitty
+# set up compositor
 exec_always compton -b -f --blur-background --config $HOME/.config/compton/compton.conf
-# set bg img with feh/nitrogen
-# exec_always feh --bg-scale /path/to/image
-exec --no-startup-id nitrogen --restore
-
+# get random photo; set as bg
+# exec_always --no-startup-id feh --randomize --bg-scale ~/Pictures/wallpaper_dump/*
+exec_always --no-startup-id nitrogen --restore
+# set up caps_lock as ctrl/ESC
+exec_always --no-startup-id ~/dotfiles/no_caps
+# restore multi monitor setup
+exec_always xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --mode 1920x1080 --pos 0x0 --rotate normal
 # launch polybar
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # run lock.sh script
-# exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
+exec_always --no-startup-id xss-lock -- ~/.config/i3/lock.sh
+# run xfce-power-manager
+exec_always --no-startup-id xfce4-power-manager
 
 # add borders to app windows
 for_window [class="^.*"] border pixel 3
@@ -211,25 +217,14 @@ for_window [class="^.*"] border pixel 3
 # Activate smart borders (always)
 # smart_borders on
 # i3 gaps config
-gaps inner 10
-gaps outer 4
-
-# much faster key reepeaatt
-# first val set delay until repeat
-# second val is repeats per second
-# exec --no-startup-id xset r rate 200 75
-# disables trackpad temporarialy while typing
-# exec --no-startup-id syndaemon -K -i 0.5 -R -d
+# gaps inner 10
+# gaps outer 4
 
 # Pulse Audio controls
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% # increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% # decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle          # mute sound
 
 # # Sreen brightness controls
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessUp exec brightnessctl set 5%+ # increase screen brightness
-# bindsym XF86MonBrightnessDown exec brightnessctl set 5%- # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+ # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- # decrease screen brightness

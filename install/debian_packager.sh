@@ -8,22 +8,24 @@ APT_PACKAGES=(
   htop
   i3
   nitrogen
-  python-pip
   python3-pip
   ranger
   ripgrep
   rofi
   ruby-neovim
-  rubygems
   timeshift
   tmux
   w3m-img
   xcape
   xclip
-  appmenu-registrar
-  appmenu-gtk2-module
-  appmenu-gtk3-module
-  appmenu-qt
+  pulseaudio-utils
+  brightnessctl
+  x11-xserver-utils
+  arandr
+  scrot
+  imagemagick
+  dbus
+  lxappearance
 )
 
 GLOBAL_NPM_PACKAGES=(

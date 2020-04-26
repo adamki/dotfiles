@@ -27,6 +27,14 @@ PACMAN_PACKAGES=(
   tmux
   xcape
   xclip
+  libpulse
+  brightnessctl
+  xrandr
+  arandr
+  scrot
+  imagemagick
+  dbus
+  lxappearance-gtk
 )
 
 RUBY_GEMS=(

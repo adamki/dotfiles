@@ -11,6 +11,7 @@ kittydir=.config/kitty
 nvimdir=.config/nvim
 comptondir=.config/compton
 ftpluginpath=.config/nvim/ftplugin
+polybarpath=.config/polybar
 
 directories="
 $backupdir
@@ -20,12 +21,14 @@ $HOME/$kittydir
 $HOME/$nvimdir
 $HOME/$comptondir
 $HOME/$ftpluginpath
+$HOME/$polybarpath
 $backupdir/$i3dir
 $backupdir/$rofidir
 $backupdir/$kittydir
 $backupdir/$nvimdir
 $backupdir/$comptondir
 $backupdir/$ftpluginpath
+$backupdir/$polybarpath
 "
 
 files="
@@ -33,6 +36,9 @@ files="
 .zshrc
 .rgignore
 .gitignore_global
+.config/i3/config
+.config/polybar/config
+.config/polybar/launch.sh
 .config/rofi/config.rasi
 .config/rofi/drun.rasi
 .config/rofi/run.rasi
