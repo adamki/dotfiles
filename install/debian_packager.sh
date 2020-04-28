@@ -26,6 +26,8 @@ APT_PACKAGES=(
   imagemagick
   dbus
   lxappearance
+  polybar
+  xfce4-power-manager
 )
 
 GLOBAL_NPM_PACKAGES=(

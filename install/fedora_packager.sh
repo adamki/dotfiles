@@ -29,10 +29,11 @@ DNF_PACKAGES=(
   brightnessctl
   xrandr
   arandr
-  scrot
-  imagemagick
+  ImageMagick
   dbus
   lxappearance
+  polybar
+  xfce4-power-manager
 )
 
 

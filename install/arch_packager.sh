@@ -35,6 +35,8 @@ PACMAN_PACKAGES=(
   imagemagick
   dbus
   lxappearance-gtk
+  polybar
+  xfce4-power-manager
 )
 
 RUBY_GEMS=(
