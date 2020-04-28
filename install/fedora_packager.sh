@@ -25,6 +25,14 @@ DNF_PACKAGES=(
   tmux
   xcape
   xclip
+  pulseaudio-utils
+  brightnessctl
+  xrandr
+  arandr
+  scrot
+  imagemagick
+  dbus
+  lxappearance
 )
 
 

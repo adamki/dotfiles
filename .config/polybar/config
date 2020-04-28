@@ -29,9 +29,9 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
-height = 30
+height = 40
 ; offset-x = 1%
 ; offset-y = 1%
 radius = 8.0
@@ -62,15 +62,12 @@ modules-right = backlight-acpi pulseaudio memory cpu wlan eth battery battery-on
 
 tray-position = right
 tray-padding = 2
-tray-background = #0063ff
+tray-background = ${colors.primary}
 
 ; wm-restack = bspwm
 wm-restack = i3
 
 ; override-redirect = true
-
-; scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -178,22 +175,22 @@ inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = "CPU: "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = "MEM: "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
-
+; [module/cpu]
+; type = internal/cpu
+; interval = 2
+; format-prefix = "CPU: "
+; format-prefix-foreground = ${colors.foreground-alt}
+; format-underline = #f90000
+; label = %percentage:2%%
+;
+; [module/memory]
+; type = internal/memory
+; interval = 2
+; format-prefix = "MEM: "
+; format-prefix-foreground = ${colors.foreground-alt}
+; format-underline = #4bffdc
+; label = %percentage_used%%
+;
 [module/wlan]
 type = internal/network
 interface = wlp58s0
@@ -361,9 +358,9 @@ ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
-; type = custom/menu
+type = custom/menu
 
-; expand-right = true
+expand-right = true
 
 format-spacing = 1
 
