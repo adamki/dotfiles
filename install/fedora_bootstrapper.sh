@@ -6,6 +6,10 @@ echo -e "${bold}Updating DNF...${normal}"
 sudo dnf update
 
 echo -e "${HR}"
+echo -e "${bold}Installing git...${normal}"
+sudo dnf install git
+
+echo -e "${HR}"
 echo -e "${bold}Updating Curl...${normal}"
 sudo dnf install curl
 

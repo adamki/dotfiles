@@ -38,5 +38,6 @@ echo -e "${bold}Installing Latest Node...${normal}"
 nvm install node #"node is alway latest version"
 
 echo -e "${HR}"
+echo -e "${bold}${green}Bootstrapper Complete...${normal}"
 echo -e "${bold}Changing default SHELL to ZSH...${normal}"
 chsh -s $(which zsh)
