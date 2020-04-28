@@ -55,6 +55,8 @@ This Installation script will:
 | compton   |    linux   |
 | rofi      |    linux   |
 | feh       |    linux   |
+| xfce4-power-manager       |    linux   |
+| polybar       |    linux   |
 | firefox   |    MacOS   |
 | slack     |    MacOS   |
 | yabai     |    MacOS   |
