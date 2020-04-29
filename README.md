@@ -57,6 +57,7 @@ This Installation script will:
 | feh       |    linux   |
 | xfce4-power-manager       |    linux   |
 | polybar       |    linux   |
+| seahorse       |    linux   |
 | firefox   |    MacOS   |
 | slack     |    MacOS   |
 | yabai     |    MacOS   |
