@@ -31,12 +31,6 @@ antigen apply  # Tell Antigen that you're done.
 # print sys info
 ~/pfetch/pfetch
 
-#setup completion for kitty
-autoload -Uz compinit
-compinit
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
-
 # enable FZF fuzzy find and auto-complete
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
