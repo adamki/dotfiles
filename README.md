@@ -27,40 +27,43 @@ This Installation script will:
 
 ## Technologies included
 
-| Software  |    OS      |
-|-----------|------------|
-| kitty     |    All    |
-| Z Shell   |    All    |
-| Ranger    |    All    |
-| htop      |    All    |
-| gotop     |    All    |
-| Neovim    |    All    |
-| vim-plug  |    All    |
-| Antigen   |    All    |
-| ripgrep   |    All    |
-| pfetch    |    All    |
-| lolcat    |    All    |
-| bundler   |    All    |
-| nvm       |    All    |
-| node      |    All    |
-| fzf       |    All    |
-| rbenv     |    All    |
-| bash-language-server      |    All    |
-| vim-language-server      |    All    |
-| bat       |    All but debian    |
-| Fira      |    All    |
-| xcape     |    linux   |
-| xclip     |    linux   |
-| i3-gaps   |    linux   |
-| compton   |    linux   |
-| rofi      |    linux   |
-| feh       |    linux   |
-| xfce4-power-manager       |    linux   |
-| polybar       |    linux   |
-| seahorse       |    linux   |
-| networkmanager-tui       |    linux   |
-| firefox   |    MacOS   |
-| slack     |    MacOS   |
-| yabai     |    MacOS   |
-| skhd      |    MacOS   |
-| homebrew  |    MacOS   |
+| Software                 |    OS                     |
+|--------------------------|---------------------------|
+| kitty                    |    All                    |
+| Z Shell                  |    All                    |
+| Ranger                   |    All                    |
+| htop                     |    All                    |
+| gotop                    |    All                    |
+| Neovim                   |    All                    |
+| vim-plug                 |    All                    |
+| Antigen                  |    All                    |
+| ripgrep                  |    All                    |
+| pfetch                   |    All                    |
+| lolcat                   |    All                    |
+| bundler                  |    All                    |
+| nvm                      |    All                    |
+| node                     |    All                    |
+| fzf                      |    All                    |
+| rbenv                    |    All                    |
+| bash-language-server     |    All                    |
+| vim-language-server      |    All                    |
+| bat                      |    All but debian         |
+| Fira                     |    All                    |
+| xcape                    |    linux                  |
+| xclip                    |    linux                  |
+| i3-gaps                  |    linux                  |
+| compton                  |    linux                  |
+| rofi                     |    linux                  |
+| feh                      |    linux                  |
+| xfce4-power-manager      |    linux                  |
+| polybar                  |    linux                  |
+| seahorse                 |    linux                  |
+| networkmanager-tui       |    linux                  |
+| lxappearance-gtk         |    linux                  |
+| imagemagick              |    linux                  |
+| dbus                     |    linux                  |
+| firefox                  |    MacOS                  |
+| slack                    |    MacOS                  |
+| yabai                    |    MacOS                  |
+| skhd                     |    MacOS                  |
+| homebrew                 |    MacOS                  |
