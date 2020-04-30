@@ -19,7 +19,7 @@ new_window 1pixel
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left text rendering
 # and scalability on retina/hidpi displays (thanks to pango).
-font pango: Cantarall Light 10
+font pango: Cantarall Regular 12
 # Before i3 v4.8, we used to recommend this one as the default: font
 # -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1 The font above is very
 # space-efficient, that is, it looks good, sharp and clear in small sizes. However, its unicode
@@ -133,14 +133,16 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # let I3 know which workspace goes on wich monitor
-workspace $ws1 output HDMI-2
+workspace $ws1 output HDMI-2 edp-1
 workspace $ws2 output eDP-1
 workspace $ws3 output eDP-1
 workspace $ws4 output eDP-1
 workspace $ws5 output eDP-1
 
 # USE 'xprop' in the terminal to find the class
+assign [class="kitty"] $ws1
 assign [class="Google-chrome"] $ws2
+assign [class="Chromium-browser"] $ws2
 assign [class="Mailspring"] $ws3
 assign [class="Slack"] $ws3
 assign [class="Firefox"] $ws4
@@ -203,12 +205,19 @@ mode "$mode_system" {
 }
 
 bindsym $mod+Shift+Escape mode "$mode_system"
+
+set $bg-color 	         #83a598
+set $inactive-bg-color   #3c3836
+set $text-color          #3c3836
+set $inactive-text-color #83a598
+set $urgent-bg-color     #d65d0e
+
 # colour of border, background, text, indicator, and child_border
-#colors:                border  backgr. text    indicator
-client.focused          #900000 #900000 #ffffff #2b2b2b
-client.focused_inactive #888888 #2b2b2b #ffffff #2b2b2b
-client.unfocused        #888888 #2b2b2b #ffffff #2b2b2b
-client.urgent           #ff5555 #ff5555 #ffffff #2b2b2b
+#colors:                border              backgr.            text    indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
 # apps to start on boot
 exec ~/.local/kitty.app/bin/kitty
