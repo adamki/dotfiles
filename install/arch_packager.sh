@@ -37,6 +37,7 @@ PACMAN_PACKAGES=(
   lxappearance-gtk
   polybar
   xfce4-power-manager
+  networkmanager-tui
 )
 
 RUBY_GEMS=(

@@ -28,6 +28,7 @@ APT_PACKAGES=(
   lxappearance
   polybar
   xfce4-power-manager
+  networkmanager-tui
 )
 
 GLOBAL_NPM_PACKAGES=(

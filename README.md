@@ -58,6 +58,7 @@ This Installation script will:
 | xfce4-power-manager       |    linux   |
 | polybar       |    linux   |
 | seahorse       |    linux   |
+| networkmanager-tui       |    linux   |
 | firefox   |    MacOS   |
 | slack     |    MacOS   |
 | yabai     |    MacOS   |

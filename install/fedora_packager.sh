@@ -34,6 +34,7 @@ DNF_PACKAGES=(
   lxappearance
   polybar
   xfce4-power-manager
+  networkmanager-tui
 )
 
 
