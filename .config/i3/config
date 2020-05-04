@@ -152,15 +152,10 @@ bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
 bindsym $mod+Tab workspace back_and_forth
 
-# lock the session
-bindsym $mod+Shift+x exec ~/dotfiles/.config/i3/lock.sh
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
 # Resize keybinding
 bindsym $mod+r mode "resize"
 
@@ -190,6 +185,8 @@ mode "resize" {
 
 set $Locker i3lock && sleep 1
 
+bindsym $mod+Shift+Escape mode "$mode_system"
+
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
@@ -203,8 +200,6 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
-bindsym $mod+Shift+Escape mode "$mode_system"
 
 set $bg-color 	         #83a598
 set $inactive-bg-color   #3c3836
