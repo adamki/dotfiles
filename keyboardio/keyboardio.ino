@@ -174,16 +174,16 @@ KEYMAPS(
 #if defined (PRIMARY_KEYMAP_QWERTY)
   [PRIMARY] = KEYMAP_STACKED
   (Key_Backtick,          Key_1,         Key_2,        Key_3,       Key_4,       Key_5,         Key_LEDEffectNext,
-   Key_Tab,               Key_Q,         Key_W,        Key_E,       Key_R,       Key_T,         Key_Escape,
+   Key_Tab,               Key_Q,         Key_W,        Key_E,       Key_R,       Key_T,         ___,
    Key_Escape,            Key_A,         Key_S,        Key_D,       Key_F,       Key_G,
-   Key_LeftShift,         Key_Z,         Key_X,        Key_C,       Key_V,       Key_B,         ShiftToLayer(NUMPAD),
+   Key_LeftShift,         Key_Z,         Key_X,        Key_C,       Key_V,       Key_B,         Key_Escape,
    Key_Backspace,         Key_LeftGui,   Key_LeftAlt,  Key_LeftControl,
    ShiftToLayer(FUNCTION),
 
    LockLayer(NUMPAD),     Key_6,         Key_7,        Key_8,       Key_9,       Key_0,         Key_Minus,
    Key_LeftBracket,                      Key_Y,        Key_U,       Key_I,       Key_O,         Key_P,         Key_Equals,
                           Key_H,         Key_J,        Key_K,       Key_L,       Key_Semicolon, Key_Quote,
-   Key_RightBracket,                     Key_N,        Key_M,       Key_Comma,   Key_Period,    Key_Slash,     Key_RightShift,
+   Key_RightBracket,                     Key_N,        Key_M,       Key_Comma,   Key_Period,    Key_Slash,     Key_Backslash,
    Key_RightShift,        Key_LeftAlt,   Key_Enter,    Key_Spacebar,
    ShiftToLayer(FUNCTION)),
 
@@ -529,6 +529,9 @@ KALEIDOSCOPE_INIT_PLUGINS(
    Kaleidoscope and any plugins.
 */
 void setup() {
+  // Set bootgreetingeffect color to light blue
+  BootGreetingEffect.hue = 120;
+
   // QuKeys section:
   // Qukey(layer, row, col, alt_keycode)
   // (layers, rows and columns are all zero-indexed, rows are top to bottom and columns are left to right)
@@ -547,7 +550,9 @@ void setup() {
   // r3c9, ...)                                               \
 
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, 2, 0, Key_LeftControl),      // ESC/CTRL
+    kaleidoscope::plugin::Qukey(0, 2, 0, Key_LeftControl),           // ESC/CTRL
+    kaleidoscope::plugin::Qukey(0, 2, 6, ShiftToLayer(NUMPAD)),      // ESC/Numpad
+    kaleidoscope::plugin::Qukey(0, 3, 15, Key_RightShift),           // BackSlash/Shift
   )
   Qukeys.setTimeout(150);
   Qukeys.setReleaseDelay(20);
@@ -560,7 +565,7 @@ void setup() {
   NumPad.numPadLayer = NUMPAD;
 
   // We configure the AlphaSquare effect to use RED letters
-  AlphaSquare.color = CRGB(255, 0, 0);
+  // AlphaSquare.color = CRGB(255, 0, 0);
 
   // We set the brightness of the rainbow effects to 150 (on a scale of 0-255)
   // This draws more than 500mA, but looks much nicer than a dimmer effect
@@ -573,7 +578,7 @@ void setup() {
   // The LED Stalker mode has a few effects. The one we like is called
   // 'BlazingTrail'. For details on other options, see
   // https://github.com/keyboardio/Kaleidoscope/blob/master/doc/plugin/LED-Stalker.md
-  StalkerEffect.variant = STALKER(BlazingTrail);
+  // StalkerEffect.variant = STALKER(BlazingTrail);
 
   // We want to make sure that the firmware starts with LED effects off
   // This avoids over-taxing devices that don't have a lot of power to share
