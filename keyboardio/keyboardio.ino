@@ -256,7 +256,7 @@ KEYMAPS(
    ___, ___, Key_7, Key_8,      Key_9,              Key_KeypadSubtract, M(MACRO_VERSION_INFO),
    ___, ___, Key_4, Key_5,      Key_6,              Key_KeypadAdd,      ___,
         ___, Key_1, Key_2,      Key_3,              Key_Equals,         ___,
-   ___, ___, Key_0, Key_Period, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter,
+   ___, ___, Key_0, Key_Period, Key_KeypadMultiply, Key_KeypadDivide,   Key_RightShift,
    ___, ___, ___, ___,
    ___),
 
@@ -358,17 +358,14 @@ static kaleidoscope::plugin::LEDSolidColor solidViolet(130, 0, 120);
 */
 void toggleLedsOnSuspendResume(kaleidoscope::plugin::HostPowerManagement::Event event) {
   switch (event) {
-    case kaleidoscope::plugin::HostPowerManagement::Suspend:
-      LEDControl.set_all_leds_to({0, 0, 0});
-      LEDControl.syncLeds();
-      LEDControl.paused = true;
-      break;
-    case kaleidoscope::plugin::HostPowerManagement::Resume:
-      LEDControl.paused = false;
-      LEDControl.refreshAll();
-      break;
-    case kaleidoscope::plugin::HostPowerManagement::Sleep:
-      break;
+  case kaleidoscope::plugin::HostPowerManagement::Suspend:
+    LEDControl.disable();
+    break;
+  case kaleidoscope::plugin::HostPowerManagement::Resume:
+    LEDControl.enable();
+    break;
+  case kaleidoscope::plugin::HostPowerManagement::Sleep:
+    break;
   }
 }
 
