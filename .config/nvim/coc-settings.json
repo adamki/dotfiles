@@ -60,5 +60,12 @@
     "<C-x>": "action:split",
     "<C-t>": "action:tabe"
   },
-  "git.enableGutters": true
+  "git.enableGutters": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintArgs": ["--rcfile", "~/.pylintrc", "-d", "C0411"],
+  "python.linting.pylintUseMinimalCheckers": false,
+  "python.linting.pylintPath": "pylint",
+  "python.sortImports.args": ["-sp", "~/.isort.cfg"],
+  "python.jediEnabled": false,
+  "coc.preferences.formatOnSaveFiletypes": ["*.py"]
 }
