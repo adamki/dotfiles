@@ -21,3 +21,5 @@ autocmd FileType html setl foldexpr=HTMLFolds()
 
 autocmd FileType javascript,typescript,json,go,rust,ruby,typescriptreact setl foldmethod=syntax
 autocmd FileType javascript,html,css,scss,typescript,typescriptreact setlocal foldlevel=99
+
+autocmd FileType python setl foldmethod=indent
