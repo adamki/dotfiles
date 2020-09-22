@@ -25,7 +25,6 @@
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
   Plug 'shumphrey/fugitive-gitlab.vim'
-  Plug 'davidhalter/jedi-vim'
  call plug#end()
 " }}}
 
