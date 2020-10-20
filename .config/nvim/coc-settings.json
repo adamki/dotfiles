@@ -16,7 +16,7 @@
   "eslint.packageManager": "npm",
   "eslint.filetypes": [ "javascript", "javascriptreact", "typescript", "typescriptreact" ],
   "diagnostic.errorSign": "E",
-  "diagnostic.warningSign": "W",
+  "diagnostic.warningSign": "W ",
   "diagnostic.infoSign": "I",
   "diagnostic.checkCurrentLine": true,
   "languageserver": {
