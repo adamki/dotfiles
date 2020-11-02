@@ -16,9 +16,14 @@ brew update
 echo -e "${HR}"
 echo -e "${bold}Installing Zsh...${normal}"
 brew install zsh
+
+echo -e "${HR}"
+echo -e "${bold}Installing antigen...${normal}"
 brew install antigen
+
+echo -e "${HR}"
+echo -e "${bold}Installing rbenv...${normal}"
 brew install rbenv
-brew install pyenv
 
 source ./install/shell_utils.sh
 

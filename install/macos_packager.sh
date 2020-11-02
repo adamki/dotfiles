@@ -6,11 +6,12 @@ BREW_TAPS=(
 )
 
 BREW_PACKAGES=(
+  antigen
   bat
   gotop
   htop
+  pyenv
   ranger
-  rbenv
   ripgrep
   skhd
   tmux

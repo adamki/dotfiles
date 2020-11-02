@@ -45,6 +45,7 @@ This Installation script will:
 | node                     |    All                    |
 | fzf                      |    All                    |
 | rbenv                    |    All                    |
+| pyenv                    |    All                    |
 | bash-language-server     |    All                    |
 | vim-language-server      |    All                    |
 | bat                      |    All but debian         |

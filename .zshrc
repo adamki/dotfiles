@@ -55,8 +55,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add ARDUINO_PATH variable
 export ARDUINO_PATH=/usr/local/arduino
-# Sets up poetry
-export PATH="$HOME/.poetry/bin/:$PATH"
 # sets up rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 # sets up PyEnv
