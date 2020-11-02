@@ -18,6 +18,7 @@ echo -e "${bold}Installing Zsh...${normal}"
 brew install zsh
 brew install antigen
 brew install rbenv
+brew install pyenv
 
 source ./install/shell_utils.sh
 

@@ -21,6 +21,10 @@ echo -e "${HR}"
 echo -e "${bold}Installing rbenv...${normal}"
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 
+echo -e "${HR}"
+echo -e "${bold}Installing pyenv...${normal}"
+curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+
 source ./install/shell_utils.sh
 
 echo -e "${HR}"
