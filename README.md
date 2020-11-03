@@ -1,7 +1,7 @@
 ![Screenshot](desktop.png)
 
 ## About
-👋 This repo contains scripts to bootstrap my tools of choice and take care as much of the setup process as possible.  It currently supports `MacOS`, `Debian(Stable)`, `Manjaro(Arch`, `Fedora`.
+👋 This repo contains scripts to bootstrap my tools of choice and take care as much of the setup process as possible.  It currently supports `MacOS`, `Debian(Stable)`, `Manjaro(Arch)`, `Fedora`.
 
 
 This Installation script will:
@@ -9,7 +9,7 @@ This Installation script will:
   1. Install technologies listed [here](#technologies-included)
   2. Move all old configuration files into a directory called `~/dotfiles_old`
   3. Symlink new configuration files in `${HOME}` directory to `~/dotfiles`
-  4. Will set your default shell to Zsh
+  4. Will set your default shell to `Zsh`
 
 ## Getting Started
   ```
@@ -20,9 +20,9 @@ This Installation script will:
   ```
 
 ## FAQs, DE's, and MISC
-* Help setting up Mac OS can be found [here]('./docs/MACOS.md')
-* Help setting up XFCE can be found [here]('./docs/XFCE.md')
-* Check for true color compatibility [here]('./docs/true-colors.md')
+* Help setting up Mac OS can be found [here](/docs/MACOS.md)
+* Help setting up XFCE can be found [here](/docs/XFCE.md)
+* Check for true color compatibility [here](/docs/true-colors.md)
 * FAQs found [here]('./docs/FAQ.md')
 
 ## Technologies included
