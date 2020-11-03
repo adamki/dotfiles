@@ -221,8 +221,6 @@ exec_always compton -b -f --blur-background --config $HOME/.config/compton/compt
 # get random photo; set as bg
 # exec_always --no-startup-id feh --randomize --bg-scale ~/Pictures/wallpaper_dump/*
 exec_always --no-startup-id nitrogen --restore
-# set up caps_lock as ctrl/ESC
-exec_always --no-startup-id ~/dotfiles/no_caps.sh
 # restore multi monitor setup
 exec_always xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --mode 1920x1080 --pos 0x0 --rotate normal
 # launch polybar

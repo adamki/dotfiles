@@ -1,32 +1,20 @@
-### Enable the `no_caps` script	
+### Re-binding Caps_Lock to CTRL / ESC
+The following guide should work. You may need to research the dependcies installation command depending on your distro though.
 
-Reference the `no_caps` script in the GNOME autostart dir(~/.config/autostart/)
-
-
-In `.config/autostart/nocaps.desktop` add the following snippet
-
-```
-[Desktop Entry]
-Type=Application
-Exec=/path/to/no_caps
-Hidden=false
-X-GNOME-Autostart-enabled=true
-Name=nocaps
-Comment=custom script
-
-```
+http://nelsonware.com/blog/2019/04/30/how-to-map-caps-lock-to-escape-and-control-on-fedora-via-caps2esc.html
 
 ### Gettings Super + N working
-* By default, GNOME 3 hides their default keybindings. Disable the favorite app switching by:
 
-1. Download `dconf-editor`
-2. Disable `Hot-keys`
+By default, GNOME 3 hides their default keybindings. Disable the favorite app switching by:
+
+* Download `dconf-editor`
+* Disable `Hot-keys`
 
 ```
 gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys false
 ```
 
-3.Disable default keybindings
+* Disable default keybindings
 
 ```
 gsettings set org.gnome.shell.keybindings switch-to-application-1 []
@@ -39,6 +27,3 @@ gsettings set org.gnome.shell.keybindings switch-to-application-7 []
 gsettings set org.gnome.shell.keybindings switch-to-application-8 []
 gsettings set org.gnome.shell.keybindings switch-to-application-9 []
 ```
-
-
-

@@ -22,6 +22,7 @@ This Installation script will:
 ## FAQs, DE's, and MISC
 * Help setting up Mac OS can be found [here](/docs/MACOS.md)
 * Help setting up XFCE can be found [here](/docs/XFCE.md)
+* Help setting up Gnome can be found [here](/docs/gnome.md)
 * Check for true color compatibility [here](/docs/true-colors.md)
 * FAQs found [here]('./docs/FAQ.md')
 

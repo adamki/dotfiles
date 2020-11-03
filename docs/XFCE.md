@@ -1,8 +1,7 @@
-### Enable the `no_caps` script:
-Dealing with a busted Caps Lock key is wasteful. Here is how I cope.
+### Re-binding Caps_Lock to CTRL / ESC
+The following guide should work. You may need to research the dependcies installation command depending on your distro though.
 
-1. Make script executable: `chmod +x ~/dotfiles/no_caps`
-2. Add `no_caps` script to execute on login in the `Session and Startup > Application Autostart` settings panel
+http://nelsonware.com/blog/2019/04/30/how-to-map-caps-lock-to-escape-and-control-on-fedora-via-caps2esc.html
 
 ### Replacing xfwm4 for i3-wm
 
