@@ -1,6 +1,7 @@
 ### Bind Caps_Lock to CTRL/ESC
-  * Install [Karabiner-Elements](https://pqrs.org/osx/ka)
+  * Install [Karabiner-Elements](https://karabiner-elements.pqrs.org/)
   * Add `Complex Modification` as shown below:
+
 
     ```
        Change caps_lock to control if pressed with other keys, to escape if pressed alone.
