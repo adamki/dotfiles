@@ -48,6 +48,10 @@ echo -e "${bold}Setting Ruby Default...${normal}"
 rbenv global $(rbenv install -l | grep -v - | tail -1)
 
 echo -e "${HR}"
+echo -e "${bold}Installing Latest Python 3...${normal}"
+pyenv install $(pyenv install --list | grep -v - | grep -v b | tail -1)
+
+echo -e "${HR}"
 echo -e "${bold}Installing Ruby Gems...${normal}"
 gem install ${RUBY_GEMS[@]}
 
@@ -60,7 +64,7 @@ echo -e "${bold}Installing Global NPM packages...${normal}"
 npm install -g ${GLOBAL_NPM_PACKAGES[@]}
 
 echo -e "${HR}"
-echo -e "${bold}Installing NeoVIM Python Provider...${normal}"
+echo -e "${bold}Installing Ne   python3 -m pip install --user --upgrade pynvim
 python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
 
