@@ -62,3 +62,5 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
+
+export PATH="$HOME/.poetry/bin:$PATH"
