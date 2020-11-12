@@ -25,6 +25,10 @@ echo -e "${HR}"
 echo -e "${bold}Installing rbenv...${normal}"
 brew install rbenv
 
+echo -e "${HR}"
+echo -e "${bold}Installing pyenv...${normal}"
+brew install pyenv
+
 source ./install/shell_utils.sh
 
 echo -e "${HR}"

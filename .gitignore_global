@@ -6,7 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-
+# Tools
+# IntelliJ
+.idea
 .git
 
 # MacOS Stuff
