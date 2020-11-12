@@ -5,7 +5,6 @@
   "explorer.quitOnOpen": true,
   "explorer.file.autoReveal": true,
   "explorer.file.column.indent.indentLine": true,
-  "explorer.icon.enableNerdfont": true,
   "suggest.snippetIndicator": "►",
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,

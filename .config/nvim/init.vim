@@ -3,7 +3,6 @@
   " colors
   Plug 'lifepillar/vim-gruvbox8'
   Plug 'joshdick/onedark.vim'
-  Plug 'Rigellute/rigel'
   " Language support
   Plug 'sheerun/vim-polyglot'
   " Improved Movements & Motions
@@ -25,7 +24,7 @@
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
   Plug 'shumphrey/fugitive-gitlab.vim'
- call plug#end()
+  call plug#end()
 " }}}
 
 " {{{ filetype imports
@@ -42,5 +41,5 @@
 " {{{ VIM-initialize
   call Set_italics()
   call Set_status_bar_colors()
-  " call Set_transparency()
+  call Set_transparency()
 " }}}
