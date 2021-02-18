@@ -5,6 +5,7 @@ let g:closetag_filenames = '*.html,*.jsx,*.js,*.tsx,*.html.erb'          " close
 " junegunn/fzf.vim --------------------{{{
 let g:fzf_history_dir = '~/.local/share/fzf-history'               " enable <C-n>/<C-p> as tab thru previous fzf sessions
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+let g:fzf_command_prefix = 'Fuzzy'
 " let Rg show a preview window
 " see instructions here: https://github.com/junegunn/fzf.vim#example-rg-command-with-preview-window
 command! -bang -nargs=* Rg

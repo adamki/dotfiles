@@ -12,12 +12,14 @@ nvimdir=.config/nvim
 comptondir=.config/compton
 ftpluginpath=.config/nvim/ftplugin
 polybarpath=.config/polybar
+batdir=.config/bat
 
 directories="
 $backupdir
 $HOME/$i3dir
 $HOME/$rofidir
 $HOME/$kittydir
+$HOME/$batdir
 $HOME/$nvimdir
 $HOME/$comptondir
 $HOME/$ftpluginpath
@@ -25,6 +27,7 @@ $HOME/$polybarpath
 $backupdir/$i3dir
 $backupdir/$rofidir
 $backupdir/$kittydir
+$backupdir/$batdir
 $backupdir/$nvimdir
 $backupdir/$comptondir
 $backupdir/$ftpluginpath
@@ -54,4 +57,5 @@ files="
 .config/nvim/ftplugin/functions.vim
 .config/nvim/ftplugin/status.vim
 .config/kitty/kitty.conf
+.config/bat/config
 "
