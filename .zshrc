@@ -36,14 +36,8 @@ antigen apply  # Tell Antigen that you're done.
 
 # tell FZF to use ripgrep
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --glob ""'
-export FZF_CTRL_T_OPTS='--preview "(highlight -O ansi -l {} || cat {} || tree -C {}) 2> /dev/null | head -200" --bind "?:toggle-preview"'
-export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up --border'
-# make fzf look like dracula theme. more themes found here: https://github.com/junegunn/fzf/wiki/Color-schemes
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
---color=dark
---color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
---color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
-'
+export FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always {}"'
+export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up,?:toggle-preview --border'
 
 # launch starship prompt
 eval "$(starship init zsh)"

@@ -1,7 +1,3 @@
-# Set the theme to "TwoDark"
 # to see more themes:
   # bat --list-themes | fzf --preview="bat --theme={} --color=always /path/to/file"
 --theme="gruvbox"
-
-# Show line numbers, Git modifications and file header (but no grid)
---style="numbers,changes,header"
