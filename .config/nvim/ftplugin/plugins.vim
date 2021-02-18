@@ -30,6 +30,7 @@ let g:coc_global_extensions = [
   \'coc-explorer',
   \'coc-highlight',
   \'coc-snippets',
+  \'coc-pyright',
   \]
 
 " Highlight symbol under cursor on CursorHold
