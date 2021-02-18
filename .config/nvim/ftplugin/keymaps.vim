@@ -114,7 +114,7 @@ nmap gr <Plug>(coc-references)
 " Use K to show documentation in preview window(COC)
 nnoremap <silent> K :call Show_documentation()<CR>
 " multiple cursors(COC)
-nmap <expr> <silent> <C-space> Select_current_word()
+nmap <expr> <silent> <C-Space> Select_current_word()
 " CocList utils(COC)
 nnoremap <space><space> :<C-u>CocList <cr>
 nnoremap <space>a :<C-u>CocList diagnostics<cr>

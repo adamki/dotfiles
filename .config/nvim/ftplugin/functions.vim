@@ -97,7 +97,7 @@ function! Show_documentation() " Show_documentation {{{
 endfunction "}}}
 
 function! Select_current_word() " Select_current_word {{{
-  if !get(g:, 'coc_cursors_activated', 0)
+  if !get(b:, 'coc_cursors_activated', 0)
     return "\<Plug>(coc-cursors-word)"
   endif
   return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
@@ -126,7 +126,7 @@ function! FloatingFZF() " FloatingFZF {{{
     au BufWipeout <buffer> exe 'bw '.s:buf
 endfunction " }}}
 
-function! Set_status_bar_colors()
+function! Set_status_bar_colors() " Set_status_bar_colors {{{
   if &background ==# 'dark'
   " let statuslinebasebg = '#343945' " onedark
     let $BAT_THEME = 'OneHalfDark'
@@ -158,4 +158,4 @@ function! Set_status_bar_colors()
 
     exe 'hi MyStatuslineLineGrey ctermfg=0 cterm=NONE ctermbg=NONE  guibg=NONE guifg=' . statuslinebasebg
   endif
-endfunction
+endfunction " }}}
