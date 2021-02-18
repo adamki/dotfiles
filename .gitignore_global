@@ -11,6 +11,11 @@ lerna-debug.log*
 .idea
 .git
 
+#NeoVim
+.vim
+pyrightconfig.json
+.venv/
+
 # MacOS Stuff
 .DS_Store
 .DS_Store?
