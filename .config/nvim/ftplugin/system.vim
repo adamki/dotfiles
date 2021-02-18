@@ -4,7 +4,7 @@ set encoding=utf8                        " Set encoding to UTF-8 to show glyphs
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1        " sets colors to be true
 set termguicolors                        " enable true colors
 let mapleader = "\<space>"               " <Leader>
-let maplocalleader=";"                   " <LocalLeader>
+let maplocalleader=","                   " <LocalLeader>
 set mouse=a                              " enable mouse mode
 " set colorcolumn=80                       " keep lines short
 set clipboard=unnamedplus
