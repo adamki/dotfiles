@@ -15,7 +15,6 @@
   Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'pbogut/fzf-mru.vim'
-  Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'Yggdroot/indentLine'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }

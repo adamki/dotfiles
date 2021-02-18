@@ -7,17 +7,18 @@ dotfilesdir=$HOME/dotfiles
 backupdir=$HOME/dotfiles_old
 
 kittypath=.config/kitty
+batpath=.config/bat
 neovimpath=.config/nvim
 ftpluginpath=.config/nvim/ftplugin
 
 directories="
 $backupdir
-
 $HOME/$kittypath
+$HOME/$batpath
 $HOME/$neovimpath
 $HOME/$ftpluginpath
-
 $backupdir/$kittypath
+$backupdir/$batpath
 $backupdir/$neovimpath
 $backupdir/$ftpluginpath
 "
@@ -40,4 +41,5 @@ files="
 .config/nvim/ftplugin/status.vim
 .config/nvim/ftplugin/fold.vim
 .config/kitty/kitty.conf
+.config/bat/config
 "
