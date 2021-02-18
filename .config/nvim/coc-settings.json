@@ -1,24 +1,22 @@
 {
-  "explorer.keyMappings.global": {
-    "<C-v>": "openInVsplit"
-  },
-  "explorer.quitOnOpen": true,
-  "explorer.file.autoReveal": true,
-  "explorer.file.column.indent.indentLine": true,
-  "suggest.snippetIndicator": "►",
-  "suggest.echodocSupport": true,
-  "suggest.maxCompleteItemCount": 20,
-  "snippets.extends": {
-    "javascriptreact": ["typescript", "typescriptreact"]
-  },
-  "eslint.autoFixOnSave": true,
-  "eslint.packageManager": "npm",
-  "eslint.filetypes": [ "javascript", "javascriptreact", "typescript", "typescriptreact" ],
+  "coc.preferences.bracketEnterImprove": false,
+  "coc.preferences.colorSupport": true,
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "coc.preferences.formatOnSaveFiletypes": ["*.py"],
+  "diagnostic.checkCurrentLine": true,
   "diagnostic.errorSign": "E ",
   "diagnostic.hintSign": "H ",
-  "diagnostic.warningSign": "W ",
   "diagnostic.infoSign": "I ",
-  "diagnostic.checkCurrentLine": true,
+  "diagnostic.messageTarget": "echo",
+  "diagnostic.warningSign": "W ",
+  "eslint.autoFixOnSave": true,
+  "eslint.probe": [ "javascript", "javascriptreact", "typescript", "typescriptreact" ],
+  "eslint.packageManager": "npm",
+  "explorer.file.autoReveal": true,
+  "explorer.file.column.indent.indentLine": true,
+  "explorer.keyMappings.global": { "<C-v>": "openInVsplit"},
+  "explorer.quitOnOpen": true,
+  "git.enableGutters": true,
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
@@ -50,20 +48,18 @@
       "filetypes": [ "vim" ]
     }
   },
-  "tsserver.enableJavascript": true,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "coc.preferences.bracketEnterImprove": false,
-  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
-  "coc.preferences.colorSupport": true,
   "list.insertMappings": {
     "<C-v>": "action:vsplit",
     "<C-x>": "action:split",
     "<C-t>": "action:tabe"
   },
-  "git.enableGutters": true,
-  "python.jediEnabled": false,
-  "python.linting.enabled": true,
-  "python.linting.pylintArgs": ["--rcfile", "~/.pylintrc", "-d", "C0411"],
-  "python.sortImports.args": ["-sp", "~/.isort.cfg"],
-  "coc.preferences.formatOnSaveFiletypes": ["*.py"]
+  "snippets.extends": {
+    "javascriptreact": ["typescript", "typescriptreact"]
+  },
+  "snippets.ultisnips.directories": ["~/.config/coc/ultisnips"],
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 20,
+  "suggest.snippetIndicator": "►",
+  "tsserver.enableJavascript": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true
 }
