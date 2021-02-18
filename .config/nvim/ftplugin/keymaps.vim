@@ -62,29 +62,30 @@ nnoremap <C-H> <C-W><C-H>
 " Maximizer Toggling
 nnoremap <LocalLeader>z <C-W>_<C-W><Bar>
 " FINDING(FZF)
-nnoremap <LocalLeader>f    :Files<CR>
-nnoremap <LocalLeader>F    :Files <c-r>=fnameescape(expand('%:p:h'))<CR><CR>
-nnoremap <LocalLeader>g    :Rg<CR>
-nnoremap <LocalLeader><bs> :Rg <C-R><C-W><CR>
+nnoremap <LocalLeader>,    :Fuzzy
+nnoremap <LocalLeader>f    :FuzzyFiles<CR>
+nnoremap <LocalLeader>F    :FuzzyFiles <c-r>=fnameescape(expand('%:p:h'))<CR><CR>
+nnoremap <LocalLeader>g    :FuzzyRg<CR>
+nnoremap <LocalLeader><bs> :FuzzyRg <C-R><C-W><CR>
 " NAVIGATING(FZF)
-nnoremap <LocalLeader>b    :Buffers<CR>
-nnoremap <LocalLeader>h    :Helptags<CR>
-nnoremap <LocalLeader>l    :BLines<CR>
-nnoremap <LocalLeader>L    :Lines<CR>
-nnoremap <LocalLeader>m    :Marks<CR>
-nnoremap <LocalLeader>t    :Tags<CR>
-nnoremap <LocalLeader>w    :Windows<CR>
+nnoremap <LocalLeader>b    :FuzzyBuffers<CR>
+nnoremap <LocalLeader>h    :FuzzyHelptags<CR>
+nnoremap <LocalLeader>l    :FuzzyBLines<CR>
+nnoremap <LocalLeader>L    :FuzzyLines<CR>
+nnoremap <LocalLeader>m    :FuzzyMarks<CR>
+nnoremap <LocalLeader>t    :FuzzyTags<CR>
+nnoremap <LocalLeader>w    :FuzzyWindows<CR>
 " RECENTS(FZF)
-nnoremap <LocalLeader>/    :History/<CR>
-nnoremap <LocalLeader>r    :History:<CR>
+nnoremap <LocalLeader>/    :FuzzyHistory/<CR>
+nnoremap <LocalLeader>r    :FuzzyHistory:<CR>
 nnoremap <LocalLeader>y    :FZFMru<CR>
 " GIT(FZF)
-nnoremap <LocalLeader>C    :BCommits<CR>
-nnoremap <LocalLeader>c    :Commits<CR>
-nnoremap <LocalLeader>Gs   :GFiles?<CR>
-nnoremap <LocalLeader>Gf   :GFiles<CR>
+nnoremap <LocalLeader>C    :FuzzyBCommits<CR>
+nnoremap <LocalLeader>c    :FuzzyCommits<CR>
+nnoremap <LocalLeader>Gs   :FuzzyGFiles?<CR>
+nnoremap <LocalLeader>Gf   :FuzzyGFiles<CR>
 " SYSTEM COMMANDS(FZF)
-nnoremap <LocalLeader>:    :Commands<CR>
+nnoremap <LocalLeader>:    :FuzzyCommands<CR>
 " COMPLETION(FZF)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
