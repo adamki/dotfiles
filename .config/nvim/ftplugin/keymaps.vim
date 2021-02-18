@@ -117,15 +117,6 @@ nnoremap <silent> K :call Show_documentation()<CR>
 nmap <expr> <silent> <C-Space> Select_current_word()
 " CocList utils(COC)
 nnoremap <space><space> :<C-u>CocList <cr>
-nnoremap <space>a :<C-u>CocList diagnostics<cr>
-nnoremap <space>e :<C-u>CocList extensions<cr>
-nnoremap <space>c :<C-u>CocList commands<cr>
-nnoremap <space>o :<C-u>CocList outline<cr>
-nnoremap <space>s :<C-u>CocList -I symbols<cr>
-nnoremap <space>y :<C-u>CocList -A yank<cr>
-nnoremap <space>j :<C-u>CocNext<CR>
-nnoremap <space>k :<C-u>CocPrev<CR>
-nnoremap <space>p :<C-u>CocListResume<CR>
 " rename current word(COC)
 nmap <leader>rn <Plug>(coc-rename)
 " format selected region(COC)
