@@ -74,6 +74,7 @@ nnoremap <LocalLeader>l    :FuzzyBLines<CR>
 nnoremap <LocalLeader>L    :FuzzyLines<CR>
 nnoremap <LocalLeader>m    :FuzzyMarks<CR>
 nnoremap <LocalLeader>t    :FuzzyTags<CR>
+nnoremap <LocalLeader>T    :FuzzyBTags<CR>
 nnoremap <LocalLeader>w    :FuzzyWindows<CR>
 " RECENTS(FZF)
 nnoremap <LocalLeader>/    :FuzzyHistory/<CR>
