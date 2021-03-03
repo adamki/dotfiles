@@ -21,18 +21,19 @@ let g:fzf_mru_relative = 1
 
 " neoclide/coc.vim --------------------{{{
 let g:coc_global_extensions = [
-  \'coc-git',
-  \'coc-vimlsp',
-  \'coc-eslint',
-  \'coc-yank',
-  \'coc-json',
-  \'coc-tsserver',
-  \'coc-html',
   \'coc-css',
+  \'coc-eslint',
   \'coc-explorer',
+  \'coc-git',
   \'coc-highlight',
-  \'coc-snippets',
+  \'coc-html',
+  \'coc-json',
   \'coc-pyright',
+  \'coc-python',
+  \'coc-snippets',
+  \'coc-tsserver',
+  \'coc-vimlsp',
+  \'coc-yank',
   \]
 
 " Highlight symbol under cursor on CursorHold

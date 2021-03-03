@@ -7,7 +7,7 @@
   "diagnostic.errorSign": "E ",
   "diagnostic.hintSign": "H ",
   "diagnostic.infoSign": "I ",
-  "diagnostic.messageTarget": "echo",
+  "diagnostic.messageTarget": "float",
   "diagnostic.warningSign": "W ",
   "eslint.autoFixOnSave": true,
   "eslint.probe": [ "javascript", "javascriptreact", "typescript", "typescriptreact" ],
@@ -53,6 +53,7 @@
     "<C-x>": "action:split",
     "<C-t>": "action:tabe"
   },
+  "python.jediEnabled": false,
   "snippets.extends": {
     "javascriptreact": ["typescript", "typescriptreact"]
   },
