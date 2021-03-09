@@ -53,7 +53,9 @@
     "<C-x>": "action:split",
     "<C-t>": "action:tabe"
   },
-  "python.jediEnabled": false,
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": true,
   "snippets.extends": {
     "javascriptreact": ["typescript", "typescriptreact"]
   },

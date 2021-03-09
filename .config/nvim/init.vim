@@ -14,11 +14,11 @@
   " Improved interface
   Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
-  Plug 'pbogut/fzf-mru.vim'
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'Yggdroot/indentLine'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
   Plug 'tpope/vim-eunuch'
+  Plug 'luochen1990/rainbow'
   " Integrations
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'tpope/vim-fugitive'

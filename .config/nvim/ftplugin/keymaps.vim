@@ -79,7 +79,7 @@ nnoremap <LocalLeader>w    :FuzzyWindows<CR>
 " RECENTS(FZF)
 nnoremap <LocalLeader>/    :FuzzyHistory/<CR>
 nnoremap <LocalLeader>r    :FuzzyHistory:<CR>
-nnoremap <LocalLeader>y    :FZFMru<CR>
+nnoremap <LocalLeader>y    :FuzzyHistory<CR>
 " GIT(FZF)
 nnoremap <LocalLeader>C    :FuzzyBCommits<CR>
 nnoremap <LocalLeader>c    :FuzzyCommits<CR>

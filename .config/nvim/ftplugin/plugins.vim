@@ -15,10 +15,6 @@ command! -bang -nargs=* Rg
   \   fzf#vim#with_preview(), <bang>0)
 " }}}
 
-" pbogut/fzf-mru ----------------------{{{
-let g:fzf_mru_relative = 1
-" }}}
-
 " neoclide/coc.vim --------------------{{{
 let g:coc_global_extensions = [
   \'coc-css',
@@ -29,7 +25,6 @@ let g:coc_global_extensions = [
   \'coc-html',
   \'coc-json',
   \'coc-pyright',
-  \'coc-python',
   \'coc-snippets',
   \'coc-tsserver',
   \'coc-vimlsp',
@@ -62,4 +57,8 @@ let g:indentLine_char = '┊'
 
 " justinmk/vim-sneak ------------------{{{
 let g:sneak#s_next = 1
+" }}}
+
+" luochen1990/rainbow -----------------{{{
+let g:rainbow_active = 1
 " }}}
