@@ -42,7 +42,7 @@ function! InactiveStatus()
 
   let statusline.="%="
   let statusline.="%8*"
-  let statusline.="\%t"
+  let statusline.="\%f"
   let statusline.="%6*"
   let statusline.="%{&readonly?'\  ':''}"
   let statusline.="%{&modified?' \  ●' \: ''}"
