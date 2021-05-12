@@ -28,6 +28,16 @@ antigen bundle paulirish/git-open
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply  # Tell Antigen that you're done.
 
+# Peloton Work Related
+# This will allow for shortened alias commands for ease of logging in to AWS using saml2aws
+# https://pelotoncycle.atlassian.net/wiki/spaces/OW/pages/40593326182/Access+EKS+Clusters
+export CWE_DEV=787201226158
+export CWE_PROD=159653997934
+export CWE_STAGE=214936853396
+export CWE_INFRA=873230290044
+export FORCE_MFA="Duo Push"
+export AWS_REGION="us-east-1"
+
 # print sys info
 ~/pfetch/pfetch
 
