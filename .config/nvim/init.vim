@@ -19,6 +19,7 @@
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
   Plug 'tpope/vim-eunuch'
   Plug 'luochen1990/rainbow'
+  Plug 'liuchengxu/vista.vim'
   " Integrations
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'tpope/vim-fugitive'
