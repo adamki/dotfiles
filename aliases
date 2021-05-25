@@ -75,8 +75,8 @@ awslogin () { saml2aws login --region $AWS_REGION --profile=${1} --duo-mfa-optio
 awsconfig () { eval $(saml2aws script --shell=bash --skip-prompt --region $AWS_REGION --profile=${1}); }
 awswho () { aws sts get-caller-identity; }
 alias k8scwedev="awslogin cwe-dev $CWE_DEV && awsconfig cwe-dev && kubectl config use-context cwe-dev"
-alias k8scweprod="awslogin cwe-prod $CWE_PROD && awsconfig cwe-prod && kubectl config use-context cwe-prod-k8s"
-alias k8scwestage="awslogin cwe-stage $CWE_STAGE && awsconfig cwe-stage && kubectl config use-context cwe-stage-k8s"
-alias k8scweinfra="awslogin cwe-infra $CWE_INFRA && awsconfig cwe-infra && kubectl config use-context cwe-infra-k8s"
+alias k8scweprod="awslogin cwe-prod $CWE_PROD && awsconfig cwe-prod && kubectl config use-context cwe-prod"
+alias k8scwestage="awslogin cwe-stage $CWE_STAGE && awsconfig cwe-stage && kubectl config use-context cwe-stage"
+alias k8scweinfra="awslogin cwe-infra $CWE_INFRA && awsconfig cwe-infra && kubectl config use-context cwe-infra"
 alias k8sgcpinfra="kubectl config use-context gke_infra"
 alias k8sgcpcanary="kubectl config use-context gke_canary"
