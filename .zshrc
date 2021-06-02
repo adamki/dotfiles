@@ -62,10 +62,11 @@ export ARDUINO_PATH=/usr/local/arduino
 # sets up rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 # sets up PyEnv
-export PATH="$HOME/.pyenv/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 eval "$(rbenv init -)"
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
