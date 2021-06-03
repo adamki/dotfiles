@@ -246,14 +246,14 @@ KEYMAPS(
 
 
   [NUMPAD] =  KEYMAP_STACKED
-  (___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___,
+  (M(MACRO_VERSION_INFO), ___, ___, ___, ___, ___, ___,
+   ___,                   ___, ___, ___, ___, ___, ___,
+   ___,                   ___, ___, ___, ___, ___,
+   ___,                   ___, ___, ___, ___, ___, ___,
+   ___,                   ___, ___, ___,
    ___,
 
-   ___, ___, Key_7, Key_8,      Key_9,              Key_KeypadSubtract, M(MACRO_VERSION_INFO),
+   ___, ___, Key_7, Key_8,      Key_9,              Key_KeypadSubtract, ___,
    ___, ___, Key_4, Key_5,      Key_6,              Key_KeypadAdd,      ___,
         ___, Key_1, Key_2,      Key_3,              Key_Equals,         ___,
    ___, ___, Key_0, Key_Period, Key_KeypadMultiply, Key_KeypadDivide,   Key_RightShift,
@@ -303,12 +303,12 @@ static void anyKeyMacro(uint8_t keyState) {
   static Key lastKey;
   bool toggledOn = false;
   if (keyToggledOn(keyState)) {
-    lastKey.keyCode = Key_A.keyCode + (uint8_t)(millis() % 36);
+    lastKey.setKeyCode(Key_A.getKeyCode() + (uint8_t)(millis() % 36));
     toggledOn = true;
   }
 
   if (keyIsPressed(keyState))
-    kaleidoscope::hid::pressKey(lastKey, toggledOn);
+    Kaleidoscope.hid().keyboard().pressKey(lastKey, toggledOn);
 }
 
 
@@ -547,14 +547,14 @@ void setup() {
   // r3c9, ...)                                               \
 
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, 2, 0, Key_LeftControl),           // ESC/CTRL
-    kaleidoscope::plugin::Qukey(0, 2, 6, ShiftToLayer(NUMPAD)),      // ESC/Numpad
-    kaleidoscope::plugin::Qukey(0, 3, 15, Key_RightShift),           // BackSlash/Shift
-    kaleidoscope::plugin::Qukey(0, 1, 8, Key_RightShift),            // Enter/Shift
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 0), Key_LeftControl),           // ESC/CTRL
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 6), ShiftToLayer(NUMPAD)),      // ESC/Numpad
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 15), Key_RightShift),           // BackSlash/Shift
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), Key_RightShift),            // Enter/Shift
   )
-  Qukeys.setTimeout(150);
-  Qukeys.setReleaseDelay(20);
 
+  Qukeys.setHoldTimeout(150);
+  Qukeys.setOverlapThreshold(80);
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
 
