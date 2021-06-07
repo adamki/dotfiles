@@ -69,9 +69,3 @@ eval "$(rbenv init -)"
 eval "$(pyenv init --path)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/adamki.jensen/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/adamki.jensen/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/adamki.jensen/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/adamki.jensen/google-cloud-sdk/completion.zsh.inc'; fi
