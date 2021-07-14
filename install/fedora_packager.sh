@@ -18,7 +18,6 @@ DNF_PACKAGES=(
   nitrogen
   python2
   python3
-  ranger
   ripgrep
   rofi
   timeshift

@@ -32,7 +32,6 @@ This Installation script will:
 |--------------------------|---------------------------|
 | kitty                    |    All                    |
 | Z Shell                  |    All                    |
-| Ranger                   |    All                    |
 | htop                     |    All                    |
 | gotop                    |    All                    |
 | Neovim                   |    All                    |

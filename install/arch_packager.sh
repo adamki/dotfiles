@@ -19,7 +19,6 @@ PACMAN_PACKAGES=(
   i3-gaps
   nitrogen
   otf-fira-code
-  ranger
   ripgrep
   rofi
   timeshift

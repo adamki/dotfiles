@@ -9,7 +9,6 @@ APT_PACKAGES=(
   i3
   nitrogen
   python3-pip
-  ranger
   ripgrep
   rofi
   ruby-neovim

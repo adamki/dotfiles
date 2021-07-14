@@ -11,7 +11,6 @@ BREW_PACKAGES=(
   gotop
   htop
   pyenv
-  ranger
   ripgrep
   skhd
   tmux
