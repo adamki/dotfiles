@@ -62,3 +62,8 @@ let g:sneak#s_next = 1
 " luochen1990/rainbow -----------------{{{
 let g:rainbow_active = 1
 " }}}
+
+" marko-cerovac/material.vim-----------{{{
+  let g:material_style = 'palenight'
+  let g:material_contrast = v:true
+" }}}

@@ -59,6 +59,8 @@ nnoremap <C-H> <C-W><C-H>
 " }}}
 
 " {{{ PLUGS
+" Vim colorscheme Toggle('marko-cerovac/material.nvim')
+nnoremap <leader>mm :lua require('material.functions').toggle_style()<CR>
 " Maximizer Toggling
 nnoremap <LocalLeader>z <C-W>_<C-W><Bar>
 " FINDING(FZF)

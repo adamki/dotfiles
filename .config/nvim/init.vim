@@ -3,6 +3,7 @@
   " colors
   Plug 'lifepillar/vim-gruvbox8'
   Plug 'joshdick/onedark.vim'
+  Plug 'marko-cerovac/material.nvim'
   " Language support
   Plug 'sheerun/vim-polyglot'
   " Improved Movements & Motions
