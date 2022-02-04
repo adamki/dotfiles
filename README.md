@@ -65,6 +65,5 @@ This Installation script will:
 | dbus                     |    linux                  |
 | firefox                  |    MacOS                  |
 | slack                    |    MacOS                  |
-| yabai                    |    MacOS                  |
-| skhd                     |    MacOS                  |
+| rectangle                |    MacOS                  |
 | homebrew                 |    MacOS                  |

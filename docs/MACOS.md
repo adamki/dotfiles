@@ -24,10 +24,6 @@
       Switch to Desktop 9 > option + 9
     ```
 
-### Allow Yabai WM and SKHD to do their thing
-1. Configure `brew services` to auto start.
 
-  ```
-    brew services start koekeishiya/formulae/yabai
-    brew services start skhd
-  ```
+### Setup Rectangle Window manager
+https://github.com/rxhanson/Rectangle#how-to-use-it

@@ -12,17 +12,15 @@ BREW_PACKAGES=(
   htop
   pyenv
   ripgrep
-  skhd
   tmux
-  yabai
   neovim
-  koekeishiya/formulae/yabai
 )
 
 BREW_CASKS=(
   firefox
   font-fira-code
   slack
+  rectangle
 )
 
 GLOBAL_NPM_PACKAGES=(
@@ -82,11 +80,6 @@ brew cask install ${BREW_CASKS[@]}
 echo -e "${HR}"
 echo -e "${bold}Brew Cleanup...${normal}"
 brew cleanup
-
-echo -e "${HR}"
-echo -e "${bold}Setting up Brew Services...${normal}"
-brew services start koekeishiya/formulae/yabai
-brew services start skhd
 
 echo -e "${HR}"
 echo -e "${bold}${green}Packager Complete...${normal}"
