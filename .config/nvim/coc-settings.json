@@ -12,7 +12,6 @@
   "eslint.autoFixOnSave": true,
   "eslint.probe": [ "javascript", "javascriptreact", "typescript", "typescriptreact" ],
   "eslint.packageManager": "npm",
-  "explorer.file.autoReveal": true,
   "explorer.file.column.indent.indentLine": true,
   "explorer.keyMappings.global": { "<C-v>": "openInVsplit"},
   "explorer.quitOnOpen": true,
