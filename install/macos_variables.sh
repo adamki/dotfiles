@@ -26,8 +26,6 @@ $backupdir/$ftpluginpath
 files="
 .vimrc
 .zshrc
-.yabairc
-.skhdrc
 .rgignore
 .gitignore_global
 .config/nvim/init.vim
