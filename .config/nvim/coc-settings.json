@@ -1,6 +1,5 @@
 {
   "coc.preferences.bracketEnterImprove": false,
-  "coc.preferences.colorSupport": true,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnSaveFiletypes": ["*.py"],
   "diagnostic.checkCurrentLine": true,

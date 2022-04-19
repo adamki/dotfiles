@@ -75,7 +75,7 @@ brew tap ${BREW_TAPS[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Installing Brew Casks...${normal}"
-brew cask install ${BREW_CASKS[@]}
+brew install --cask ${BREW_CASKS[@]}
 
 echo -e "${HR}"
 echo -e "${bold}Brew Cleanup...${normal}"
