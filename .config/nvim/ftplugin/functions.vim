@@ -46,7 +46,7 @@ function! Set_italics() " Set_italics {{{
 endfunction "}}}
 
 function! Set_transparency() " Set_transparency {{{
-  hi clear CursorLineNR
+  " hi clear CursorLineNR
   hi SignColumn guibg=none
   hi Normal ctermbg=none guibg=none
   hi LineNr guibg=none ctermbg=none
