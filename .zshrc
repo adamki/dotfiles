@@ -7,8 +7,6 @@ export HISTCONTROL=erasedups # Don't store duplicates
 # Set $DOTFILES VAR
 export DOTFILES="$HOME/dotfiles"
 
-# IMPORTS
-source $DOTFILES/aliases
 
 # setup path to antigen ZSH pachage manager
 case `uname` in
@@ -38,6 +36,9 @@ export CWE_INFRA=873230290044
 export FORCE_MFA="Duo Push"
 export AWS_REGION="us-east-1"
 
+# IMPORTS
+source $DOTFILES/aliases
+
 # print sys info
 ~/pfetch/pfetch
 
@@ -64,6 +65,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 # sets up PyEnv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 eval "$(rbenv init -)"
 eval "$(pyenv init --path)"
