@@ -7,7 +7,7 @@ function! ActiveStatus()
   let statusline.="\ %<"
   let statusline.="%#MyStatuslineLineGrey#"
   let statusline.="%2*"
-  let statusline.="%{fugitive#head()!=''?'\ \ '.fugitive#head().'\ ':'Not in a Repo'}"
+  let statusline.="%{FugitiveStatusline()!=''?'\ \ '.FugitiveStatusline().'\ ':'Not in a Repo'}"
   let statusline.="%#MyStatuslineLineGrey#"
   let statusline.="%1*"
 
@@ -28,6 +28,7 @@ function! ActiveStatus()
   let statusline.="%l/%L(%c)"
   let statusline.="%#MyStatuslineLineGrey#"
   let statusline.="%1*"
+
 
   let statusline.="\ %#MyStatuslineLineGrey#"
   let statusline.="%5*"
