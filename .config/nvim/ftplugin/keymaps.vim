@@ -131,6 +131,13 @@ vmap <Tab> <Plug>(coc-range-select)
 vmap <S-Tab> <Plug>(coc-range-select-backward)
 xmap <S-Tab> <Plug>(coc-range-select-backward)
 " CTRL + j/k to tab through autocomplete selections
-inoremap <expr> <C-j> pumvisible() ? '<C-n>' : ''
-inoremap <expr> <C-k> pumvisible() ? '<C-p>' : ''
+inoremap <silent><expr> <C-j>
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "" :
+      \ coc#refresh()
+inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : ""
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " }}}
