@@ -51,6 +51,7 @@
     "<C-x>": "action:split",
     "<C-t>": "action:tabe"
   },
+  "notification.disabledProgressSources": ["*"],
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.pylintEnabled": true,
