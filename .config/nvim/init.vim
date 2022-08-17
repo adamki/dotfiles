@@ -3,6 +3,7 @@
   " colors
   Plug 'lifepillar/vim-gruvbox8'
   Plug 'joshdick/onedark.vim'
+  Plug 'arcticicestudio/nord-vim'
   " Language support
   Plug 'sheerun/vim-polyglot'
   " Improved Movements & Motions
@@ -42,5 +43,5 @@
 " {{{ VIM-initialize
   call Set_italics()
   call Set_status_bar_colors()
-  call Set_transparency()
+  " call Set_transparency()
 " }}}
