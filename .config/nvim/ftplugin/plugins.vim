@@ -34,6 +34,9 @@ let g:coc_global_extensions = [
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" cursor disappears after using coc#list. this is a temp fix
+let g:coc_disable_transparent_cursor = 1
+
 " augroup mygroup
 "   autocmd!
 "   " Setup formatexpr specified filetype(s).

@@ -43,5 +43,5 @@
 " {{{ VIM-initialize
   call Set_italics()
   call Set_status_bar_colors()
-  " call Set_transparency()
+  call Set_transparency()
 " }}}

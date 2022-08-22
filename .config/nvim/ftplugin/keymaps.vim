@@ -46,8 +46,6 @@ inoremap <C-f> <C-x><C-f>
 " better lateral block movement
 vmap < <gv
 vmap > >gv
-" nnoremap > >>_
-" nnoremap < <<_
 " move lines in visual
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -116,7 +114,7 @@ nmap gr <Plug>(coc-references)
 " Use K to show documentation in preview window(COC)
 nnoremap <silent> K :call Show_documentation()<CR>
 " multiple cursors(COC)
-nmap <expr> <silent> <C-Space> Select_current_word()
+nmap <expr> <silent> <C-8> Select_current_word()
 " CocList utils(COC)
 nnoremap <space><space> :<C-u>CocList <cr>
 " rename current word(COC)
@@ -136,8 +134,7 @@ inoremap <silent><expr> <C-j>
       \ CheckBackspace() ? "" :
       \ coc#refresh()
 inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : ""
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
+" Make CTRL + l to accept selected completion item or notify coc.nvim to format
 inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " }}}
