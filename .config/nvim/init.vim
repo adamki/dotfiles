@@ -2,7 +2,6 @@
   call plug#begin('~/.local/share/nvim/plugged')
   " colors
   Plug 'lifepillar/vim-gruvbox8'
-  Plug 'joshdick/onedark.vim'
   Plug 'arcticicestudio/nord-vim'
   " Language support
   Plug 'sheerun/vim-polyglot'
@@ -18,7 +17,7 @@
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'Yggdroot/indentLine'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-  Plug 'tpope/vim-eunuch'
+  " Plug 'tpope/vim-eunuch' - lets try and remove this?
   Plug 'luochen1990/rainbow'
   Plug 'liuchengxu/vista.vim'
   " Integrations
