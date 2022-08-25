@@ -17,7 +17,7 @@
   Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
   Plug 'Yggdroot/indentLine'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-  " Plug 'tpope/vim-eunuch' - lets try and remove this?
+  Plug 'tpope/vim-eunuch'
   Plug 'luochen1990/rainbow'
   Plug 'liuchengxu/vista.vim'
   " Integrations
