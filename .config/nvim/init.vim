@@ -2,7 +2,7 @@
   call plug#begin('~/.local/share/nvim/plugged')
   " colors
   Plug 'lifepillar/vim-gruvbox8'
-  Plug 'arcticicestudio/nord-vim'
+  Plug 'sainnhe/everforest'
   " Language support
   Plug 'sheerun/vim-polyglot'
   " Improved Movements & Motions
