@@ -1,7 +1,7 @@
 return require('packer').startup(function(use)
   use { "wbthomason/packer.nvim" }
   use { "ellisonleao/gruvbox.nvim" }
-  use { "sheerun/vim-polyglot" }
+  use { "sheerun/vim-polyglot" } -- replace with tree sitter. Tree sitter should also improve folding
 	use { "alvan/vim-closetag" }
 	use {
 			"numToStr/Comment.nvim",
@@ -20,6 +20,6 @@ return require('packer').startup(function(use)
 
   use { 'tpope/vim-rhubarb' }
   use { 'shumphrey/fugitive-gitlab.vim' }
-  use { "neoclide/coc.nvim", branch = "release" }
+  use { "neoclide/coc.nvim", branch = "release" } -- research and replace with neovim's native LSP
 end)
 
