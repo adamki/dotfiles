@@ -9,7 +9,7 @@ backupdir=$HOME/dotfiles_old
 kittypath=.config/kitty
 batpath=.config/bat
 neovimpath=.config/nvim
-ftpluginpath=.config/nvim/ftplugin
+luadir=.config/nvim/lua
 
 directories="
 $backupdir
@@ -20,7 +20,7 @@ $HOME/$ftpluginpath
 $backupdir/$kittypath
 $backupdir/$batpath
 $backupdir/$neovimpath
-$backupdir/$ftpluginpath
+$backupdir/$luadir
 "
 
 files="
@@ -28,16 +28,15 @@ files="
 .zshrc
 .rgignore
 .gitignore_global
-.config/nvim/init.vim
+.config/nvim/init.lua
 .config/nvim/coc-settings.json
-.config/nvim/ftplugin/plugins.vim
-.config/nvim/ftplugin/system.vim
-.config/nvim/ftplugin/keymaps.vim
-.config/nvim/ftplugin/aesthetic.vim
-.config/nvim/ftplugin/filetypes.vim
-.config/nvim/ftplugin/functions.vim
-.config/nvim/ftplugin/status.vim
-.config/nvim/ftplugin/fold.vim
+.config/nvim/lua/autocommands.lua
+.config/nvim/lua/configurations.lua
+.config/nvim/lua/filetypes.lua
+.config/nvim/lua/mappings.lua
+.config/nvim/lua/plugins.lua
+.config/nvim/lua/settings.lua
+.config/nvim/lua/statusline.lua
 .config/kitty/kitty.conf
 .config/bat/config
 "

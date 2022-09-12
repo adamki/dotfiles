@@ -19,15 +19,14 @@ fi
 
 alias aliases="cat ${HOME}/dotfiles/aliases | fzf"
 alias dots="cd ${HOME}/dotfiles"
-alias nc="nvim ${HOME}/dotfiles/.config/nvim/init.vim"
+alias nc="nvim ${HOME}/dotfiles/.config/nvim/init.lua"
 alias zshrc="nvim ${HOME}/dotfiles/.zshrc"
 
 alias kc="nvim ${HOME}/dotfiles/.config/kitty/kitty.conf"
 alias ic="nvim ${HOME}/dotfiles/.config/i3/config"
 alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 
-alias ni='nvim -u ${HOME}/dotfiles/.config/nvim/init.vim'
-alias nl='nvim -u ${HOME}/.config/nvim/init.lua'
+alias ni='nvim'
 
 # Tmux
 alias tml='tmux ls'
