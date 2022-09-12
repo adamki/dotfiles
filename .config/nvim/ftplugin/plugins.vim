@@ -70,8 +70,3 @@ let g:rainbow_active = 1
   let g:vista_default_executive = 'coc'
   let g:vista#renderer#enable_icon = 0
 " }}}
-
-" marko-cerovac/material.vim-----------{{{
-  let g:material_style = 'palenight'
-  let g:material_contrast = v:true
-" }}}

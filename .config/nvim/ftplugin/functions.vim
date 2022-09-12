@@ -89,10 +89,10 @@ function! StatusDiagnostic() abort " StatusDiagnostic {{{
 endfunction "}}}
 
 function! Show_documentation() " Show_documentation {{{
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    call feedkeys('K', 'in')
   endif
 endfunction "}}}
 
