@@ -27,6 +27,7 @@ vim.bo.undofile = true
 vim.g.undodir = "~/.config/nvim/UNDO_HISTORY"
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
+vim.o.foldlevel=20
 
 -- COC reqs
 vim.g.nobackup = true
@@ -37,6 +38,10 @@ vim.wo.signcolumn = "yes"
 -- nvim.tree
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- nvim-treesitter
+set.foldmethod = "expr"
+set.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- aesthetics
 o.background = "dark"
