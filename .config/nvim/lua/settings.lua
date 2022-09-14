@@ -23,7 +23,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 set.showmode = false
 set.wildmode = "list:longest,full"
-vim.bo.undofile = true
+vim.cmd[[set undofile]]
 vim.g.undodir = "~/.config/nvim/UNDO_HISTORY"
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
@@ -45,4 +45,4 @@ set.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- aesthetics
 o.background = "dark"
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme everforest]])

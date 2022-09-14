@@ -1,25 +1,61 @@
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
+
 return require('packer').startup(function(use)
-  use { "wbthomason/packer.nvim" }
-  use { "ellisonleao/gruvbox.nvim" }
-  use { "sheerun/vim-polyglot" } -- replace with tree sitter. Tree sitter should also improve folding
+	use { "wbthomason/packer.nvim" } -- self manage packer
+
+	-- colors & highlighting
+	use { "ellisonleao/gruvbox.nvim" }
+	use { "sainnhe/everforest" }
+	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+
+	-- motions
 	use { "alvan/vim-closetag" }
+	use { "tpope/vim-repeat" }
+	use { "tpope/vim-surround" }
+	use { "justinmk/vim-sneak" }
+	use { "numToStr/Comment.nvim" }
+
+	-- improved interface
+	use { "lukas-reineke/indent-blankline.nvim" }
+	use { "tpope/vim-eunuch" }
+	use { "p00f/nvim-ts-rainbow" }
 	use {
-			"numToStr/Comment.nvim",
-			config = function() require("Comment").setup() end
+		'kyazdani42/nvim-tree.lua',
+		requires = {
+			'kyazdani42/nvim-web-devicons',
+		},
 	}
 
-	use { "tpope/vim-repeat" }
-  use { "tpope/vim-surround" }
-  use { "justinmk/vim-sneak" }
-  use { "junegunn/fzf" }
-  use { "junegunn/fzf.vim" }
-	use { "lukas-reineke/indent-blankline.nvim" }
-  use { "tpope/vim-eunuch" }
-	use { "luochen1990/rainbow" }
+	-- GIT integrations
 	use { "tpope/vim-fugitive" }
+	use { "tpope/vim-rhubarb" }
+	use { "shumphrey/fugitive-gitlab.vim" }
+	use { "lewis6991/gitsigns.nvim" }
 
-  use { 'tpope/vim-rhubarb' }
-  use { 'shumphrey/fugitive-gitlab.vim' }
-  use { "neoclide/coc.nvim", branch = "release" } -- research and replace with neovim's native LSP
+	-- fzf.vim
+	use {
+		"junegunn/fzf",
+		"junegunn/fzf.vim"
+	}
+
+	-- LSP
+	use {
+		'VonHeikemen/lsp-zero.nvim',
+		requires = {
+			-- LSP Support
+			{'neovim/nvim-lspconfig'},
+			{'williamboman/mason.nvim'},
+			{'williamboman/mason-lspconfig.nvim'},
+			-- Autocompletion
+			{'hrsh7th/nvim-cmp'},
+			{'hrsh7th/cmp-buffer'},
+			{'hrsh7th/cmp-path'},
+			{'saadparwaiz1/cmp_luasnip'},
+			{'hrsh7th/cmp-nvim-lsp'},
+			{'hrsh7th/cmp-nvim-lua'},
+			-- Snippets
+			{'L3MON4D3/LuaSnip'},
+		}
+	}
 end)
-

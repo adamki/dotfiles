@@ -25,7 +25,7 @@ set("n", "<C-H>", "<C-W><C-H>")
 
 set("n", "tq", ":tabclose")
 set("n", "tt", ":tabnew")
-set("n", "<F2>", function()
+set("n", "<F1>", function()
 	if vim.wo.relativenumber then
 			vim.wo.relativenumber = false
 			vim.wo.number = true
@@ -74,8 +74,8 @@ set("n", "<LocalLeader>?", ":FuzzyMaps<CR>")
 set("n", "<LocalLeader>t", ":FuzzyTags<CR>")
 set("n", "<LocalLeader>T", ":FuzzyBTags<CR>")
 set("n", "<LocalLeader>w", ":FuzzyWindows<CR>")
-set("n", "<LocalLeader>/", ":FuzzyHistory/<CR>")
-set("n", "<LocalLeader>r", ":FuzzyHistory:<CR>")
+set("n", "<LocalLeader>/", ":FuzzyHistory/<CR>") -- search history
+set("n", "<LocalLeader>r", ":FuzzyHistory:<CR>") -- command history
 set("n", "<LocalLeader>y", ":FuzzyHistory<CR>")
 set("n", "<LocalLeader>C", ":FuzzyBCommits<CR>")
 set("n", "<LocalLeader>c", ":FuzzyCommits<CR>")
@@ -94,36 +94,5 @@ set("i", "<localleader><tab>", "<plug>(fzf-maps-i)")
 set("x", "<localleader><tab>", "<plug>(fzf-maps-x)")
 set("o", "<localleader><tab>", "<plug>(fzf-maps-o)")
 
--- COC
-vim.api.nvim_set_keymap("n", "K", ":call CocActionAsync('doHover')<CR>", {silent = true, noremap = true})
-set("n", "-", ":CocCommand explorer<CR>")
-set("n", "[d", "<Plug>(coc-diagnostic-prev)")
-set("n", "]d", "<Plug>(coc-diagnostic-next)")
-set("n", "[c", "<Plug>(coc-git-prevchunk)")
-set("n", "]c", "<Plug>(coc-git-nextchunk)")
-set("n", "gd", "<Plug>(coc-definition)")
-set("n", "gy", "<Plug>(coc-type-definition)")
-set("n", "gi", "<Plug>(coc-implementation)")
-set("n", "gr", "<Plug>(coc-references)")
-set("n", "<space><space>", ":<C-u>CocList <CR>")
-set("n", "<leader>rn", "<Plug>(coc-rename)")
-set("n", "<leader>f", "<Plug>(coc-format-selected)")
-set("x", "<leader>f", "<Plug>(coc-format-selected)")
-
-vim.cmd([[
-  " multiple cursors(COC)
-	function! Select_current_word() " Select_current_word
-		if !get(b:, 'coc_cursors_activated', 0)
-			return "\<Plug>(coc-cursors-word)"
-		endif
-		return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
-	endfunc
-  nmap <expr> <silent> <C-8> Select_current_word()
-
-  " CTRL + j/k to tab through autocomplete selections
-  inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1): CheckBackspace() ? "" : coc#refresh()
-  inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : ""
-
-  " Make CTRL + l to accept selected completion item or notify coc.nvim to format
-  inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-]])
+-- nvim-tree.lua
+set("n", "-", ":NvimTreeFindFileToggle .<CR>")

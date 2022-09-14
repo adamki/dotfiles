@@ -1,3 +1,4 @@
+local fn = vim.fn
 Statusline = {}
 
 local modes = {
@@ -22,6 +23,7 @@ local modes = {
   ["!"] = "SHELL",
   ["t"] = "TERMINAL",
 }
+
 local function mode()
   local current_mode = vim.api.nvim_get_mode().mode
   return string.format(" %s ", modes[current_mode]):upper()
@@ -52,8 +54,13 @@ local function filepath()
       return " "
   end
 
-  return string.format(" %%<%s/", fpath)
+	if vim.bo.modified then
+		return "%#LspDiagnosticsSignHint#" .. string.format(" %%<%s/", fpath)
+	else
+		return string.format(" %%<%s/", fpath)
+	end
 end
+
 local function filename()
   local fname = vim.fn.expand "%:t"
   if fname == "" then
@@ -107,20 +114,41 @@ local function lineinfo()
   return " %P %l:%c "
 end
 
+local function git()
+  local branch = fn.FugitiveHead()
+
+  if branch and #branch > 0 then
+    branch = '  '..branch
+  end
+
+	return branch
+end
+
+local function modifiedSymbol()
+	local mod = ""
+
+	if vim.bo.modified then
+		mod = mod ..  "●"
+	end
+
+	return mod
+
+end
+
 Statusline.active = function()
   return table.concat {
     "%#Statusline#",
     update_mode_colors(),
     mode(),
     "%#Normal# ",
+		git(),
     filepath(),
     filename(),
-    "%M",
+		modifiedSymbol(),
     "%#Normal#",
     lsp(),
     "%=%#StatusLineExtra#",
     filetype(),
-    lineinfo(),
   }
 end
 
