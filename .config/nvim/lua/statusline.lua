@@ -50,14 +50,16 @@ end
 
 local function filepath()
   local fpath = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h")
+	local fstring = string.format(" %%<%s/", fpath)
+
   if fpath == "" or fpath == "." then
       return " "
   end
 
 	if vim.bo.modified then
-		return "%#LspDiagnosticsSignHint#" .. string.format(" %%<%s/", fpath)
+		return "%#LspDiagnosticsSignHint#" .. fstring
 	else
-		return string.format(" %%<%s/", fpath)
+		return fstring
 	end
 end
 
@@ -82,10 +84,7 @@ local function lsp()
     count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
   end
 
-  local errors = ""
-  local warnings = ""
-  local hints = ""
-  local info = ""
+  local errors, warnings, hints, info = "", "", "", ""
 
   if count["errors"] ~= 0 then
     errors = " %#LspDiagnosticsSignError# " .. count["errors"]
@@ -100,19 +99,21 @@ local function lsp()
     info = " %#LspDiagnosticsSignInformation# " .. count["info"]
   end
 
-  return errors .. warnings .. hints .. info .. "%#Normal#"
+	return table.concat({
+		errors,
+		warnings,
+		hints,
+		info
+	})
 end
 
 local function filetype()
   return string.format(" %s ", vim.bo.filetype):upper()
 end
 
-local function lineinfo()
-  if vim.bo.filetype == "alpha" then
-    return ""
-  end
-  return " %P %l:%c "
-end
+-- local function lineinfo()
+--   return " %P %l:%c "
+-- end
 
 local function git()
   local branch = fn.FugitiveHead()
@@ -124,37 +125,26 @@ local function git()
 	return branch
 end
 
-local function modifiedSymbol()
-	local mod = ""
-
-	if vim.bo.modified then
-		mod = mod ..  "●"
-	end
-
-	return mod
-
-end
-
 Statusline.active = function()
   return table.concat {
     "%#Statusline#",
     update_mode_colors(),
     mode(),
-    "%#Normal# ",
+    "%#Normal#",
 		git(),
     filepath(),
     filename(),
-		modifiedSymbol(),
-    "%#Normal#",
+		"%m",
+		"%=",
     lsp(),
-    "%=%#StatusLineExtra#",
+    "%#StatusLineExtra#",
     filetype(),
   }
 end
 
 function Statusline.inactive()
   return table.concat({
-      "%#Normal#",
+      "%#Folded#",
       "%=",
       "%F",
       "%M",
@@ -162,16 +152,10 @@ function Statusline.inactive()
   })
 end
 
-function Statusline.short()
-  return "%#StatusLineNC#   NvimTree"
-end
-
 vim.api.nvim_exec([[
   augroup Statusline
   au!
   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
   au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
-  au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
   augroup END
 ]], false)
-
