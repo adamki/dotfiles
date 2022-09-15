@@ -9,6 +9,8 @@ vim.g.fzf_command_prefix = 'Fuzzy'
 vim.g.fzf_history_dir = '~/.local/share/fzf-history'
 vim.g.fzf_buffers_jump = 1
 
+-- simrat39/symbols-outline
+require("symbols-outline").setup()
 
 -- lewis6991/gitsigns
 require('gitsigns').setup()
@@ -19,6 +21,7 @@ require 'nvim-treesitter.configs'.setup {
 		"bash",
 		"html",
 		"javascript",
+		"json",
 		"typescript",
 		"python",
 		"vim"
@@ -29,13 +32,16 @@ require 'nvim-treesitter.configs'.setup {
 		disable = {},
 		additional_vim_regex_highlighting = true
 	},
+  indent = {
+    enable = true
+  }
 }
 
 -- p00f/nvim-ts-rainbow
 require("nvim-treesitter.configs").setup {
   rainbow = {
     enable = true,
-    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    disable = {}, -- list of languages you want to disable the plugin for
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
     max_file_lines = 500, -- Do not enable for files with more than n lines, int
   }
@@ -51,7 +57,7 @@ require("nvim-tree").setup({
 })
 
 
--- lsp-zero
+-- VonHeikemen/lsp-zero.nvim
 local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
@@ -76,7 +82,7 @@ lsp.on_attach(function(_, bufnr)
 end)
 lsp.setup()
 
--- nvim-cmp
+-- hrsh7th/nvim-cmp
 local cmp = require'cmp'
 
 cmp.setup({
@@ -84,7 +90,6 @@ cmp.setup({
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
 			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
