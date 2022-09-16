@@ -25,39 +25,16 @@ set("n", "<C-H>", "<C-W><C-H>")
 
 set("n", "tq", ":tabclose")
 set("n", "tt", ":tabnew")
-set("n", "<F1>", function()
-	if vim.wo.relativenumber then
-			vim.wo.relativenumber = false
-			vim.wo.number = true
-			vim.api.nvim_create_autocmd({"BufEnter", "BufLeave", "FocusGained", "FocusLost", "InsertEnter", "InsertLeave"}, {
-					pattern = "*",
-					callback = function()
-							vim.wo.relativenumber = false
-							vim.wo.number = true
-					end
-			})
-	else
-			vim.wo.relativenumber = true
-			vim.wo.number = false
-			vim.api.nvim_create_autocmd({"BufEnter", "BufLeave", "FocusGained", "FocusLost", "InsertEnter", "InsertLeave"}, {
-					pattern = "*",
-					callback = function()
-							vim.wo.relativenumber = true
-							vim.wo.number = false
-					end
-			})
-	end
-end)
 
-set("n", "<F3>", ":echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>' . ' FG:' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'fg#')<CR>")
 set("n", "0", "^")
-
 set("i", "<C-f>", "<C-x><C-f>")
 
 set("v", "<", "<gv")
 set("v", ">", ">gv")
 set("v", "J", ":m '>+1<CR>gv=gv")
 set("v", "K", ":m '<-2<CR>gv=gv")
+
+set("n", "<F3>", ":echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>' . ' FG:' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'fg#')<CR>")
 
 -- FZF
 set("n", "<LocalLeader>,", ":Fuzzy")

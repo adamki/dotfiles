@@ -2,8 +2,8 @@ local o = vim.o
 local bo = vim.bo
 local wo = vim.wo
 local set = vim.opt
-local map = vim.api.nvim_set_keymap
 
+-- general settings
 vim.syntax = true
 vim.encoding = "utf8"
 vim.opt.termguicolors = true
@@ -16,36 +16,31 @@ set.pastetoggle = '<F6>'
 set.splitbelow = true
 set.splitright = true
 
-vim.bo.swapfile = false
-vim.wo.numberwidth = 3
-vim.wo.wrap = false
-vim.o.number = true
-vim.o.relativenumber = true
+bo.swapfile = false
+wo.numberwidth = 3
+wo.wrap = false
+o.number = true
+o.relativenumber = true
 set.showmode = false
 set.wildmode = "list:longest,full"
 vim.cmd[[set undofile]]
 vim.g.undodir = "~/.config/nvim/UNDO_HISTORY"
-vim.o.scrolloff = 8
-vim.o.sidescrolloff = 8
-vim.o.foldlevel=20
+o.scrolloff = 8
+o.sidescrolloff = 8
+o.foldlevel=20
 
--- COC reqs
-vim.g.nobackup = true
-vim.g.nowritebackup = true
-vim.g.updatetime = 300
-vim.wo.signcolumn = "yes"
+-- aesthetics
+o.background = "dark"
+vim.cmd([[colorscheme everforest]])
 
--- nvim.tree
+-- PLUGINS
+-- nvim-tree requirement
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- nvim-treesitter
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
-
--- aesthetics
-o.background = "dark"
-vim.cmd([[colorscheme everforest]])
 
 -- alvan/vim-closetag
 vim.g.closetag_filenames = '*.html,*.jsx,*.js,*.tsx,*.html.erb'

@@ -1,6 +1,3 @@
-local o = vim.o
-local wo = vim.wo
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "vim",
   callback = function()

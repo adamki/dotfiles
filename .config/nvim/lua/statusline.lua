@@ -74,10 +74,10 @@ end
 local function lsp()
   local count = {}
   local levels = {
-    errors = "Error",
-    warnings = "Warn",
     info = "Info",
     hints = "Hint",
+    errors = "Error",
+    warnings = "Warn",
   }
 
   for k, level in pairs(levels) do
