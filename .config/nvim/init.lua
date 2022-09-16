@@ -1,7 +1,7 @@
 -- init.lua
 
-require('plugins')
 require('settings')
+require('packer')
 require('autocommands')
 require('filetypes')
 require('mappings')
