@@ -10,6 +10,7 @@ kittypath=.config/kitty
 batpath=.config/bat
 neovimpath=.config/nvim
 luadir=.config/nvim/lua
+luaconfigsdir=.config/nvim/lua/configs
 
 directories="
 $backupdir
@@ -17,10 +18,12 @@ $HOME/$kittypath
 $HOME/$batpath
 $HOME/$neovimpath
 $HOME/$ftpluginpath
+$HOME/$luaconfigsdir
 $backupdir/$kittypath
 $backupdir/$batpath
 $backupdir/$neovimpath
 $backupdir/$luadir
+$backupdir/$luaconfigsdir
 "
 
 files="
@@ -29,14 +32,11 @@ files="
 .rgignore
 .gitignore_global
 .config/nvim/init.lua
-.config/nvim/coc-settings.json
-.config/nvim/lua/autocommands.lua
-.config/nvim/lua/configurations.lua
-.config/nvim/lua/filetypes.lua
-.config/nvim/lua/mappings.lua
-.config/nvim/lua/plugins.lua
-.config/nvim/lua/settings.lua
-.config/nvim/lua/statusline.lua
 .config/kitty/kitty.conf
 .config/bat/config
 "
+
+OUTPUT=$(find $luadir -name '*.lua' | paste -sd " \n" -)
+
+files+="${OUTPUT}"
+echo $files

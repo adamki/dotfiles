@@ -3,7 +3,7 @@
 
 echo -e "${HR}"
 echo -e "${bold}Deleting Old backups...${normal}"
-rm -rf $HOME/$backupdir/*
+rm -rf $HOME/$backupdir
 
 echo -e "${HR}"
 echo -e "${bold}Making new Directories...${normal}"
@@ -39,6 +39,7 @@ for file in $files; do
       echo -e "${red}Warning:${reset} Was NOT able to symlink: ${red}${file}${reset}"
     fi
 done
+
 echo -e "\n"
 echo -e "${HR}"
 echo -e "${green}Symlinking Complete!\nOld config files have been backed up to $backupdir${reset}"
