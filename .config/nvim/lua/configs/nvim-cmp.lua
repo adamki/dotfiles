@@ -13,7 +13,6 @@ cmp.setup({
 		mapping = cmp.mapping.preset.insert({
 			['q'] = cmp.mapping.abort(),
 			['<C-l>'] = cmp.mapping.confirm(),
-			['<CR>'] = cmp.mapping.confirm({ select = true }),
 			['<C-j>'] = cmp.mapping.select_next_item(),
 			['<C-k>'] = cmp.mapping.select_prev_item(),
 			['<C-n>'] = cmp.mapping.scroll_docs(4),

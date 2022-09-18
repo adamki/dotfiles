@@ -1,4 +1,3 @@
-
 return require("packer").startup(function(use)
 	use { "wbthomason/packer.nvim" } -- self manage packer
 	-- colorschemes
@@ -9,7 +8,9 @@ return require("packer").startup(function(use)
 	use {
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
-		config = function() require"configs.nvim-treesitter" end
+		config = function()
+			require"configs.nvim-treesitter"
+		end
 	}
 
 	-- motions
@@ -19,7 +20,9 @@ return require("packer").startup(function(use)
 	use { "justinmk/vim-sneak" }
 	use {
 		"numToStr/Comment.nvim",
-		config = function() require"Comment".setup() end
+		config = function()
+			require"Comment".setup()
+		end
 	}
 
 	-- improved interface
@@ -27,17 +30,28 @@ return require("packer").startup(function(use)
 	use { "tpope/vim-eunuch" }
 	use {
 		"kyazdani42/nvim-tree.lua",
-		config = function() require"configs.nvim-tree" end,
 		requires = { "kyazdani42/nvim-web-devicons" },
+		config = function()
+			require"configs.nvim-tree"
+		end,
 	}
 	use {
 		"p00f/nvim-ts-rainbow",
-		config = function() require"configs.nvim-ts-rainbow" end
+		config = function()
+			require"configs.nvim-ts-rainbow"
+		end
 	}
 	use {
 		"simrat39/symbols-outline.nvim" ,
 		config = function()
 			require("symbols-outline").setup()
+		end
+	}
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		config = function ()
+			require"configs.lualine"
 		end
 	}
 
@@ -61,7 +75,9 @@ return require("packer").startup(function(use)
 	-- LSP
 	use {
 		"VonHeikemen/lsp-zero.nvim",
-		config = function() require"configs.lsp-zero" end,
+		config = function()
+			require"configs.lsp-zero"
+		end,
 		requires = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
@@ -75,7 +91,9 @@ return require("packer").startup(function(use)
 			{ "saadparwaiz1/cmp_luasnip" },
 			{
 				"hrsh7th/nvim-cmp",
-				config = function() require"configs.nvim-cmp" end
+				config = function()
+					require"configs.nvim-cmp"
+				end
 			},
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },

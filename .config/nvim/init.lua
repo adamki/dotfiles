@@ -1,8 +1,8 @@
 -- init.lua
 
 require('settings')
-require('packer')
-require('autocommands')
-require('filetypes')
+require('configs.packer')
 require('mappings')
-require('statusline')
+-- require('statusline')
+require('filetypes')
+require('autocommands')

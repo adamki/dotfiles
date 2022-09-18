@@ -28,6 +28,7 @@ vim.g.undodir = "~/.config/nvim/UNDO_HISTORY"
 o.scrolloff = 8
 o.sidescrolloff = 8
 o.foldlevel=20
+wo.signcolumn="yes:1"
 
 -- aesthetics
 o.background = "dark"
