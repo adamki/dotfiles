@@ -1,6 +1,12 @@
 -- p00f/nvim-ts-rainbow
 
-require("nvim-treesitter.configs").setup {
+local line_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+
+if not line_ok then
+	return
+end
+
+treesitter.setup {
   rainbow = {
     enable = true,
     disable = {}, -- list of languages you want to disable the plugin for

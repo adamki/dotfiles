@@ -1,6 +1,10 @@
 -- hrsh7th/nvim-cmp
 
-local cmp = require'cmp'
+local line_ok, cmp = pcall(require, "cmp")
+
+if not line_ok then
+	return
+end
 
 cmp.setup({
 	snippet = {

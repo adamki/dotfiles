@@ -1,6 +1,8 @@
--- VonHeikemen/lsp-zero.nvim
+local line_ok, lsp = pcall(require, "lsp-zero")
 
-local lsp = require('lsp-zero')
+if not line_ok then
+	return
+end
 
 lsp.preset('recommended')
 lsp.set_preferences({ set_lsp_keymaps = false })

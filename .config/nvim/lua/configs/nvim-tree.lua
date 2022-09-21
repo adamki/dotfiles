@@ -1,6 +1,12 @@
 -- kyazdani42/nvim-tree.lua
 
-require("nvim-tree").setup({
+local line_ok, tree = pcall(require, "nvim-tree")
+
+if not line_ok then
+	return
+end
+
+tree.setup({
   view = {
     adaptive_size = true,
   },
