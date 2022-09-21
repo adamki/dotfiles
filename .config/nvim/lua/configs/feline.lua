@@ -1,4 +1,7 @@
+-- feline-nvim/feline.nvim
+
 local line_ok, feline = pcall(require, "feline")
+
 if not line_ok then
 	return
 end
@@ -13,7 +16,7 @@ local everforest = {
 	red = "#e67e80",
 	aqua = "#83c092",
 	darkblue = "#7fbbb3",
-	grey = "#859289"
+	grey = "#404c51"
 }
 
 local vi_mode_colors = {
@@ -28,77 +31,55 @@ local vi_mode_colors = {
 }
 
 local c = {
-	vim_mode = {
-		provider = {
-			name = "vi_mode",
-			opts = {
-				show_mode_name = true,
-				-- padding = "center", -- Uncomment for extra padding.
-			},
-		},
-		hl = function()
-			return {
-				fg = require("feline.providers.vi_mode").get_mode_color(),
-				bg = "bg",
-				name = "NeovimModeHLColor",
-			}
-		end,
-		left_sep = "block",
-		right_sep = "block",
-	},
 	blank = {
 		bg = "grey"
+	},
+	separator = {
+		provider = "  ",
 	},
 	gitBranch = {
 		provider = "git_branch",
 		hl = {
 			fg = "yellow",
-			bg = "grey",
 		},
-		left_sep = "left_rounded",
+		enabled = function ()
+			return vim.api.nvim_win_get_width(0) > 80
+		end,
 	},
 	gitDiffAdded = {
 		provider = "git_diff_added",
 		hl = {
 			fg = "green",
-			bg = "grey",
 		},
-		left_sep = "block",
-		right_sep = "block",
 	},
 	gitDiffRemoved = {
 		provider = "git_diff_removed",
 		hl = {
 			fg = "red",
-			bg = "grey",
 		},
-		left_sep = "block",
-		right_sep = "block",
 	},
 	gitDiffChanged = {
 		provider = "git_diff_changed",
 		hl = {
 			fg = "fg",
-			bg = "grey",
 		},
-		left_sep = "block",
-		right_sep = "right_rounded",
 	},
-	separator = {
-		provider = "",
-	},
-	fileinfo = {
+	fileinfo_base = {
 		provider = {
 			name = "file_info",
 			opts = {
 				type = "base-only",
 			},
 		},
-		left_sep = " ",
-		right_sep = " ",
+		hl = {
+			fg = "bg",
+			bg = "orange",
+		},
+		left_sep = "left_rounded",
+		right_sep = "right_rounded",
 		icon = {
-			str = ' ',
-		}
+			str = '',
+		},
 	},
 	fileinfo_full = {
 		provider = {
@@ -107,92 +88,78 @@ local c = {
 				type = "relative"
 			}
 		},
+		hl = {
+			fg = "grey",
+			bg = "bg",
+		},
 		icon = {
-			str = ' ',
-		}
+			str = '',
+		},
+		enabled = function()
+			return vim.api.nvim_win_get_width(0) > 80
+		end
+	},
+	fileinfo_short = {
+		provider = {
+			name = "file_info",
+			opts = {
+				type = "relative-short"
+			}
+		},
+		hl = {
+			fg = "grey",
+			bg = "bg",
+		},
+		icon = {
+			str = '',
+		},
+		enabled = function()
+			return vim.api.nvim_win_get_width(0) < 80
+		end
 	},
 	diagnostic_errors = {
 		provider = "diagnostic_errors",
 		hl = {
 			fg = "red",
-			bg = "grey"
 		},
+		right_sep = "right_rounded"
 	},
 	diagnostic_warnings = {
 		provider = "diagnostic_warnings",
 		hl = {
-			fg = "yellow",
-			bg = "grey"
+			fg = "orange",
 		},
 	},
 	diagnostic_info = {
 		provider = "diagnostic_info",
+		hl = {
+			fg = "yellow",
+		},
 	},
 	diagnostic_hints = {
 		provider = "diagnostic_hints",
 		hl = {
 			fg = "aqua",
-			bg = "grey"
 		},
 	},
 	lsp_client_names = {
 		provider = "lsp_client_names",
 		hl = {
 			fg = "purple",
-			bg = "grey",
 		},
-		left_sep = "left_rounded",
-		right_sep = "block"
-	},
-	file_type = {
-		provider = {
-			name = "file_type",
-			opts = {
-				filetype_icon = true,
-				case = "titlecase",
-			},
-		},
-		hl = {
-			fg = "red",
-			bg = "bg",
-		},
-		left_sep = "block",
-		right_sep = "block",
-	},
-	file_encoding = {
-		provider = "file_encoding",
-		hl = {
-			fg = "orange",
-			bg = "bg",
-			style = "italic",
-		},
-		left_sep = "block",
-		right_sep = "block",
+		enabled = function ()
+			return vim.api.nvim_win_get_width(0) > 80
+		end,
 	},
 	position = {
 		provider = "position",
-		padding = true,
 		hl = {
-			fg = "green",
+			fg = "fg",
 			bg = "bg",
 		},
-		left_sep = "block",
-		right_sep = "block",
-	},
-	line_percentage = {
-		provider = "line_percentage",
-		hl = {
-			fg = "aqua",
-			bg = "darkblue",
-		},
-		left_sep = "block",
-		right_sep = "block",
-	},
-	scroll_bar = {
-		provider = "scroll_bar",
-		hl = {
-			fg = "yellow",
-		},
+		enabled = function ()
+			return vim.api.nvim_win_get_width(0) > 80
+		end,
 	},
 }
 
@@ -202,23 +169,26 @@ local left = {
   c.gitDiffRemoved,
 	c.gitDiffChanged,
 	c.separator,
+	c.fileinfo_base,
 }
 
 local middle = {
-	c.fileinfo,
 }
 
 local right = {
-	c.position,
-	c.lsp_client_names,
 	c.diagnostic_hints,
 	c.diagnostic_info,
 	c.diagnostic_warnings,
 	c.diagnostic_errors,
+	c.separator,
+	c.lsp_client_names,
+	c.separator,
+	c.position,
 }
 
 local inactive_middle = {
-	c.fileinfo_full
+	c.fileinfo_full,
+	c.fileinfo_short,
 }
 
 local inactive_left = {
@@ -245,4 +215,16 @@ feline.setup({
 	components = components,
 	theme = theme,
 	vi_mode_colors = vi_mode_colors,
+	force_inactive = {
+		filetypes = {
+			"checkhealth",
+			"NvimTree",
+			"Outline",
+			"packer",
+			"help",
+		},
+		buftypes = { "terminal" },
+		bufnames = {},
+	},
 })
+
