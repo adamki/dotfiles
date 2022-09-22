@@ -16,7 +16,8 @@ local everforest = {
 	red = "#e67e80",
 	aqua = "#83c092",
 	darkblue = "#7fbbb3",
-	grey = "#404c51"
+	grey = "#404c51",
+	light_grey = "#68757d",
 }
 
 local vi_mode_colors = {
@@ -30,39 +31,42 @@ local vi_mode_colors = {
 	COMMAND = "aqua",
 }
 
+local display_wide = function()
+	return vim.api.nvim_win_get_width(0) > 80
+end
+local display_narrow = function()
+	return vim.api.nvim_win_get_width(0) < 80
+end
+
+
 local c = {
-	blank = {
-		bg = "grey"
-	},
+	blank = { bg = "bg" },
 	separator = {
 		provider = "  ",
+		hl = { bg = "grey" }
+	},
+	filetype = {
+		provider = "file_type",
+		hl = { bg = "grey" }
 	},
 	gitBranch = {
 		provider = "git_branch",
-		hl = {
-			fg = "yellow",
-		},
-		enabled = function ()
-			return vim.api.nvim_win_get_width(0) > 80
-		end,
+		hl = { fg = "fg", bg = "grey" },
+		left_sep = "block",
+		right_sep = "block",
+		enabled = display_wide,
 	},
 	gitDiffAdded = {
 		provider = "git_diff_added",
-		hl = {
-			fg = "green",
-		},
+		hl = { fg = "green", bg = "grey" },
 	},
 	gitDiffRemoved = {
 		provider = "git_diff_removed",
-		hl = {
-			fg = "red",
-		},
+		hl = { fg = "red", bg = "grey" },
 	},
 	gitDiffChanged = {
 		provider = "git_diff_changed",
-		hl = {
-			fg = "fg",
-		},
+		hl = { fg = "yellow", bg = "grey" },
 	},
 	fileinfo_base = {
 		provider = {
@@ -75,8 +79,8 @@ local c = {
 			fg = "bg",
 			bg = "orange",
 		},
-		left_sep = "left_rounded",
-		right_sep = "right_rounded",
+		left_sep = "block",
+		right_sep = "block",
 		icon = {
 			str = '',
 		},
@@ -89,15 +93,13 @@ local c = {
 			}
 		},
 		hl = {
-			fg = "grey",
+			fg = "light_grey",
 			bg = "bg",
 		},
 		icon = {
 			str = '',
 		},
-		enabled = function()
-			return vim.api.nvim_win_get_width(0) > 80
-		end
+		enabled = display_wide,
 	},
 	fileinfo_short = {
 		provider = {
@@ -107,69 +109,49 @@ local c = {
 			}
 		},
 		hl = {
-			fg = "grey",
+			fg = "light_grey",
 			bg = "bg",
 		},
 		icon = {
 			str = '',
 		},
-		enabled = function()
-			return vim.api.nvim_win_get_width(0) < 80
-		end
+		enabled = display_narrow
 	},
 	diagnostic_errors = {
 		provider = "diagnostic_errors",
-		hl = {
-			fg = "red",
-		},
-		right_sep = "right_rounded"
+		hl = { fg = "red", bg = "grey" },
 	},
 	diagnostic_warnings = {
 		provider = "diagnostic_warnings",
-		hl = {
-			fg = "orange",
-		},
+		hl = { fg = "orange", bg = "grey" },
 	},
 	diagnostic_info = {
 		provider = "diagnostic_info",
-		hl = {
-			fg = "yellow",
-		},
+		hl = { fg = "yellow", bg = "grey" },
 	},
 	diagnostic_hints = {
 		provider = "diagnostic_hints",
-		hl = {
-			fg = "aqua",
-		},
+		hl = { fg = "green", bg = "grey" },
 	},
 	lsp_client_names = {
 		provider = "lsp_client_names",
-		hl = {
-			fg = "purple",
-		},
-		enabled = function ()
-			return vim.api.nvim_win_get_width(0) > 80
-		end,
+		hl = { fg = "purple", bg = "grey" },
+		enabled = display_wide,
 	},
 	position = {
 		provider = "position",
-		hl = {
-			fg = "fg",
-			bg = "bg",
-		},
-		enabled = function ()
-			return vim.api.nvim_win_get_width(0) > 80
-		end,
+		hl = { fg = "fg", bg = "grey" },
+		enabled = display_wide,
 	},
 }
 
 local left = {
+	c.fileinfo_base,
 	c.gitBranch,
 	c.gitDiffAdded,
   c.gitDiffRemoved,
 	c.gitDiffChanged,
-	c.separator,
-	c.fileinfo_base,
+	c.blank,
 }
 
 local middle = {
@@ -181,20 +163,15 @@ local right = {
 	c.diagnostic_warnings,
 	c.diagnostic_errors,
 	c.separator,
-	c.lsp_client_names,
+	c.filetype,
 	c.separator,
-	c.position,
+	c.lsp_client_names,
 }
 
 local inactive_middle = {
 	c.fileinfo_full,
 	c.fileinfo_short,
 }
-
-local inactive_left = {
-	c.blank,
-}
-local inactive_right = inactive_left
 
 local components = {
 	active = {
@@ -203,9 +180,7 @@ local components = {
 		right,
 	},
 	inactive = {
-		inactive_left,
 		inactive_middle,
-		inactive_right,
 	},
 }
 
