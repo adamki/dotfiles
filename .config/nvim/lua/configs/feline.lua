@@ -34,6 +34,7 @@ local vi_mode_colors = {
 local display_wide = function()
 	return vim.api.nvim_win_get_width(0) > 80
 end
+
 local display_narrow = function()
 	return vim.api.nvim_win_get_width(0) < 80
 end
@@ -71,50 +72,28 @@ local c = {
 	fileinfo_base = {
 		provider = {
 			name = "file_info",
-			opts = {
-				type = "base-only",
-			},
+			opts = { type = "base-only" },
 		},
-		hl = {
-			fg = "bg",
-			bg = "orange",
-		},
+		hl = { fg = "purple", bg = "bg" },
 		left_sep = "block",
 		right_sep = "block",
-		icon = {
-			str = '',
-		},
 	},
 	fileinfo_full = {
 		provider = {
 			name = "file_info",
-			opts = {
-				type = "relative"
-			}
+			opts = { type = "relative" }
 		},
-		hl = {
-			fg = "light_grey",
-			bg = "bg",
-		},
-		icon = {
-			str = '',
-		},
+		hl = { fg = "light_grey", bg = "bg" },
+		icon = { str = '' },
 		enabled = display_wide,
 	},
 	fileinfo_short = {
 		provider = {
 			name = "file_info",
-			opts = {
-				type = "relative-short"
-			}
+			opts = { type = "relative-short" }
 		},
-		hl = {
-			fg = "light_grey",
-			bg = "bg",
-		},
-		icon = {
-			str = '',
-		},
+		hl = { fg = "light_grey", bg = "bg" },
+		icon = { str = '' },
 		enabled = display_narrow
 	},
 	diagnostic_errors = {
@@ -146,7 +125,6 @@ local c = {
 }
 
 local left = {
-	c.fileinfo_base,
 	c.gitBranch,
 	c.gitDiffAdded,
   c.gitDiffRemoved,
@@ -155,6 +133,7 @@ local left = {
 }
 
 local middle = {
+	c.fileinfo_base,
 }
 
 local right = {
@@ -168,10 +147,16 @@ local right = {
 	c.lsp_client_names,
 }
 
+local inactive_left = {
+	c.blank,
+}
+
 local inactive_middle = {
 	c.fileinfo_full,
 	c.fileinfo_short,
 }
+
+local inactive_right = inactive_left
 
 local components = {
 	active = {
@@ -180,7 +165,9 @@ local components = {
 		right,
 	},
 	inactive = {
+		inactive_left,
 		inactive_middle,
+		inactive_right,
 	},
 }
 
