@@ -32,7 +32,7 @@ wo.signcolumn="yes:1"
 
 -- aesthetics
 o.background = "dark"
-vim.cmd([[colorscheme everforest]])
+vim.cmd([[colorscheme gruvbox-material]])
 
 -- PLUGINS
 -- nvim-tree requirement

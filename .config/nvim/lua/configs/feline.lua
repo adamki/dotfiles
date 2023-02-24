@@ -34,21 +34,23 @@ local vi_mode_colors = {
 local display_wide = function()
 	return vim.api.nvim_win_get_width(0) > 80
 end
-
 local display_narrow = function()
 	return vim.api.nvim_win_get_width(0) < 80
 end
 
 
 local c = {
-	blank = { bg = "bg" },
+	blank = {
+		bg = "bg",
+	},
 	separator = {
-		provider = "  ",
-		hl = { bg = "grey" }
+		provider = "  " ,
+		hl = { bg = "grey" },
 	},
 	filetype = {
 		provider = "file_type",
-		hl = { bg = "grey" }
+		hl = { bg = "grey" },
+		enabled = display_wide,
 	},
 	gitBranch = {
 		provider = "git_branch",
@@ -69,48 +71,69 @@ local c = {
 		provider = "git_diff_changed",
 		hl = { fg = "yellow", bg = "grey" },
 	},
-	fileinfo_base = {
+	fileinfo_base_full = {
 		provider = {
 			name = "file_info",
-			opts = { type = "base-only" },
+			opts = {
+				type = "relative",
+			},
 		},
-		hl = { fg = "purple", bg = "bg" },
+		hl = {
+			fg = "bg",
+			bg = "orange",
+		},
 		left_sep = "block",
 		right_sep = "block",
+		icon = {
+			str = '',
+		},
+		short_provider = {
+			name = "file_info",
+			opts = {
+				type = "relative-short"
+			}
+		}
 	},
 	fileinfo_full = {
 		provider = {
 			name = "file_info",
-			opts = { type = "relative" }
+			opts = {
+				type = "relative"
+			}
 		},
-		hl = { fg = "light_grey", bg = "bg" },
-		icon = { str = '' },
-		enabled = display_wide,
-	},
-	fileinfo_short = {
-		provider = {
+		hl = {
+			fg = "light_grey",
+			bg = "bg",
+		},
+		icon = {
+			str = '',
+		},
+		short_provider = {
 			name = "file_info",
-			opts = { type = "relative-short" }
-		},
-		hl = { fg = "light_grey", bg = "bg" },
-		icon = { str = '' },
-		enabled = display_narrow
+			opts = {
+				type = "relative-short"
+			}
+		}
 	},
 	diagnostic_errors = {
 		provider = "diagnostic_errors",
 		hl = { fg = "red", bg = "grey" },
+		enabled = display_wide,
 	},
 	diagnostic_warnings = {
 		provider = "diagnostic_warnings",
 		hl = { fg = "orange", bg = "grey" },
+		enabled = display_wide,
 	},
 	diagnostic_info = {
 		provider = "diagnostic_info",
 		hl = { fg = "yellow", bg = "grey" },
+		enabled = display_wide,
 	},
 	diagnostic_hints = {
 		provider = "diagnostic_hints",
 		hl = { fg = "green", bg = "grey" },
+		enabled = display_wide,
 	},
 	lsp_client_names = {
 		provider = "lsp_client_names",
@@ -129,11 +152,12 @@ local left = {
 	c.gitDiffAdded,
   c.gitDiffRemoved,
 	c.gitDiffChanged,
+	c.separator,
 	c.blank,
 }
 
 local middle = {
-	c.fileinfo_base,
+	c.fileinfo_base_full,
 }
 
 local right = {
@@ -147,16 +171,9 @@ local right = {
 	c.lsp_client_names,
 }
 
-local inactive_left = {
-	c.blank,
-}
-
 local inactive_middle = {
 	c.fileinfo_full,
-	c.fileinfo_short,
 }
-
-local inactive_right = inactive_left
 
 local components = {
 	active = {
@@ -165,9 +182,7 @@ local components = {
 		right,
 	},
 	inactive = {
-		inactive_left,
 		inactive_middle,
-		inactive_right,
 	},
 }
 
