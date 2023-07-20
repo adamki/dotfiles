@@ -8,7 +8,7 @@ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
 
 echo -e "${HR}"
 echo -e "${bold}Installing Starship...${normal}"
-curl -fsSL https://starship.rs/install.sh | bash
+curl -sS https://starship.rs/install.sh | sh
 
 echo -e "${HR}"
 echo -e "${bold}Cloning pFetch...${normal}"
@@ -20,9 +20,9 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 echo -e "${HR}"
-echo -e "${bold}Installing Vim-Plug...${normal}"
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+echo -e "${bold}Installing Vim-Packer...${normal}"
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 echo -e "${HR}"
 echo -e "${bold}Installing NVM...${normal}"

@@ -1,6 +1,7 @@
 ### Bind Caps_Lock to CTRL/ESC
   * Install [Karabiner-Elements](https://karabiner-elements.pqrs.org/)
-  * Add `Complex Modification` as shown below:
+
+  * Add `Complex Modification` [HERE](https://ke-complex-modifications.pqrs.org/#caps_lock_tapped_escape_held_left_control) OR as shown below:
 
 
     ```

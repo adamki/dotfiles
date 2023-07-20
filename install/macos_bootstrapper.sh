@@ -6,7 +6,7 @@ echo -e "${bold}Checking if Brew is installed...${normal}"
 if test ! $(which brew); then
   echo -e "${HR}"
   echo -e "${bold}Brew Not Found. Installing Brew...${normal}"
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 echo -e "${HR}"
@@ -19,7 +19,7 @@ brew install zsh
 
 echo -e "${HR}"
 echo -e "${bold}Installing antigen...${normal}"
-brew install antigen
+/bin/bash -c "$(curl -L git.io/antigen > $HOME/antigen.zsh)"
 
 echo -e "${HR}"
 echo -e "${bold}Installing rbenv...${normal}"

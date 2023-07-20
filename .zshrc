@@ -11,7 +11,7 @@ export DOTFILES="$HOME/dotfiles"
 # setup path to antigen ZSH pachage manager
 case `uname` in
   Darwin)
-    source /usr/local/share/antigen/antigen.zsh
+    source $HOME/antigen.zsh
   ;;
   Linux)
     source $HOME/antigen.zsh
@@ -106,6 +106,9 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+# BREW
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
 
 # launch starship prompt
 eval "$(starship init zsh)"
