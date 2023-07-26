@@ -177,7 +177,7 @@ KEYMAPS(
    Key_Tab,               Key_Q,         Key_W,        Key_E,       Key_R,       Key_T,         ___,
    CTL_T(Escape),         Key_A,         Key_S,        Key_D,       Key_F,       Key_G,
    Key_LeftShift,         Key_Z,         Key_X,        Key_C,       Key_V,       Key_B,         Key_Escape,
-   Key_Backspace,         Key_LeftGui,   Key_LeftAlt,  Key_LeftControl,
+   Key_Backspace,         Key_LeftAlt,   Key_LeftGui,   Key_LeftControl,
    ShiftToLayer(FUNCTION),
 
    LockLayer(NUMPAD),     Key_6,         Key_7,        Key_8,       Key_9,       Key_0,         Key_Minus,
@@ -291,31 +291,11 @@ static void versionInfoMacro(uint8_t keyState) {
   }
 }
 
-/** anyKeyMacro is used to provide the functionality of the 'Any' key.
-
-   When the 'any key' macro is toggled on, a random alphanumeric key is
-   selected. While the key is held, the function generates a synthetic
-   keypress event repeating that randomly selected key.
-
-*/
-
-static void anyKeyMacro(uint8_t keyState) {
-  static Key lastKey;
-  bool toggledOn = false;
-  if (keyToggledOn(keyState)) {
-    lastKey.setKeyCode(Key_A.getKeyCode() + (uint8_t)(millis() % 36));
-    toggledOn = true;
-  }
-
-  if (keyIsPressed(keyState))
-    Kaleidoscope.hid().keyboard().pressKey(lastKey, toggledOn);
-}
-
 
 /** macroAction dispatches keymap events that are tied to a macro
     to that macro. It takes two uint8_t parameters.
 
-    The first is the macro being called (the entry in the 'enum' earlier in this file).
+    The first is the macro being called (the entry in th:311e 'enum' earlier in this file).
     The second is the state of the keyswitch. You can use the keyswitch state to figure out
     if the key has just been toggled on, is currently pressed or if it's just been released.
 
@@ -329,10 +309,6 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
     case MACRO_VERSION_INFO:
       versionInfoMacro(keyState);
-      break;
-
-    case MACRO_ANY:
-      anyKeyMacro(keyState);
       break;
   }
   return MACRO_NONE;
