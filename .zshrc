@@ -11,7 +11,7 @@ export DOTFILES="$HOME/dotfiles"
 # setup path to antigen ZSH pachage manager
 case `uname` in
   Darwin)
-    source $HOME/antigen.zsh
+    source /opt/homebrew/share/antigen/antigen.zsh
   ;;
   Linux)
     source $HOME/antigen.zsh
