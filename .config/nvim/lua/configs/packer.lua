@@ -1,20 +1,33 @@
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
+
 return require("packer").startup(function(use)
 	use { "wbthomason/packer.nvim" } -- self manage packer
-	 -- colorschemes
-	use { "sainnhe/everforest" }
+
+	-- colorschemes
 	use { "sainnhe/gruvbox-material"}
 
 	 -- syntax / highlighting
 	use {
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
+		run = ':TSUpdate',
 		config = function()
 			require"configs.nvim-treesitter"
 		end
 	}
 
 	-- motions
-	use { "alvan/vim-closetag" }
 	use { "tpope/vim-repeat" }
 	use { "tpope/vim-surround" }
 	use { "justinmk/vim-sneak" }
@@ -52,7 +65,6 @@ return require("packer").startup(function(use)
 			require("configs.feline")
 		end
 	}
-	use { 'nvim-lualine/lualine.nvim' }
 
 	-- GIT integrations
 	use { "tpope/vim-fugitive" }
@@ -67,8 +79,8 @@ return require("packer").startup(function(use)
 
 	-- fzf.vim
 	use {
-		"junegunn/fzf",
-		"junegunn/fzf.vim"
+		'junegunn/fzf.vim',
+		requires = { 'junegunn/fzf', run = ':call fzf#install()' }
 	}
 
 	-- LSP
@@ -77,25 +89,33 @@ return require("packer").startup(function(use)
 		config = function()
 			require"configs.lsp-zero"
 		end,
+		branch = 'v2.x',
 		requires = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
+
 			-- Autocompletion
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-nvim-lua" },
-			{ "saadparwaiz1/cmp_luasnip" },
 			{
 				"hrsh7th/nvim-cmp",
 				config = function()
 					require"configs.nvim-cmp"
 				end
 			},
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lua" },
+			{ "saadparwaiz1/cmp_luasnip" },
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
 		}
 	}
+
+	-- Automatically set up your configuration after cloning packer.nvim
+	-- Put this at the end after all plugins
+	if packer_bootstrap then
+		require('packer').sync()
+	end
 end)
