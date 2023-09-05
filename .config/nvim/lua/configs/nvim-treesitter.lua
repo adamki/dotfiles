@@ -24,6 +24,25 @@ treesitter.setup {
 	},
   indent = {
     enable = true
-  }
+  },
+	autotag = {
+		enable = true,
+		filetypes = {
+			'html',
+			'javascript',
+			'typescript',
+			'javascriptreact',
+			'typescriptreact',
+			'svelte',
+			'vue',
+			'tsx',
+			'jsx',
+			'css',
+			'lua',
+			'xml',
+			'php',
+			'markdown'
+		},
+	},
 }
 

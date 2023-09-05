@@ -25,20 +25,19 @@ return require("packer").startup(function(use)
 	}
 
 	-- improved interface
+	use {
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require"configs.nvim-treesitter"
+		end
+	}
 	use { "lukas-reineke/indent-blankline.nvim" }
 	use { "tpope/vim-eunuch" }
 	use {
-		"kyazdani42/nvim-tree.lua",
-		requires = { "kyazdani42/nvim-web-devicons" },
+		"nvim-tree/nvim-tree.lua",
 		config = function()
 			require"configs.nvim-tree"
 		end,
-	}
-	use {
-		"p00f/nvim-ts-rainbow",
-		config = function()
-			require"configs.nvim-ts-rainbow"
-		end
 	}
 	use {
 		"simrat39/symbols-outline.nvim" ,
