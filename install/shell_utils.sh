@@ -20,11 +20,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 echo -e "${HR}"
-echo -e "${bold}Installing Vim-Packer...${normal}"
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-echo -e "${HR}"
 echo -e "${bold}Installing NVM...${normal}"
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 
