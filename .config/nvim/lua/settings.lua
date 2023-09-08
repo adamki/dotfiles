@@ -48,5 +48,3 @@ vim.g.fzf_command_prefix = 'Fuzzy'
 vim.g.fzf_history_dir = '~/.local/share/fzf-history'
 vim.g.fzf_buffers_jump = 1
 
-wo.list = true
-vim.opt.listchars.extends = "#"

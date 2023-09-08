@@ -20,7 +20,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.expandtab = true
     vim.opt_local.tabstop = 4
   end
-
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -29,12 +28,13 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
     vim.opt_local.expandtab = true
   end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = {"json", "javascript", "javascriptreact"},
+  pattern = {"json", "javascript", "javascriptreact", "typescript", "typescriptreact"},
   group = ft_group,
   callback = function()
     vim.opt_local.shiftwidth = 2
