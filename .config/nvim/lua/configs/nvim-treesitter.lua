@@ -12,8 +12,8 @@ treesitter.setup {
     "html",
     "javascript",
     "json",
-    "typescript",
     "python",
+    "typescript",
     "vim"
   },
   highlight = {
