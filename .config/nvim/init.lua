@@ -1,5 +1,5 @@
 require('settings')
-require('configs.lazy')
 require('mappings')
+require('configs.lazy')
 require('filetypes')
 require('autocommands')

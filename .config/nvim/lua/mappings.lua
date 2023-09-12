@@ -73,3 +73,34 @@ set("o", "<localleader><tab>", "<plug>(fzf-maps-o)")
 
 -- nvim-tree.lua
 set("n", "-", ":NvimTreeFindFileToggle .<CR>")
+
+-- lsp-zero
+function LspZeroKeys(_, bufnr)
+  -- LspZeroKeys function gets consumed by lsp.on_attach(see configs/lsp-zero.lua
+  local noremap = {buffer = bufnr, remap = false}
+
+  set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', noremap)
+  set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', noremap)
+  set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', noremap)
+  set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', noremap)
+  set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', noremap)
+  set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', noremap)
+  set('n', 'gK', '<cmd>lua vim.lsp.buf.signature_help()<cr>', noremap)
+  set('n', 'rn', '<cmd>lua vim.lsp.buf.rename()<cr>', noremap)
+  set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', noremap)
+  set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', noremap)
+  set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', noremap)
+  set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap)
+
+  local show_virtual_text = true
+  -- toggle inline virtual_text with 'gg'
+  set('n', 'gt', function ()
+    show_virtual_text = not show_virtual_text
+
+    if show_virtual_text then
+      vim.diagnostic.config({ virtual_text=true})
+    else
+      vim.diagnostic.config({ virtual_text=false})
+    end
+  end, noremap)
+end
