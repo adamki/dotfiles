@@ -18,10 +18,6 @@ require("lazy").setup({
     "sainnhe/gruvbox-material",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme gruvbox-material]])
-    end,
   },
 
   -- Syntax / Highlighting
@@ -30,12 +26,12 @@ require("lazy").setup({
     config = function()
       require"configs.nvim-treesitter"
     end,
-    build = 'TSUpdate',
+    build = ":TSUpdate",
   },
 
   -- Motions
   { "tpope/vim-repeat" },
-  { "tpope/vim-surround" },
+  { "tpope/vim-surround"  },
   { "justinmk/vim-sneak" },
   { "numToStr/Comment.nvim",
     config = function()
@@ -48,10 +44,11 @@ require("lazy").setup({
     "windwp/nvim-ts-autotag",
     config = function()
       require"configs.nvim-treesitter"
-    end
+    end,
   },
   { "lukas-reineke/indent-blankline.nvim" },
   { "tpope/vim-eunuch" },
+  { "tpope/vim-rhubarb" },
   {
     "nvim-tree/nvim-tree.lua",
     config = function()
@@ -59,7 +56,7 @@ require("lazy").setup({
     end
   },
   {
-    "simrat39/symbols-outline.nvim" ,
+    "simrat39/symbols-outline.nvim",
     config = function()
       require("symbols-outline").setup()
     end
@@ -71,15 +68,19 @@ require("lazy").setup({
       require("configs.feline")
     end
   },
-  { "tpope/vim-fugitive" },
-  { "tpope/vim-rhubarb" },
-  { "shumphrey/fugitive-gitlab.vim" },
   {
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require'gitsigns'.setup()
-    end
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
   },
+
+  -- git integration
+  { "lewis6991/gitsigns.nvim" },
+  { "tpope/vim-fugitive" },
+  { "shumphrey/fugitive-gitlab.vim" },
 
   -- FZF
   {
@@ -93,11 +94,11 @@ require("lazy").setup({
   -- LSP
   {
     "VonHeikemen/lsp-zero.nvim",
+    branch = 'v2.x',
     config = function()
       require"configs.lsp-zero"
     end,
 
-    branch = 'v2.x',
     dependencies = {
       -- LSP Support
       { "neovim/nvim-lspconfig" },
@@ -111,14 +112,11 @@ require("lazy").setup({
           require"configs.nvim-cmp"
         end
       },
+      { "hrsh7th/cmp-cmdline"},
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },
-      { "saadparwaiz1/cmp_luasnip" },
-
-      -- Snippets
-      { "L3MON4D3/LuaSnip" },
     }
   }
 })
