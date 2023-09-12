@@ -24,23 +24,26 @@ treesitter.setup {
   indent = {
     enable = true
   },
-  autotag = {
+  autotag = { -- nvim-ts-autotags config
     enable = true,
+    enable_rename = true,
+    enable_close = true,
+    enable_close_on_slash = true,
     filetypes = {
+      'css',
       'html',
       'javascript',
-      'typescript',
       'javascriptreact',
-      'typescriptreact',
-      'svelte',
-      'vue',
-      'tsx',
       'jsx',
-      'css',
       'lua',
-      'xml',
+      'markdown',
       'php',
-      'markdown'
+      'svelte',
+      'tsx',
+      'typescript',
+      'typescriptreact',
+      'vue',
+      'xml',
     },
   },
 }
