@@ -36,43 +36,26 @@ set("v", "K", ":m '<-2<CR>gv=gv")
 
 set("n", "<F3>", ":echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>' . ' FG:' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'fg#')<CR>")
 
--- FZF
-set("n", "<LocalLeader>,", ":Fuzzy")
-set("n", "<LocalLeader>f", ":FuzzyFiles<CR>")
-set("n", "<LocalLeader>F", ":FuzzyFiles <c-r>=fnameescape(expand('%:p:h'))<CR><CR>")
-set("n", "<LocalLeader>g", ":FuzzyRg<CR>")
-set("n", "<LocalLeader><bs>", ":FuzzyRg <C-R><C-W><CR>")
-set("n", "<LocalLeader>b", ":FuzzyBuffers<CR>")
-set("n", "<LocalLeader>h", ":FuzzyHelptags<CR>")
-set("n", "<LocalLeader>l", ":FuzzyBLines<CR>")
-set("n", "<LocalLeader>L", ":FuzzyLines<CR>")
-set("n", "<LocalLeader>m", ":FuzzyMarks<CR>")
-set("n", "<LocalLeader>?", ":FuzzyMaps<CR>")
-set("n", "<LocalLeader>t", ":FuzzyTags<CR>")
-set("n", "<LocalLeader>T", ":FuzzyBTags<CR>")
-set("n", "<LocalLeader>w", ":FuzzyWindows<CR>")
-set("n", "<LocalLeader>/", ":FuzzyHistory/<CR>") -- search history
-set("n", "<LocalLeader>r", ":FuzzyHistory:<CR>") -- command history
-set("n", "<LocalLeader>y", ":FuzzyHistory<CR>")
-set("n", "<LocalLeader>C", ":FuzzyBCommits<CR>")
-set("n", "<LocalLeader>c", ":FuzzyCommits<CR>")
-set("n", "<LocalLeader>Gs", ":FuzzyGFiles?<CR>")
-set("n", "<LocalLeader>Gf", ":FuzzyGFiles<CR>")
-set("n", "<LocalLeader>:", ":FuzzyCommands<CR>")
+-- Fzf-lua
+set("n", "<LocalLeader>,", ":FzfLua")
+set("n", "<LocalLeader>f", "<cmd>lua require('fzf-lua').files()<CR>")
+set("n", "<LocalLeader>g", "<cmd>lua require('fzf-lua').grep_project()<CR>")
+set("n", "<LocalLeader><BS>", "<cmd>lua require('fzf-lua').grep_cword()<CR>")
+set("n", "<LocalLeader>b", "<cmd>lua require('fzf-lua').buffers()<CR>")
+set("n", "<LocalLeader>h", "<cmd>lua require('fzf-lua').help_tags()<CR>")
+set("n", "<LocalLeader>l", "<cmd>lua require('fzf-lua').blines()<CR>")
+set("n", "<LocalLeader>m", "<cmd>lua require('fzf-lua').marks()<CR>")
+set("n", "<localleader>?", "<cmd>lua require('fzf-lua').keymaps()<CR>")
+set("n", "<localleader>s", "<cmd>lua require('fzf-lua').colorschemes()<CR>")
+set("n", "<localleader>/", "<cmd>lua require('fzf-lua').search_history()<CR>")
+set("n", "<localleader>r", "<cmd>lua require('fzf-lua').command_history()<CR>")
+set("n", "<localleader>y", "<cmd>lua require('fzf-lua').oldfiles()<CR>") -- all recent files(not project specific)
+set("n", "<localleader>C", "<cmd>lua require('fzf-lua').git_bcommits()<CR>") -- commits for curr buffer/file
+set("n", "<localleader>c", "<cmd>lua require('fzf-lua').git_commits()<CR>") --commits for repo
 
-set("i", "<c-x><c-f>", "<plug>(fzf-complete-path)")
-set("i", "<c-x><c-j>", "<plug>(fzf-complete-file-ag)")
-set("i", "<c-x><c-k>", "<plug>(fzf-complete-word)")
-set("i", "<c-x><c-l>", "<plug>(fzf-complete-line)")
-set("i", "<c-x><c-t>", "<plug>(fzf-complete-buffer-line)")
-
-set("n", "<localleader><tab>", "<plug>(fzf-maps-n)")
-set("i", "<localleader><tab>", "<plug>(fzf-maps-i)")
-set("x", "<localleader><tab>", "<plug>(fzf-maps-x)")
-set("o", "<localleader><tab>", "<plug>(fzf-maps-o)")
-
--- nvim-tree.lua
-set("n", "-", ":NvimTreeFindFileToggle .<CR>")
+set("i", "<C-x><C-j>", "<cmd>lua require('fzf-lua').fzf_complete()<CR>")
+set("i", "<C-x><C-l>", "<cmd>lua require('fzf-lua').complete_line()<CR>")
+set("i", "<C-x><C-t>", "<cmd>lua require('fzf-lua').complete_bline()<CR>")
 
 -- lsp-zero
 function LspZeroKeys(_, bufnr)
@@ -94,7 +77,7 @@ function LspZeroKeys(_, bufnr)
 
   local show_virtual_text = true
   -- toggle inline virtual_text with 'gg'
-  set('n', 'gt', function ()
+  set('n', 'gv', function ()
     show_virtual_text = not show_virtual_text
 
     if show_virtual_text then

@@ -51,6 +51,7 @@ require("lazy").setup({
   { "tpope/vim-rhubarb" },
   {
     "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require"configs.nvim-tree"
     end
@@ -84,11 +85,18 @@ require("lazy").setup({
 
   -- FZF
   {
-    'junegunn/fzf.vim',
-    dependencies  = {
-      'junegunn/fzf',
-      build = ':call fzf#install()'
-    },
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("fzf-lua").setup({
+        "telescope",
+        winopts={
+          preview={
+            default="bat"
+          }
+        },
+      })
+    end
   },
 
   -- LSP
@@ -110,13 +118,29 @@ require("lazy").setup({
         "hrsh7th/nvim-cmp",
         config = function()
           require"configs.nvim-cmp"
-        end
+        end,
+        dependencies = {
+          -- completion packages
+          "hrsh7th/cmp-cmdline",
+          "hrsh7th/cmp-buffer",
+          "hrsh7th/cmp-path",
+          "hrsh7th/cmp-nvim-lsp",
+          "hrsh7th/cmp-nvim-lua",
+        }
       },
-      { "hrsh7th/cmp-cmdline"},
-      { "hrsh7th/cmp-buffer" },
-      { "hrsh7th/cmp-path" },
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "hrsh7th/cmp-nvim-lua" },
+
+      -- Snippets
+      {
+        "L3MON4D3/LuaSnip",
+        config = function()
+          require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+        dependencies = {
+          "rafamadriz/friendly-snippets",
+          "L3MON4D3/LuaSnip",
+          "saadparwaiz1/cmp_luasnip",
+        },
+      },
     }
   }
 })
