@@ -47,3 +47,7 @@ set.foldexpr = "nvim_treesitter#foldexpr()"
 vim.g.fzf_command_prefix = 'Fuzzy'
 vim.g.fzf_history_dir = '~/.local/share/fzf-history'
 vim.g.fzf_buffers_jump = 1
+
+-- folke/which-key.nvim
+o.timeout = true
+o.timeoutlen = 300

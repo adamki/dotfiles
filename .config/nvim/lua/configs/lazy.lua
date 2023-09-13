@@ -23,10 +23,10 @@ require("lazy").setup({
   -- Syntax / Highlighting
   {
     "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
     config = function()
       require"configs.nvim-treesitter"
     end,
-    build = ":TSUpdate",
   },
 
   -- Motions
@@ -59,43 +59,40 @@ require("lazy").setup({
   {
     "simrat39/symbols-outline.nvim",
     config = function()
-      require("symbols-outline").setup()
+      require"symbols-outline".setup()
     end
   },
   {
-    'feline-nvim/feline.nvim',
-    branch = '0.5-compat',
-    config = function ()
-      require("configs.feline")
-    end
+    'nvim-lualine/lualine.nvim',
+    config = function()
+      require"configs.lualine"
+    end,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      opt = true,
+    },
   },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
   },
 
   -- git integration
-  { "lewis6991/gitsigns.nvim" },
   { "tpope/vim-fugitive" },
   { "shumphrey/fugitive-gitlab.vim" },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require"gitsigns".setup()
+    end
+  },
 
   -- FZF
   {
     "ibhagwan/fzf-lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("fzf-lua").setup({
-        "telescope",
-        winopts={
-          preview={
-            default="bat"
-          }
-        },
-      })
+      require"configs.fzf-lua"
     end
   },
 
@@ -133,7 +130,7 @@ require("lazy").setup({
       {
         "L3MON4D3/LuaSnip",
         config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
+          require"luasnip.loaders.from_vscode".lazy_load()
         end,
         dependencies = {
           "rafamadriz/friendly-snippets",
