@@ -13,4 +13,7 @@ fzf.setup({
       default="bat"
     }
   },
+  files = {
+    cwd_prompt = true
+  }
 })

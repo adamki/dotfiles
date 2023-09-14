@@ -103,21 +103,20 @@ require("lazy").setup({
     config = function()
       require"configs.lsp-zero"
     end,
-
     dependencies = {
       -- LSP Support
       { "neovim/nvim-lspconfig" },
       { "williamboman/mason.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
 
-      -- Autocompletion
+      -- cmp
       {
         "hrsh7th/nvim-cmp",
         config = function()
           require"configs.nvim-cmp"
         end,
         dependencies = {
-          -- completion packages
+          -- cmp packages
           "hrsh7th/cmp-cmdline",
           "hrsh7th/cmp-buffer",
           "hrsh7th/cmp-path",

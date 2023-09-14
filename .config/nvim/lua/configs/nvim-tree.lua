@@ -15,8 +15,8 @@ tree.setup({
     highlight_opened_files = "name",
     icons = {
       show = {
-        file = false,
         folder = false,
+        file = false,
         folder_arrow = false,
         git = true,
         diagnostics = true,

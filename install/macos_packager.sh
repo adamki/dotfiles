@@ -18,7 +18,8 @@ BREW_PACKAGES=(
 
 BREW_CASKS=(
   firefox
-  font-fira-code
+  font-caskaydia-cove-nerd-font
+  font-jetbrains-mono-nerd-font
   slack
   rectangle
 )
