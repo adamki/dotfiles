@@ -30,8 +30,11 @@ This Installation script will:
 
 | Software                 |    OS                     |
 |--------------------------|---------------------------|
+| antigen                  |    All                    |
 | kitty                    |    All                    |
+| Starship                 |    All                    |
 | Z Shell                  |    All                    |
+| neovim                   |    All                    |
 | htop                     |    All                    |
 | gotop                    |    All                    |
 | Neovim                   |    All                    |
@@ -48,6 +51,7 @@ This Installation script will:
 | pyenv                    |    All                    |
 | bash-language-server     |    All                    |
 | vim-language-server      |    All                    |
+| eslint                   |    All                    |
 | bat                      |    All but debian         |
 | Fira                     |    All                    |
 | xcape                    |    linux                  |
@@ -65,5 +69,4 @@ This Installation script will:
 | dbus                     |    linux                  |
 | firefox                  |    MacOS                  |
 | slack                    |    MacOS                  |
-| rectangle                |    MacOS                  |
 | homebrew                 |    MacOS                  |

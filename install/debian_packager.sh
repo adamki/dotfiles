@@ -2,45 +2,45 @@
 . ./utils/colors.sh
 
 APT_PACKAGES=(
-  compton
-  feh
-  fonts-firacode
-  htop
-  i3
-  nitrogen
-  python3-pip
-  ripgrep
-  rofi
-  ruby-neovim
-  timeshift
-  tmux
-  w3m-img
-  xcape
-  xclip
-  pulseaudio-utils
-  brightnessctl
-  x11-xserver-utils
-  arandr
-  scrot
-  imagemagick
-  dbus
-  lxappearance
-  polybar
-  xfce4-power-manager
-  networkmanager-tui
+    compton
+    feh
+    fonts-firacode
+    htop
+    i3
+    nitrogen
+    python3-pip
+    ripgrep
+    rofi
+    ruby-neovim
+    timeshift
+    tmux
+    w3m-img
+    xcape
+    xclip
+    pulseaudio-utils
+    brightnessctl
+    x11-xserver-utils
+    arandr
+    scrot
+    imagemagick
+    dbus
+    lxappearance
+    polybar
+    xfce4-power-manager
+    networkmanager-tui
 )
 
 GLOBAL_NPM_PACKAGES=(
-  bash-language-server
-  eslint
-  neovim
-  vim-language-server
+    bash-language-server
+    eslint
+    neovim
+    vim-language-server
 )
 
 RUBY_GEMS=(
-  bundler
-  lolcat
-  neovim
+    bundler
+    lolcat
+    neovim
 )
 
 # was having issues installing a ruby

@@ -2,39 +2,37 @@
 . ./utils/colors.sh
 
 BREW_TAPS=(
-  homebrew/cask-fonts
+    homebrew/cask-fonts
 )
 
 BREW_PACKAGES=(
-  antigen
-  bat
-  gotop
-  htop
-  pyenv
-  ripgrep
-  tmux
-  neovim
+    antigen
+    bat
+    gotop
+    htop
+    pyenv
+    ripgrep
+    neovim
 )
 
 BREW_CASKS=(
-  firefox
-  font-caskaydia-cove-nerd-font
-  font-jetbrains-mono-nerd-font
-  slack
-  rectangle
+    firefox
+    font-caskaydia-cove-nerd-font
+    font-jetbrains-mono-nerd-font
+    slack
 )
 
 GLOBAL_NPM_PACKAGES=(
-  bash-language-server
-  eslint
-  neovim
-  vim-language-server
+    bash-language-server
+    eslint
+    neovim
+    vim-language-server
 )
 
 RUBY_GEMS=(
-  bundler
-  lolcat
-  neovim
+    bundler
+    lolcat
+    neovim
 )
 
 echo -e "${HR}"

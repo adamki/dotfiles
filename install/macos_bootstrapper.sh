@@ -4,9 +4,9 @@
 echo -e "${HR}"
 echo -e "${bold}Checking if Brew is installed...${normal}"
 if test ! $(which brew); then
-  echo -e "${HR}"
-  echo -e "${bold}Brew Not Found. Installing Brew...${normal}"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo -e "${HR}"
+    echo -e "${bold}Brew Not Found. Installing Brew...${normal}"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 echo -e "${HR}"

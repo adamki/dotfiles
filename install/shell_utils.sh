@@ -4,7 +4,7 @@
 echo -e "${HR}"
 echo -e "${bold}Installing Kitty Terminal...${normal}"
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
-  launch=n
+    launch=n
 
 echo -e "${HR}"
 echo -e "${bold}Installing Starship...${normal}"

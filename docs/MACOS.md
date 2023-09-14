@@ -3,7 +3,6 @@
 
   * Add `Complex Modification` [HERE](https://ke-complex-modifications.pqrs.org/#caps_lock_tapped_escape_held_left_control) OR as shown below:
 
-
     ```
        Change caps_lock to control if pressed with other keys, to escape if pressed alone.
     ```
@@ -24,7 +23,3 @@
       ...
       Switch to Desktop 9 > option + 9
     ```
-
-
-### Setup Rectangle Window manager
-https://github.com/rxhanson/Rectangle#how-to-use-it

@@ -33,7 +33,18 @@ set("v", ">", ">gv")
 set("v", "J", ":m '>+1<CR>gv=gv")
 set("v", "K", ":m '<-2<CR>gv=gv")
 
-set("n", "<F3>", ":echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>' . ' FG:' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'fg#')<CR>")
+set("n", "<F3>",
+    ":echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>' . ' FG:' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'fg#')<CR>")
+
+set("n", "<F2>", function()
+    if vim.fn.exists("#rnu_toggle_augroup#BufEnter#*") > 0 then
+        vim.wo.relativenumber = false
+        vim.api.nvim_command("autocmd! rnu_toggle_augroup")
+    else
+        vim.wo.relativenumber = true
+        CreateRNUToggleAutocmd()
+    end
+end)
 
 -- NvimTree
 set("n", "-", ":NvimTreeFindFileToggle .<CR>")
@@ -56,55 +67,56 @@ set("n", "<localleader>?", "<cmd>lua require('fzf-lua').keymaps()<CR>")
 set("n", "<localleader>s", "<cmd>lua require('fzf-lua').colorschemes()<CR>")
 set("n", "<localleader>/", "<cmd>lua require('fzf-lua').search_history()<CR>")
 set("n", "<localleader>r", "<cmd>lua require('fzf-lua').command_history()<CR>")
-set("n", "<localleader>y", "<cmd>lua require('fzf-lua').oldfiles()<CR>") -- all recent files(not project specific)
+set("n", "<localleader>y", "<cmd>lua require('fzf-lua').oldfiles()<CR>")     -- all recent files(not project specific)
 set("n", "<localleader>C", "<cmd>lua require('fzf-lua').git_bcommits()<CR>") -- commits for curr buffer/file
-set("n", "<localleader>c", "<cmd>lua require('fzf-lua').git_commits()<CR>") --commits for repo
+set("n", "<localleader>c", "<cmd>lua require('fzf-lua').git_commits()<CR>")  --commits for repo
 set("i", "<C-x><C-j>", "<cmd>lua require('fzf-lua').fzf_complete()<CR>")
 set("i", "<C-x><C-l>", "<cmd>lua require('fzf-lua').complete_line()<CR>")
 set("i", "<C-x><C-t>", "<cmd>lua require('fzf-lua').complete_bline()<CR>")
 
+-- luasnip
 function LspZeroKeyMap(_, bufnr)
-  local show_virtual_text = true
-  local noremap = { buffer = bufnr, remap = false }
+    local show_virtual_text = true
+    local noremap = { buffer = bufnr, remap = false }
 
-  return {
-    set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', noremap),
-    set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', noremap),
-    set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', noremap),
-    set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', noremap),
-    set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', noremap),
-    set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', noremap),
-    set('n', 'gK', '<cmd>lua vim.lsp.buf.signature_help()<cr>', noremap),
-    set('n', 'rn', '<cmd>lua vim.lsp.buf.rename()<cr>', noremap),
-    set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', noremap),
-    set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', noremap),
-    set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', noremap),
-    set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap),
-    set('n', 'gv', function()
-      show_virtual_text = not show_virtual_text
+    return {
+        set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', noremap),
+        set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', noremap),
+        set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', noremap),
+        set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', noremap),
+        set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', noremap),
+        set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', noremap),
+        set('n', 'gK', '<cmd>lua vim.lsp.buf.signature_help()<cr>', noremap),
+        set('n', 'rn', '<cmd>lua vim.lsp.buf.rename()<cr>', noremap),
+        set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', noremap),
+        set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', noremap),
+        set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', noremap),
+        set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap),
+        set('n', 'gv', function()
+            show_virtual_text = not show_virtual_text
 
-      if show_virtual_text then
-        vim.diagnostic.config({ virtual_text=true})
-      else
-        vim.diagnostic.config({ virtual_text=false})
-      end
-    end, noremap)
-  }
+            if show_virtual_text then
+                vim.diagnostic.config({ virtual_text = true })
+            else
+                vim.diagnostic.config({ virtual_text = false })
+            end
+        end, noremap)
+    }
 end
 
 function NvimCmpKeyMap(cmp)
-  return {
-    ['<C-c>'] = cmp.mapping.abort(),
-    ['<C-l>'] = cmp.mapping.confirm(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    return {
+        ['<C-c>'] = cmp.mapping.abort(),
+        ['<C-l>'] = cmp.mapping.confirm(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
-    ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+        ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
 
-    ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-    ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+        ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+        ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
 
-    ['<Down>'] = cmp.mapping.scroll_docs(4),
-    ['<Up>'] = cmp.mapping.scroll_docs(-4),
-  }
+        ['<Down>'] = cmp.mapping.scroll_docs(4),
+        ['<Up>'] = cmp.mapping.scroll_docs(-4),
+    }
 end

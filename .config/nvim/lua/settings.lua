@@ -23,16 +23,15 @@ o.number = true
 o.relativenumber = true
 set.showmode = false
 set.wildmode = "list:longest,full"
-vim.cmd[[set undofile]]
+vim.cmd [[set undofile]]
 vim.g.undodir = "~/.config/nvim/UNDO_HISTORY"
 o.scrolloff = 8
 o.sidescrolloff = 8
-o.foldlevel=20
-wo.signcolumn="yes:1"
+o.foldlevel = 20
+wo.signcolumn = "yes:1"
 
 -- aesthetics
 o.background = "dark"
-vim.cmd([[colorscheme gruvbox-material]])
 
 -- PLUGINS
 -- nvim-tree requirement
@@ -50,4 +49,4 @@ vim.g.fzf_buffers_jump = 1
 
 -- folke/which-key.nvim
 o.timeout = true
-o.timeoutlen = 300
+o.timeoutlen = 400

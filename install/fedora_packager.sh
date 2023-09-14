@@ -2,52 +2,52 @@
 . ./utils/colors.sh
 
 DNF_COPR_REPOS=(
-  evana/fira-code-fonts
+    evana/fira-code-fonts
 )
 
 DNF_PACKAGES=(
-  bat
-  compton
-  curl
-  feh
-  fira-code-fonts
-  firefox
-  htop
-  i3
-  neovim
-  nitrogen
-  python2
-  python3
-  ripgrep
-  rofi
-  timeshift
-  tmux
-  xcape
-  xclip
-  pulseaudio-utils
-  brightnessctl
-  xrandr
-  arandr
-  ImageMagick
-  dbus
-  lxappearance
-  polybar
-  xfce4-power-manager
-  networkmanager-tui
+    bat
+    compton
+    curl
+    feh
+    fira-code-fonts
+    firefox
+    htop
+    i3
+    neovim
+    nitrogen
+    python2
+    python3
+    ripgrep
+    rofi
+    timeshift
+    tmux
+    xcape
+    xclip
+    pulseaudio-utils
+    brightnessctl
+    xrandr
+    arandr
+    ImageMagick
+    dbus
+    lxappearance
+    polybar
+    xfce4-power-manager
+    networkmanager-tui
 )
 
 
 GLOBAL_NPM_PACKAGES=(
-  bash-language-server
-  eslint
-  neovim
-  vim-language-server
+    bash-language-server
+    eslint
+    neovim
+    vim-language-server
 )
 
 RUBY_GEMS=(
-  bundler
-  neovim
-  lolcat
+    bundler
+    neovim
+    lolcat
 )
 
 # All of this is needed for ruby
