@@ -12,15 +12,15 @@ autocmd("BufWritePre", {
 })
 
 autocmd("BufRead", {
-    group = generic_augroup,
     pattern = "*",
+    group = generic_augroup,
     command = [[call setpos(".", getpos("'\""))]] -- return cursor to prev pos
 })
 
 function CreateRNUToggleAutocmd()
     autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
-        group = rnu_toggle_augroup,
         pattern = "*",
+        group = rnu_toggle_augroup,
         callback = function()
             if vim.wo.number and vim.api.nvim_get_mode() ~= "i" then
                 vim.wo.relativenumber = true
@@ -29,8 +29,8 @@ function CreateRNUToggleAutocmd()
     })
 
     autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
-        group = rnu_toggle_augroup,
         pattern = "*",
+        group = rnu_toggle_augroup,
         callback = function()
             if vim.wo.number then
                 vim.wo.relativenumber = false
