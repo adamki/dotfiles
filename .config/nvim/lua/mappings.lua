@@ -48,6 +48,7 @@ end)
 
 -- NvimTree
 set("n", "-", ":NvimTreeFindFileToggle .<CR>")
+set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
 
 -- Gitsigns
 set("n", "]c", "<cmd>lua require('gitsigns').next_hunk()<Cr>")
@@ -74,7 +75,7 @@ set("i", "<C-x><C-j>", "<cmd>lua require('fzf-lua').fzf_complete()<CR>")
 set("i", "<C-x><C-l>", "<cmd>lua require('fzf-lua').complete_line()<CR>")
 set("i", "<C-x><C-t>", "<cmd>lua require('fzf-lua').complete_bline()<CR>")
 
--- luasnip
+-- lsp-zero
 function LspZeroKeyMap(_, bufnr)
     local show_virtual_text = true
     local noremap = { buffer = bufnr, remap = false }
@@ -104,6 +105,7 @@ function LspZeroKeyMap(_, bufnr)
     }
 end
 
+-- nvim-cmp
 function NvimCmpKeyMap(cmp)
     return {
         ['<C-c>'] = cmp.mapping.abort(),

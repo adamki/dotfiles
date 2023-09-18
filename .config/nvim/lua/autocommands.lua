@@ -1,6 +1,10 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+-- AutoGroups
 local generic_augroup = vim.api.nvim_create_augroup('generic_augroup', { clear = true })
+local rnu_toggle_augroup = vim.api.nvim_create_augroup('rnu_toggle_augroup', { clear = true })
+
+-- AutoCommands
 autocmd("BufWritePre", {
     pattern = "*",
     group = generic_augroup,
@@ -12,9 +16,6 @@ autocmd("BufRead", {
     pattern = "*",
     command = [[call setpos(".", getpos("'\""))]] -- return cursor to prev pos
 })
-
-
-local rnu_toggle_augroup = vim.api.nvim_create_augroup('rnu_toggle_augroup', { clear = true })
 
 function CreateRNUToggleAutocmd()
     autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {

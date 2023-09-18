@@ -12,13 +12,15 @@ lualine.setup({
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
             statusline = {
-                'Outline',
-                'NvimTree'
+                'aerial',
+                'NvimTree',
+                'fugitive'
             },
-            winbar = {},
+            winbar = {
+            },
         },
         ignore_focus = {
-            'Outline',
+            'aerial',
             'NvimTree'
         },
         always_divide_middle = true,
@@ -40,7 +42,7 @@ lualine.setup({
                     left = 1,
                     right = 1,
                 },
-            }
+            },
         },
         lualine_x = { 'diagnostics', "require'lsp-status'.status()" },
         lualine_y = { 'fileformat' },
@@ -60,6 +62,18 @@ lualine.setup({
     },
     tabline = {
         lualine_c = { 'tabs' },
+        lualine_x = {
+            {
+                'filename',
+                fmt = function(str)
+                    local path_separator = package.config:sub(1, 1)
+                    return str:gsub(path_separator, "")
+                end
+            },
+            {
+                "aerial"
+            }
+        }
     },
     winbar = {},
     inactive_winbar = {},

@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+vim.opt.rtp:prepend(lazypath)
 
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -10,8 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
-
-vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
@@ -61,9 +60,9 @@ require("lazy").setup({
         end
     },
     {
-        "simrat39/symbols-outline.nvim",
+        "stevearc/aerial.nvim",
         config = function()
-            require "symbols-outline".setup()
+            require('aerial').setup()
         end
     },
     {
