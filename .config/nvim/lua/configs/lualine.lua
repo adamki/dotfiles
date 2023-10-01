@@ -38,11 +38,14 @@ lualine.setup({
             {
                 'filename',
                 file_status = true, -- displays file status (readonly status, modified status)
-                padding = {
-                    left = 1,
-                    right = 1,
-                },
+                fmt = function(str)
+                    local path_separator = package.config:sub(1, 1)
+                    return str:gsub(path_separator, "")
+                end
             },
+            {
+                "aerial"
+            }
         },
         lualine_x = { 'diagnostics', "require'lsp-status'.status()" },
         lualine_y = { 'fileformat' },
@@ -62,18 +65,6 @@ lualine.setup({
     },
     tabline = {
         lualine_c = { 'tabs' },
-        lualine_x = {
-            {
-                'filename',
-                fmt = function(str)
-                    local path_separator = package.config:sub(1, 1)
-                    return str:gsub(path_separator, "")
-                end
-            },
-            {
-                "aerial"
-            }
-        }
     },
     winbar = {},
     inactive_winbar = {},
