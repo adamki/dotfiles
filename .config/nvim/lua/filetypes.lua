@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "json", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    pattern = { "css", "json", "javascript", "javascriptreact", "typescript", "typescriptreact" },
     group = ft_group,
     callback = function()
         vim.opt_local.shiftwidth = 2

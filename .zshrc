@@ -60,7 +60,6 @@ export PATH=/opt/homebrew/sbin:$PATH
 # launch starship prompt
 eval "$(starship init zsh)"
 
-eval "$(rbenv init -)"
 eval "$(pyenv init --path)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
