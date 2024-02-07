@@ -13,12 +13,14 @@ BREW_PACKAGES=(
     pyenv
     ripgrep
     neovim
+    starship
 )
 
 BREW_CASKS=(
     firefox
     font-caskaydia-cove-nerd-font
     font-jetbrains-mono-nerd-font
+    rectangle
     slack
 )
 

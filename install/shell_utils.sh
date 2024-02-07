@@ -6,9 +6,6 @@ echo -e "${bold}Installing Kitty Terminal...${normal}"
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
     launch=n
 
-echo -e "${HR}"
-echo -e "${bold}Installing Starship...${normal}"
-curl -sS https://starship.rs/install.sh | sh
 
 echo -e "${HR}"
 echo -e "${bold}Cloning pFetch...${normal}"
