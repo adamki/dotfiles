@@ -17,6 +17,9 @@ tags
 pyrightconfig.json
 .venv/
 
+#virtual env
+dev-env/
+
 # MacOS Stuff
 .DS_Store
 .DS_Store?
