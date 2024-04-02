@@ -375,8 +375,6 @@ tab_title_template [{index}] {title}
 #: }}}
 
 #: Color scheme {{{
-# get more colors here: https://github.com/dexpota/kitty-themes/tree/master/themes
-include $HOME/dotfiles/.config/kitty/gruvbox-light-medium-256.conf
 background_opacity         1.0
 dynamic_background_opacity yes
 
@@ -875,6 +873,6 @@ map kitty_mod+delete clear_terminal reset active
 
 
 # BEGIN_KITTY_THEME
-# Gruvbox Light Soft
+# Gruvbox Dark
 include current-theme.conf
 # END_KITTY_THEME

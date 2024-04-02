@@ -41,7 +41,6 @@ This Installation script will:
 | vim-plug                 |    All                    |
 | Antigen                  |    All                    |
 | ripgrep                  |    All                    |
-| pfetch                   |    All                    |
 | lolcat                   |    All                    |
 | bundler                  |    All                    |
 | nvm                      |    All                    |

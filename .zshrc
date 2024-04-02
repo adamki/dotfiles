@@ -29,9 +29,6 @@ antigen apply  # Tell Antigen that you're done.
 # IMPORTS
 source $DOTFILES/aliases
 
-# print sys info
-~/pfetch/pfetch
-
 # enable FZF fuzzy find and auto-complete
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
