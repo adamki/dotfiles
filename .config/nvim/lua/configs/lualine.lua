@@ -33,8 +33,7 @@ lualine.setup({
     },
     sections = {
         lualine_a = {},
-        lualine_b = { 'branch', 'diff' },
-        lualine_c = {
+        lualine_b = {
             {
                 'filename',
                 file_status = true, -- displays file status (readonly status, modified status)
@@ -42,12 +41,10 @@ lualine.setup({
                     local path_separator = package.config:sub(1, 1)
                     return str:gsub(path_separator, "")
                 end
-            },
-            {
-                "aerial"
             }
         },
-        lualine_x = { 'diagnostics', "require'lsp-status'.status()" },
+        lualine_c = {},
+        lualine_x = { 'diff', 'diagnostics', "require'lsp-status'.status()" },
         lualine_y = { 'fileformat' },
         lualine_z = { 'filetype' },
     },
@@ -55,16 +52,20 @@ lualine.setup({
         lualine_c = {
             {
                 'filename',
-                path = 1,
-                padding = {
-                    left = 1,
-                    right = 1,
-                },
+                path = 4,
+                -- padding = {
+                --     left = 1,
+                --     right = 1,
+                -- },
+                shorting_target = 40,
+                file_status = true,
             }
         },
     },
     tabline = {
-        lualine_c = { 'tabs' },
+        lualine_a = { 'tabs' },
+        lualine_x = { 'branch' },
+        lualine_y = { 'aerial' },
     },
     winbar = {},
     inactive_winbar = {},

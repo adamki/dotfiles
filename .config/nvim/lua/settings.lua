@@ -1,5 +1,4 @@
 local o = vim.o
-local bo = vim.bo
 local wo = vim.wo
 local set = vim.opt
 
@@ -16,7 +15,7 @@ set.pastetoggle = '<F6>'
 set.splitbelow = true
 set.splitright = true
 
-bo.swapfile = false
+o.swapfile = false
 wo.numberwidth = 3
 wo.wrap = false
 o.number = true

@@ -63,6 +63,7 @@ require("lazy").setup({
                     highlight = highlight,
                     remove_blankline_trail = false,
                 },
+                scope = { enabled = true },
             }
         end
     },
@@ -98,7 +99,6 @@ require("lazy").setup({
 
     -- git integration
     { "tpope/vim-fugitive" },
-    { "shumphrey/fugitive-gitlab.vim" },
     {
         "lewis6991/gitsigns.nvim",
         config = function()
