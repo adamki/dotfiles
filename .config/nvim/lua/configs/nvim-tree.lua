@@ -11,22 +11,36 @@ tree.setup({
         adaptive_size = true,
     },
     renderer = {
-        group_empty = true,
-        highlight_opened_files = "name",
+        full_name = true,
+        special_files = {},
+        symlink_destination = false,
         icons = {
+            git_placement = "signcolumn",
             show = {
+                file = true,
                 folder = false,
-                file = false,
                 folder_arrow = false,
                 git = true,
-                diagnostics = true,
-                modified = true,
-            }
-        }
+            },
+        },
+        group_empty = true,
+        highlight_opened_files = "name",
+        indent_markers = {
+            enable = true,
+            inline_arrows = true,
+            icons = {
+                corner = "└",
+                edge = "│",
+                item = "│",
+                bottom = "─",
+                none = " ",
+            },
+        },
+
     },
     actions = {
         open_file = {
-            quit_on_open = true
+            quit_on_open = false
         }
     },
 })

@@ -47,7 +47,7 @@ set("n", "<F2>", function()
 end)
 
 -- NvimTree
-set("n", "-", ":NvimTreeFindFileToggle .<CR>")
+set("n", "-", ":NvimTreeFindFileToggle<CR>")
 set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
 
 -- Gitsigns

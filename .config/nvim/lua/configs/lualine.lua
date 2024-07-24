@@ -37,10 +37,7 @@ lualine.setup({
             {
                 'filename',
                 file_status = true, -- displays file status (readonly status, modified status)
-                fmt = function(str)
-                    local path_separator = package.config:sub(1, 1)
-                    return str:gsub(path_separator, "")
-                end
+                path = 1,
             }
         },
         lualine_c = {},
@@ -52,20 +49,25 @@ lualine.setup({
         lualine_c = {
             {
                 'filename',
-                path = 4,
-                -- padding = {
-                --     left = 1,
-                --     right = 1,
-                -- },
+                path = 1,
                 shorting_target = 40,
                 file_status = true,
             }
         },
     },
     tabline = {
-        lualine_a = { 'tabs' },
-        lualine_x = { 'branch' },
-        lualine_y = { 'aerial' },
+        lualine_a = {
+            {
+                'tabs',
+                tab_max_length = 40,  -- Maximum width of each tab. The content will be shorten dynamically (example: apple/orange -> a/orange)
+                max_length = vim.o.columns / 3, -- Maximum width of tabs component.
+                mode = 2, -- 0: Shows tab_nr
+                path = 0, -- 0: just shows the filename
+            }
+
+        },
+        lualine_y = { 'branch'},
+        lualine_z = { 'aerial' },
     },
     winbar = {},
     inactive_winbar = {},

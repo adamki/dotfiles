@@ -32,6 +32,8 @@ source $DOTFILES/aliases
 # enable FZF fuzzy find and auto-complete
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export AWS_PROFILE=brightloom-cgp
+
 # tell FZF to use ripgrep
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --glob ""'
 export FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always {}"'

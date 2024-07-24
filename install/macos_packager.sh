@@ -62,7 +62,7 @@ echo -e "${bold}Installing Global NPM packages...${normal}"
 npm install -g ${GLOBAL_NPM_PACKAGES[@]}
 
 echo -e "${HR}"
-echo -e "${bold}Installing Ne   python3 -m pip install --user --upgrade pynvim"
+echo -e "${bold}Installing python3 -m pip install --user --upgrade pynvim"
 python2 -m pip install --user --upgrade pynvim
 python3 -m pip install --user --upgrade pynvim
 
