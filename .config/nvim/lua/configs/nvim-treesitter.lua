@@ -15,7 +15,8 @@ treesitter.setup {
         "python",
         "typescript",
         "vim",
-        "lua"
+        "lua",
+        "yaml"
     },
     highlight = {
         enable = true,
