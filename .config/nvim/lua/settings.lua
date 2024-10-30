@@ -11,7 +11,6 @@ vim.g.maplocalleader = ","
 vim.cmd [[set mouse=a]]
 set.clipboard = 'unnamedplus'
 vim.g.nopaste = true
-set.pastetoggle = '<F6>'
 set.splitbelow = true
 set.splitright = true
 
