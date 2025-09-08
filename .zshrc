@@ -32,10 +32,9 @@ source $DOTFILES/aliases
 # enable FZF fuzzy find and auto-complete
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export AWS_PROFILE=brightloom-cgp
-
 # tell FZF to use ripgrep
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --glob ""'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --glob "!assets/**/*.min.js"'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --glob ""'
 export FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always {}"'
 export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up,?:toggle-preview --border'
 
@@ -44,8 +43,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Add ARDUINO_PATH variable
-export ARDUINO_PATH=/usr/local/arduino
 # sets up rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 # sets up PyEnv
@@ -53,8 +50,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 # BREW
-export PATH=/opt/homebrew/bin:$PATH
-export PATH=/opt/homebrew/sbin:$PATH
+export PATH="/opt/homebrew/bin:$PATH"
 
 # launch starship prompt
 eval "$(starship init zsh)"
@@ -62,3 +58,4 @@ eval "$(starship init zsh)"
 eval "$(pyenv init --path)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+export NODE_EXTRA_CA_CERTS="/etc/Cloudflare/CloudflareCA.pem"

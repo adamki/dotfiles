@@ -13,15 +13,20 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 require("lazy").setup({
+    -- colorschemes
     {
         "sainnhe/gruvbox-material",
         lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
+    },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
         config = function()
-            vim.cmd([[colorscheme gruvbox-material]])
+            vim.cmd([[colorscheme catppuccin-macchiato]])
         end,
     },
-
     -- Syntax / Highlighting
     {
         "nvim-treesitter/nvim-treesitter",
@@ -148,7 +153,7 @@ require("lazy").setup({
             {
                 "L3MON4D3/LuaSnip",
                 config = function()
-                    require "luasnip.loaders.from_vscode"
+                    require("luasnip.loaders.from_vscode").lazy_load()
                 end,
                 dependencies = {
                     "saadparwaiz1/cmp_luasnip",

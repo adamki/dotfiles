@@ -10,6 +10,7 @@ treesitter.setup {
     ensure_installed = { -- A list of parser names, or "all"
         "bash",
         "html",
+        "glimmer_javascript",
         "javascript",
         "json",
         "python",

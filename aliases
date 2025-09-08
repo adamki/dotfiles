@@ -30,24 +30,33 @@ alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cu
 alias gap='git add -p'
 alias ga='git add'
 alias gnap='git add -N . && git add -p'
+
 alias gb='git branch'
+alias gby="git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' | pbcopy"
+alias gbd="git branch | egrep -v '(^\*|master|main|develop|site-us)' | xargs echo git branch -D"
+
+alias gco='git checkout'
 alias gc='git commit -v'
 alias gca='git commit -a -v'
+
 alias gd='git diff --color-words'
 alias gdc='git diff --cached'
 alias gdh='git diff HEAD'
+
 alias gl='git pull'
 alias glod='git log --graph --pretty="%Cgreen%h%Creset%Cblue%d%Creset %Cred%an%Creset: %s"'
+
 alias gp='git push'
 alias gpr='git pull --rebase'
+
 alias gst='git status'
+
 alias gr='git rebase'
 alias grc='git rebase --continue'
 alias gri='git rebase --interactive'
 alias gra='git rebase --abort'
 alias gcp='git cherry-pick'
-alias gco='git checkout'
-alias gy="git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' | pbcopy"
+
 
 #FZF
 fco() {
