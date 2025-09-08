@@ -69,3 +69,4 @@ This Installation script will:
 | firefox                  |    MacOS                  |
 | slack                    |    MacOS                  |
 | homebrew                 |    MacOS                  |
+| wezterm                  |    MacOS                  |

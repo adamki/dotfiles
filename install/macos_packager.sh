@@ -17,9 +17,8 @@ BREW_PACKAGES=(
 )
 
 BREW_CASKS=(
+    wezterm
     firefox
-    font-caskaydia-cove-nerd-font
-    font-jetbrains-mono-nerd-font
     rectangle
     slack
 )
