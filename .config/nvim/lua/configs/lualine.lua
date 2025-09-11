@@ -41,8 +41,9 @@ lualine.setup({
             }
         },
         lualine_c = {},
-        lualine_x = { 'diff', 'diagnostics', "require'lsp-status'.status()" },
-        lualine_y = { 'fileformat' },
+
+        lualine_x = { 'diff', 'diagnostics', "lsp_status" },
+        lualine_y = { 'fileformat', "searchCount" },
         lualine_z = { 'filetype' },
     },
     inactive_sections = {
