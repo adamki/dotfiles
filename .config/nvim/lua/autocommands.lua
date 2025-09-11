@@ -40,4 +40,3 @@ function CreateRNUToggleAutocmd()
 end
 
 CreateRNUToggleAutocmd()
-
