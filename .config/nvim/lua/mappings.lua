@@ -71,11 +71,14 @@ end, { remap = false, desc = "Toggle relative line numbers" })
 set("n", "-", ":NvimTreeFindFileToggle<CR>", { remap = false, desc = "Toggle NvimTree" })
 set("n", "<leader>a", "<cmd>AerialToggle!<CR>", { remap = false, desc = "Toggle Aerial outline" })
 
--- Gitsigns
+-- Gitsigns jump
 set("n", "]c", "<cmd>lua require('gitsigns').next_hunk()<CR>", { remap = false, desc = "Next Git hunk" })
 set("n", "[c", "<cmd>lua require('gitsigns').prev_hunk()<CR>", { remap = false, desc = "Previous Git hunk" })
+
+-- Gitsigns ops
 set("n", "<leader>hr", "<cmd>lua require('gitsigns').reset_hunk()<CR>", { desc = "Reset current hunk" })
-set("v", "<leader>hr", ":lua require('gitsigns').reset_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>", { desc = "Reset selected hunk" })
+set("v", "<leader>hr", ":lua require('gitsigns').reset_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
+    { desc = "Reset selected hunk" })
 set("n", "<leader>hR", "<cmd>lua require('gitsigns').reset_buffer()<CR>", { desc = "Reset entire buffer" })
 set("n", "<leader>hp", "<cmd>lua require('gitsigns').preview_hunk()<CR>", { desc = "Preview current hunk" })
 set("n", "<leader>hb", "<cmd>lua require('gitsigns').blame_line({full=true})<CR>", { desc = "Blame current line" })
@@ -83,7 +86,8 @@ set("n", "<leader>hd", "<cmd>lua require('gitsigns').diffthis()<CR>", { desc = "
 set("n", "<leader>hD", "<cmd>lua require('gitsigns').diffthis('~')<CR>", { desc = "Show diff against staged" })
 set("n", "<leader>td", "<cmd>lua require('gitsigns').toggle_deleted()<CR>", { desc = "Toggle deleted lines" })
 set("n", "<leader>hs", "<cmd>lua require('gitsigns').stage_hunk()<CR>", { desc = "Stage current hunk" })
-set("v", "<leader>hs", ":lua require('gitsigns').stage_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>", { desc = "Stage selected hunk" })
+set("v", "<leader>hs", ":lua require('gitsigns').stage_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
+    { desc = "Stage selected hunk" })
 set("n", "<leader>hu", "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", { desc = "Undo stage current hunk" })
 
 
