@@ -25,11 +25,14 @@ set("n", "[b", ":bprev<CR>", { remap = false, desc = "Prev buffer" })
 set("n", "cp", ":let @+= expand('%') <CR>", { remap = false, desc = "Copy current file path to clipboard" })
 
 -- Interactivesearch/replace
-set('n', '<leader>S', function()
-    local search = vim.fn.input("Search: ")
-    local replace = vim.fn.input("Replace: ")
-    vim.cmd("%s/" .. search .. "/" .. replace .. "/gc")
-end, { remap = false, desc = "Interactive find & replace in file" })
+set("n", "<leader>S", function()
+    local cword = vim.fn.expand("<cword>")
+    local search = vim.fn.input("Search: ", cword) -- prefill with word under cursor
+    local replace = vim.fn.input("Replace: ")      -- empty prompt, cursor ready
+    if search ~= "" then
+        vim.cmd(string.format("%%s/%s/%s/gc", search, replace))
+    end
+end, { desc = "Interactive substitute word under cursor" })
 
 -- Tabs
 set("n", "tq", ":tabclose<CR>", { remap = false, desc = "Close current tab" })
