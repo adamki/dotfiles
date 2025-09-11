@@ -9,14 +9,14 @@ end
 treesitter.setup {
     ensure_installed = { -- A list of parser names, or "all"
         "bash",
-        "html",
         "glimmer_javascript",
+        "html",
         "javascript",
         "json",
+        "lua",
         "python",
         "typescript",
         "vim",
-        "lua",
         "yaml"
     },
     highlight = {
@@ -26,27 +26,5 @@ treesitter.setup {
     },
     indent = {
         enable = true
-    },
-    autotag = { -- nvim-ts-autotags config
-        enable = true,
-        enable_rename = true,
-        enable_close = true,
-        enable_close_on_slash = true,
-        filetypes = {
-            'css',
-            'html',
-            'javascript',
-            'javascriptreact',
-            'jsx',
-            'lua',
-            'markdown',
-            'php',
-            'svelte',
-            'tsx',
-            'typescript',
-            'typescriptreact',
-            'vue',
-            'xml',
-        },
     },
 }

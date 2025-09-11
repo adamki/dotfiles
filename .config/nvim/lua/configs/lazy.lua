@@ -120,46 +120,21 @@ require("lazy").setup({
         end
     },
 
-    -- LSP
+    -- Lsp
+    { 'mason-org/mason.nvim', opts = {} },
     {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = 'v2.x',
-        config = function()
-            require "configs.lsp-zero"
-        end,
-        dependencies = {
-            -- LSP Support
-            { "neovim/nvim-lspconfig" },
-            { "williamboman/mason.nvim" },
-            { "williamboman/mason-lspconfig.nvim" },
+        'mason-org/mason-lspconfig.nvim',
+        dependencies = { 'neovim/nvim-lspconfig' },
+        opts = {}
+    },
 
-            -- cmp
-            {
-                "hrsh7th/nvim-cmp",
-                config = function()
-                    require "configs.nvim-cmp"
-                end,
-                dependencies = {
-                    -- cmp packages
-                    "hrsh7th/cmp-cmdline",
-                    "hrsh7th/cmp-buffer",
-                    "hrsh7th/cmp-path",
-                    "hrsh7th/cmp-nvim-lsp",
-                    "hrsh7th/cmp-nvim-lua",
-                }
-            },
-
-            -- Snippets
-            {
-                "L3MON4D3/LuaSnip",
-                config = function()
-                    require("luasnip.loaders.from_vscode").lazy_load()
-                end,
-                dependencies = {
-                    "saadparwaiz1/cmp_luasnip",
-                    "rafamadriz/friendly-snippets",
-                },
-            },
-        }
+    -- auto complete
+    {
+        'saghen/blink.cmp',
+        dependencies = { 'rafamadriz/friendly-snippets' },
+        version = '1.*',
+        config = function ()
+            require "configs.blink-cmp"
+        end
     }
 })

@@ -25,11 +25,14 @@ set("n", "[b", ":bprev<CR>", { remap = false, desc = "Prev buffer" })
 set("n", "cp", ":let @+= expand('%') <CR>", { remap = false, desc = "Copy current file path to clipboard" })
 
 -- Interactivesearch/replace
-set('n', '<leader>S', function()
-    local search = vim.fn.input("Search: ")
-    local replace = vim.fn.input("Replace: ")
-    vim.cmd("%s/" .. search .. "/" .. replace .. "/gc")
-end, { remap = false, desc = "Interactive find & replace in file" })
+set("n", "<leader>S", function()
+    local cword = vim.fn.expand("<cword>")
+    local search = vim.fn.input("Search: ", cword) -- prefill with word under cursor
+    local replace = vim.fn.input("Replace: ")      -- empty prompt, cursor ready
+    if search ~= "" then
+        vim.cmd(string.format("%%s/%s/%s/gc", search, replace))
+    end
+end, { desc = "Interactive substitute word under cursor" })
 
 -- Tabs
 set("n", "tq", ":tabclose<CR>", { remap = false, desc = "Close current tab" })
@@ -68,11 +71,14 @@ end, { remap = false, desc = "Toggle relative line numbers" })
 set("n", "-", ":NvimTreeFindFileToggle<CR>", { remap = false, desc = "Toggle NvimTree" })
 set("n", "<leader>a", "<cmd>AerialToggle!<CR>", { remap = false, desc = "Toggle Aerial outline" })
 
--- Gitsigns
+-- Gitsigns jump
 set("n", "]c", "<cmd>lua require('gitsigns').next_hunk()<CR>", { remap = false, desc = "Next Git hunk" })
 set("n", "[c", "<cmd>lua require('gitsigns').prev_hunk()<CR>", { remap = false, desc = "Previous Git hunk" })
+
+-- Gitsigns ops
 set("n", "<leader>hr", "<cmd>lua require('gitsigns').reset_hunk()<CR>", { desc = "Reset current hunk" })
-set("v", "<leader>hr", ":lua require('gitsigns').reset_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>", { desc = "Reset selected hunk" })
+set("v", "<leader>hr", ":lua require('gitsigns').reset_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
+    { desc = "Reset selected hunk" })
 set("n", "<leader>hR", "<cmd>lua require('gitsigns').reset_buffer()<CR>", { desc = "Reset entire buffer" })
 set("n", "<leader>hp", "<cmd>lua require('gitsigns').preview_hunk()<CR>", { desc = "Preview current hunk" })
 set("n", "<leader>hb", "<cmd>lua require('gitsigns').blame_line({full=true})<CR>", { desc = "Blame current line" })
@@ -80,9 +86,33 @@ set("n", "<leader>hd", "<cmd>lua require('gitsigns').diffthis()<CR>", { desc = "
 set("n", "<leader>hD", "<cmd>lua require('gitsigns').diffthis('~')<CR>", { desc = "Show diff against staged" })
 set("n", "<leader>td", "<cmd>lua require('gitsigns').toggle_deleted()<CR>", { desc = "Toggle deleted lines" })
 set("n", "<leader>hs", "<cmd>lua require('gitsigns').stage_hunk()<CR>", { desc = "Stage current hunk" })
-set("v", "<leader>hs", ":lua require('gitsigns').stage_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>", { desc = "Stage selected hunk" })
+set("v", "<leader>hs", ":lua require('gitsigns').stage_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
+    { desc = "Stage selected hunk" })
 set("n", "<leader>hu", "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", { desc = "Undo stage current hunk" })
 
+
+-- show diagnostics
+set("n", "<leader>d", function()
+    vim.diagnostic.open_float(nil, { focus = false })
+end, { desc = "Show diagnostics under cursor" })
+
+
+-- indent and format
+set("n", "=", function()
+    vim.cmd("normal! ==")                -- indent current line
+    vim.lsp.buf.format({ async = true }) -- format buffer
+end, { desc = "Indent and format buffer" })
+
+set("v", "=", function()
+    vim.cmd("normal! =") -- indent selection
+    vim.lsp.buf.format({
+        async = true,
+        range = {
+            ["start"] = vim.api.nvim_buf_get_mark(0, "<"),
+            ["end"] = vim.api.nvim_buf_get_mark(0, ">"),
+        },
+    })
+end, { desc = "Indent and format selection" })
 
 -- FzfLua
 set("n", "<LocalLeader>,", ":FzfLua", { remap = false, desc = "Open FzfLua main menu" })
@@ -114,57 +144,16 @@ set("n", "<LocalLeader>l", "<cmd>lua require('fzf-lua').blines()<CR>", { remap =
 set("n", "<LocalLeader>m", "<cmd>lua require('fzf-lua').marks()<CR>", { remap = false, desc = "List marks" })
 set("n", "<LocalLeader>t", "<cmd>lua require('fzf-lua').tabs()<CR>", { remap = false, desc = "List tabs" })
 set("n", "<localleader>?", "<cmd>lua require('fzf-lua').keymaps()<CR>", { remap = false, desc = "List keymaps" })
-set("n", "<localleader>s", "<cmd>lua require('fzf-lua').colorschemes()<CR>", { remap = false, desc = "Switch colorscheme" })
+set("n", "<localleader>s", "<cmd>lua require('fzf-lua').colorschemes()<CR>",
+    { remap = false, desc = "Switch colorscheme" })
 set("n", "<localleader>/", "<cmd>lua require('fzf-lua').search_history()<CR>", { remap = false, desc = "Search history" })
-set("n", "<localleader>r", "<cmd>lua require('fzf-lua').command_history()<CR>", { remap = false, desc = "Command history" })
+set("n", "<localleader>r", "<cmd>lua require('fzf-lua').command_history()<CR>",
+    { remap = false, desc = "Command history" })
 set("n", "<localleader>y", "<cmd>lua require('fzf-lua').oldfiles()<CR>", { remap = false, desc = "Recent files" })
-set("n", "<localleader>C", "<cmd>lua require('fzf-lua').git_bcommits()<CR>", { remap = false, desc = "Git buffer commits" })
+set("n", "<localleader>C", "<cmd>lua require('fzf-lua').git_bcommits()<CR>",
+    { remap = false, desc = "Git buffer commits" })
 set("n", "<localleader>c", "<cmd>lua require('fzf-lua').git_commits()<CR>", { remap = false, desc = "Git repo commits" })
 set("i", "<C-x><C-j>", "<cmd>lua require('fzf-lua').fzf_complete()<CR>", { remap = false, desc = "Fzf completion" })
 set("i", "<C-x><C-l>", "<cmd>lua require('fzf-lua').complete_line()<CR>", { remap = false, desc = "Complete line" })
-set("i", "<C-x><C-t>", "<cmd>lua require('fzf-lua').complete_bline()<CR>", { remap = false, desc = "Complete buffer line" })
-
--- lsp-zero
-function LspZeroKeyMap(_, bufnr)
-    local show_virtual_text = true
-    local noremap = { buffer = bufnr, remap = false }
-
-    return {
-        set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', noremap),
-        set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', noremap),
-        set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', noremap),
-        set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', noremap),
-        set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', noremap),
-        set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', noremap),
-        set('n', 'gK', '<cmd>lua vim.lsp.buf.signature_help()<cr>', noremap),
-        set('n', 'rn', '<cmd>lua vim.lsp.buf.rename()<cr>', noremap),
-        set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', noremap),
-        set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', noremap),
-        set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', noremap),
-        set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap),
-        set('n', 'gv', function()
-            show_virtual_text = not show_virtual_text
-
-            if show_virtual_text then
-                vim.diagnostic.config({ virtual_text = true })
-            else
-                vim.diagnostic.config({ virtual_text = false })
-            end
-        end, noremap)
-    }
-end
-
--- nvim-cmp
-function NvimCmpKeyMap(cmp)
-    return {
-        ['<C-c>'] = cmp.mapping.abort(),
-        ['<C-l>'] = cmp.mapping.confirm(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-        ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-        ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-        ['<Down>'] = cmp.mapping.scroll_docs(4),
-        ['<Up>'] = cmp.mapping.scroll_docs(-4),
-    }
-end
+set("i", "<C-x><C-t>", "<cmd>lua require('fzf-lua').complete_bline()<CR>",
+    { remap = false, desc = "Complete buffer line" })
