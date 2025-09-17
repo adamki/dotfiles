@@ -28,7 +28,7 @@ set("n", "cp", ":let @+= expand('%') <CR>", { remap = false, desc = "Copy curren
 set("n", "<leader>S", function()
     local cword = vim.fn.expand("<cword>")
     local search = vim.fn.input("Search: ", cword) -- prefill with word under cursor
-    local replace = vim.fn.input("Replace: ")      -- empty prompt, cursor ready
+    local replace = vim.fn.input("Replace: ") -- empty prompt, cursor ready
     if search ~= "" then
         vim.cmd(string.format("%%s/%s/%s/gc", search, replace))
     end
@@ -77,8 +77,12 @@ set("n", "[c", "<cmd>lua require('gitsigns').prev_hunk()<CR>", { remap = false, 
 
 -- Gitsigns ops
 set("n", "<leader>hr", "<cmd>lua require('gitsigns').reset_hunk()<CR>", { desc = "Reset current hunk" })
-set("v", "<leader>hr", ":lua require('gitsigns').reset_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
-    { desc = "Reset selected hunk" })
+set(
+    "v",
+    "<leader>hr",
+    ":lua require('gitsigns').reset_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
+    { desc = "Reset selected hunk" }
+)
 set("n", "<leader>hR", "<cmd>lua require('gitsigns').reset_buffer()<CR>", { desc = "Reset entire buffer" })
 set("n", "<leader>hp", "<cmd>lua require('gitsigns').preview_hunk()<CR>", { desc = "Preview current hunk" })
 set("n", "<leader>hb", "<cmd>lua require('gitsigns').blame_line({full=true})<CR>", { desc = "Blame current line" })
@@ -86,33 +90,35 @@ set("n", "<leader>hd", "<cmd>lua require('gitsigns').diffthis()<CR>", { desc = "
 set("n", "<leader>hD", "<cmd>lua require('gitsigns').diffthis('~')<CR>", { desc = "Show diff against staged" })
 set("n", "<leader>td", "<cmd>lua require('gitsigns').toggle_deleted()<CR>", { desc = "Toggle deleted lines" })
 set("n", "<leader>hs", "<cmd>lua require('gitsigns').stage_hunk()<CR>", { desc = "Stage current hunk" })
-set("v", "<leader>hs", ":lua require('gitsigns').stage_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
-    { desc = "Stage selected hunk" })
+set(
+    "v",
+    "<leader>hs",
+    ":lua require('gitsigns').stage_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
+    { desc = "Stage selected hunk" }
+)
 set("n", "<leader>hu", "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", { desc = "Undo stage current hunk" })
-
 
 -- show diagnostics
 set("n", "<leader>d", function()
     vim.diagnostic.open_float(nil, { focus = false })
 end, { desc = "Show diagnostics under cursor" })
 
-
 -- indent and format
-set("n", "=", function()
-    vim.cmd("normal! ==")                -- indent current line
-    vim.lsp.buf.format({ async = true }) -- format buffer
-end, { desc = "Indent and format buffer" })
-
-set("v", "=", function()
-    vim.cmd("normal! =") -- indent selection
-    vim.lsp.buf.format({
-        async = true,
-        range = {
-            ["start"] = vim.api.nvim_buf_get_mark(0, "<"),
-            ["end"] = vim.api.nvim_buf_get_mark(0, ">"),
-        },
-    })
-end, { desc = "Indent and format selection" })
+-- set("n", "=", function()
+-- 	vim.cmd("normal! ==") -- indent current line
+-- 	vim.lsp.buf.format({ async = true }) -- format buffer
+-- end, { desc = "Indent and format buffer" })
+--
+-- set("v", "=", function()
+-- 	vim.cmd("normal! =") -- indent selection
+-- 	vim.lsp.buf.format({
+-- 		async = true,
+-- 		range = {
+-- 			["start"] = vim.api.nvim_buf_get_mark(0, "<"),
+-- 			["end"] = vim.api.nvim_buf_get_mark(0, ">"),
+-- 		},
+-- 	})
+-- end, { desc = "Indent and format selection" })
 
 -- FzfLua
 set("n", "<LocalLeader>,", ":FzfLua", { remap = false, desc = "Open FzfLua main menu" })
@@ -120,40 +126,83 @@ set("n", "<LocalLeader>f", "<cmd>lua require('fzf-lua').files()<CR>", { remap = 
 set("n", "<LocalLeader>G", function()
     local root = require("fzf-lua.path").git_root({}) or vim.fn.getcwd()
     local subdirs = vim.fn.glob(root .. "/*", 1, 1)
-    subdirs = vim.tbl_filter(function(p) return vim.fn.isdirectory(p) == 1 end, subdirs)
+    subdirs = vim.tbl_filter(function(p)
+        return vim.fn.isdirectory(p) == 1
+    end, subdirs)
 
     require("fzf-lua").fzf_exec(subdirs, {
         prompt = "Use TAB to pick subdirs > ",
         fzf_opts = { ["--multi"] = true },
         actions = {
             ["default"] = function(selected)
-                if not selected or vim.tbl_isempty(selected) then return end
+                if not selected or vim.tbl_isempty(selected) then
+                    return
+                end
                 require("fzf-lua").live_grep({ cwd = root, search_dirs = selected })
             end,
         },
     })
 end, { remap = false, desc = "Live grep in multiple Git subdirs" })
-set("n", "<LocalLeader>g", "<cmd>lua require('fzf-lua').grep_project()<CR>",
-    { remap = false, desc = "Live grep in project" })
-set("n", "<LocalLeader><BS>", "<cmd>lua require('fzf-lua').grep_cword()<CR>",
-    { remap = false, desc = "Grep current word" })
+set(
+    "n",
+    "<LocalLeader>g",
+    "<cmd>lua require('fzf-lua').grep_project()<CR>",
+    { remap = false, desc = "Live grep in project" }
+)
+set(
+    "n",
+    "<LocalLeader><BS>",
+    "<cmd>lua require('fzf-lua').grep_cword()<CR>",
+    { remap = false, desc = "Grep current word" }
+)
 set("n", "<LocalLeader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", { remap = false, desc = "List buffers" })
 set("n", "<LocalLeader>j", "<cmd>lua require('fzf-lua').jumps()<CR>", { remap = false, desc = "List jump locations" })
 set("n", "<LocalLeader>h", "<cmd>lua require('fzf-lua').help_tags()<CR>", { remap = false, desc = "Search help tags" })
-set("n", "<LocalLeader>l", "<cmd>lua require('fzf-lua').blines()<CR>", { remap = false, desc = "Search lines in buffer" })
+set(
+    "n",
+    "<LocalLeader>l",
+    "<cmd>lua require('fzf-lua').blines()<CR>",
+    { remap = false, desc = "Search lines in buffer" }
+)
 set("n", "<LocalLeader>m", "<cmd>lua require('fzf-lua').marks()<CR>", { remap = false, desc = "List marks" })
 set("n", "<LocalLeader>t", "<cmd>lua require('fzf-lua').tabs()<CR>", { remap = false, desc = "List tabs" })
 set("n", "<localleader>?", "<cmd>lua require('fzf-lua').keymaps()<CR>", { remap = false, desc = "List keymaps" })
-set("n", "<localleader>s", "<cmd>lua require('fzf-lua').colorschemes()<CR>",
-    { remap = false, desc = "Switch colorscheme" })
-set("n", "<localleader>/", "<cmd>lua require('fzf-lua').search_history()<CR>", { remap = false, desc = "Search history" })
-set("n", "<localleader>r", "<cmd>lua require('fzf-lua').command_history()<CR>",
-    { remap = false, desc = "Command history" })
+set(
+    "n",
+    "<localleader>s",
+    "<cmd>lua require('fzf-lua').colorschemes()<CR>",
+    { remap = false, desc = "Switch colorscheme" }
+)
+set(
+    "n",
+    "<localleader>/",
+    "<cmd>lua require('fzf-lua').search_history()<CR>",
+    { remap = false, desc = "Search history" }
+)
+set(
+    "n",
+    "<localleader>r",
+    "<cmd>lua require('fzf-lua').command_history()<CR>",
+    { remap = false, desc = "Command history" }
+)
 set("n", "<localleader>y", "<cmd>lua require('fzf-lua').oldfiles()<CR>", { remap = false, desc = "Recent files" })
-set("n", "<localleader>C", "<cmd>lua require('fzf-lua').git_bcommits()<CR>",
-    { remap = false, desc = "Git buffer commits" })
-set("n", "<localleader>c", "<cmd>lua require('fzf-lua').git_commits()<CR>", { remap = false, desc = "Git repo commits" })
+set(
+    "n",
+    "<localleader>C",
+    "<cmd>lua require('fzf-lua').git_bcommits()<CR>",
+    { remap = false, desc = "Git buffer commits" }
+)
+set(
+    "n",
+    "<localleader>c",
+    "<cmd>lua require('fzf-lua').git_commits()<CR>",
+    { remap = false, desc = "Git repo commits" }
+)
 set("i", "<C-x><C-j>", "<cmd>lua require('fzf-lua').fzf_complete()<CR>", { remap = false, desc = "Fzf completion" })
 set("i", "<C-x><C-l>", "<cmd>lua require('fzf-lua').complete_line()<CR>", { remap = false, desc = "Complete line" })
-set("i", "<C-x><C-t>", "<cmd>lua require('fzf-lua').complete_bline()<CR>",
-    { remap = false, desc = "Complete buffer line" })
+set(
+    "i",
+    "<C-x><C-t>",
+    "<cmd>lua require('fzf-lua').complete_bline()<CR>",
+    { remap = false, desc = "Complete buffer line" }
+)

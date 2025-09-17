@@ -1,8 +1,8 @@
 local autocmd = vim.api.nvim_create_autocmd
 
 -- AutoGroups
-local generic_augroup = vim.api.nvim_create_augroup('generic_augroup', { clear = true })
-local rnu_toggle_augroup = vim.api.nvim_create_augroup('rnu_toggle_augroup', { clear = true })
+local generic_augroup = vim.api.nvim_create_augroup("generic_augroup", { clear = true })
+local rnu_toggle_augroup = vim.api.nvim_create_augroup("rnu_toggle_augroup", { clear = true })
 
 -- AutoCommands
 autocmd("BufWritePre", {
@@ -14,7 +14,7 @@ autocmd("BufWritePre", {
 autocmd("BufRead", {
     pattern = "*",
     group = generic_augroup,
-    command = [[call setpos(".", getpos("'\""))]] -- return cursor to prev pos
+    command = [[call setpos(".", getpos("'\""))]], -- return cursor to prev pos
 })
 
 function CreateRNUToggleAutocmd()
@@ -25,7 +25,7 @@ function CreateRNUToggleAutocmd()
             if vim.wo.number and vim.api.nvim_get_mode() ~= "i" then
                 vim.wo.relativenumber = true
             end
-        end
+        end,
     })
 
     autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
@@ -35,7 +35,7 @@ function CreateRNUToggleAutocmd()
             if vim.wo.number then
                 vim.wo.relativenumber = false
             end
-        end
+        end,
     })
 end
 

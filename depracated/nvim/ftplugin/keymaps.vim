@@ -103,6 +103,27 @@ nmap - :CocCommand explorer<CR>
 " Use `[d` and `]d` to navigate diagnostics(COC)
 nmap [d <Plug>(coc-diagnostic-prev)
 nmap ]d <Plug>(coc-diagnostic-next)
+
+-- Create an augroup for linting
+local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
+-- Function to try linting current buffer
+local function try_linting()
+    local linters = lint.linters_by_ft[vim.bo.filetype]
+    lint.try_lint(linters)
+end
+
+-- Autocmds to lint on buffer events
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+    group = lint_augroup,
+    callback = try_linting,
+})
+
+-- Keymap to manually trigger linting
+vim.keymap.set("n", "<leader>dl", try_linting, { desc = "Trigger linting for current file" })
+
+
+
 " Use `[g` and `]g` to navigate git changes(COC)
 nmap [c <Plug>(coc-git-prevchunk)
 nmap ]c <Plug>(coc-git-nextchunk)

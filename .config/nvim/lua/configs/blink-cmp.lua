@@ -9,9 +9,9 @@ end
 local opts = {
     keymap = {
         preset = "default",
-        ['<C-k>'] = { 'select_prev', 'fallback' },
-        ['<C-j>'] = { 'select_next', 'fallback' },
-        ['<C-l>'] = { 'accept', 'fallback' },
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-l>"] = { "accept", "fallback" },
     },
 
     completion = {
@@ -42,7 +42,7 @@ local opts = {
                     get_bufnrs = function()
                         return vim.api.nvim_list_bufs()
                     end,
-                }
+                },
             },
         },
     },

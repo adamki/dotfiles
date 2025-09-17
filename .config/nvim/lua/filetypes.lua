@@ -1,4 +1,4 @@
-local ft_group = vim.api.nvim_create_augroup('filetype_group', { clear = false })
+local ft_group = vim.api.nvim_create_augroup("filetype_group", { clear = false })
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.softtabstop = 4
         vim.opt_local.expandtab = true
         vim.opt_local.tabstop = 4
-    end
+    end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.tabstop = 4
         vim.opt_local.softtabstop = 4
         vim.opt_local.expandtab = true
-    end
+    end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd("FileType", {
         "javascript",
         "javascriptreact",
         "typescript",
-        "typescriptreact"
+        "typescriptreact",
     },
     group = ft_group,
     callback = function()
@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.tabstop = 2
         vim.opt_local.softtabstop = 2
         vim.opt_local.expandtab = true
-    end
+    end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -47,5 +47,5 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         vim.opt_local.shiftwidth = 4
         vim.opt_local.tabstop = 4
-    end
+    end,
 })

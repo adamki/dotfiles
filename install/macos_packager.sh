@@ -14,6 +14,7 @@ BREW_PACKAGES=(
     ripgrep
     neovim
     starship
+    shfmt
 )
 
 BREW_CASKS=(

@@ -35,6 +35,7 @@ files="
 .rgignore
 .gitignore_global
 .config/nvim/init.lua
+.config/nvim/stylua.toml
 .config/kitty/kitty.conf
 .config/bat/config
 .config/wezterm/wezterm.lua

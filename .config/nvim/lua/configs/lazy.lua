@@ -16,8 +16,8 @@ require("lazy").setup({
     -- colorschemes
     {
         "sainnhe/gruvbox-material",
-        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
+        lazy = false,
+        priority = 1000,
     },
     {
         "catppuccin/nvim",
@@ -27,12 +27,13 @@ require("lazy").setup({
             vim.cmd([[colorscheme catppuccin-macchiato]])
         end,
     },
+
     -- Syntax / Highlighting
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
-            require "configs.nvim-treesitter"
+            require("configs.nvim-treesitter")
         end,
     },
 
@@ -43,34 +44,28 @@ require("lazy").setup({
     {
         "numToStr/Comment.nvim",
         config = function()
-            require "Comment".setup()
-        end
+            require("Comment").setup()
+        end,
     },
 
     -- Improved Interface
     {
         "windwp/nvim-ts-autotag",
         config = function()
-            require "configs.nvim-treesitter"
+            require("configs.nvim-treesitter")
         end,
     },
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
         config = function()
-            local highlight = {
-                "CursorColumn",
-                "Whitespace",
-            }
-            require("ibl").setup {
+            local highlight = { "CursorColumn", "Whitespace" }
+            require("ibl").setup({
                 indent = { highlight = highlight, char = "" },
-                whitespace = {
-                    highlight = highlight,
-                    remove_blankline_trail = false,
-                },
+                whitespace = { highlight = highlight, remove_blankline_trail = false },
                 scope = { enabled = true },
-            }
-        end
+            })
+        end,
     },
     { "tpope/vim-eunuch" },
     { "tpope/vim-rhubarb" },
@@ -78,24 +73,22 @@ require("lazy").setup({
         "nvim-tree/nvim-tree.lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            require "configs.nvim-tree"
-        end
+            require("configs.nvim-tree")
+        end,
     },
     {
         "stevearc/aerial.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function()
-            require('aerial').setup()
-        end
+            require("configs.aerial")
+        end,
     },
     {
-        'nvim-lualine/lualine.nvim',
+        "nvim-lualine/lualine.nvim",
         config = function()
-            require "configs.lualine"
+            require("configs.lualine")
         end,
-        dependencies = {
-            'nvim-tree/nvim-web-devicons',
-            opt = true,
-        },
+        dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
     },
     {
         "folke/which-key.nvim",
@@ -107,8 +100,8 @@ require("lazy").setup({
     {
         "lewis6991/gitsigns.nvim",
         config = function()
-            require "gitsigns".setup()
-        end
+            require("gitsigns").setup()
+        end,
     },
 
     -- FZF
@@ -116,25 +109,56 @@ require("lazy").setup({
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            require "configs.fzf-lua"
-        end
+            require("configs.fzf-lua")
+        end,
     },
 
-    -- Lsp
-    { 'mason-org/mason.nvim', opts = {} },
+    -- LSP
     {
-        'mason-org/mason-lspconfig.nvim',
-        dependencies = { 'neovim/nvim-lspconfig' },
-        opts = {}
+        "williamboman/mason.nvim",
+        cmd = "Mason",
+        opts = {},
+        config = function()
+            require("mason").setup()
+        end,
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "williamboman/mason.nvim",
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
+        },
+        config = function()
+            require("configs.mason")
+        end,
     },
 
-    -- auto complete
+    -- Conform (Formatting)
     {
-        'saghen/blink.cmp',
-        dependencies = { 'rafamadriz/friendly-snippets' },
-        version = '1.*',
-        config = function ()
-            require "configs.blink-cmp"
-        end
-    }
+        "stevearc/conform.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("configs.conform")
+        end,
+    },
+
+    -- nvim-lint (Linting)
+    {
+        "mfussenegger/nvim-lint",
+        event = { "BufReadPost", "BufNewFile" },
+        config = function()
+            require("configs.nvim-linter")
+        end,
+    },
+
+    -- Auto-completion
+    {
+        "saghen/blink.cmp",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        version = "1.*",
+        config = function()
+            require("configs.blink-cmp")
+        end,
+    },
 })

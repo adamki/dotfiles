@@ -6,25 +6,26 @@ if not line_ok then
     return
 end
 
-treesitter.setup {
+treesitter.setup({
     ensure_installed = { -- A list of parser names, or "all"
         "bash",
         "glimmer_javascript",
         "html",
         "javascript",
         "json",
+        "liquid",
         "lua",
         "python",
         "typescript",
         "vim",
-        "yaml"
+        "yaml",
     },
     highlight = {
         enable = true,
         disable = {},
-        additional_vim_regex_highlighting = true
+        additional_vim_regex_highlighting = true,
     },
     indent = {
-        enable = true
+        enable = true,
     },
-}
+})
