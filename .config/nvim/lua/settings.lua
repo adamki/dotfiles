@@ -30,6 +30,24 @@ wo.signcolumn = "yes:1"
 
 -- aesthetics
 o.background = "dark"
+vim.diagnostic.config({
+    float = {
+        border = "rounded", -- "single", "double", "shadow", etc.
+    },
+})
+
+-- Set default options for floating previews (hover, signature help, etc.)
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or "rounded"
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
+-- Also set diagnostics float config
+vim.diagnostic.config({
+    float = { border = "rounded" },
+})
 
 -- PLUGINS
 -- nvim-tree requirement
@@ -39,11 +57,6 @@ vim.g.loaded_netrwPlugin = 1
 -- nvim-treesitter
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
-
--- junegenn/fzf.vim
-vim.g.fzf_command_prefix = "Fuzzy"
-vim.g.fzf_history_dir = "~/.local/share/fzf-history"
-vim.g.fzf_buffers_jump = 1
 
 -- folke/which-key.nvim
 o.timeout = true

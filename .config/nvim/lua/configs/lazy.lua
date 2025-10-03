@@ -24,7 +24,7 @@ require("lazy").setup({
         name = "catppuccin",
         priority = 1000,
         config = function()
-            vim.cmd([[colorscheme catppuccin-macchiato]])
+            vim.cmd("colorscheme catppuccin-mocha")
         end,
     },
 
@@ -59,12 +59,7 @@ require("lazy").setup({
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
         config = function()
-            local highlight = { "CursorColumn", "Whitespace" }
-            require("ibl").setup({
-                indent = { highlight = highlight, char = "" },
-                whitespace = { highlight = highlight, remove_blankline_trail = false },
-                scope = { enabled = true },
-            })
+            require("configs.indent-blankline")
         end,
     },
     { "tpope/vim-eunuch" },

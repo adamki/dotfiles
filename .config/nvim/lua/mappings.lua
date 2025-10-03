@@ -99,8 +99,13 @@ set(
 set("n", "<leader>hu", "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", { desc = "Undo stage current hunk" })
 
 -- show diagnostics
-set("n", "<leader>d", function()
-    vim.diagnostic.open_float(nil, { focus = false })
+vim.keymap.set("n", "<leader>d", function()
+    vim.diagnostic.open_float(nil, {
+        focus = false,
+        source = "always", -- show the source (e.g., lsp) for the diagnostic
+        header = "⚠ Diagnostics", -- optional header
+        prefix = "● ", -- optional bullet/prefix for each line
+    })
 end, { desc = "Show diagnostics under cursor" })
 
 -- indent and format
@@ -121,7 +126,7 @@ end, { desc = "Show diagnostics under cursor" })
 -- end, { desc = "Indent and format selection" })
 
 -- FzfLua
-set("n", "<LocalLeader>,", ":FzfLua", { remap = false, desc = "Open FzfLua main menu" })
+set("n", "<LocalLeader>,", ":FzfLua<CR>", { remap = false, desc = "Open FzfLua main menu" })
 set("n", "<LocalLeader>f", "<cmd>lua require('fzf-lua').files()<CR>", { remap = false, desc = "Find files in project" })
 set("n", "<LocalLeader>G", function()
     local root = require("fzf-lua.path").git_root({}) or vim.fn.getcwd()

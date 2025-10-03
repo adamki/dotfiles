@@ -14,6 +14,7 @@ local opts = {
         -- json = { "prettier" },
         -- yaml = { "prettier" },
         -- markdown = { "prettier" },
+        python = { "autopep8" },
         lua = { "stylua" },
         sh = { "shfmt" },
         bash = { "shfmt" },

@@ -14,13 +14,24 @@ if not mti_ok then
 end
 
 -- mason setup
-mason.setup()
+mason.setup({
+    ui = {
+        border = "rounded", -- "none", "single", "double", "rounded", "solid", "shadow"
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗",
+        },
+    },
+})
 
 -- ensure LSP servers are installed
 mason_lspconfig.setup({
     ensure_installed = {
+        "jedi_language_server",
         "vtsls",
         "lua_ls",
+        "rust_analyzer",
     },
     automatic_installation = true,
 })
@@ -28,6 +39,8 @@ mason_lspconfig.setup({
 -- ensure CLI tools/formatters are installed
 mason_tool_installer.setup({
     ensure_installed = {
+        "flake8",
+        "autopep8",
         "eslint_d",
         "prettier",
         "stylua",

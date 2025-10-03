@@ -16,7 +16,7 @@ config.harfbuzz_features = {
 }
 
 -- Color scheme
-config.color_scheme = "catppuccin-macchiato"
+config.color_scheme = "catppuccin-mocha"
 
 -- Window size and appearance
 config.initial_cols = 120
@@ -24,7 +24,7 @@ config.initial_rows = 28
 config.native_macos_fullscreen_mode = false
 
 -- Tab bar settings
-config.use_fancy_tab_bar = false
+-- config.use_fancy_tab_bar = false
 config.tab_max_width = 100
 
 -- Customize window frame (title bar) appearance
@@ -99,6 +99,38 @@ wezterm.on("gui-startup", function()
 
 	-- Finally, switch to this workspace
 	mux.set_active_workspace("stanley-us")
+end)
+
+wezterm.on("format-tab-title", function(tab)
+	local process_name = tab.active_pane.foreground_process_name
+	if process_name then
+		process_name = process_name:gsub("(.*[/\\])", "") -- strip path
+	else
+		process_name = "?"
+	end
+
+	local cwd_uri = tab.active_pane.current_working_dir
+	local cwd = "?"
+	if cwd_uri then
+		cwd = cwd_uri.file_path or cwd_uri
+		cwd = cwd:gsub(".*[/\\]", "") -- just last folder
+	end
+
+	local title = string.format("  [%s] : %s  ", cwd, process_name)
+
+	if tab.is_active then
+		-- Highlight active tab: bold + bright cyan
+		return wezterm.format({
+			{ Attribute = { Intensity = "Bold" } },
+			{ Text = title },
+		})
+	else
+		-- Dim inactive tabs
+		return wezterm.format({
+			{ Foreground = { Color = "gray" } },
+			{ Text = title },
+		})
+	end
 end)
 
 -- Return the final configuration
