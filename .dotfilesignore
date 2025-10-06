@@ -1,0 +1,9 @@
+README.md
+LICENSE
+install.sh
+symlink.sh
+.variables.sh
+.git/
+utils/
+depracated/
+desktop.png

@@ -1,5 +1,6 @@
 # to see more themes:
 # bat --list-themes | fzf --preview="bat --theme={} --color=always /path/to/file"
---theme="gruvbox-dark"
 
+--theme="OneHalfDark"
+--color="always"
 --style="numbers,changes,header"

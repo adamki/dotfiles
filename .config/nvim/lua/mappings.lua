@@ -49,12 +49,30 @@ set("v", "J", ":m '>+1<CR>gv=gv", { remap = false, desc = "Move selection down" 
 set("v", "K", ":m '<-2<CR>gv=gv", { remap = false, desc = "Move selection up" })
 
 -- Syntax debugging
-set(
-    "n",
-    "<F3>",
-    ":echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>' . ' FG:' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'fg#')<CR>",
-    { remap = false, desc = "Show syntax group info under cursor" }
-)
+set("n", "<F3>", function()
+  local fn = vim.fn
+  local line = fn.line(".")
+  local col  = fn.col(".")
+
+  -- synID / synIDattr / synIDtrans calls
+  local sid1 = fn.synID(line, col, 1)
+  local name1 = fn.synIDattr(sid1, "name")
+  local sid1_trans = fn.synIDtrans(sid1)
+  local name1_trans = fn.synIDattr(sid1_trans, "name")
+  local fg = fn.synIDattr(sid1_trans, "fg#")
+
+  local msg = string.format(
+    "syn: %s  trans: %s  lo: %s  FG:%s",
+    name1 or "<none>",
+    name1_trans or "<none>",
+    fn.synIDattr(fn.synID(line, col, 0), "name") or "<none>",
+    fg or "<none>"
+  )
+
+  -- nicer output than echo: use notify (or nvim_echo if you prefer)
+  vim.notify(msg, vim.log.levels.INFO, { title = "Syntax under cursor" })
+end, { remap = false, desc = "Show syntax group info under cursor" })
+
 
 -- Toggle relative numbers
 set("n", "<F2>", function()
@@ -67,37 +85,6 @@ set("n", "<F2>", function()
     end
 end, { remap = false, desc = "Toggle relative line numbers" })
 
--- NvimTree & Aerial
-set("n", "-", ":NvimTreeFindFileToggle<CR>", { remap = false, desc = "Toggle NvimTree" })
-set("n", "<leader>a", "<cmd>AerialToggle!<CR>", { remap = false, desc = "Toggle Aerial outline" })
-
--- Gitsigns jump
-set("n", "]c", "<cmd>lua require('gitsigns').next_hunk()<CR>", { remap = false, desc = "Next Git hunk" })
-set("n", "[c", "<cmd>lua require('gitsigns').prev_hunk()<CR>", { remap = false, desc = "Previous Git hunk" })
-
--- Gitsigns ops
-set("n", "<leader>hr", "<cmd>lua require('gitsigns').reset_hunk()<CR>", { desc = "Reset current hunk" })
-set(
-    "v",
-    "<leader>hr",
-    ":lua require('gitsigns').reset_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
-    { desc = "Reset selected hunk" }
-)
-set("n", "<leader>hR", "<cmd>lua require('gitsigns').reset_buffer()<CR>", { desc = "Reset entire buffer" })
-set("n", "<leader>hp", "<cmd>lua require('gitsigns').preview_hunk()<CR>", { desc = "Preview current hunk" })
-set("n", "<leader>hb", "<cmd>lua require('gitsigns').blame_line({full=true})<CR>", { desc = "Blame current line" })
-set("n", "<leader>hd", "<cmd>lua require('gitsigns').diffthis()<CR>", { desc = "Show diff of current buffer" })
-set("n", "<leader>hD", "<cmd>lua require('gitsigns').diffthis('~')<CR>", { desc = "Show diff against staged" })
-set("n", "<leader>td", "<cmd>lua require('gitsigns').toggle_deleted()<CR>", { desc = "Toggle deleted lines" })
-set("n", "<leader>hs", "<cmd>lua require('gitsigns').stage_hunk()<CR>", { desc = "Stage current hunk" })
-set(
-    "v",
-    "<leader>hs",
-    ":lua require('gitsigns').stage_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>",
-    { desc = "Stage selected hunk" }
-)
-set("n", "<leader>hu", "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", { desc = "Undo stage current hunk" })
-
 -- show diagnostics
 vim.keymap.set("n", "<leader>d", function()
     vim.diagnostic.open_float(nil, {
@@ -107,107 +94,3 @@ vim.keymap.set("n", "<leader>d", function()
         prefix = "● ", -- optional bullet/prefix for each line
     })
 end, { desc = "Show diagnostics under cursor" })
-
--- indent and format
--- set("n", "=", function()
--- 	vim.cmd("normal! ==") -- indent current line
--- 	vim.lsp.buf.format({ async = true }) -- format buffer
--- end, { desc = "Indent and format buffer" })
---
--- set("v", "=", function()
--- 	vim.cmd("normal! =") -- indent selection
--- 	vim.lsp.buf.format({
--- 		async = true,
--- 		range = {
--- 			["start"] = vim.api.nvim_buf_get_mark(0, "<"),
--- 			["end"] = vim.api.nvim_buf_get_mark(0, ">"),
--- 		},
--- 	})
--- end, { desc = "Indent and format selection" })
-
--- FzfLua
-set("n", "<LocalLeader>,", ":FzfLua<CR>", { remap = false, desc = "Open FzfLua main menu" })
-set("n", "<LocalLeader>f", "<cmd>lua require('fzf-lua').files()<CR>", { remap = false, desc = "Find files in project" })
-set("n", "<LocalLeader>G", function()
-    local root = require("fzf-lua.path").git_root({}) or vim.fn.getcwd()
-    local subdirs = vim.fn.glob(root .. "/*", 1, 1)
-    subdirs = vim.tbl_filter(function(p)
-        return vim.fn.isdirectory(p) == 1
-    end, subdirs)
-
-    require("fzf-lua").fzf_exec(subdirs, {
-        prompt = "Use TAB to pick subdirs > ",
-        fzf_opts = { ["--multi"] = true },
-        actions = {
-            ["default"] = function(selected)
-                if not selected or vim.tbl_isempty(selected) then
-                    return
-                end
-                require("fzf-lua").live_grep({ cwd = root, search_dirs = selected })
-            end,
-        },
-    })
-end, { remap = false, desc = "Live grep in multiple Git subdirs" })
-set(
-    "n",
-    "<LocalLeader>g",
-    "<cmd>lua require('fzf-lua').grep_project()<CR>",
-    { remap = false, desc = "Live grep in project" }
-)
-set(
-    "n",
-    "<LocalLeader><BS>",
-    "<cmd>lua require('fzf-lua').grep_cword()<CR>",
-    { remap = false, desc = "Grep current word" }
-)
-set("n", "<LocalLeader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", { remap = false, desc = "List buffers" })
-set("n", "<LocalLeader>j", "<cmd>lua require('fzf-lua').jumps()<CR>", { remap = false, desc = "List jump locations" })
-set("n", "<LocalLeader>h", "<cmd>lua require('fzf-lua').help_tags()<CR>", { remap = false, desc = "Search help tags" })
-set(
-    "n",
-    "<LocalLeader>l",
-    "<cmd>lua require('fzf-lua').blines()<CR>",
-    { remap = false, desc = "Search lines in buffer" }
-)
-set("n", "<LocalLeader>m", "<cmd>lua require('fzf-lua').marks()<CR>", { remap = false, desc = "List marks" })
-set("n", "<LocalLeader>t", "<cmd>lua require('fzf-lua').tabs()<CR>", { remap = false, desc = "List tabs" })
-set("n", "<localleader>?", "<cmd>lua require('fzf-lua').keymaps()<CR>", { remap = false, desc = "List keymaps" })
-set(
-    "n",
-    "<localleader>s",
-    "<cmd>lua require('fzf-lua').colorschemes()<CR>",
-    { remap = false, desc = "Switch colorscheme" }
-)
-set(
-    "n",
-    "<localleader>/",
-    "<cmd>lua require('fzf-lua').search_history()<CR>",
-    { remap = false, desc = "Search history" }
-)
-set(
-    "n",
-    "<localleader>r",
-    "<cmd>lua require('fzf-lua').command_history()<CR>",
-    { remap = false, desc = "Command history" }
-)
-set("n", "<localleader>y", "<cmd>lua require('fzf-lua').oldfiles()<CR>", { remap = false, desc = "Recent files" })
-set(
-    "n",
-    "<localleader>C",
-    "<cmd>lua require('fzf-lua').git_bcommits()<CR>",
-    { remap = false, desc = "Git buffer commits" }
-)
-set(
-    "n",
-    "<localleader>c",
-    "<cmd>lua require('fzf-lua').git_commits()<CR>",
-    { remap = false, desc = "Git repo commits" }
-)
-set("i", "<C-x><C-j>", "<cmd>lua require('fzf-lua').fzf_complete()<CR>", { remap = false, desc = "Fzf completion" })
-set("i", "<C-x><C-l>", "<cmd>lua require('fzf-lua').complete_line()<CR>", { remap = false, desc = "Complete line" })
-set(
-    "i",
-    "<C-x><C-t>",
-    "<cmd>lua require('fzf-lua').complete_bline()<CR>",
-    { remap = false, desc = "Complete buffer line" }
-)

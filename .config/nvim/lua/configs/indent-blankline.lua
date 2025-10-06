@@ -7,7 +7,15 @@ end
 local highlight = { "CursorColumn", "Whitespace" }
 
 indent.setup({
-    indent = { highlight = highlight, char = "" },
-    whitespace = { highlight = highlight, remove_blankline_trail = false },
-    scope = { enabled = true },
+    indent = {
+        highlight = highlight,
+        char = ""
+    },
+    whitespace = {
+        highlight = highlight,
+        remove_blankline_trail = false
+    },
+    scope = {
+        enabled = true
+    },
 })
