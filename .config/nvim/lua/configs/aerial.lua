@@ -8,7 +8,7 @@ end
 
 local opts = {
 	attach_mode = "global",
-	backends = { "lsp", "treesitter", "markdown", "man" },
+	backends = {  "treesitter", "lsp", "markdown", "man" },
 	show_guides = true,
 	layout = {
 		resize_to_content = false,
@@ -18,6 +18,17 @@ local opts = {
 			statuscolumn = " ",
 		},
 	},
+    filter_kind = {
+        "Class",
+        "Function",
+        "Variable",
+        "Method",
+        "Property",
+        "Constant",
+        "Interface",
+        "Enum",
+        "Module",
+    },
     -- stylua: ignore
     guides = {
         mid_item   = "├╴",

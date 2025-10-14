@@ -17,6 +17,14 @@ autocmd("BufRead", {
     command = [[call setpos(".", getpos("'\""))]], -- return cursor to prev pos
 })
 
+autocmd("VimEnter", {
+  callback = function()
+    if #vim.fn.getqflist() > 0 then
+      vim.cmd("copen")
+    end
+  end
+})
+
 function CreateRNUToggleAutocmd()
     autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
         pattern = "*",

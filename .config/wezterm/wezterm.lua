@@ -16,7 +16,7 @@ config.harfbuzz_features = {
 }
 
 -- Color scheme
-config.color_scheme = "catppuccin-mocha"
+config.color_scheme = "catppuccin-macchiato"
 
 -- Window size and appearance
 config.initial_cols = 120

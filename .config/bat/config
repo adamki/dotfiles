@@ -1,6 +1,6 @@
 # to see more themes:
 # bat --list-themes | fzf --preview="bat --theme={} --color=always /path/to/file"
 
---theme="OneHalfDark"
---color="always"
---style="numbers,changes,header"
+--color=always
+--theme=OneHalfDark
+--style=numbers,changes,header

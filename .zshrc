@@ -35,6 +35,16 @@ source $DOTFILES/aliases
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --hidden -L"
 export FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always {}"'
 export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up,?:toggle-preview --border'
+export FZF_DEFAULT_OPTS="
+  --ansi \
+  --border \
+  --height=80% \
+  --reverse \
+  --info=inline \
+  --preview-window=right:60%:wrap \
+  --bind alt-j:down,alt-k:up,?:toggle-preview \
+  --color=fg:#c0caf5,bg:#1a1b26,hl:#7aa2f7,fg+:#ffffff,bg+:#1f2335,hl+:#bb9af7,info:#7aa2f7,prompt:#bb9af7,spinner:#bb9af7,pointer:#7aa2f7,marker:#7aa2f7,border:#1f2335
+"
 
 # sets up nvm
 export NVM_DIR="$HOME/.nvm"
@@ -47,6 +57,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+
 # BREW
 export PATH="/opt/homebrew/bin:$PATH"
 

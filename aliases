@@ -1,81 +1,154 @@
-# Shell
+# =========================
+# SHELL SHORTCUTS
+# =========================
+
+# Basic ls / directory navigation
 alias ll="ls -l"
 alias la="ls -a"
-alias lll="la -l"
+alias lll="ls -al"
 alias md='mkdir -p'
 alias rd='rmdir'
-alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias psg='ps aux | fzf'
-alias h='history'
-alias hs='history | fzf'
 
+# Process & history search using fzf
+alias psg='ps aux | fzf --height=50%'
+alias h='history'
+alias hs='history | fzf --height=50%'
+
+# =========================
+# NEOVIM / DOTFILES
+# =========================
+
+# Use nvim.appimage for specific Linux distros
 if [[ -f "/etc/lsb-release" ]] || [[ -f "/etc/fedora-release" ]]; then
    alias nvim="~/nvim.appimage"
 fi
 
-alias aliases="cat ${HOME}/dotfiles/aliases | fzf"
-alias dots="cd ${HOME}/dotfiles"
+# Quick access to dotfiles
+alias aliases="bat -l=sh $HOME/dotfiles/aliases | fzf"
+alias dots="cd $HOME/dotfiles"
 
-alias nc="nvim ${HOME}/dotfiles/.config/nvim/init.lua"
-alias zshrc="nvim ${HOME}/dotfiles/.zshrc"
-alias kc="nvim ${HOME}/dotfiles/.config/kitty/kitty.conf"
+# Direct edit shortcuts
+alias nc="nvim $HOME/dotfiles/.config/nvim/init.lua"
+alias zshrc="nvim $HOME/dotfiles/.zshrc"
+alias wc="nvim $HOME/dotfiles/.config/wezterm/wezterm.lua"
 
-alias gh="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
+# Open GitHub repo in default browser
+alias gh='open "$(git remote get-url origin | sed -e "s/:/\\//" -e "s/git@/https:\/\//")"'
 
-# Git
+# =========================
+# GIT SHORTCUTS
+# =========================
+
+# Add / commit shortcuts
 alias gap='git add -p'
 alias ga='git add'
 alias gnap='git add -N . && git add -p'
 
+# Branch shortcuts
 alias gb='git branch'
 alias gby="git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' | pbcopy"
 alias gbd="git branch | egrep -v '(^\*|master|main|develop|site-us)' | xargs echo git branch -D"
 
+# Checkout / commit / diff
 alias gco='git checkout'
 alias gc='git commit -v'
 alias gca='git commit -a -v'
-
 alias gd='git diff --color-words'
 alias gdc='git diff --cached'
 alias gdh='git diff HEAD'
 
+# Pull / push / log
 alias gl='git pull'
 alias glod='git log --graph --pretty="%Cgreen%h%Creset%Cblue%d%Creset %Cred%an%Creset: %s"'
-
 alias gp='git push'
 alias gpr='git pull --rebase'
-
 alias gst='git status'
 
+# Rebase / cherry-pick
 alias gr='git rebase'
 alias grc='git rebase --continue'
 alias gri='git rebase --interactive'
 alias gra='git rebase --abort'
 alias gcp='git cherry-pick'
 
+# =========================
+# FZF FUNCTIONS
+# =========================
 
-#FZF
+# Fuzzy checkout branches with preview
 fco() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
-fif() {
-  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+  git fetch --quiet --all --prune
+
+  local branch
+  branch=$(git branch -a --color=always |
+           grep -v '/HEAD\s' |
+           fzf --ansi \
+               --preview "git log -n 15 --color=always --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' {1}" \
+               --preview-window=right:50%:wrap
+  ) || return
+
+  git checkout "$(echo "$branch" | sed 's/.* //; s#remotes/[^/]*/##')"
 }
 
-# Peloton Work Related shortcuts
-# login
+# Fuzzy search inside files and open results in Neovim quickfix
+fif() {
+  if [ $# -eq 0 ]; then
+    echo "Usage: fif <search term>"
+    return 1
+  fi
+
+  local query="$*"
+  local results
+
+  results=$(rg --vimgrep --smart-case "$query" 2> /dev/null | \
+    fzf --ansi \
+        --delimiter : \
+        --preview "bat --color=always --style=numbers --pager=never {1} --highlight-line {2}" \
+        --preview-window=right:60%:nowrap \
+        --multi \
+        --bind "tab:toggle" \
+        --height=80% --reverse --border \
+        --header "🔎 Content search — mark multiple with TAB, open all in quickfix with ENTER"
+  ) || return
+
+  if [ -n "$results" ]; then
+    echo "$results" | nvim -q -
+  fi
+}
+
+# Fuzzy find files and open them in Neovim quickfix
+ff() {
+  local results
+
+  results=$(rg --files --hidden --glob '!.git/*' 2> /dev/null | \
+    fzf --ansi \
+        --preview "bat --color=always --style=numbers --pager=never {}" \
+        --preview-window=right:60%:nowrap \
+        --multi \
+        --bind "tab:toggle" \
+        --height=80% --reverse --border \
+        --header "📁 File search — mark multiple with TAB, open all in quickfix with ENTER"
+  ) || return
+
+  if [ -n "$results" ]; then
+    echo "$results" | awk '{print $0 ":1:0:File"}' | nvim -q -
+  fi
+}
+
+# =========================
+# PELOTON WORK RELATED SHORTCUTS
+# =========================
+
+# AWS login / config helpers
 awslogin () { saml2aws login --region $AWS_REGION --profile=${1} --duo-mfa-option $FORCE_MFA --role="arn:aws:iam::${2}:role/cwe-dev"; }
 awsconfig () { eval $(saml2aws script --shell=bash --skip-prompt --region $AWS_REGION --profile=${1}); }
 awswho () { aws sts get-caller-identity; }
+
+# Kubernetes context shortcuts
 alias k8scwedev="awslogin cwe-dev $CWE_DEV && awsconfig cwe-dev && kubectl config use-context cwe-dev"
 alias k8scweprod="awslogin cwe-prod $CWE_PROD && awsconfig cwe-prod && kubectl config use-context cwe-prod"
 alias k8scwestage="awslogin cwe-stage $CWE_STAGE && awsconfig cwe-stage && kubectl config use-context cwe-stage"
