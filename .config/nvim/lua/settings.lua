@@ -28,8 +28,6 @@ o.sidescrolloff = 8
 o.foldlevel = 20
 wo.signcolumn = "yes:1"
 
--- aesthetics
-o.background = "dark"
 vim.diagnostic.config({
     float = {
         border = "rounded", -- "single", "double", "shadow", etc.
@@ -48,16 +46,3 @@ end
 vim.diagnostic.config({
     float = { border = "rounded" },
 })
-
--- PLUGINS
--- nvim-tree requirement
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
-
--- nvim-treesitter
-set.foldmethod = "expr"
-set.foldexpr = "nvim_treesitter#foldexpr()"
-
--- folke/which-key.nvim
-o.timeout = true
-o.timeoutlen = 400
