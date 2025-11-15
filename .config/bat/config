@@ -2,5 +2,5 @@
 # bat --list-themes | fzf --preview="bat --theme={} --color=always /path/to/file"
 
 --color=always
---theme=OneHalfDark
+--theme=catppuccin-frappe
 --style=numbers,changes,header

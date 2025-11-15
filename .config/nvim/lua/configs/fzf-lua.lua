@@ -58,7 +58,6 @@ fzf.setup({
 	},
 	previewers = {
 		cmd = "bat",
-		args = "--color=always --style=numbers,changes,header --diff --theme=OneHalfDark",
 	},
 })
 
