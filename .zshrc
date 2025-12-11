@@ -51,6 +51,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
+export PATH="$HOME/.rbenv/bin:$PATH"
 # sets up rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 # sets up PyEnv
@@ -63,7 +64,7 @@ export PATH="/opt/homebrew/bin:$PATH"
 
 # launch starship prompt
 eval "$(starship init zsh)"
-
+eval "$(rbenv init - zsh)"
 eval "$(pyenv init --path)"
 
 export PATH="$HOME/.poetry/bin:$PATH"

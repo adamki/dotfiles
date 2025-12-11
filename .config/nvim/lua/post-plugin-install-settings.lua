@@ -2,18 +2,17 @@ local o = vim.o
 -- local wo = vim.wo
 local set = vim.opt
 
+-- Areas to set colorscheme
+--     - bat/config
+--     - wezterm config
+--     - fzf/lua
+--     - post-plugin-install-settings
+
 -- ensure catppuccin plugin is loaded before this
 require("catppuccin").setup({})
 
-local theme = vim.env.THEME or "dark"
-
-if theme == "light" then
-    vim.o.background = "light"
-    vim.cmd.colorscheme("catppuccin-latte")
-else
-    vim.o.background = "dark"
-    vim.cmd.colorscheme("catppuccin-frappe")
-end
+-- vim.cmd.colorscheme("catppuccin-latte")
+vim.cmd.colorscheme("catppuccin-frappe")
 
 -- nvim-tree requirement
 vim.g.loaded = 1
