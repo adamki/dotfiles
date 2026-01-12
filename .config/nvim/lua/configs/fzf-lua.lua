@@ -21,6 +21,7 @@ local default_file_globs = {
 local grep_ignore_globs = {
 	"!assets/**/*.min.js.LICENSE.txt",
 	"!assets/**/*.min.js.map",
+	"!assets/**/*.min.js",
 	"!node_modules/**",
 }
 
