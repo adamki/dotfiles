@@ -22,8 +22,8 @@ BREW_PACKAGES=(
 
 BREW_CASKS=(
     wezterm
-    firefox
-    rectangle
+    # firefox
+    # rectangle
     slack
 )
 
@@ -115,15 +115,15 @@ else
     exit 1
 fi
 
-echo -e "${HR}\n${bold}Fetching Brew taps...${normal}"
-for tap in "${BREW_TAPS[@]}"; do
-    if ! brew tap | grep -q "^$tap\$"; then
-        echo -e "Tapping $tap"
-        brew tap "$tap"
-    else
-        echo -e "Tap already exists: $tap"
-    fi
-done
+# echo -e "${HR}\n${bold}Fetching Brew taps...${normal}"
+# for tap in "${BREW_TAPS[@]}"; do
+#     if ! brew tap | grep -q "^$tap\$"; then
+#         echo -e "Tapping $tap"
+#         brew tap "$tap"
+#     else
+#         echo -e "Tap already exists: $tap"
+#     fi
+# done
 
 echo -e "${HR}\n${bold}Installing Brew packages...${normal}"
 for pkg in "${BREW_PACKAGES[@]}"; do
