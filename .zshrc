@@ -67,4 +67,3 @@ eval "$(rbenv init - zsh)"
 eval "$(pyenv init --path)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
-# export NODE_EXTRA_CA_CERTS="/etc/Cloudflare/CloudflareCA.pem"

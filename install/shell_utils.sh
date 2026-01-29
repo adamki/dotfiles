@@ -13,12 +13,6 @@ reset=$(tput sgr0)
 bold=$(tput bold)
 normal=$(tput sgr0)
 
-HR="${yellow}==================================${reset}"
-echo -e "${HR}"
-echo -e "${bold}Installing Kitty Terminal...${normal}"
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
-    launch=n
-
 echo -e "${HR}"
 echo -e "${bold}Installing FZF...${normal}"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf

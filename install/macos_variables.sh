@@ -6,7 +6,6 @@
 dotfilesdir=$HOME/dotfiles
 backupdir=$HOME/dotfiles_old
 
-kittypath=.config/kitty
 batpath=.config/bat
 neovimpath=.config/nvim
 luadir=.config/nvim/lua
@@ -15,13 +14,11 @@ weztermdir=.config/wezterm
 
 directories="
 $backupdir
-$HOME/$kittypath
 $HOME/$batpath
 $HOME/$neovimpath
 $HOME/$ftpluginpath
 $HOME/$luaconfigsdir
 $HOME/$weztermdir
-$backupdir/$kittypath
 $backupdir/$batpath
 $backupdir/$neovimpath
 $backupdir/$luadir
@@ -36,7 +33,6 @@ files="
 .gitignore_global
 .config/nvim/init.lua
 .config/nvim/stylua.toml
-.config/kitty/kitty.conf
 .config/bat/config
 .config/wezterm/wezterm.lua
 "
