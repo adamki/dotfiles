@@ -11,7 +11,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         . ./install/fedora_bootstrapper.sh
     fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    . ./install/macos_variables.sh
-    . ./install/symlink.sh
-    . ./install/macos_bootstrapper.sh
+    . ./install/new_install_mac.sh
+    # . ./install/macos_variables.sh
+    # . ./install/symlink.sh
+    # . ./install/macos_bootstrapper.sh
 fi
