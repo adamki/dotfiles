@@ -11,8 +11,6 @@ BREW_TAPS=()
 BREW_PACKAGES=(
     antigen
     bat
-    gotop
-    htop
     pyenv
     ripgrep
     neovim
@@ -24,7 +22,7 @@ BREW_CASKS=(
     wezterm
     # firefox
     # rectangle
-    slack
+    # slack
 )
 
 GLOBAL_NPM_PACKAGES=(
@@ -75,24 +73,24 @@ done
 
 # -----------------------------
 # Python / pyenv
-echo -e "${HR}\n${bold}Initializing pyenv...${normal}"
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
+# echo -e "${HR}\n${bold}Initializing pyenv...${normal}"
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init -)"
 
 PYTHON_VERSION="3.12.2"
-if ! pyenv versions | grep -q "$PYTHON_VERSION"; then
-    echo -e "${bold}Installing Python $PYTHON_VERSION via pyenv...${normal}"
-    pyenv install -s "$PYTHON_VERSION"
-else
-    echo -e "${bold}Python $PYTHON_VERSION already installed${normal}"
-fi
-pyenv global "$PYTHON_VERSION"
-pyenv rehash
-
+# if ! pyenv versions | grep -q "$PYTHON_VERSION"; then
+#     echo -e "${bold}Installing Python $PYTHON_VERSION via pyenv...${normal}"
+#     pyenv install -s "$PYTHON_VERSION"
+# else
+#     echo -e "${bold}Python $PYTHON_VERSION already installed${normal}"
+# fi
+# pyenv global "$PYTHON_VERSION"
+# pyenv rehash
+# 
 echo -e "${bold}Using Python version: $(python3 --version)${normal}"
 
-echo -e "${HR}\n${bold}Installing pynvim for Python...${normal}"
-python3 -m pip install --user --upgrade pynvim
+# echo -e "${HR}\n${bold}Installing pynvim for Python...${normal}"
+# python3 -m pip install --user --upgrade pynvim
 
 # -----------------------------
 # Global NPM packages
