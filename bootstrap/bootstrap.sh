@@ -7,7 +7,7 @@ source "$ROOT/lib/logging.sh"
 source "$ROOT/lib/state.sh"
 
 for step in "$ROOT"/steps/*.sh; do
-    log "▶ Running $(basename "$step")"
+    log_info "▶ Running $(basename "$step")"
     bash "$step"
 done
 
