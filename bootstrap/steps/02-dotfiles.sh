@@ -38,13 +38,13 @@ backup_and_link() {
         local backup_path="$BACKUP_DIR${dst#$HOME}"
         mkdir -p "$(dirname "$backup_path")"
         mv -v "$dst" "$backup_path"
-        log_info "Backed up $dst -> $backup_path"
+        log_cmd "Backed up $dst -> $backup_path"
     fi
 
     # Create or update symlink
     if [[ ! -L "$dst" || "$(readlink "$dst")" != "$src" ]]; then
         ln -sfnv "$src" "$dst"
-        log_info "Linked $dst -> $src"
+        log_cmd "Linked $dst -> $src"
     fi
 }
 
