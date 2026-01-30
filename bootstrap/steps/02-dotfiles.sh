@@ -51,19 +51,24 @@ backup_and_link() {
 # -----------------------------
 # Root-level dotfiles
 # -----------------------------
-ROOT_FILES=(
-    ".zshrc"
-    ".vimrc"
-    ".gitignore_global"
-    ".rgignore"
-    ".luacheckrc"
-)
 
 log_step "Linking root-level dotfiles"
-for f in "${ROOT_FILES[@]}"; do
-    src="$DOTFILES_DIR/$f"
-    dst="$HOME/$f"
-    [[ -e "$src" ]] && backup_and_link "$src" "$dst"
+
+# find all hidden files in DOTFILES_DIR, ignore .config/ and .git/
+
+for file in "$DOTFILES_DIR"/.*; do
+    name=$(basename "$file")
+
+    # Skip . and .. entries
+    [[ "$name" == "." || "$name" == ".." ]] && continue
+
+    # Skip .config and .git
+    [[ "$name" == ".config" || "$name" == ".git" ]] && continue
+
+    # Only symlink files (ignore directories at root)
+    if [[ -f "$file" ]]; then
+        backup_and_link "$file" "$HOME/$name"
+    fi
 done
 
 # -----------------------------
