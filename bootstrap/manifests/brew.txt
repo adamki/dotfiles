@@ -1,13 +1,8 @@
-# Core CLI
 bat
 ripgrep
 fzf
 neovim
-
-# Prompt
 starship
-
-# Dev tools
 git
 htop
 luarocks
