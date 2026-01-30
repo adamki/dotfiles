@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-source "$(dirname "$0")/../lib/brew.sh"
-
+# Ensure LuaRocks is installed and available
 ensure_luarocks() {
     ensure_brew
 
@@ -11,20 +10,23 @@ ensure_luarocks() {
         brew list luarocks >/dev/null 2>&1 || brew install luarocks
     fi
 
-    # Ensure PATH has luarocks binary
-    eval "$(brew --prefix luarocks)/bin/luarocks path --bin)"
+    # Add LuaRocks bin to PATH (Apple Silicon safe)
+    export PATH="$(brew --prefix luarocks)/bin:$PATH"
 
-    command -v luarocks >/dev/null 2>&1 || {
+    # Confirm installation
+    if ! command -v luarocks >/dev/null 2>&1; then
         log_error "LuaRocks failed to install"
         exit 1
-    }
+    fi
 
-    log_success "LuaRocks is installed: $(luarocks --version)"
+    log_success "LuaRocks is installed: $(luarocks --version | head -n1)"
 }
 
+# Install a single LuaRocks package if not already installed
 install_luarocks_package() {
     local pkg="$1"
-    if ! luarocks list | grep -q "^$pkg"; then
+    # Use 'luarocks list --porcelain' to reliably detect installed packages
+    if ! luarocks list --porcelain | awk '{print $1}' | grep -qx "$pkg"; then
         log_info "Installing LuaRocks package: $pkg"
         luarocks install "$pkg"
     else
