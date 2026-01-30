@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 ensure_brew() {
+    export HOMEBREW_NO_INSTALL_CLEANUP=1
     local brew_bin="/opt/homebrew/bin/brew"
 
     if [[ ! -x "$brew_bin" ]]; then
