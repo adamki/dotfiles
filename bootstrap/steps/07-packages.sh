@@ -31,12 +31,9 @@ ensure_luarocks
 # Install Brew Packages
 log_step "Installing Brew packages"
 # Brew packages
-mapfile -t BREW_PKGS <"$ROOT_DIR/manifests/brew.txt"
-
-for pkg in "${BREW_PKGS[@]}"; do
+while IFS= read -r pkg || [[ -n "$pkg" ]]; do
     ensure_brew_package "$pkg"
-done
-
+done < <(sed '/^\s*$/d;/^\s*#/d' "$ROOT_DIR/manifests/brew.txt")
 # -----------------------------
 # Install Brew Casks
 log_step "Installing Brew casks"
