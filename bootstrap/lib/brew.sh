@@ -2,6 +2,9 @@
 
 ensure_brew() {
     export HOMEBREW_NO_INSTALL_CLEANUP=1
+    export HOMEBREW_NO_ANALYTICS=1
+    export HOMEBREW_NO_AUTO_UPDATE=1
+
     local brew_bin="/opt/homebrew/bin/brew"
 
     if [[ ! -x "$brew_bin" ]]; then
@@ -9,11 +12,11 @@ ensure_brew() {
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
-    # Only eval once per shell session
     eval "$("$brew_bin" shellenv)"
 }
 
 # Install a brew package idempotently
+
 ensure_brew_package() {
     local pkg="$1"
 
@@ -24,10 +27,10 @@ ensure_brew_package() {
 
     log_info "Installing Brew package: $pkg"
 
-    brew install "$pkg" || {
-        log_error "Brew failed for: $pkg — continuing"
+    if ! brew install "$pkg"; then
+        log_error "Brew failed for: $pkg — skipping"
         return 0
-    }
+    fi
 }
 
 # Install a brew cask idempotently
