@@ -31,27 +31,9 @@ ensure_luarocks
 # Install Brew Packages
 log_step "Installing Brew packages"
 # Brew packages
-BREW_MANIFEST="$ROOT_DIR/manifests/brew.txt"
-
-log_step "Installing Brew Packages"
-
-if [[ ! -f "$BREW_MANIFEST" ]]; then
-    log_error "Missing brew manifest: $BREW_MANIFEST"
-    exit 1
-fi
-
-while IFS= read -r pkg || [[ -n "$pkg" ]]; do
-    # Trim whitespace
-    pkg="$(echo "$pkg" | xargs)"
-
-    # Skip blank lines and comments
-    [[ -z "$pkg" || "$pkg" == \#* ]] && continue
-
+while read -r pkg; do
     ensure_brew_package "$pkg"
-
-done <"$BREW_MANIFEST"
-
-log_success "Brew package install step complete"
+done <"$ROOT_DIR/manifests/brew.txt"
 
 # -----------------------------
 # Install Brew Casks
@@ -91,10 +73,10 @@ done <"$ROOT_DIR/manifests/casks.txt"
 
 # -----------------------------
 # Install LuaRocks packages
-log_step "Installing LuaRocks packages"
-while read -r rock; do
-    install_luarocks_package "$rock"
-done <"$ROOT_DIR/manifests/luarocks.txt"
+# log_step "Installing LuaRocks packages"
+# while read -r rock; do
+#     install_luarocks_package "$rock"
+# done <"$ROOT_DIR/manifests/luarocks.txt"
 
 # -----------------------------
 mark_done "$STEP"
