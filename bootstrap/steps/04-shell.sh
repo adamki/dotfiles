@@ -13,10 +13,6 @@ ensure_brew
 
 brew list zsh >/dev/null 2>&1 || brew install zsh
 
-if [[ ! -f "$HOME/antigen.zsh" ]]; then
-    curl -L git.io/antigen >"$HOME/antigen.zsh"
-fi
-
-log_success "Shell tools installed (zsh + antigen)"
+log_success "Shell tools installed (zsh)"
 
 mark_done "$STEP"
