@@ -1,23 +1,24 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
+
 source "$(dirname "$0")/../lib/logging.sh"
 source "$(dirname "$0")/../lib/state.sh"
 
-STEP="shell"
+STEP="brew"
 is_done "$STEP" && exit 0
 
-# install brew
-brew list zsh >/dev/null 2>&1 || brew install zsh
+BREW_BIN="/opt/homebrew/bin/brew"
 
-# install antigen
-if [[ ! -f "$HOME/antigen.zsh" ]]; then
-    curl -L git.io/antigen >"$HOME/antigen.zsh"
+if [[ ! -x "$BREW_BIN" ]]; then
+    log_info "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    log_info "Homebrew already installed"
 fi
 
-# set ZSH as default shell
-if [[ "$SHELL" != "$(which zsh)" ]]; then
-    chsh -s "$(which zsh)"
-fi
+eval "$($BREW_BIN shellenv)"
+
+log_info "Updating Homebrew..."
+brew update
 
 mark_done "$STEP"
