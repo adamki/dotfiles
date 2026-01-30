@@ -21,7 +21,7 @@ FILES=(
     .config/wezterm/wezterm.lua
 )
 
-log "Backing up existing dotfiles..."
+log_info "Backing up existing dotfiles..."
 for f in "${FILES[@]}"; do
     if [[ -f "$HOME/$f" || -L "$HOME/$f" ]]; then
         mkdir -p "$BACKUP/$(dirname "$f")"
@@ -29,7 +29,7 @@ for f in "${FILES[@]}"; do
     fi
 done
 
-log "Symlinking dotfiles..."
+log_info "Symlinking dotfiles..."
 for f in "${FILES[@]}"; do
     mkdir -p "$(dirname "$HOME/$f")"
     ln -sf "$DOTFILES/$f" "$HOME/$f"

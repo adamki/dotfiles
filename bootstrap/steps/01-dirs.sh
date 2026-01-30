@@ -17,7 +17,7 @@ DIRS=(
     "$HOME/.config/wezterm"
 )
 
-log "Creating directories..."
+log_info "Creating directories..."
 for d in "${DIRS[@]}"; do
     mkdir -p "$d"
 done
