@@ -3,7 +3,7 @@
 set -euo pipefail
 source "$(dirname "$0")/../lib/logging.sh"
 source "$(dirname "$0")/../lib/state.sh"
-source "$(dirname "$0")/../lib/bash.sh"
+source "$(dirname "$0")/../lib/brew.sh"
 
 STEP="shell"
 is_done "$STEP" && exit 0
