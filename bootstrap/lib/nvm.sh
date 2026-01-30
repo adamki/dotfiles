@@ -10,4 +10,9 @@ ensure_nvm() {
 
     # shellcheck source=/dev/null
     [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+
+    command -v nvm >/dev/null 2>&1 || {
+        log_error "nvm failed to load"
+        exit 1
+    }
 }

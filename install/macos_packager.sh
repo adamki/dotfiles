@@ -86,7 +86,7 @@ PYTHON_VERSION="3.12.2"
 # fi
 # pyenv global "$PYTHON_VERSION"
 # pyenv rehash
-# 
+#
 echo -e "${bold}Using Python version: $(python3 --version)${normal}"
 
 # echo -e "${HR}\n${bold}Installing pynvim for Python...${normal}"

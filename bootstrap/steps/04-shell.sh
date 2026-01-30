@@ -17,8 +17,6 @@ if [[ ! -f "$HOME/antigen.zsh" ]]; then
     curl -L git.io/antigen >"$HOME/antigen.zsh"
 fi
 
-if [[ "$SHELL" != "$(which zsh)" ]]; then
-    chsh -s "$(which zsh)"
-fi
+log_success "Shell tools installed (zsh + antigen)"
 
 mark_done "$STEP"
