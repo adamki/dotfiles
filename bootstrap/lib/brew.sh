@@ -16,11 +16,16 @@ ensure_brew() {
 ensure_brew_package() {
     local pkg="$1"
 
-    if ! brew list "$pkg" >/dev/null 2>&1; then
-        log_info "Installing Brew package: $pkg"
-        brew install "$pkg"
-    else
+    if brew list "$pkg" >/dev/null 2>&1; then
         log_info "Brew package already installed: $pkg"
+        return 0
+    fi
+
+    log_info "Installing Brew package: $pkg"
+
+    if ! brew install "$pkg"; then
+        log_error "Brew install failed for: $pkg"
+        return 0 # prevent set -e from killing entire bootstrap
     fi
 }
 
