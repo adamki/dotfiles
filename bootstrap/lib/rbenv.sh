@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$(dirname "$0")/../lib/brew.sh"
+
 ensure_rbenv() {
     ensure_brew
     brew list rbenv >/dev/null 2>&1 || brew install rbenv
