@@ -9,7 +9,6 @@ STEP="brew"
 is_done "$STEP" && exit 0
 
 ensure_brew
-log_info "Updating Homebrew..."
 brew update
 
 mark_done "$STEP"

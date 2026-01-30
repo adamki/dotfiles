@@ -1,0 +1,7 @@
+antigen
+bat
+pyenv
+ripgrep
+neovim
+starship
+luarocks

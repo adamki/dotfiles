@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
+
 source "$(dirname "$0")/../lib/logging.sh"
 source "$(dirname "$0")/../lib/state.sh"
 source "$(dirname "$0")/../lib/brew.sh"
