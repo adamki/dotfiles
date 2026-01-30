@@ -33,7 +33,7 @@ log_step "Installing Brew packages"
 # Brew packages
 BREW_MANIFEST="$ROOT_DIR/manifests/brew.txt"
 
-log_header "Installing Brew Packages"
+log_step "Installing Brew Packages"
 
 if [[ ! -f "$BREW_MANIFEST" ]]; then
     log_error "Missing brew manifest: $BREW_MANIFEST"
