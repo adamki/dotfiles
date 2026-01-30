@@ -29,13 +29,9 @@ ensure_luarocks
 # -----------------------------
 # Install Brew Packages
 log_step "Installing Brew packages"
+# Brew packages
 while read -r pkg; do
-    if ! brew list "$pkg" >/dev/null 2>&1; then
-        log_info "Installing Brew package: $pkg"
-        brew install "$pkg"
-    else
-        log_info "Brew package already installed: $pkg"
-    fi
+    ensure_brew_package "$pkg"
 done <"$ROOT_DIR/manifests/brew.txt"
 
 # -----------------------------

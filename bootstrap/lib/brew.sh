@@ -10,3 +10,31 @@ ensure_brew() {
 
     eval "$($brew_bin shellenv)"
 }
+
+# Install a brew package idempotently
+ensure_brew_package() {
+    local pkg="$1"
+
+    ensure_brew
+
+    if ! brew list "$pkg" >/dev/null 2>&1; then
+        echo "Installing Brew package: $pkg"
+        brew install "$pkg"
+    else
+        echo "Brew package already installed: $pkg"
+    fi
+}
+
+# Install a brew cask idempotently
+ensure_brew_cask() {
+    local cask="$1"
+
+    ensure_brew
+
+    if ! brew list --cask "$cask" >/dev/null 2>&1; then
+        echo "Installing Brew cask: $cask"
+        brew install --cask "$cask"
+    else
+        echo "Brew cask already installed: $cask"
+    fi
+}
