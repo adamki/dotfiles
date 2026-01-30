@@ -23,6 +23,9 @@ ensure_brew_package() {
     else
         echo "Brew package already installed: $pkg"
     fi
+
+    # Evaluate brew shellenv so PATH, HOMEBREW_PREFIX, etc. are set
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 }
 
 # Install a brew cask idempotently
