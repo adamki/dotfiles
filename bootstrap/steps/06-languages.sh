@@ -5,7 +5,7 @@ set -euo pipefail
 source "$(dirname "$0")/../lib/logging.sh"
 source "$(dirname "$0")/../lib/state.sh"
 source "$(dirname "$0")/../lib/nvm.sh"
-source "$(dirname "$0")/../ib/rbenv.sh"
+source "$(dirname "$0")/../lib/rbenv.sh"
 source "$(dirname "$0")/../lib/pyenv.sh"
 
 STEP="languages"
