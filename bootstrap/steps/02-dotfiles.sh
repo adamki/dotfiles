@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
 
 # -----------------------------
@@ -21,40 +20,34 @@ is_done "$STEP" && exit 0
 DOTFILES_DIR="$HOME/dotfiles"
 BACKUP_DIR="$HOME/dotfiles_old"
 
-log_step "Backing up and symlinking dotfiles"
-
-# Symlink root-level dotfiles (skip .git and .config)
-ROOT_FILES=()
-for f in "$DOTFILES_DIR"/.*; do
-    base=$(basename "$f")
-    [[ "$base" == "." || "$base" == ".." ]] && continue
-    [[ "$base" == ".config" ]] && continue
-    [[ "$base" == ".git" ]] && continue
-    [[ -f "$f" ]] && ROOT_FILES+=("$base")
-done
-
-# Function to symlink a single file safely
-symlink_file() {
+# -----------------------------
+# Helper: Backup and symlink a single file
+# -----------------------------
+backup_and_link() {
     local src="$1"
     local dst="$2"
 
+    # Skip .git dirs
+    [[ "$(basename "$src")" == ".git" ]] && return
+
+    # Create parent directory of destination if needed
+    mkdir -p "$(dirname "$dst")"
+
+    # Backup existing file if it exists and is not a symlink to the same source
     if [[ -e "$dst" && ! -L "$dst" ]]; then
-        # Backup existing file
-        mkdir -p "$BACKUP_DIR/$(dirname "${dst#$HOME/}")"
-        mv -v "$dst" "$BACKUP_DIR/${dst#$HOME/}"
+        local backup_path="$BACKUP_DIR${dst#$HOME}"
+        mkdir -p "$(dirname "$backup_path")"
+        mv -v "$dst" "$backup_path"
+        log_info "Backed up $dst -> $backup_path"
     fi
 
-    # Symlink
-    ln -sfnv "$src" "$dst"
+    # Create or update symlink
+    if [[ ! -L "$dst" || "$(readlink "$dst")" != "$src" ]]; then
+        ln -sfnv "$src" "$dst"
+        log_info "Linked $dst -> $src"
+    fi
 }
 
-# Symlink root dotfiles
-for file in "${ROOT_FILES[@]}"; do
-    symlink_file "$DOTFILES_DIR/$file" "$HOME/$file"
-done
-
-# Recursively symlink everything in .config
-=======
 # -----------------------------
 # Root-level dotfiles
 # -----------------------------
@@ -63,6 +56,7 @@ ROOT_FILES=(
     ".vimrc"
     ".gitignore_global"
     ".rgignore"
+    ".luacheckrc"
 )
 
 log_step "Linking root-level dotfiles"
