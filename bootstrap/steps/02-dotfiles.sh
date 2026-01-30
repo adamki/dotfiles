@@ -2,6 +2,16 @@
 
 set -euo pipefail
 
+# -----------------------------
+# Bootstrap: Dotfiles
+# -----------------------------
+# This script:
+# 1. Backs up existing root-level dotfiles (.vimrc, .zshrc, etc.) and .config files
+# 2. Symlinks root-level dotfiles into $HOME
+# 3. Recursively symlinks all files under dotfiles/.config into $HOME/.config
+# 4. Ignores the .git directory
+# -----------------------------
+
 source "$(dirname "$0")/../lib/logging.sh"
 source "$(dirname "$0")/../lib/state.sh"
 
@@ -44,24 +54,40 @@ for file in "${ROOT_FILES[@]}"; do
 done
 
 # Recursively symlink everything in .config
+=======
+# -----------------------------
+# Root-level dotfiles
+# -----------------------------
+ROOT_FILES=(
+    ".zshrc"
+    ".vimrc"
+    ".gitignore_global"
+    ".rgignore"
+)
+
+log_step "Linking root-level dotfiles"
+for f in "${ROOT_FILES[@]}"; do
+    src="$DOTFILES_DIR/$f"
+    dst="$HOME/$f"
+    [[ -e "$src" ]] && backup_and_link "$src" "$dst"
+done
+
+# -----------------------------
+# Recursive .config symlinks
+# -----------------------------
+log_step "Linking .config directory recursively"
+
 CONFIG_SRC="$DOTFILES_DIR/.config"
 CONFIG_DST="$HOME/.config"
 
 if [[ -d "$CONFIG_SRC" ]]; then
-    shopt -s dotglob
-    for f in "$CONFIG_SRC"/*; do
-        rel_path="${f#$CONFIG_SRC/}"
-        dst_path="$CONFIG_DST/$rel_path"
-
-        if [[ -d "$f" ]]; then
-            mkdir -p "$dst_path"
-            continue
-        fi
-
-        mkdir -p "$(dirname "$dst_path")"
-        symlink_file "$f" "$dst_path"
-    done
+    while IFS= read -r -d '' file; do
+        rel_path="${file#$CONFIG_SRC/}"
+        src="$file"
+        dst="$CONFIG_DST/$rel_path"
+        backup_and_link "$src" "$dst"
+    done < <(find "$CONFIG_SRC" -type f -print0)
 fi
 
-log_success "Dotfiles mirrored successfully"
+log_success "Dotfiles symlinking complete!"
 mark_done "$STEP"
