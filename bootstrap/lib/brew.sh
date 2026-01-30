@@ -24,10 +24,10 @@ ensure_brew_package() {
 
     log_info "Installing Brew package: $pkg"
 
-    if ! brew install "$pkg"; then
-        log_error "Brew install failed for: $pkg"
-        return 0 # prevent set -e from killing entire bootstrap
-    fi
+    brew install "$pkg" || {
+        log_error "Brew failed for: $pkg — continuing"
+        return 0
+    }
 }
 
 # Install a brew cask idempotently
