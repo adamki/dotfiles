@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 STEP="packages"
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # source "$(dirname "$0")/../lib/brew.sh"
@@ -30,9 +31,27 @@ ensure_luarocks
 # Install Brew Packages
 log_step "Installing Brew packages"
 # Brew packages
-while read -r pkg; do
+BREW_MANIFEST="$ROOT_DIR/manifests/brew.txt"
+
+log_header "Installing Brew Packages"
+
+if [[ ! -f "$BREW_MANIFEST" ]]; then
+    log_error "Missing brew manifest: $BREW_MANIFEST"
+    exit 1
+fi
+
+while IFS= read -r pkg || [[ -n "$pkg" ]]; do
+    # Trim whitespace
+    pkg="$(echo "$pkg" | xargs)"
+
+    # Skip blank lines and comments
+    [[ -z "$pkg" || "$pkg" == \#* ]] && continue
+
     ensure_brew_package "$pkg"
-done <"$ROOT_DIR/manifests/brew.txt"
+
+done <"$BREW_MANIFEST"
+
+log_success "Brew package install step complete"
 
 # -----------------------------
 # Install Brew Casks
@@ -48,27 +67,27 @@ done <"$ROOT_DIR/manifests/casks.txt"
 
 # -----------------------------
 # Install global NPM packages
-log_step "Installing global NPM packages"
-while read -r pkg; do
-    if ! npm list -g --depth=0 "$pkg" >/dev/null 2>&1; then
-        log_info "Installing NPM package: $pkg"
-        npm install -g "$pkg"
-    else
-        log_info "NPM package already installed: $pkg"
-    fi
-done <"$ROOT_DIR/manifests/npm.txt"
+# log_step "Installing global NPM packages"
+# while read -r pkg; do
+#     if ! npm list -g --depth=0 "$pkg" >/dev/null 2>&1; then
+#         log_info "Installing NPM package: $pkg"
+#         npm install -g "$pkg"
+#     else
+#         log_info "NPM package already installed: $pkg"
+#     fi
+# done <"$ROOT_DIR/manifests/npm.txt"
 
 # -----------------------------
 # Install Ruby gems
-log_step "Installing Ruby gems"
-while read -r gem; do
-    if ! gem list -i "$gem" >/dev/null 2>&1; then
-        log_info "Installing Ruby gem: $gem"
-        gem install --no-document "$gem"
-    else
-        log_info "Ruby gem already installed: $gem"
-    fi
-done <"$ROOT_DIR/manifests/gems.txt"
+# log_step "Installing Ruby gems"
+# while read -r gem; do
+#     if ! gem list -i "$gem" >/dev/null 2>&1; then
+#         log_info "Installing Ruby gem: $gem"
+#         gem install --no-document "$gem"
+#     else
+#         log_info "Ruby gem already installed: $gem"
+#     fi
+# done <"$ROOT_DIR/manifests/gems.txt"
 
 # -----------------------------
 # Install LuaRocks packages

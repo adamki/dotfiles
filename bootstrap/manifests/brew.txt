@@ -1,7 +1,13 @@
-antigen
+# Core CLI
 bat
-luarocks
-neovim
-pyenv
 ripgrep
+fzf
+neovim
+
+# Prompt
 starship
+
+# Dev tools
+git
+htop
+luarocks
