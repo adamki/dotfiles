@@ -6,11 +6,13 @@ source "$(dirname "$0")/../lib/brew.sh"
 source "$(dirname "$0")/../lib/nvm.sh"
 source "$(dirname "$0")/../lib/rbenv.sh"
 source "$(dirname "$0")/../lib/pyenv.sh"
+source "$(dirname "$0")/../lib/luarocks.sh"
 
 ensure_brew
 ensure_nvm
 ensure_rbenv
 ensure_pyenv
+ensure_luarocks
 
 xargs -n 1 brew install <"$ROOT_DIR/manifests/brew.txt"
 xargs -n 1 brew install --cask <"$ROOT_DIR/manifests/casks.txt"
