@@ -18,6 +18,7 @@ STEP="dotfiles"
 is_done "$STEP" && exit 0
 
 DOTFILES_DIR="$HOME/dotfiles"
+MANIFESTS_DIR="$HOME/dotfiles/manifests"
 BACKUP_DIR="$HOME/dotfiles_old"
 
 mkdir -p "$BACKUP_DIR"
@@ -53,7 +54,7 @@ backup_and_link() {
 # -----------------------------
 # Link root-level dotfiles
 # -----------------------------
-ROOT_MANIFEST="$DOTFILES_DIR/root.txt"
+ROOT_MANIFEST="$MANIFESTS_DIR/root.txt"
 
 if [[ -f "$ROOT_MANIFEST" ]]; then
     log_step "Linking root-level dotfiles from root.txt"
