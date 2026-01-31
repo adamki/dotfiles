@@ -18,7 +18,7 @@ STEP="dotfiles"
 is_done "$STEP" && exit 0
 
 DOTFILES_DIR="$HOME/dotfiles"
-MANIFESTS_DIR="$HOME/dotfiles/manifests"
+MANIFESTS_DIR="$HOME/bootstrap/manifests"
 BACKUP_DIR="$HOME/dotfiles_old"
 
 mkdir -p "$BACKUP_DIR"
