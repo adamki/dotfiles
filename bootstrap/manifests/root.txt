@@ -1,0 +1,5 @@
+.zshrc
+.vimrc
+.gitignore_global
+.rgignore
+.luacheckrc

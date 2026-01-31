@@ -20,6 +20,8 @@ is_done "$STEP" && exit 0
 DOTFILES_DIR="$HOME/dotfiles"
 BACKUP_DIR="$HOME/dotfiles_old"
 
+mkdir -p "$BACKUP_DIR"
+
 # -----------------------------
 # Helper: Backup and symlink a single file
 # -----------------------------
@@ -49,27 +51,19 @@ backup_and_link() {
 }
 
 # -----------------------------
-# Root-level dotfiles
+# Link root-level dotfiles
 # -----------------------------
+ROOT_MANIFEST="$DOTFILES_DIR/root.txt"
 
-log_step "Linking root-level dotfiles"
-
-# find all hidden files in DOTFILES_DIR, ignore .config/ and .git/
-
-for file in "$DOTFILES_DIR"/.*; do
-    name=$(basename "$file")
-
-    # Skip . and .. entries
-    [[ "$name" == "." || "$name" == ".." ]] && continue
-
-    # Skip .config and .git
-    [[ "$name" == ".config" || "$name" == ".git" ]] && continue
-
-    # Only symlink files (ignore directories at root)
-    if [[ -f "$file" ]]; then
-        backup_and_link "$file" "$HOME/$name"
-    fi
-done
+if [[ -f "$ROOT_MANIFEST" ]]; then
+    log_step "Linking root-level dotfiles from root.txt"
+    while IFS= read -r file || [[ -n "$file" ]]; do
+        [[ -z "$file" || "$file" =~ ^# ]] && continue # skip empty lines/comments
+        src="$DOTFILES_DIR/$file"
+        dst="$HOME/$file"
+        [[ -e "$src" ]] && backup_and_link "$src" "$dst"
+    done <"$ROOT_MANIFEST"
+fi
 
 # -----------------------------
 # Recursive .config symlinks
