@@ -22,18 +22,13 @@ alias hs='history | fzf --height=50%'
 # NEOVIM / DOTFILES
 # =========================
 
-# Use nvim.appimage for specific Linux distros
-if [[ -f "/etc/lsb-release" ]] || [[ -f "/etc/fedora-release" ]]; then
-   alias nvim="~/nvim.appimage"
-fi
-
 # Quick access to dotfiles
 alias aliases="bat -l=sh $HOME/dotfiles/aliases | fzf"
 alias dots="cd $HOME/dotfiles"
 
 # Direct edit shortcuts
-alias nc="nvim $HOME/dotfiles/.config/nvim/init.lua"
 alias zshrc="nvim $HOME/dotfiles/.zshrc"
+alias nc="nvim $HOME/dotfiles/.config/nvim/init.lua"
 alias wc="nvim $HOME/dotfiles/.config/wezterm/wezterm.lua"
 
 # Open GitHub repo in default browser
@@ -140,18 +135,19 @@ ff() {
 }
 
 # =========================
+# PENDING DELETE
 # PELOTON WORK RELATED SHORTCUTS
 # =========================
 
 # AWS login / config helpers
-awslogin () { saml2aws login --region $AWS_REGION --profile=${1} --duo-mfa-option $FORCE_MFA --role="arn:aws:iam::${2}:role/cwe-dev"; }
-awsconfig () { eval $(saml2aws script --shell=bash --skip-prompt --region $AWS_REGION --profile=${1}); }
-awswho () { aws sts get-caller-identity; }
+# awslogin () { saml2aws login --region $AWS_REGION --profile=${1} --duo-mfa-option $FORCE_MFA --role="arn:aws:iam::${2}:role/cwe-dev"; }
+# awsconfig () { eval $(saml2aws script --shell=bash --skip-prompt --region $AWS_REGION --profile=${1}); }
+# awswho () { aws sts get-caller-identity; }
 
 # Kubernetes context shortcuts
-alias k8scwedev="awslogin cwe-dev $CWE_DEV && awsconfig cwe-dev && kubectl config use-context cwe-dev"
-alias k8scweprod="awslogin cwe-prod $CWE_PROD && awsconfig cwe-prod && kubectl config use-context cwe-prod"
-alias k8scwestage="awslogin cwe-stage $CWE_STAGE && awsconfig cwe-stage && kubectl config use-context cwe-stage"
-alias k8scweinfra="awslogin cwe-infra $CWE_INFRA && awsconfig cwe-infra && kubectl config use-context cwe-infra"
-alias k8sgcpinfra="kubectl config use-context gke_infra"
-alias k8sgcpcanary="kubectl config use-context gke_canary"
+# alias k8scwedev="awslogin cwe-dev $CWE_DEV && awsconfig cwe-dev && kubectl config use-context cwe-dev"
+# alias k8scweprod="awslogin cwe-prod $CWE_PROD && awsconfig cwe-prod && kubectl config use-context cwe-prod"
+# alias k8scwestage="awslogin cwe-stage $CWE_STAGE && awsconfig cwe-stage && kubectl config use-context cwe-stage"
+# alias k8scweinfra="awslogin cwe-infra $CWE_INFRA && awsconfig cwe-infra && kubectl config use-context cwe-infra"
+# alias k8sgcpinfra="kubectl config use-context gke_infra"
+# alias k8sgcpcanary="kubectl config use-context gke_canary"

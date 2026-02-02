@@ -5,5 +5,4 @@ fzf
 neovim
 starship
 git
-htop
 luarocks
