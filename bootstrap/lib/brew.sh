@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Install Brew for MacOS
 ensure_brew() {
     export HOMEBREW_NO_INSTALL_CLEANUP=1
     export HOMEBREW_NO_ANALYTICS=1
@@ -16,7 +17,6 @@ ensure_brew() {
 }
 
 # Install a brew package idempotently
-
 ensure_brew_package() {
     local pkg="$1"
 

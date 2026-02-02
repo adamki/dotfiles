@@ -12,5 +12,5 @@ BACKUP_DIR="$HOME/dotfiles_old"
 log_step "Creating backup directory..."
 mkdir -p "$BACKUP_DIR"
 
-mark_done "$STEP"
 log_success "Backup directory ready at $BACKUP_DIR"
+mark_done "$STEP"

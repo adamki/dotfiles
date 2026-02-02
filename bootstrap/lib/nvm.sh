@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Install NVM
 ensure_nvm() {
     export NVM_DIR="$HOME/.nvm"
 
