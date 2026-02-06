@@ -22,5 +22,8 @@ else
     log_success "Default shell already set to zsh"
 fi
 
+git config --global core.excludesfile "$HOME/.gitignore_global"
+log_info "Setting global git excludesfile"
+
 log_success "Bootstrap finished successfully 🎉"
 mark_done "$STEP"

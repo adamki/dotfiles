@@ -25,6 +25,7 @@ alias hs='history | fzf --height=50%'
 # Quick access to dotfiles
 alias aliases="bat -l=sh $HOME/dotfiles/aliases | fzf"
 alias dots="cd $HOME/dotfiles"
+alias notes="cd $HOME/obsidian_vault"
 
 # Direct edit shortcuts
 alias zshrc="nvim $HOME/dotfiles/.zshrc"
