@@ -2,6 +2,7 @@
 
 set -euo pipefail
 source "$(dirname "$0")/../lib/logging.sh"
+source "$(dirname "$0")/../lib/state.sh"
 
 STEP="preflight"
 is_done "$STEP" && exit 0
