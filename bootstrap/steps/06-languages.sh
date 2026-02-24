@@ -4,29 +4,20 @@ set -euo pipefail
 
 source "$(dirname "$0")/../lib/logging.sh"
 source "$(dirname "$0")/../lib/state.sh"
-source "$(dirname "$0")/../lib/nvm.sh"
-source "$(dirname "$0")/../lib/rbenv.sh"
-source "$(dirname "$0")/../lib/pyenv.sh"
+source "$(dirname "$0")/../lib/asdf.sh"
 
 STEP="languages"
 is_done "$STEP" && exit 0
 
-ensure_nvm
-ensure_rbenv
-ensure_pyenv
+ensure_asdf
 
-log_info "Installing Node (latest LTS)..."
-nvm install --lts
-nvm alias default lts/*
+log_info "Installing Node (LTS 20.x)..."
+asdf_ensure_version nodejs "20.18.0"
 
 log_info "Installing Ruby 3.3.2..."
-rbenv install -s 3.3.2
-rbenv global 3.3.2
-rbenv rehash
+asdf_ensure_version ruby "3.3.2"
 
 log_info "Installing Python 3.12.2..."
-pyenv install -s 3.12.2
-pyenv global 3.12.2
-pyenv rehash
+asdf_ensure_version python "3.12.2"
 
 mark_done "$STEP"

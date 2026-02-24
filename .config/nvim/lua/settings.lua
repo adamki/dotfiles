@@ -15,6 +15,7 @@ set.splitbelow = true
 set.splitright = true
 
 o.swapfile = false
+o.autoread = true -- reload buffers when file changes on disk (e.g. from Cursor)
 wo.numberwidth = 3
 wo.wrap = false
 o.number = true

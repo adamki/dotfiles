@@ -23,7 +23,7 @@ alias hs='history | fzf --height=50%'
 # =========================
 
 # Quick access to dotfiles
-alias aliases="bat -l=sh $HOME/dotfiles/aliases | fzf"
+alias afzf="alias | fzf"
 alias dots="cd $HOME/dotfiles"
 alias notes="cd $HOME/obsidian_vault"
 
@@ -40,36 +40,36 @@ alias gh='open "$(git remote get-url origin | sed -e "s/:/\\//" -e "s/git@/https
 # =========================
 
 # Add / commit shortcuts
-alias gap='git add -p'
-alias ga='git add'
-alias gnap='git add -N . && git add -p'
+# alias gap='git add -p'
+# alias ga='git add'
+# alias gnap='git add -N . && git add -p'
 
 # Branch shortcuts
-alias gb='git branch'
-alias gby="git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' | pbcopy"
-alias gbd="git branch | egrep -v '(^\*|master|main|develop|site-us)' | xargs echo git branch -D"
+# alias gb='git branch'
+# alias gby="git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' | pbcopy"
+# alias gbd="git branch | egrep -v '(^\*|master|main|develop|site-us)' | xargs echo git branch -D"
 
 # Checkout / commit / diff
-alias gco='git checkout'
-alias gc='git commit -v'
-alias gca='git commit -a -v'
-alias gd='git diff --color-words'
-alias gdc='git diff --cached'
-alias gdh='git diff HEAD'
+# alias gco='git checkout'
+# alias gc='git commit -v'
+# alias gca='git commit -a -v'
+# alias gd='git diff --color-words'
+# alias gdc='git diff --cached'
+# alias gdh='git diff HEAD'
 
 # Pull / push / log
-alias gl='git pull'
+# alias gl='git pull'
 alias glod='git log --graph --pretty="%Cgreen%h%Creset%Cblue%d%Creset %Cred%an%Creset: %s"'
 alias gp='git push'
 alias gpr='git pull --rebase'
-alias gst='git status'
+# alias gst='git status'
 
 # Rebase / cherry-pick
-alias gr='git rebase'
-alias grc='git rebase --continue'
-alias gri='git rebase --interactive'
-alias gra='git rebase --abort'
-alias gcp='git cherry-pick'
+# alias gr='git rebase'
+# alias grc='git rebase --continue'
+# alias gri='git rebase --interactive'
+# alias gra='git rebase --abort'
+# alias gcp='git cherry-pick'
 
 # =========================
 # FZF FUNCTIONS

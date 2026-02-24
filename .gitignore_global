@@ -11,6 +11,8 @@ lerna-debug.log*
 .idea
 .git
 tags
+.vscode
+*.code-workspace
 
 #NeoVim
 .vim

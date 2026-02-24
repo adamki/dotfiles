@@ -42,26 +42,37 @@ config.keys = {
 
 wezterm.on("gui-startup", function()
 	local mux = wezterm.mux
+	local project_dir = "/Users/adam.jensen/workspace"
 
-	-- Create a new workspace called "dev"
+	-- Create a new workspace called "development"
 	local _, pane, window = mux.spawn_window({
-		workspace = "stanley-us",
-		cwd = "/Users/adam.jensen/stanley/stanley-shopify-live-us",
+		workspace = "development",
+		cwd = project_dir,
 	})
 
-	-- First tab: split into two panes
-	pane:split({
+	-- First split: divide horizontally to create top and bottom sections
+	local bottom_pane = pane:split({
+		direction = "Bottom",
+		size = 0.5,
+		cwd = project_dir,
+	})
+
+	-- Second split: divide the bottom section into left and middle
+	local middle_pane = bottom_pane:split({
 		direction = "Right",
-		cwd = "/Users/adam.jensen/stanley/stanley-shopify-live-us",
+		size = 0.66, -- This creates roughly 1/3 of the bottom space
+		cwd = project_dir,
 	})
 
-	-- Second tab: open in another directory
-	local _, _, _ = window:spawn_tab({
-		cwd = "/Users/adam.jensen/stanley/stanley-shopify-live-us/",
+	-- Third split: divide the remaining bottom section to create the rightmost pane
+	middle_pane:split({
+		direction = "Right",
+		size = 0.5, -- Split the remaining 2/3 in half
+		cwd = project_dir,
 	})
 
 	-- Finally, switch to this workspace
-	mux.set_active_workspace("stanley-us")
+	mux.set_active_workspace("development")
 end)
 
 wezterm.on("format-tab-title", function(tab)
@@ -75,8 +86,20 @@ wezterm.on("format-tab-title", function(tab)
 	local cwd_uri = tab.active_pane.current_working_dir
 	local cwd = "?"
 	if cwd_uri then
-		cwd = cwd_uri.file_path or cwd_uri
-		cwd = cwd:gsub(".*[/\\]", "") -- just last folder
+		local full_path = cwd_uri.file_path or cwd_uri
+		-- Extract last two directories
+		local parts = {}
+		for part in full_path:gmatch("[^/\\]+") do
+			table.insert(parts, part)
+		end
+
+		if #parts >= 2 then
+			cwd = parts[#parts - 1] .. "/" .. parts[#parts]
+		elseif #parts == 1 then
+			cwd = parts[1]
+		else
+			cwd = "/"
+		end
 	end
 
 	local title = string.format("  [%s]  : %s  ", cwd, process_name)

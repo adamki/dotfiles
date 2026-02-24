@@ -1,1 +1,2 @@
 wezterm
+font-jetbrains-mono-nerd-font

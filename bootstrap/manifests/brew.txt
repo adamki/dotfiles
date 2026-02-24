@@ -1,4 +1,5 @@
 antigen
+asdf
 bat
 ripgrep
 fzf

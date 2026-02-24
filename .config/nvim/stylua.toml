@@ -1,14 +1,13 @@
 # stylua.toml for Neovim Lua configs
+# https://github.com/JohnnyMorganz/StyLua#configuration
 
-# Max line width
-line_width = 180
+# Max line length before wrapping
+column_width = 180
 
-# Keep function arguments on one line if possible
-force_multiline = false
-
-# Indentation style
+# Indentation
 indent_type = "Spaces"
 indent_width = 4
 
-# Ignore files if needed
-ignore_files = []
+# Line endings: "Unix" or "Windows"
+line_endings = "Unix"
+

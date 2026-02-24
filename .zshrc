@@ -4,7 +4,6 @@ if [[ -d "/opt/homebrew/bin" ]]; then
 	export PATH="/opt/homebrew/bin:$PATH"
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-
 # ------------------------
 # Starship prompt
 # must come after Homebrew is in PATH
@@ -13,25 +12,10 @@ if command -v starship >/dev/null 2>&1; then
 fi
 
 # ------------------------
-# rbenv (Ruby version manager)
-export PATH="$HOME/.rbenv/bin:$PATH"
-if command -v rbenv >/dev/null 2>&1; then
-	eval "$(rbenv init - zsh)"
+# asdf (Node, Ruby, Python, etc.)
+if [[ -d "$(brew --prefix asdf 2>/dev/null)" ]]; then
+	. "$(brew --prefix asdf)/libexec/asdf.sh"
 fi
-
-# ------------------------
-# pyenv (Python version manager)
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv >/dev/null 2>&1; then
-	eval "$(pyenv init --path)"
-fi
-
-# ------------------------
-# NVM (Node version manager)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # ------------------------
 # FZF
@@ -61,18 +45,25 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 # ------------------------
+# Work dotfiles (optional)
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+export PATH="$(brew --prefix imagemagick@6)/bin:$PATH"
+export PATH="$(brew --prefix)/opt/libpq/bin:$PATH"
+
+[[ -f "$HOME/workspace/dotfiles/dotfiles.sh" ]] && source "$HOME/workspace/dotfiles/dotfiles.sh"
+
+# ------------------------
 # Defaults
 export VISUAL=nvim # make vim default editor
 export EDITOR="$VISUAL"
 export HISTSIZE=20000        # store 20,000 history entries
-export HISTCONTROL=erasedups # no duplicates
+setopt HIST_IGNORE_ALL_DUPS  # no duplicate entries in history
 
 # ------------------------
 # Custom PATHs
 export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/.poetry/bin:$PATH"
 
 # ------------------------
 # Aliases and dotfiles
 export DOTFILES="$HOME/dotfiles"
-source $DOTFILES/aliases
+source "$DOTFILES/aliases"

@@ -17,6 +17,13 @@ autocmd("BufRead", {
     command = [[call setpos(".", getpos("'\""))]], -- return cursor to prev pos
 })
 
+-- Reload buffers when file changed on disk (e.g. by Cursor/agent)
+autocmd("FocusGained", {
+    pattern = "*",
+    group = generic_augroup,
+    command = "checktime",
+})
+
 autocmd("VimEnter", {
   callback = function()
     if #vim.fn.getqflist() > 0 then
