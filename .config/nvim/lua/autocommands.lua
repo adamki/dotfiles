@@ -25,11 +25,23 @@ autocmd("FocusGained", {
 })
 
 autocmd("VimEnter", {
-  callback = function()
-    if #vim.fn.getqflist() > 0 then
-      vim.cmd("copen")
-    end
-  end
+    callback = function()
+        if #vim.fn.getqflist() > 0 then
+            vim.cmd("copen")
+        end
+    end,
+})
+
+autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("lsp_keymaps", { clear = true }),
+    callback = function(ev)
+        local opts = { buffer = ev.buf }
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    end,
 })
 
 function CreateRNUToggleAutocmd()

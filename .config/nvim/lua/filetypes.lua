@@ -12,12 +12,23 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "lua", "sh" },
+    pattern = "lua",
     group = ft_group,
     callback = function()
         vim.opt_local.shiftwidth = 4
         vim.opt_local.tabstop = 4
         vim.opt_local.softtabstop = 4
+        vim.opt_local.expandtab = true
+    end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "sh", "bash", "zsh" },
+    group = ft_group,
+    callback = function()
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.softtabstop = 2
         vim.opt_local.expandtab = true
     end,
 })

@@ -50,29 +50,23 @@ set("v", "K", ":m '<-2<CR>gv=gv", { remap = false, desc = "Move selection up" })
 
 -- Syntax debugging
 set("n", "<F3>", function()
-  local fn = vim.fn
-  local line = fn.line(".")
-  local col  = fn.col(".")
+    local fn = vim.fn
+    local line = fn.line(".")
+    local col = fn.col(".")
 
-  -- synID / synIDattr / synIDtrans calls
-  local sid1 = fn.synID(line, col, 1)
-  local name1 = fn.synIDattr(sid1, "name")
-  local sid1_trans = fn.synIDtrans(sid1)
-  local name1_trans = fn.synIDattr(sid1_trans, "name")
-  local fg = fn.synIDattr(sid1_trans, "fg#")
+    -- synID / synIDattr / synIDtrans calls
+    local sid1 = fn.synID(line, col, 1)
+    local name1 = fn.synIDattr(sid1, "name")
+    local sid1_trans = fn.synIDtrans(sid1)
+    local name1_trans = fn.synIDattr(sid1_trans, "name")
+    local fg = fn.synIDattr(sid1_trans, "fg#")
 
-  local msg = string.format(
-    "syn: %s  trans: %s  lo: %s  FG:%s",
-    name1 or "<none>",
-    name1_trans or "<none>",
-    fn.synIDattr(fn.synID(line, col, 0), "name") or "<none>",
-    fg or "<none>"
-  )
+    local msg =
+        string.format("syn: %s  trans: %s  lo: %s  FG:%s", name1 or "<none>", name1_trans or "<none>", fn.synIDattr(fn.synID(line, col, 0), "name") or "<none>", fg or "<none>")
 
-  -- nicer output than echo: use notify (or nvim_echo if you prefer)
-  vim.notify(msg, vim.log.levels.INFO, { title = "Syntax under cursor" })
+    -- nicer output than echo: use notify (or nvim_echo if you prefer)
+    vim.notify(msg, vim.log.levels.INFO, { title = "Syntax under cursor" })
 end, { remap = false, desc = "Show syntax group info under cursor" })
-
 
 -- Toggle relative numbers
 set("n", "<F2>", function()
@@ -94,3 +88,15 @@ vim.keymap.set("n", "<leader>d", function()
         prefix = "● ", -- optional bullet/prefix for each line
     })
 end, { desc = "Show diagnostics under cursor" })
+
+vim.keymap.set("v", "<leader>cr", function()
+    local vstart = vim.fn.getpos("v")
+    local vend = vim.fn.getpos(".")
+    local start_line = math.min(vstart[2], vend[2])
+    local end_line = math.max(vstart[2], vend[2])
+    local filepath = vim.fn.expand("%:~:.")
+    local result = filepath .. " lines " .. start_line .. "-" .. end_line
+    vim.fn.setreg("+", result)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+    vim.notify("Copied: " .. result)
+end, { desc = "Copy file name and line range to clipboard" })

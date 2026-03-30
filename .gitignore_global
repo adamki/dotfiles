@@ -5,6 +5,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+.nvimlog
 
 # Tools
 # IntelliJ
@@ -13,6 +14,11 @@ lerna-debug.log*
 tags
 .vscode
 *.code-workspace
++.solargraph.yml
++.ruby-lsp/
+
+# Cursor
+.cursor/rules/local-*.mdc
 
 #NeoVim
 .vim

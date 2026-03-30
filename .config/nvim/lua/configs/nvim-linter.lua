@@ -11,7 +11,12 @@ lint.linters_by_ft = {
     lua = { "luacheck" },
     python = { "flake8" },
     sh = { "shellcheck" },
+    ruby = { "rubocop" },
 }
+
+-- Use bundle exec for Ruby so rubocop plugins (rubocop-omada, etc.) load correctly
+lint.linters.rubocop.cmd = "bundle"
+lint.linters.rubocop.prepend_args = { "exec", "rubocop", "--server" }
 
 -- Create an augroup for linting
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

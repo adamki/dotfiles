@@ -1,12 +1,15 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
+local mux = wezterm.mux
+local act = wezterm.action
 
 -- Create a new configuration object
 local config = wezterm.config_builder()
 
 -- Color scheme
 config.adjust_window_size_when_changing_font_size = false
-config.color_scheme = "catppuccin-macchiato"
+-- light >> dark: latte, frappe, macchiato, mocha
+config.color_scheme = "catppuccin-mocha"
 config.font = wezterm.font("JetBrainsMono Nerd Font", {
 	weight = "Medium",
 })
@@ -16,9 +19,9 @@ config.harfbuzz_features = {
 	"clig=0",
 	"liga=0",
 }
-config.initial_cols = 120
-config.initial_rows = 28
-config.native_macos_fullscreen_mode = false
+-- config.initial_cols = 120
+-- config.initial_rows = 28
+config.native_macos_fullscreen_mode = true
 config.tab_max_width = 100
 config.window_frame = { font_size = 14.0, active_titlebar_bg = "#333333", inactive_titlebar_bg = "#333333" }
 
@@ -35,45 +38,32 @@ config.keys = {
 	{ key = "H", mods = "CTRL|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ key = "V", mods = "CTRL|SHIFT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 
-	-- TODO: add zoom in/out pane
-	-- workspaces
-	{ key = "w", mods = "CTRL|SHIFT", action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
+	-- Pane focus/Zoom
+	{
+		key = "UpArrow",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.TogglePaneZoomState,
+	},
+	{
+		key = "b",
+		mods = "CTRL|SHIFT",
+		action = act.RotatePanes("CounterClockwise"),
+	},
+	{ key = "n", mods = "CTRL|SHIFT", action = act.RotatePanes("Clockwise") },
+	-- splitting
+	-- This will create a new split and run your default program inside it
+	{
+		key = "|",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	-- This will create a new split and run your default program inside it
+	{
+		key = "_",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
 }
-
-wezterm.on("gui-startup", function()
-	local mux = wezterm.mux
-	local project_dir = "/Users/adam.jensen/workspace"
-
-	-- Create a new workspace called "development"
-	local _, pane, window = mux.spawn_window({
-		workspace = "development",
-		cwd = project_dir,
-	})
-
-	-- First split: divide horizontally to create top and bottom sections
-	local bottom_pane = pane:split({
-		direction = "Bottom",
-		size = 0.5,
-		cwd = project_dir,
-	})
-
-	-- Second split: divide the bottom section into left and middle
-	local middle_pane = bottom_pane:split({
-		direction = "Right",
-		size = 0.66, -- This creates roughly 1/3 of the bottom space
-		cwd = project_dir,
-	})
-
-	-- Third split: divide the remaining bottom section to create the rightmost pane
-	middle_pane:split({
-		direction = "Right",
-		size = 0.5, -- Split the remaining 2/3 in half
-		cwd = project_dir,
-	})
-
-	-- Finally, switch to this workspace
-	mux.set_active_workspace("development")
-end)
 
 wezterm.on("format-tab-title", function(tab)
 	local process_name = tab.active_pane.foreground_process_name
@@ -117,6 +107,40 @@ wezterm.on("format-tab-title", function(tab)
 			{ Text = title },
 		})
 	end
+end)
+
+wezterm.on("gui-startup", function()
+	local project_dir = wezterm.home_dir .. "/workspace/kairos"
+
+	-- Start a window in the desired dir
+	local tab, pane, window = mux.spawn_window({
+		workspace = "kairos",
+		cwd = project_dir,
+	})
+
+	-- Layout: 2 top, 2 bottom (grid 2x2)
+	-- Start with one pane, split vertically to get top/bottom
+	local bottom = pane:split({
+		direction = "Bottom",
+		size = 0.5,
+		cwd = project_dir,
+	})
+
+	-- Split the top horizontally into left/right
+	local top_right = pane:split({
+		direction = "Right",
+		size = 0.5,
+		cwd = project_dir,
+	})
+
+	-- Split the bottom horizontally into left/right
+	local bottom_right = bottom:split({
+		direction = "Right",
+		size = 0.5,
+		cwd = project_dir,
+	})
+
+	-- mux.set_active_workspace("kairos")
 end)
 
 -- Return the final configuration
