@@ -1,66 +1,65 @@
 local ok, fzf = pcall(require, "fzf-lua")
 
 if not ok then
-	return
+    return
 end
 
-local fzf_cmd = os.getenv("FZF_DEFAULT_COMMAND")
-if not fzf_cmd or not fzf_cmd:match("^rg ") then
-	fzf_cmd = "rg --files"
-end
+-- rg already respects .gitignore and .rgignore per-project.
+-- Keep this config project-agnostic; use .rgignore in each repo
+-- for project-specific exclusions of git-tracked noise.
 
--- default ignored globs (you can still override)
-local default_file_globs = {
-	"!assets/**/*.min.js.LICENSE.txt",
-	"!assets/**/*.min.js.map",
-	"!assets/**/*.min.js",
-	"!node_modules/**",
-}
-
--- globs to ignore for grep
-local grep_ignore_globs = {
-	"!assets/**/*.min.js.LICENSE.txt",
-	"!assets/**/*.min.js.map",
-	"!assets/**/*.min.js",
-	"!node_modules/**",
-}
-
--- helper to turn table into --glob args
-local function make_globs(globs)
-	local parts = {}
-	for _, g in ipairs(globs) do
-		table.insert(parts, "--glob '" .. g .. "'")
-	end
-	return table.concat(parts, " ")
-end
+local RG_OPTS = "--column --line-number --no-heading --color=always --smart-case --no-binary"
 
 fzf.setup({
-	"telescope",
-	fzf_opts = {
-		["--history"] = vim.fn.stdpath("data") .. "/fzf-lua-history", -- path to store history
-	},
-	winopts = {
-		preview = {
-			default = "bat",
-			title = true,
-			border = "rounded",
-		},
-	},
-	files = {
-		cmd = fzf_cmd .. " " .. make_globs(default_file_globs),
-		cwd_prompt = true,
-		history = 100,
-	},
-	grep = {
-		rg_opts = "--no-binary " .. make_globs(grep_ignore_globs),
-		cwd_prompt = true,
-		silent = true,
-		history = 100,
-	},
-	previewers = {
-		cmd = "bat",
-	},
+    "telescope",
+    fzf_opts = {
+        ["--history"] = vim.fn.stdpath("data") .. "/fzf-lua-history",
+    },
+    winopts = {
+        preview = {
+            default = "bat",
+            title = true,
+            border = "rounded",
+        },
+    },
+    files = {
+        cmd = "rg --files",
+        cwd_prompt = true,
+        history = 100,
+    },
+    grep = {
+        rg_opts = RG_OPTS,
+        cwd_prompt = true,
+        silent = true,
+        history = 100,
+    },
+    previewers = {
+        cmd = "bat",
+    },
 })
+
+-- =============[ Helpers ]=============
+
+local function grep_by_filetype()
+    local fzf_l = require("fzf-lua")
+    local type_list = vim.fn.systemlist("rg --type-list")
+    fzf_l.fzf_exec(type_list, {
+        prompt = "Filetype > ",
+        actions = {
+            ["default"] = function(selected)
+                if not selected or #selected == 0 then
+                    return
+                end
+                local type_name = selected[1]:match("^(%S+):")
+                if type_name then
+                    fzf_l.grep_project({
+                        rg_opts = RG_OPTS .. " --type " .. type_name,
+                    })
+                end
+            end,
+        },
+    })
+end
 
 -- =============[ Keymaps ]=============
 local set = vim.keymap.set
@@ -68,30 +67,31 @@ local fzf_lua = require("fzf-lua")
 
 -- Custom grep multiple subdirs picker
 set("n", "<LocalLeader>G", function()
-	local root = require("fzf-lua.path").git_root({}) or vim.fn.getcwd()
-	local subdirs = vim.fn.glob(root .. "/*", 1, 1)
-	subdirs = vim.tbl_filter(function(p)
-		return vim.fn.isdirectory(p) == 1
-	end, subdirs)
+    local root = require("fzf-lua.path").git_root({}) or vim.fn.getcwd()
+    local subdirs = vim.fn.glob(root .. "/*", 1, 1)
+    subdirs = vim.tbl_filter(function(p)
+        return vim.fn.isdirectory(p) == 1
+    end, subdirs)
 
-	fzf_lua.fzf_exec(subdirs, {
-		prompt = "Use TAB to pick subdirs > ",
-		fzf_opts = { ["--multi"] = true },
-		actions = {
-			["default"] = function(selected)
-				if not selected or vim.tbl_isempty(selected) then
-					return
-				end
-				fzf_lua.live_grep({ cwd = root, search_dirs = selected })
-			end,
-		},
-	})
+    fzf_lua.fzf_exec(subdirs, {
+        prompt = "Use TAB to pick subdirs > ",
+        fzf_opts = { ["--multi"] = true },
+        actions = {
+            ["default"] = function(selected)
+                if not selected or vim.tbl_isempty(selected) then
+                    return
+                end
+                fzf_lua.live_grep({ cwd = root, search_dirs = selected })
+            end,
+        },
+    })
 end, { desc = "FzfLua grep multi dirs" })
 
 -- Standard mappings
 set("n", "<LocalLeader>,", ":FzfLua<CR>", { desc = "FzfLua main menu" })
 set("n", "<LocalLeader>f", ":FzfLua files<CR>", { desc = "FzfLua files" })
 set("n", "<LocalLeader>g", ":FzfLua grep_project<CR>", { desc = "FzfLua grep project" })
+set("v", "<LocalLeader>g", ":FzfLua grep_visual<CR>", { desc = "FzfLua grep visual selection" })
 set("n", "<LocalLeader><BS>", ":FzfLua grep_cword<CR>", { desc = "FzfLua cursor word" })
 set("n", "<LocalLeader>b", ":FzfLua buffers<CR>", { desc = "FzfLua buffers" })
 set("n", "<LocalLeader>j", ":FzfLua jumps<CR>", { desc = "FzfLua jump locations" })
@@ -106,3 +106,13 @@ set("n", "<localleader>r", ":FzfLua command_history<CR>", { desc = "FzfLua comma
 set("n", "<localleader>y", ":FzfLua oldfiles<CR>", { desc = "FzfLua old_files" })
 set("n", "<localleader>C", ":FzfLua git_bcommits<CR>", { desc = "FzfLua git_bcommits" })
 set("n", "<localleader>c", ":FzfLua git_commits<CR>", { desc = "FzfLua git_commits" })
+
+set("n", "<LocalLeader><space>", ":FzfLua resume<CR>", { desc = "FzfLua resume last picker" })
+set("n", "<LocalLeader>T", grep_by_filetype, { desc = "FzfLua grep by filetype" })
+
+-- Grep with no ignore rules (bypasses .gitignore and .rgignore)
+set("n", "<LocalLeader>A", function()
+    fzf_lua.grep_project({
+        rg_opts = RG_OPTS .. " --no-ignore",
+    })
+end, { desc = "FzfLua grep all (no ignore)" })

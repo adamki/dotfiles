@@ -76,5 +76,6 @@ export PATH="$HOME/workspace/kube-connect:$PATH"
 
 # ------------------------
 # Aliases and dotfiles
+export PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
 export DOTFILES="$HOME/dotfiles"
 source "$DOTFILES/aliases"

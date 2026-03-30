@@ -20,7 +20,7 @@ vim.g.loaded_netrwPlugin = 1
 
 -- nvim-treesitter
 set.foldmethod = "expr"
-set.foldexpr = "nvim_treesitter#foldexpr()"
+set.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- folke/which-key.nvim
 o.timeout = true

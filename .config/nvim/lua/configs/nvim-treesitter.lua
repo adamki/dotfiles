@@ -15,6 +15,7 @@ treesitter.setup({
         "json",
         "liquid",
         "lua",
+        "ruby",
         "python",
         "typescript",
         "vim",

@@ -7,3 +7,5 @@ neovim
 starship
 git
 luarocks
+tree-sitter
+findutils
