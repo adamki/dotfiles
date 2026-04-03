@@ -19,6 +19,7 @@ config.harfbuzz_features = {
 	"clig=0",
 	"liga=0",
 }
+
 -- config.initial_cols = 120
 -- config.initial_rows = 28
 config.native_macos_fullscreen_mode = true

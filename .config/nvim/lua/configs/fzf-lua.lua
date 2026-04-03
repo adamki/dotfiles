@@ -8,14 +8,29 @@ end
 -- Keep this config project-agnostic; use .rgignore in each repo
 -- for project-specific exclusions of git-tracked noise.
 
-local RG_OPTS = "--column --line-number --no-heading --color=always --smart-case --no-binary"
+local IGNORED_DIRS = {
+    ".git",
+}
+
+local function build_glob_flags()
+    local flags = {}
+    for _, dir in ipairs(IGNORED_DIRS) do
+        table.insert(flags, "--glob '!" .. dir .. "'")
+    end
+    return table.concat(flags, " ")
+end
+
+local RG_BASE = "--column --line-number --no-heading --color=always --smart-case --no-binary --hidden"
+local RG_OPTS = RG_BASE .. " " .. build_glob_flags()
 
 fzf.setup({
     "telescope",
+    formatter = "path.filename_first",
     fzf_opts = {
         ["--history"] = vim.fn.stdpath("data") .. "/fzf-lua-history",
     },
     winopts = {
+        width = 0.90,
         preview = {
             default = "bat",
             title = true,
@@ -23,7 +38,7 @@ fzf.setup({
         },
     },
     files = {
-        cmd = "rg --files",
+        cmd = "rg --files --hidden " .. build_glob_flags(),
         cwd_prompt = true,
         history = 100,
     },
@@ -34,7 +49,9 @@ fzf.setup({
         history = 100,
     },
     previewers = {
-        cmd = "bat",
+        bat = {
+            args = "--style=numbers,changes,header-filename,header-filesize",
+        },
     },
 })
 
