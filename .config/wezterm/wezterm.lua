@@ -10,7 +10,7 @@ local config = wezterm.config_builder()
 config.adjust_window_size_when_changing_font_size = false
 -- light >> dark: latte, frappe, macchiato, mocha
 config.color_scheme = "catppuccin-mocha"
-config.font = wezterm.font("JetBrainsMono Nerd Font", {
+config.font = wezterm.font("JetBrainsMono Nerd Font Mono", {
 	weight = "Medium",
 })
 config.font_size = 16
