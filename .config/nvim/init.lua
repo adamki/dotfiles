@@ -49,6 +49,7 @@ else
     require("configs.lazy")
     require("post-plugin-install-settings")
     require("mappings")
+    require("configs.claude")
     require("filetypes")
     require("autocommands")
 end
