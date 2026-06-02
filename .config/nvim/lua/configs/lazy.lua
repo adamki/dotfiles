@@ -96,6 +96,7 @@ require("lazy").setup({
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
+        opts = { delay = 1000 },
     },
 
     -- git integration

@@ -40,6 +40,22 @@ local function is_alive()
     return state.buf and vim.api.nvim_buf_is_valid(state.buf) and state.chan and state.chan > 0
 end
 
+local function open_float(buf)
+    local width = math.floor(vim.o.columns * 0.85)
+    local height = math.floor(vim.o.lines * 0.80)
+    return vim.api.nvim_open_win(buf, true, {
+        relative = "editor",
+        width = width,
+        height = height,
+        row = math.floor((vim.o.lines - height) / 2),
+        col = math.floor((vim.o.columns - width) / 2),
+        style = "minimal",
+        border = "rounded",
+        title = " Claude ",
+        title_pos = "center",
+    })
+end
+
 local function focus_or_split()
     if not (state.buf and vim.api.nvim_buf_is_valid(state.buf)) then
         return false
@@ -48,17 +64,15 @@ local function focus_or_split()
     if win ~= -1 then
         vim.api.nvim_set_current_win(win)
     else
-        vim.cmd("botright 20new")
-        vim.api.nvim_win_set_buf(0, state.buf)
-        vim.cmd("bdelete #") -- drop the empty buffer new created
+        open_float(state.buf)
     end
     vim.cmd("startinsert")
     return true
 end
 
 local function open_terminal(cmd)
-    vim.cmd("botright 20new")
-    state.buf = vim.api.nvim_get_current_buf()
+    state.buf = vim.api.nvim_create_buf(false, true)
+    open_float(state.buf)
     state.chan = vim.fn.termopen(cmd, {
         on_exit = function()
             vim.schedule(function()

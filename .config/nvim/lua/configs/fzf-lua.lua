@@ -107,7 +107,7 @@ end, { desc = "FzfLua grep multi dirs" })
 -- Standard mappings
 set("n", "<LocalLeader>,", ":FzfLua<CR>", { desc = "FzfLua main menu" })
 set("n", "<LocalLeader>f", ":FzfLua files<CR>", { desc = "FzfLua files" })
-set("n", "<LocalLeader>g", ":FzfLua grep_project<CR>", { desc = "FzfLua grep project" })
+set("n", "<LocalLeader>g", ":FzfLua live_grep<CR>", { desc = "FzfLua live grep" })
 set("v", "<LocalLeader>g", ":FzfLua grep_visual<CR>", { desc = "FzfLua grep visual selection" })
 set("n", "<LocalLeader><BS>", ":FzfLua grep_cword<CR>", { desc = "FzfLua cursor word" })
 set("n", "<LocalLeader>b", ":FzfLua buffers<CR>", { desc = "FzfLua buffers" })
