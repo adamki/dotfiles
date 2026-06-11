@@ -76,8 +76,9 @@ wezterm.on("format-tab-title", function(tab)
 
 	local cwd_uri = tab.active_pane.current_working_dir
 	local cwd = "?"
+	local full_path = nil
 	if cwd_uri then
-		local full_path = cwd_uri.file_path or cwd_uri
+		full_path = cwd_uri.file_path or cwd_uri
 		-- Extract last two directories
 		local parts = {}
 		for part in full_path:gmatch("[^/\\]+") do
@@ -93,7 +94,20 @@ wezterm.on("format-tab-title", function(tab)
 		end
 	end
 
-	local title = string.format("  [%s]  : %s  ", cwd, process_name)
+	local branch = ""
+	if full_path then
+		local ok, stdout = wezterm.run_child_process({ "git", "-C", full_path, "rev-parse", "--abbrev-ref", "HEAD" })
+		if ok and stdout then
+			branch = stdout:gsub("%s+$", "")
+		end
+	end
+
+	local title
+	if branch ~= "" then
+		title = string.format("  [%s] (%s)  : %s  ", cwd, branch, process_name)
+	else
+		title = string.format("  [%s]  : %s  ", cwd, process_name)
+	end
 
 	if tab.is_active then
 		-- Highlight active tab: bold

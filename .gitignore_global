@@ -17,8 +17,10 @@ tags
 +.solargraph.yml
 +.ruby-lsp/
 
-# Cursor
+# LLM
+.claude/
 .cursor/rules/local-*.mdc
+
 
 #NeoVim
 .vim
