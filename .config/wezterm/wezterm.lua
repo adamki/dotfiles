@@ -67,18 +67,15 @@ config.keys = {
 }
 
 wezterm.on("format-tab-title", function(tab)
-	local process_name = tab.active_pane.foreground_process_name
-	if process_name then
-		process_name = process_name:gsub("(.*[/\\])", "") -- strip path
-	else
-		process_name = "?"
-	end
+	local pane = tab.active_pane
 
-	local cwd_uri = tab.active_pane.current_working_dir
+	-- Working directory: always computed first so it leads the title and
+	-- survives truncation even when many tabs are open.
 	local cwd = "?"
 	local full_path = nil
+	local cwd_uri = pane.current_working_dir
 	if cwd_uri then
-		full_path = cwd_uri.file_path or cwd_uri
+		full_path = cwd_uri.file_path or tostring(cwd_uri)
 		-- Extract last two directories
 		local parts = {}
 		for part in full_path:gmatch("[^/\\]+") do
@@ -94,19 +91,41 @@ wezterm.on("format-tab-title", function(tab)
 		end
 	end
 
+	local process_name = pane.foreground_process_name
+	if process_name and process_name ~= "" then
+		process_name = process_name:gsub("(.*[/\\])", "") -- strip path
+	else
+		process_name = "?"
+	end
+
+	-- Claude Code runs as `node` and sets a descriptive OSC title. Prefer that
+	-- live task description over the bare process name so Claude tabs are
+	-- distinguishable. Strip Claude's leading spinner glyph (e.g. "⠐ ").
+	local descriptor = process_name
+	if process_name == "claude" or process_name == "node" then
+		local pane_title = pane.title or ""
+		local cleaned = pane_title:gsub("^[^%a]*", "")
+		if cleaned ~= "" then
+			descriptor = cleaned
+		end
+	end
+
+	-- Guard the git call: a failure here must never blank the title and force
+	-- WezTerm to fall back to the raw (dir-less) pane title.
 	local branch = ""
-	if full_path then
-		local ok, stdout = wezterm.run_child_process({ "git", "-C", full_path, "rev-parse", "--abbrev-ref", "HEAD" })
-		if ok and stdout then
+	if full_path and full_path:sub(1, 1) == "/" then
+		local pok, succeeded, stdout =
+			pcall(wezterm.run_child_process, { "git", "-C", full_path, "rev-parse", "--abbrev-ref", "HEAD" })
+		if pok and succeeded and type(stdout) == "string" then
 			branch = stdout:gsub("%s+$", "")
 		end
 	end
 
 	local title
 	if branch ~= "" then
-		title = string.format("  [%s] (%s)  : %s  ", cwd, branch, process_name)
+		title = string.format("  [%s] (%s)  : %s  ", cwd, branch, descriptor)
 	else
-		title = string.format("  [%s]  : %s  ", cwd, process_name)
+		title = string.format("  [%s]  : %s  ", cwd, descriptor)
 	end
 
 	if tab.is_active then
