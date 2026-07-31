@@ -32,19 +32,19 @@ local opts = {
         },
     },
 
-    -- uncomment if you want format-on-save
     format_on_save = {
-        lsp_fallback = false,
+        lsp_format = "never",
         async = false,
         timeout_ms = 10000,
     },
-    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-        conform.format({
-            lsp_fallback = true,
-            async = false,
-            timeout_ms = 10000,
-        })
-    end, { desc = "Format file or range (in visual mode)" }),
 }
 
 conform.setup(opts)
+
+vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+    conform.format({
+        lsp_format = "fallback",
+        async = false,
+        timeout_ms = 10000,
+    })
+end, { desc = "Format file or range (in visual mode)" })

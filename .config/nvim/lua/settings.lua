@@ -3,8 +3,7 @@ local wo = vim.wo
 local set = vim.opt
 
 -- general settings
-vim.syntax = true
-vim.encoding = "utf8"
+vim.opt.encoding = "utf-8"
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
@@ -42,8 +41,3 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts.border = opts.border or "rounded"
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
-
--- Also set diagnostics float config
-vim.diagnostic.config({
-    float = { border = "rounded" },
-})

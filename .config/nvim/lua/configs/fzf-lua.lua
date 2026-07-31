@@ -120,7 +120,13 @@ set("n", "<localleader>?", ":FzfLua keymaps<CR>", { desc = "FzfLua keymaps" })
 set("n", "<localleader>s", ":FzfLua colorschemes<CR>", { desc = "FzfLua colorschemes" })
 set("n", "<localleader>/", ":FzfLua search_history<CR>", { desc = "FzfLua search_history" })
 set("n", "<localleader>r", ":FzfLua command_history<CR>", { desc = "FzfLua command_history" })
-set("n", "<localleader>y", ":FzfLua oldfiles<CR>", { desc = "FzfLua old_files" })
+-- only show MRU for current repo
+set("n", "<localleader>y", function()
+    fzf_lua.oldfiles({
+        cwd = require("fzf-lua.path").git_root({}) or vim.fn.getcwd(),
+        cwd_only = true,
+    })
+end, { desc = "FzfLua old_files (repo only)" })
 set("n", "<localleader>C", ":FzfLua git_bcommits<CR>", { desc = "FzfLua git_bcommits" })
 set("n", "<localleader>c", ":FzfLua git_commits<CR>", { desc = "FzfLua git_commits" })
 

@@ -1,6 +1,5 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
-local mux = wezterm.mux
 local act = wezterm.action
 
 -- Create a new configuration object
@@ -14,14 +13,16 @@ config.font = wezterm.font("JetBrainsMono Nerd Font Mono", {
 	weight = "Medium",
 })
 config.font_size = 16
+config.inactive_pane_hsb = {
+	saturation = 0.8,
+	brightness = 0.4,
+}
 config.harfbuzz_features = {
 	"calt=0",
 	"clig=0",
 	"liga=0",
 }
 
--- config.initial_cols = 120
--- config.initial_rows = 28
 config.native_macos_fullscreen_mode = true
 config.tab_max_width = 100
 config.window_frame = { font_size = 14.0, active_titlebar_bg = "#333333", inactive_titlebar_bg = "#333333" }
@@ -29,42 +30,48 @@ config.window_frame = { font_size = 14.0, active_titlebar_bg = "#333333", inacti
 -- Keybindings
 config.keys = {
 	-- Launcher
-	{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
+	{ key = "l", mods = "ALT", action = act.ShowLauncher },
 
-	-- Pane navigation
-	{ key = "}", mods = "CTRL|SHIFT", action = wezterm.action({ ActivatePaneDirection = "Next" }) },
-	{ key = "{", mods = "CTRL|SHIFT", action = wezterm.action({ ActivatePaneDirection = "Prev" }) },
-
-	-- Pane splitting
-	{ key = "H", mods = "CTRL|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "V", mods = "CTRL|SHIFT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	-- tab ordering
+	{ key = "{", mods = "CTRL|SHIFT", action = act.MoveTabRelative(-1) },
+	{ key = "}", mods = "CTRL|SHIFT", action = act.MoveTabRelative(1) },
 
 	-- Pane focus/Zoom
-	{
-		key = "UpArrow",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.TogglePaneZoomState,
-	},
-	{
-		key = "b",
-		mods = "CTRL|SHIFT",
-		action = act.RotatePanes("CounterClockwise"),
-	},
+	{ key = "Z", mods = "CTRL|SHIFT", action = act.TogglePaneZoomState },
+	{ key = "b", mods = "CTRL|SHIFT", action = act.RotatePanes("CounterClockwise") },
 	{ key = "n", mods = "CTRL|SHIFT", action = act.RotatePanes("Clockwise") },
-	-- splitting
-	-- This will create a new split and run your default program inside it
-	{
-		key = "|",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-	},
-	-- This will create a new split and run your default program inside it
-	{
-		key = "_",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
-	},
+
+	-- Pane navigation
+	{ key = "LeftArrow", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Left") },
+	{ key = "RightArrow", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
+	{ key = "UpArrow", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
+	{ key = "DownArrow", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
+	{ key = "w", mods = "CTRL|SHIFT", action = act.CloseCurrentPane({ confirm = true }) },
+
+	-- Splitting
+	{ key = "|", mods = "CTRL|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "_", mods = "CTRL|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 }
+
+-- Cache git branch lookups: format-tab-title fires often and a synchronous
+-- child process on every call causes UI stutter. Refresh at most every 5s.
+local branch_cache = {}
+
+local function git_branch(path)
+	local now = os.time()
+	local hit = branch_cache[path]
+	if hit and (now - hit.at) < 5 then
+		return hit.branch
+	end
+	local branch = ""
+	local pok, succeeded, stdout =
+		pcall(wezterm.run_child_process, { "git", "-C", path, "rev-parse", "--abbrev-ref", "HEAD" })
+	if pok and succeeded and type(stdout) == "string" then
+		branch = stdout:gsub("%s+$", "")
+	end
+	branch_cache[path] = { branch = branch, at = now }
+	return branch
+end
 
 wezterm.on("format-tab-title", function(tab)
 	local pane = tab.active_pane
@@ -110,18 +117,13 @@ wezterm.on("format-tab-title", function(tab)
 		end
 	end
 
-	-- Guard the git call: a failure here must never blank the title and force
-	-- WezTerm to fall back to the raw (dir-less) pane title.
 	local branch = ""
 	if full_path and full_path:sub(1, 1) == "/" then
-		local pok, succeeded, stdout =
-			pcall(wezterm.run_child_process, { "git", "-C", full_path, "rev-parse", "--abbrev-ref", "HEAD" })
-		if pok and succeeded and type(stdout) == "string" then
-			branch = stdout:gsub("%s+$", "")
-		end
+		branch = git_branch(full_path)
 	end
 
 	local title
+
 	if branch ~= "" then
 		title = string.format("  [%s] (%s)  : %s  ", cwd, branch, descriptor)
 	else
@@ -141,40 +143,6 @@ wezterm.on("format-tab-title", function(tab)
 			{ Text = title },
 		})
 	end
-end)
-
-wezterm.on("gui-startup", function()
-	local project_dir = wezterm.home_dir .. "/workspace/kairos"
-
-	-- Start a window in the desired dir
-	local tab, pane, window = mux.spawn_window({
-		workspace = "kairos",
-		cwd = project_dir,
-	})
-
-	-- Layout: 2 top, 2 bottom (grid 2x2)
-	-- Start with one pane, split vertically to get top/bottom
-	local bottom = pane:split({
-		direction = "Bottom",
-		size = 0.5,
-		cwd = project_dir,
-	})
-
-	-- Split the top horizontally into left/right
-	local top_right = pane:split({
-		direction = "Right",
-		size = 0.5,
-		cwd = project_dir,
-	})
-
-	-- Split the bottom horizontally into left/right
-	local bottom_right = bottom:split({
-		direction = "Right",
-		size = 0.5,
-		cwd = project_dir,
-	})
-
-	-- mux.set_active_workspace("kairos")
 end)
 
 -- Return the final configuration

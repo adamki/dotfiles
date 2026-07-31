@@ -34,7 +34,6 @@ mason_lspconfig.setup({
         "rust_analyzer",
         "ruby_lsp",
     },
-    automatic_installation = true,
 })
 
 -- These are installed in Mason as tools, not LSP servers; prevent automatic_enable from starting them

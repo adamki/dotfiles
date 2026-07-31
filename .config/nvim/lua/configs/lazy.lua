@@ -1,7 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 vim.opt.rtp:prepend(lazypath)
 
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -29,6 +29,9 @@ require("lazy").setup({
     -- Syntax / Highlighting
     {
         "nvim-treesitter/nvim-treesitter",
+        -- Pin to the classic API. The default branch is now `main` (a rewrite
+        -- that dropped `nvim-treesitter.configs`); master keeps this config working.
+        branch = "master",
         build = ":TSUpdate",
         config = function()
             require("configs.nvim-treesitter")
@@ -56,7 +59,7 @@ require("lazy").setup({
     {
         "windwp/nvim-ts-autotag",
         config = function()
-            require("configs.nvim-treesitter")
+            require("nvim-ts-autotag").setup()
         end,
     },
     {
