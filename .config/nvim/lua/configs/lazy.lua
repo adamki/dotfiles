@@ -29,9 +29,9 @@ require("lazy").setup({
     -- Syntax / Highlighting
     {
         "nvim-treesitter/nvim-treesitter",
-        -- Pin to the classic API. The default branch is now `main` (a rewrite
-        -- that dropped `nvim-treesitter.configs`); master keeps this config working.
-        branch = "master",
+        -- `main` is required for Neovim 0.12+ (the frozen `master` branch does not
+        -- support it). It's a rewrite with a new API, configured in configs.nvim-treesitter.
+        branch = "main",
         build = ":TSUpdate",
         config = function()
             require("configs.nvim-treesitter")
@@ -47,12 +47,6 @@ require("lazy").setup({
     },
     {
         "justinmk/vim-sneak",
-    },
-    {
-        "numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup()
-        end,
     },
 
     -- Improved Interface

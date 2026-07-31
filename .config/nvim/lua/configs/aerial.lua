@@ -11,9 +11,10 @@ local opts = {
 	backends = {  "treesitter", "lsp", "markdown", "man" },
 	show_guides = true,
 	layout = {
+		default_direction = "right",
+		placement = "edge",
 		resize_to_content = false,
 		win_opts = {
-			winhl = "Normal:NormalFloat,FloatBorder:NormalFloat,SignColumn:SignColumnSB",
 			signcolumn = "yes",
 			statuscolumn = " ",
 		},

@@ -18,7 +18,6 @@ tags
 +.ruby-lsp/
 
 # LLM
-.claude/
 .cursor/rules/local-*.mdc
 
 
