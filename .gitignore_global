@@ -35,3 +35,6 @@ dev-env/
 ._*
 /Library
 /Pictures
+
+#AI
+.claude/plans/

@@ -40,20 +40,28 @@ local function is_alive()
     return state.buf and vim.api.nvim_buf_is_valid(state.buf) and state.chan and state.chan > 0
 end
 
-local function open_float(buf)
-    local width = math.floor(vim.o.columns * 0.85)
-    local height = math.floor(vim.o.lines * 0.80)
-    return vim.api.nvim_open_win(buf, true, {
-        relative = "editor",
-        width = width,
-        height = height,
-        row = math.floor((vim.o.lines - height) / 2),
-        col = math.floor((vim.o.columns - width) / 2),
-        style = "minimal",
-        border = "rounded",
-        title = " Claude ",
-        title_pos = "center",
-    })
+local function open_split(buf)
+    -- Right-hand vertical split so the code stays visible alongside; move
+    -- between them with <C-w>h / <C-w>l.
+    vim.cmd("botright vsplit")
+    local win = vim.api.nvim_get_current_win()
+    vim.api.nvim_win_set_buf(win, buf)
+    vim.api.nvim_win_set_width(win, math.floor(vim.o.columns * 0.40))
+    vim.wo[win].winfixwidth = true
+    vim.wo[win].number = false
+    vim.wo[win].relativenumber = false
+    vim.wo[win].signcolumn = "no"
+    return win
+end
+
+-- Scroll the (already-focused) terminal window to its newest output and drop
+-- into terminal-insert mode. Scheduled so it runs after the buffer redraws,
+-- otherwise an already-scrolled reuse can land mid-scrollback.
+local function goto_bottom_insert()
+    vim.schedule(function()
+        vim.cmd("normal! G")
+        vim.cmd("startinsert")
+    end)
 end
 
 local function focus_or_split()
@@ -64,15 +72,15 @@ local function focus_or_split()
     if win ~= -1 then
         vim.api.nvim_set_current_win(win)
     else
-        open_float(state.buf)
+        open_split(state.buf)
     end
-    vim.cmd("startinsert")
+    goto_bottom_insert()
     return true
 end
 
 local function open_terminal(cmd)
     state.buf = vim.api.nvim_create_buf(false, true)
-    open_float(state.buf)
+    open_split(state.buf)
     state.chan = vim.fn.termopen(cmd, {
         on_exit = function()
             vim.schedule(function()
@@ -81,7 +89,7 @@ local function open_terminal(cmd)
             end)
         end,
     })
-    vim.cmd("startinsert")
+    goto_bottom_insert()
     return state.chan
 end
 

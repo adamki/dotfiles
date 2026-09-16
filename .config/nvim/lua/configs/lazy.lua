@@ -52,6 +52,7 @@ require("lazy").setup({
     -- Improved Interface
     {
         "windwp/nvim-ts-autotag",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("nvim-ts-autotag").setup()
         end,
@@ -59,6 +60,7 @@ require("lazy").setup({
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("configs.indent-blankline")
         end,
@@ -71,6 +73,7 @@ require("lazy").setup({
     },
     {
         "nvim-tree/nvim-tree.lua",
+        event = "VeryLazy",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("configs.nvim-tree")
@@ -78,6 +81,7 @@ require("lazy").setup({
     },
     {
         "stevearc/aerial.nvim",
+        event = "VeryLazy",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function()
             require("configs.aerial")
@@ -85,6 +89,7 @@ require("lazy").setup({
     },
     {
         "nvim-lualine/lualine.nvim",
+        event = "VeryLazy",
         config = function()
             require("configs.lualine")
         end,
@@ -102,6 +107,7 @@ require("lazy").setup({
     },
     {
         "lewis6991/gitsigns.nvim",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("configs.git-signs")
         end,
@@ -110,6 +116,7 @@ require("lazy").setup({
     -- FZF
     {
         "ibhagwan/fzf-lua",
+        event = "VeryLazy",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("configs.fzf-lua")
@@ -127,6 +134,7 @@ require("lazy").setup({
     },
     {
         "williamboman/mason-lspconfig.nvim",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "neovim/nvim-lspconfig",
             "williamboman/mason.nvim",
@@ -158,6 +166,7 @@ require("lazy").setup({
     -- Auto-completion
     {
         "saghen/blink.cmp",
+        event = { "InsertEnter", "CmdlineEnter" },
         dependencies = { "rafamadriz/friendly-snippets" },
         version = "1.*",
         config = function()

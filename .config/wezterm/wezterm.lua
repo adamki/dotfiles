@@ -8,14 +8,15 @@ local config = wezterm.config_builder()
 -- Color scheme
 config.adjust_window_size_when_changing_font_size = false
 -- light >> dark: latte, frappe, macchiato, mocha
-config.color_scheme = "catppuccin-mocha"
+-- config.color_scheme = "catppuccin-mocha"
+config.color_scheme = "GruvboxDark"
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono", {
 	weight = "Medium",
 })
 config.font_size = 16
 config.inactive_pane_hsb = {
-	saturation = 0.8,
-	brightness = 0.4,
+	saturation = 0.6,
+	brightness = 0.6,
 }
 config.harfbuzz_features = {
 	"calt=0",
@@ -24,8 +25,9 @@ config.harfbuzz_features = {
 }
 
 config.native_macos_fullscreen_mode = true
-config.tab_max_width = 100
-config.window_frame = { font_size = 14.0, active_titlebar_bg = "#333333", inactive_titlebar_bg = "#333333" }
+config.tab_bar_at_bottom = true
+config.tab_max_width = 130
+config.window_frame = { font_size = 16.0, active_titlebar_bg = "#333333", inactive_titlebar_bg = "#333333" }
 
 -- Keybindings
 config.keys = {

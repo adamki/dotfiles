@@ -12,7 +12,7 @@ local set = vim.opt
 require("catppuccin").setup({})
 
 -- vim.cmd.colorscheme("catppuccin-latte")
-vim.cmd.colorscheme("catppuccin-frappe")
+vim.cmd.colorscheme("gruvbox-material")
 
 -- nvim-tree requirement
 vim.g.loaded = 1
