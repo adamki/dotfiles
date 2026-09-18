@@ -14,6 +14,7 @@ config.font = wezterm.font("JetBrainsMono Nerd Font Mono", {
 	weight = "Medium",
 })
 config.font_size = 16
+config.command_palette_font_size = 20
 config.inactive_pane_hsb = {
 	saturation = 0.6,
 	brightness = 0.6,
